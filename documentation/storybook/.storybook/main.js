@@ -14,7 +14,7 @@ module.exports = {
     storyStoreV7: true
   },
   async viteFinal(config) {
-    config.base = '';
+    config.base = '/core_components_react';
     return config;
   }
 };
