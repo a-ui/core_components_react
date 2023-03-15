@@ -12,5 +12,9 @@ module.exports = {
   },
   features: {
     storyStoreV7: true
+  },
+  async viteFinal(config) {
+    config.base = '';
+    return config;
   }
 };

@@ -21,7 +21,8 @@ export default {
         defaultValue: { summary: '' }
       },
       defaultValue: 'root',
-      description: 'It is important for users of screenreaders that other page content be hidden (via the `aria-hidden `attribute) while the modal is open. To allow the component to do this, the application root ID should be provided.'
+      description:
+        'It is important for users of screenreaders that other page content be hidden (via the `aria-hidden` attribute) while the modal is open. To allow the component to do this, the application root ID should be provided.'
     },
     ariaCloseLabel: {
       control: { type: 'text' },
@@ -39,7 +40,7 @@ export default {
       description: 'Content of the `Modal` component.',
       defaultValue: 'Hello this is the content of the modal.',
       table: {
-        type: { summary: 'ReactNode' },
+        type: { summary: 'ReactNode' }
       }
     },
     closeButton: {
@@ -114,9 +115,10 @@ export default {
     open: {
       control: { type: 'boolean' },
       table: {
-        type: { summary: 'boolean' },
+        type: { summary: 'boolean' }
       },
-      description: 'Open or close the modal. Makes the modal controlled and should be used together with `onClose`, `onCancel` and `onConfirm`.'
+      description:
+        'Open or close the modal. Makes the modal controlled and should be used together with `onClose`, `onCancel` and `onConfirm`.'
     },
     size: {
       control: { type: 'select' },
@@ -160,7 +162,7 @@ export default {
       description: 'Modal open callback, called after modal opening.'
     },
     qa: QA_PROP_STORY
-  },
+  }
 };
 
 export const modal = '';
