@@ -1,0 +1,2 @@
+var p=Object.defineProperty;var e=(a,n)=>p(a,"name",{value:n,configurable:!0});import{a as m,j as i}from"./jsx-runtime-bb315772.js";function f({autoFocus:a,value:n,label:o,id:r,qa:s,name:d,onChange:t,checked:l,disabled:h}){return m("div",{className:"a-input__radio","data-qa":s,children:[i("input",{type:"radio",id:r,checked:l,name:d,value:n,onChange:e(c=>{t&&t(c)},"handleChange"),disabled:h,autoFocus:a}),i("label",{htmlFor:r,children:o})]})}e(f,"Radio");export{f as R};
+//# sourceMappingURL=Radio-155ed071.js.map
