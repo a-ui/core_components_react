@@ -38,9 +38,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: docs
+          path: storybook
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: documentation/storybook/storybook-static
+          FOLDER: storybook
