@@ -47,7 +47,7 @@ export function TextArea({
           disabled={disabled}
           readOnly={readOnly}
           required={required}
-          aria-describedby="text-field-description"
+          aria-describedby={description ? 'text-field-description' : ''}
           maxLength={maxLength}
           onChange={_handleChange}
           {...extraProps}

@@ -54,7 +54,7 @@ export function Playground() {
       <SpinnerExamples />
       <SwitchExamples />
       <TableExamples />
-      {/* <TextAreaExamples /> */}
+      <TextAreaExamples />
       {/* <TextFieldExamples /> */}
       {/* <ToggleExamples /> */}
       {/* <TooltipExamples /> */}

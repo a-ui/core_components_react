@@ -23,7 +23,7 @@ export const renderDescription = ({ description, state }: DescriptionProps) => {
     'is-success': state === State.SUCCESS
   });
   return description ? (
-    <small className={descriptionClasses}>
+    <small id='text-field-description' className={descriptionClasses}>
       {state === State.SUCCESS && <Icon name="check-1" />}
       {state === State.ERROR && <Icon name="alert-triangle" />}
       {description}
