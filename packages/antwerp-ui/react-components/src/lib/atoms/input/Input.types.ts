@@ -22,6 +22,7 @@ export interface TextFieldProps extends InputProps {
   addonRight?: string;
   iconLeft?: string;
   iconRight?: string;
+  role?: string;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onClick?: (event: MouseEvent<HTMLInputElement>) => void;

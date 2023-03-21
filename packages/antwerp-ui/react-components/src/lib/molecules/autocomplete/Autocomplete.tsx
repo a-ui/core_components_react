@@ -124,8 +124,10 @@ export function Autocomplete({
           onBlur={setValueBack}
           value={fieldValue}
           onChange={(e) => handleInput(e.target.value)}
+          role="combobox"
           aria-autocomplete="list"
           aria-haspopup="true"
+          aria-expanded={isOpen}
           onKeyDown={handleKeyDown}
         />
       }
