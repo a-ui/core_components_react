@@ -10,8 +10,8 @@ export function Tooltip({ anchor, anchorId, location, text, qa }: TooltipProps) 
     <>
       {cloneElement(anchor, { id: anchorId, 'aria-describedby': `${anchorId}-tooltip` })}
       <ReactTooltip
-        anchorId={anchorId}
         id={`${anchorId}-tooltip`}
+        anchorId={anchorId}
         className="a-tooltip__base"
         noArrow
         positionStrategy="fixed"
