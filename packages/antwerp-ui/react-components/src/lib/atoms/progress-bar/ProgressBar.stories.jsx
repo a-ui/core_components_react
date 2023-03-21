@@ -65,6 +65,14 @@ export default {
       },
       description: 'Use this prop to set the `aria-valuemax` attribute.'
     },
+    labelId: {
+      control: { type: 'text' },
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'aui-progress-label' }
+      },
+      description: 'Id of the label, used by `aria-labelledby`.'
+    },
     qa: QA_PROP_STORY
   }
 };
