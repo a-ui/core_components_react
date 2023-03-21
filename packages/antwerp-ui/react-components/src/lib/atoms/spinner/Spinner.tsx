@@ -3,7 +3,7 @@ import { classNames } from '../../../utils/dom.utils';
 import { SCREEN_READER_CLASS } from '../../../constants/settings';
 import { DEFAULT_SIZE, SIZE_MAP } from '../../../constants/layout.settings';
 
-export function Spinner({ label, showText, size, vertical, qa }: SpinnerProps) {
+export function Spinner({ label, showText, size, vertical, ariaHidden, qa }: SpinnerProps) {
   const classes = classNames({
     'a-spinner': true,
     [`a-spinner--${SIZE_MAP[size || DEFAULT_SIZE]}`]: !!size,
@@ -15,8 +15,8 @@ export function Spinner({ label, showText, size, vertical, qa }: SpinnerProps) {
   });
 
   return (
-    <div className={classes} role="alert" aria-busy="true" data-qa={qa}>
-      <span className="a-spinner__circle"></span>
+    <div className={classes} aria-busy="true" aria-hidden={ariaHidden} data-qa={qa}>
+      <span role="alert" className="a-spinner__circle"></span>
       <span className={labelClasses}>{label}</span>
     </div>
   );

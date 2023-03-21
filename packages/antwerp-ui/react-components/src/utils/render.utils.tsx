@@ -44,7 +44,7 @@ export function labelWrapper(children: ReactElement, label?: string, id?: string
 
 export function renderAddOn(addOn?: ButtonAddOnProps, size?: 'small' | 'medium' | 'large'): JSX.Element | null {
   if (addOn?.type === 'spinner') {
-    return <Spinner size={size === Size.S ? Size.XS : Size.S} />;
+    return <Spinner ariaHidden size={size === Size.S ? Size.XS : Size.S} />;
   } else if (addOn?.type === 'avatar') {
     return <Avatar {...addOn?.avatarProps} size={size} />;
   } else if (addOn?.type === 'icon') {
