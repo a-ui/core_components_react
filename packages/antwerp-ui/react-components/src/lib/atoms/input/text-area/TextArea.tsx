@@ -38,7 +38,7 @@ export function TextArea({
   return (
     <div className={wrapperClasses} data-qa={qa}>
       {renderLabel({ label, id, required, inline })}
-      {renderDescription({id, description, state })}
+      {renderDescription({ id, description, state })}
       <div className="a-input__wrapper">
         <textarea
           value={value}
@@ -47,7 +47,8 @@ export function TextArea({
           disabled={disabled}
           readOnly={readOnly}
           required={required}
-          aria-describedby={description ? `${id}--description` : ''}
+          {...(charCounter && maxLength ? { 'aria-describedby': `${id}--counter` } : {})}
+          {...(description ? { 'aria-describedby': `${id}--description` } : {})}
           maxLength={maxLength}
           onChange={_handleChange}
           {...extraProps}

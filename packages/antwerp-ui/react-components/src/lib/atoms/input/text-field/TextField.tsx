@@ -68,7 +68,7 @@ export const TextField = forwardRef(function TextField(
           maxLength={maxLength}
           onChange={_handleChange}
           {...extraProps}
-          {...(charCounter && maxLength ? { 'aria-describedby': `${id}--description` } : {})}
+          {...(charCounter && maxLength ? { 'aria-describedby': `${id}--counter` } : {})}
           {...(description ? { 'aria-describedby': `${id}--description` } : {})}
         ></input>
         {!!iconRight && !iconLeft && <Icon name={iconRight} />}
