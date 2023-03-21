@@ -17,7 +17,6 @@ export function Copyright({ sign, label, link, forImage, qa }: CopyrightProps) {
     <ElementTag
       href={link}
       className={classes}
-      aria-expanded={!!(forImage && expanded)}
       data-qa={qa}
       onFocus={expand}
       onBlur={shrink}

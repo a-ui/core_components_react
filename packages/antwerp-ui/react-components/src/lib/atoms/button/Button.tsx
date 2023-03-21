@@ -51,7 +51,7 @@ export function Button({
       type={htmlType}
       aria-label={ariaLabel}
       data-qa={qa}
-      {...(!!extraProps['aria-haspopup'] ? { 'aria-haspopup': true } : {})}
+      {...(extraProps['aria-haspopup'] ? { 'aria-haspopup': true } : {})}
       {...(extraProps['aria-expanded'] === true || extraProps['aria-expanded'] === false
         ? { 'aria-expanded': extraProps['aria-expanded'] }
         : {})}

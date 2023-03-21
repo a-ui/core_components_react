@@ -44,12 +44,12 @@ const renderModalAlert = (className: string, props: AlertProps) => {
       <p className={textClass}>{children}</p>
       <div className="m-alert__actions">
         {onConfirm ? (
-          <Button id="aui-alert-confirm" size="small" theme={theme} onClick={onConfirm}>
+          <Button id={`${titleId}-aui-alert-confirm`} size="small" theme={theme} onClick={onConfirm}>
             {confirmLabel}
           </Button>
         ) : null}
         {onCancel ? (
-          <Button id="aui-alert-cancel" size="small" theme={theme} emphasis="medium" onClick={onCancel}>
+          <Button id={`${titleId}-aui-alert-cancel`} size="small" theme={theme} emphasis="medium" onClick={onCancel}>
             {cancelLabel}
           </Button>
         ) : null}
