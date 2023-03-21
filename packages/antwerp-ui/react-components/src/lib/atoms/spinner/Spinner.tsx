@@ -15,7 +15,7 @@ export function Spinner({ label, showText, size, vertical, ariaHidden, qa }: Spi
   });
 
   return (
-    <div className={classes} aria-busy="true" aria-hidden={ariaHidden} data-qa={qa}>
+    <div className={classes} aria-hidden={ariaHidden} data-qa={qa}>
       <span role="alert" className="a-spinner__circle"></span>
       <span className={labelClasses}>{label}</span>
     </div>
