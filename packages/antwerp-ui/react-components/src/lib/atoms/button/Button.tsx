@@ -18,7 +18,8 @@ export function Button({
   qa,
   size,
   theme,
-  title
+  title,
+  ...extraProps
 }: ButtonProps) {
   const classObject = {
     'a-button': true,
@@ -50,6 +51,10 @@ export function Button({
       type={htmlType}
       aria-label={ariaLabel}
       data-qa={qa}
+      {...(!!extraProps['aria-haspopup'] ? { 'aria-haspopup': true } : {})}
+      {...(extraProps['aria-expanded'] === true || extraProps['aria-expanded'] === false
+        ? { 'aria-expanded': extraProps['aria-expanded'] }
+        : {})}
     >
       {renderAddOn(addOn, size)}
       {classObject['has-icon'] ? null : children}

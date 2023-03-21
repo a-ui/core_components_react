@@ -16,6 +16,8 @@ export interface ButtonProps {
   theme?: 'success' | 'warning' | 'danger' | 'neutral';
   title?: string;
   emphasis?: 'high' | 'medium' | 'low';
+  ['aria-expanded']?: boolean;
+  ['aria-haspopup']?: boolean;
 }
 
 export type ButtonAddOnProps = {
