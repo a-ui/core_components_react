@@ -68,17 +68,19 @@ export const TextField = forwardRef(function TextField(
           maxLength={maxLength}
           onChange={_handleChange}
           {...extraProps}
+          {...(charCounter && maxLength ? { 'aria-describedby': `${id}-description` } : {})}
         ></input>
         {!!iconRight && !iconLeft && <Icon name={iconRight} />}
         {!!addonRight && <div className="a-input__addon">{addonRight}</div>}
       </div>
-      {renderCharacterCounter({ charCounter, characterCount: value ? value.length : characterCount, maxLength })}
+      {renderCharacterCounter({ id, charCounter, characterCount: value ? value.length : characterCount, maxLength })}
     </div>
   );
 });
 
 TextField.defaultProps = {
-  type: 'text'
+  type: 'text',
+  id: 'aui-text-field'
 };
 
 export default TextField;

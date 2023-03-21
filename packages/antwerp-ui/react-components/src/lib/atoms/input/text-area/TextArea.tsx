@@ -53,9 +53,13 @@ export function TextArea({
           {...extraProps}
         ></textarea>
       </div>
-      {renderCharacterCounter({ charCounter, characterCount: value ? value.length : characterCount, maxLength })}
+      {renderCharacterCounter({ id, charCounter, characterCount: value ? value.length : characterCount, maxLength })}
     </div>
   );
 }
+
+TextArea.defaultProps = {
+  id: 'aui-text-area'
+};
 
 export default TextArea;
