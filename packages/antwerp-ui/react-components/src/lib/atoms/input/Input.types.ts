@@ -39,7 +39,7 @@ export interface TextAreaProps extends InputProps {
 }
 
 export type LabelProps = Pick<TextFieldProps, 'label' | 'required' | 'inline' | 'id'>;
-export type DescriptionProps = Pick<TextFieldProps, 'description' | 'state'>;
+export type DescriptionProps = Pick<TextFieldProps, 'id' | 'description' | 'state'>;
 export type CharacterCounterProps = {
   id?: string;
   charCounter?: boolean;

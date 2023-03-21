@@ -16,14 +16,14 @@ export const renderLabel = ({ label, id, required, inline }: LabelProps) => {
   ) : null;
 };
 
-export const renderDescription = ({ description, state }: DescriptionProps) => {
+export const renderDescription = ({ id, description, state }: DescriptionProps) => {
   const descriptionClasses = classNames({
     'a-input__description': true,
     'is-error': state === State.ERROR,
     'is-success': state === State.SUCCESS
   });
   return description ? (
-    <small id='text-field-description' className={descriptionClasses}>
+    <small id={`${id}--description`} className={descriptionClasses}>
       {state === State.SUCCESS && <Icon name="check-1" />}
       {state === State.ERROR && <Icon name="alert-triangle" />}
       {description}
@@ -33,7 +33,7 @@ export const renderDescription = ({ description, state }: DescriptionProps) => {
 
 export const renderCharacterCounter = ({ id, charCounter, characterCount, maxLength }: CharacterCounterProps) => {
   return charCounter && maxLength ? (
-    <small aria-live="polite" id={`${id}-description`} className="a-input__description u-text-right">
+    <small aria-live="polite" id={`${id}--description`} className="a-input__description u-text-right">
       {`${characterCount} / ${maxLength}`}
     </small>
   ) : null;
