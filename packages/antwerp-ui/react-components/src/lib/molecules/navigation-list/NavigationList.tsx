@@ -42,8 +42,8 @@ export function NavigationList({ items, border, ariaLabel, onItemClick, directio
   };
 
   return (
-    <nav role="navigation" className={navClass} data-qa={qa}>
-      <ul ref={scrollDivRef} onScroll={handleScroll} aria-label={ariaLabel}>
+    <nav role="navigation" className={navClass} aria-label={ariaLabel} data-qa={qa}>
+      <ul ref={scrollDivRef} onScroll={handleScroll} {...(!isScrollStart || !isScrollEnd ? { tabIndex: 0 } : {})}>
         {items.map(renderNavigationItem)}
       </ul>
     </nav>

@@ -41,4 +41,13 @@ describe('UI Components - Molecules - Navigation', () => {
     fireEvent.click(getByRole('listitem').children[0]);
     expect(mockClick).toBeCalledTimes(1);
   });
+
+  it('should set tab-index when scrolled', () => {
+    const mockClick = jest.fn();
+    const { getByRole } = render(
+      <NavigationList onItemClick={mockClick} items={[{ id: '1', label: 'Active' }]} direction="horizontal" />
+    );
+    fireEvent.scroll(getByRole('list'), { target: { scrollLeft: 10 } });
+    expect(getByRole('list').getAttribute('tabindex')).toEqual('0');
+  });
 });

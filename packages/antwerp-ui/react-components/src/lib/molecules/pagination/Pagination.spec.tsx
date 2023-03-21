@@ -12,13 +12,7 @@ describe('UI Components - Molecules - Pagination', () => {
 
   it('should render text pagination', () => {
     const { baseElement } = render(
-      <Pagination
-        currentPage={3}
-        itemsPerPage={5}
-        totalItems={10}
-        onChange={() => console.log('PAGE CHANGE')}
-        display="text"
-      />
+      <Pagination currentPage={3} itemsPerPage={5} totalItems={10} onChange={() => {}} display="text" />
     );
     expect(baseElement.getElementsByClassName('m-pagination__prev')).toBeTruthy();
     expect(baseElement.getElementsByClassName('m-pagination__next')).toBeTruthy();
@@ -27,13 +21,7 @@ describe('UI Components - Molecules - Pagination', () => {
 
   it('should render numbers pagination', () => {
     const { baseElement } = render(
-      <Pagination
-        currentPage={5}
-        itemsPerPage={5}
-        totalItems={50}
-        onChange={() => console.log('PAGE CHANGE')}
-        display="numbers"
-      />
+      <Pagination currentPage={5} itemsPerPage={5} totalItems={50} onChange={() => {}} display="numbers" />
     );
     expect(baseElement.getElementsByClassName('m-pagination__prev')).toBeTruthy();
     expect(baseElement.getElementsByClassName('m-pagination__next')).toBeTruthy();
