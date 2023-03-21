@@ -35,12 +35,13 @@ export function TooltipExamples() {
       <Tooltip
         location="right"
         text="Test tooltip"
+        anchorId="tooltip-4"
         anchor={<span>Example text that has tooltip RIGHT of it</span>}
       ></Tooltip>
       <div style={{ overflow: 'hidden', height: '100px', width: '400px', border: '1px solid black' }}>
         <Tooltip
           text="Test tooltip"
-          anchorId="tooltip-4"
+          anchorId="tooltip-5"
           anchor={
             <p>
               this is an example when parent element has hidden overflow but tooltip should still show on top of that

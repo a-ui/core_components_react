@@ -8,8 +8,15 @@ import './Tooltip.css';
 export function Tooltip({ anchor, anchorId, location, text, qa }: TooltipProps) {
   return (
     <>
-      {cloneElement(anchor, { id: anchorId })}
-      <ReactTooltip anchorId={anchorId} className="a-tooltip__base" noArrow positionStrategy="fixed" place={location}>
+      {cloneElement(anchor, { id: anchorId, 'aria-describedby': `${anchorId}-tooltip` })}
+      <ReactTooltip
+        anchorId={anchorId}
+        id={`${anchorId}-tooltip`}
+        className="a-tooltip__base"
+        noArrow
+        positionStrategy="fixed"
+        place={location}
+      >
         <div className="a-tooltip" data-qa={qa}>
           {text}
         </div>
