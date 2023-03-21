@@ -32,6 +32,7 @@ export interface TableProps {
 
 export interface TableRowSchema {
   id: string;
+  checkboxLabel?: string;
   [key: string]: ReactNode;
 }
 

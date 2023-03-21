@@ -8,7 +8,14 @@ describe('PageIndicator', () => {
   it('should render successfully', () => {
     const { baseElement } = render(
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      <PageIndicator onPageChange={() => {}} activePage="page1" pages={[{ id: 'page-1' }, { id: 'page-2' }]} />
+      <PageIndicator
+        onPageChange={() => {}}
+        activePage="page1"
+        pages={[
+          { id: 'page-1', ariaLabel: 'page 1' },
+          { id: 'page-2', ariaLabel: 'page 2' }
+        ]}
+      />
     );
     expect(baseElement).toBeTruthy();
   });
@@ -21,7 +28,11 @@ describe('PageIndicator', () => {
           activePage = page;
         }}
         activePage={activePage}
-        pages={[{ id: 'page-1' }, { id: 'page-2' }, { id: 'page-3' }]}
+        pages={[
+          { id: 'page-1', ariaLabel: 'page 1' },
+          { id: 'page-2', ariaLabel: 'page 2' },
+          { id: 'page-3', ariaLabel: 'page 3' }
+        ]}
       />
     );
     const firstIndicatorBtn = baseElement.getElementsByClassName('a-page-indicator__item')[0] as HTMLButtonElement;
@@ -46,7 +57,11 @@ describe('PageIndicator', () => {
           activePage = page;
         }}
         activePage={activePage}
-        pages={[{ id: 'page-1' }, { id: 'page-2' }, { id: 'page-3' }]}
+        pages={[
+          { id: 'page-1', ariaLabel: 'page 1' },
+          { id: 'page-2', ariaLabel: 'page 2' },
+          { id: 'page-3', ariaLabel: 'page 3' }
+        ]}
       />
     );
     const firstIndicatorBtn = baseElement.getElementsByClassName('a-page-indicator__item')[0] as HTMLButtonElement;
@@ -71,7 +86,11 @@ describe('PageIndicator', () => {
           activePage = page;
         }}
         activePage={activePage}
-        pages={[{ id: 'page-1' }, { id: 'page-2' }, { id: 'page-3' }]}
+        pages={[
+          { id: 'page-1', ariaLabel: 'page 1' },
+          { id: 'page-2', ariaLabel: 'page 2' },
+          { id: 'page-3', ariaLabel: 'page 3' }
+        ]}
       />
     );
     const firstIndicatorBtn = baseElement.getElementsByClassName('a-page-indicator__item')[0] as HTMLButtonElement;

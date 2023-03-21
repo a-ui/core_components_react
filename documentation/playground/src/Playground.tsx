@@ -42,41 +42,41 @@ export function Playground() {
       <IconExamples />
       <AvatarExamples />
       <BadgeExamples />
-      <ButtonExamples />
       <BreadcrumbExamples />
+      <ButtonExamples />
       <CheckboxExamples />
       <LabelExamples />
       <ListExamples />
+      <PageIndicatorExamples />
       <ProgressBarExamples />
       <RadioExamples />
       <RangeSliderExamples />
       <SpinnerExamples />
       <SwitchExamples />
       <TableExamples />
-      <TextAreaExamples />
-      <TextFieldExamples />
-      <ToggleExamples />
-      <TooltipExamples />
-      <h1>Molecules</h1>
-      <AutocompleteExamples />
-      <AccordionExamples />
-      <AlertExamples />
-      <ButtonGroupExamples />
-      <CardExamples />
-      <DatepickerExamples />
-      <FlyoutExamples />
-      <ImageExamples />
-      <ModalExamples />
-      <NavigationListExamples />
-      <PageIndicatorExamples />
-      <PaginationExamples />
-      <StepIndicatorExamples />
-      <TagExamples />
-      <UploadExamples />
-      <h1>Organisms</h1>
-      <FooterExamples />
-      <HeaderExamples />
-      <TagListExamples />
+      {/* <TextAreaExamples /> */}
+      {/* <TextFieldExamples /> */}
+      {/* <ToggleExamples /> */}
+      {/* <TooltipExamples /> */}
+      {/* <h1>Molecules</h1> */}
+      {/* <AutocompleteExamples /> */}
+      {/* <AccordionExamples /> */}
+      {/* <AlertExamples /> */}
+      {/* <ButtonGroupExamples /> */}
+      {/* <CardExamples /> */}
+      {/* <DatepickerExamples /> */}
+      {/* <FlyoutExamples /> */}
+      {/* <ImageExamples /> */}
+      {/* <ModalExamples /> */}
+      {/* <NavigationListExamples /> */}
+      {/* <PaginationExamples /> */}
+      {/* <StepIndicatorExamples /> */}
+      {/* <TagExamples /> */}
+      {/* <UploadExamples /> */}
+      {/* <h1>Organisms</h1> */}
+      {/* <FooterExamples /> */}
+      {/* <HeaderExamples /> */}
+      {/* <TagListExamples /> */}
     </>
   );
 }
