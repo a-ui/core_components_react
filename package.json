@@ -1,6 +1,6 @@
 {
-  "name": "antwerp-ui-components-react",
-  "version": "0.0.0",
+  "name": "@a-ui/react",
+  "version": "7.0.0-alpha.0",
   "license": "MIT",
   "scripts": {
     "test": "yarn nx test",
@@ -9,7 +9,8 @@
     "storybook:build": "yarn nx run @acpaas-ui/storybook:build",
     "generate": "yarn nx g @acpaas-ui/react-components:component",
     "g": "yarn generate",
-    "postinstall": "cd documentation/storybook && yarn install && cd ../.."
+    "postinstall": "cd documentation/storybook && yarn install && cd ../..",
+    "build": "yarn nx build aui-react-components"
   },
   "private": true,
   "dependencies": {
