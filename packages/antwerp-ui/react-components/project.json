@@ -1,5 +1,5 @@
 {
-  "name": "antwerp-ui-react-components",
+  "name": "aui-react-components",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/antwerp-ui/react-components/src",
   "projectType": "library",

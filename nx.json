@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "antwerp-ui-components-react",
+  "npmScope": "@a-ui",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -54,5 +54,5 @@
       }
     }
   },
-  "defaultProject": "antwerp-ui-react-components"
+  "defaultProject": "aui-react-components"
 }

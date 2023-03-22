@@ -1,6 +1,6 @@
 {
-  "name": "@acpaas-ui/react-components",
-  "version": "0.0.1",
+  "name": "@a-ui/react",
+  "version": "7.0.0-alpha.0",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

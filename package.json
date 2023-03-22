@@ -1,6 +1,6 @@
 {
   "name": "@a-ui/react",
-  "version": "7.0.0-alpha.0",
+  "version": "7.0.0-alpha.2",
   "license": "MIT",
   "scripts": {
     "test": "yarn nx test",
@@ -10,9 +10,9 @@
     "generate": "yarn nx g @acpaas-ui/react-components:component",
     "g": "yarn generate",
     "postinstall": "cd documentation/storybook && yarn install && cd ../..",
-    "build": "yarn nx build aui-react-components"
+    "build": "yarn nx build aui-react-components",
+    "prepublish": "yarn build"
   },
-  "private": true,
   "dependencies": {
     "@storybook/client-api": "^6.5.16",
     "@swc-node/register": "^1.5.5",
