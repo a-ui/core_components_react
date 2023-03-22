@@ -1,4 +1,4 @@
-import { Pagination } from '@acpaas-ui/react-components';
+import { Pagination } from '@a-ui/react';
 import { useState } from 'react';
 
 export function PaginationExamples() {

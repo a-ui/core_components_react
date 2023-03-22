@@ -1,4 +1,4 @@
-import { PageIndicator } from '@acpaas-ui/react-components';
+import { PageIndicator } from '@a-ui/react';
 import { useState } from 'react';
 
 export function PageIndicatorExamples() {

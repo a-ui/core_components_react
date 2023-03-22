@@ -1,4 +1,4 @@
-import { Checkbox } from '@acpaas-ui/react-components';
+import { Checkbox } from '@a-ui/react';
 import { ChangeEvent, useState } from 'react';
 
 export function CheckboxExamples() {

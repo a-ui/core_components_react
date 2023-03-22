@@ -54,5 +54,5 @@
       }
     }
   },
-  "defaultProject": "aui-react-components"
+  "defaultProject": "@a-ui/react"
 }

@@ -1,24 +1,16 @@
 {
-  "name": "@a-ui/react",
-  "version": "7.0.0-alpha.3",
+  "name": "@a-ui/nx-react",
+  "version": "",
   "license": "MIT",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
-    }
-  },
   "scripts": {
     "test": "yarn nx test",
     "playground": "yarn nx run documentation-playground:serve:development",
-    "storybook": "yarn nx run @acpaas-ui/storybook:start",
-    "storybook:build": "yarn nx run @acpaas-ui/storybook:build",
-    "generate": "yarn nx g @acpaas-ui/react-components:component",
+    "storybook": "yarn nx run @a-ui/storybook:start",
+    "storybook:build": "yarn nx run @a-ui/storybook:build",
+    "generate": "yarn nx g @a-ui/react:component",
     "g": "yarn generate",
     "postinstall": "cd documentation/storybook && yarn install && cd ../..",
-    "build": "yarn nx build aui-react-components",
+    "build": "yarn nx build @a-ui/react",
     "prepublish": "yarn build"
   },
   "dependencies": {

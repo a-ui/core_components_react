@@ -1,4 +1,4 @@
-import { TextArea } from '@acpaas-ui/react-components';
+import { TextArea } from '@a-ui/react';
 import { useState } from 'react';
 
 export function TextAreaExamples() {

@@ -1,4 +1,4 @@
-import { Header } from '@acpaas-ui/react-components';
+import { Header } from '@a-ui/react';
 
 export function HeaderExamples() {
   return (

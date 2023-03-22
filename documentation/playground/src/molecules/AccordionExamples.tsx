@@ -1,4 +1,4 @@
-import { Accordion, AccordionTab } from '@acpaas-ui/react-components';
+import { Accordion, AccordionTab } from '@a-ui/react';
 import { useState } from 'react';
 
 export function AccordionExamples() {

@@ -1,4 +1,4 @@
-import { Switch } from '@acpaas-ui/react-components';
+import { Switch } from '@a-ui/react';
 import { useState } from 'react';
 
 export function SwitchExamples() {
@@ -7,7 +7,7 @@ export function SwitchExamples() {
     <div className="u-margin">
       <h2>Switches</h2>
       <div className="u-margin">
-        <Switch id="switch-1" ariaLabel='first switch' />
+        <Switch id="switch-1" ariaLabel="first switch" />
         <div className="u-margin-bottom" />
         <Switch
           checked

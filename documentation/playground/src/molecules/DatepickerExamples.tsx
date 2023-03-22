@@ -1,4 +1,4 @@
-import { Calendar } from '@acpaas-ui/react-components';
+import { Calendar } from '@a-ui/react';
 
 import { useState } from 'react';
 

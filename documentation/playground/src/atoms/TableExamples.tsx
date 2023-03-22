@@ -1,4 +1,4 @@
-import { Table } from '@acpaas-ui/react-components';
+import { Table } from '@a-ui/react';
 import {
   TableColumnSchema,
   TableRowSchema
@@ -47,7 +47,7 @@ const ROWS_EXAMPLE: TableRowSchema[] = [
     stock: 160,
     price: '€2,49',
     date: '2022-10-10',
-    checkboxLabel:'rij 0'
+    checkboxLabel: 'rij 0'
   },
   {
     id: '1',
@@ -56,7 +56,7 @@ const ROWS_EXAMPLE: TableRowSchema[] = [
     stock: 48,
     price: '€1,99',
     date: '2021-10-10',
-    checkboxLabel:'rij 1'
+    checkboxLabel: 'rij 1'
   },
   {
     id: '2',
@@ -69,18 +69,17 @@ const ROWS_EXAMPLE: TableRowSchema[] = [
     ),
     price: '€1,49',
     date: '2020-10-10',
-    checkboxLabel:'rij 2'
+    checkboxLabel: 'rij 2'
   }
 ];
 
 export function TableExamples() {
   const [event, setEvent] = useState('none');
   return (
-    <div className='u-margin'>
+    <div className="u-margin">
       <h2 className="u-margin-bottom">Table</h2>
       <div className="u-margin">
-
-      <p>Last event: {event}</p>
+        <p>Last event: {event}</p>
         <Table
           id="table-1"
           selectable

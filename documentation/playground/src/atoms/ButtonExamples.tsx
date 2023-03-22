@@ -1,4 +1,4 @@
-import { Button } from '@acpaas-ui/react-components';
+import { Button } from '@a-ui/react';
 
 export function ButtonExamples() {
   return (

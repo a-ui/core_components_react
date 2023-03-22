@@ -1,4 +1,4 @@
-import { Breadcrumb } from '@acpaas-ui/react-components';
+import { Breadcrumb } from '@a-ui/react';
 import React from 'react';
 
 const BreadcrumbExamples = () => (

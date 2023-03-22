@@ -1,4 +1,4 @@
-import { Spinner } from '@acpaas-ui/react-components';
+import { Spinner } from '@a-ui/react';
 
 export function SpinnerExamples() {
   return (

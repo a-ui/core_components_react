@@ -1,4 +1,4 @@
-import { Card } from '@acpaas-ui/react-components';
+import { Card } from '@a-ui/react';
 
 export function CardExamples() {
   return (

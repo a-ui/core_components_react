@@ -1,4 +1,4 @@
-import { StepIndicator } from '@acpaas-ui/react-components';
+import { StepIndicator } from '@a-ui/react';
 import { useState } from 'react';
 
 export function StepIndicatorExamples() {

@@ -6,7 +6,7 @@ import {
   ListItemAvatar,
   ListItemCheckbox,
   CheckboxList
-} from '@acpaas-ui/react-components';
+} from '@a-ui/react';
 import { useState } from 'react';
 
 export function ListExamples() {
@@ -16,7 +16,7 @@ export function ListExamples() {
     <div className="u-margin">
       <h2>Lists</h2>
       <div className="u-margin">
-        <h3 >Definition</h3>
+        <h3>Definition</h3>
         <DefinitionList items={[{ term: 'This is', description: 'A definition list' }]} />
         <h3 className="u-margin-top">Functional</h3>
         <p>Clicked on {nameClicked}</p>

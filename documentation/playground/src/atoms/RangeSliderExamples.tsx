@@ -1,4 +1,4 @@
-import { RangeSlider } from '@acpaas-ui/react-components';
+import { RangeSlider } from '@a-ui/react';
 import { useState } from 'react';
 
 export function RangeSliderExamples() {

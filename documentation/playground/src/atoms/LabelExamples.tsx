@@ -1,4 +1,4 @@
-import { Label } from '@acpaas-ui/react-components';
+import { Label } from '@a-ui/react';
 
 export function LabelExamples() {
   return (

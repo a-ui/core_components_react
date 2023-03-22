@@ -1,4 +1,4 @@
-import { Alert } from '@acpaas-ui/react-components';
+import { Alert } from '@a-ui/react';
 
 export function AlertExamples() {
   const doNothing = () => {

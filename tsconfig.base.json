@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@acpaas-ui/react-components": ["packages/antwerp-ui/react-components/src/index.ts"]
+      "@a-ui/react": ["packages/antwerp-ui/react-components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

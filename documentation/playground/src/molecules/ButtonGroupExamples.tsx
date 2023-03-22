@@ -1,4 +1,4 @@
-import { Button, ButtonGroup } from '@acpaas-ui/react-components';
+import { Button, ButtonGroup } from '@a-ui/react';
 
 export function ButtonGroupExamples() {
   return (

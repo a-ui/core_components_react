@@ -1,4 +1,4 @@
-import { NavigationList } from '@acpaas-ui/react-components';
+import { NavigationList } from '@a-ui/react';
 import { useState } from 'react';
 
 export function NavigationListExamples() {

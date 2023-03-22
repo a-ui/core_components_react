@@ -1,4 +1,4 @@
-import { Footer } from '@acpaas-ui/react-components';
+import { Footer } from '@a-ui/react';
 
 export function FooterExamples() {
   const items = [

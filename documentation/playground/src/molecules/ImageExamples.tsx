@@ -1,4 +1,4 @@
-import { Copyright, Image } from '@acpaas-ui/react-components';
+import { Copyright, Image } from '@a-ui/react';
 
 export function ImageExamples() {
   return (

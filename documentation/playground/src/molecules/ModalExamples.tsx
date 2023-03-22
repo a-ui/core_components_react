@@ -1,4 +1,4 @@
-import { Button, Modal } from '@acpaas-ui/react-components';
+import { Button, Modal } from '@a-ui/react';
 import { useState } from 'react';
 
 export function ModalExamples() {

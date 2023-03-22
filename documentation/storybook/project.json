@@ -1,5 +1,5 @@
 {
-  "name": "@acpaas-ui/storybook",
+  "name": "@a-ui/storybook",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "/documentation/storybook/src",
   "projectType": "application",

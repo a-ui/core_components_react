@@ -1,4 +1,4 @@
-import { Radio, RadioGroup } from '@acpaas-ui/react-components';
+import { Radio, RadioGroup } from '@a-ui/react';
 import { useState } from 'react';
 
 export function RadioExamples() {

@@ -1,4 +1,4 @@
-import { Tag, TagList } from '@acpaas-ui/react-components';
+import { Tag, TagList } from '@a-ui/react';
 
 export function TagListExamples() {
   return (

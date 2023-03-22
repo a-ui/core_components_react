@@ -1,4 +1,4 @@
-import { Badge } from '@acpaas-ui/react-components';
+import { Badge } from '@a-ui/react';
 
 export function BadgeExamples() {
   return (

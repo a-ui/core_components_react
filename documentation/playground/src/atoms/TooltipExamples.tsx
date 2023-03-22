@@ -1,4 +1,4 @@
-import { Tooltip } from '@acpaas-ui/react-components';
+import { Tooltip } from '@a-ui/react';
 import { useEffect, useState } from 'react';
 
 export function TooltipExamples() {

@@ -1,4 +1,4 @@
-import { Avatar } from '@acpaas-ui/react-components';
+import { Avatar } from '@a-ui/react';
 
 export function AvatarExamples() {
   return (

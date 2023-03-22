@@ -1,4 +1,4 @@
-import { ProgressBar } from '@acpaas-ui/react-components';
+import { ProgressBar } from '@a-ui/react';
 import { useEffect, useState } from 'react';
 
 export function ProgressBarExamples() {
@@ -19,10 +19,10 @@ export function ProgressBarExamples() {
       <h2>Progress bars</h2>
       <div className="u-margin">
         <div className="u-margin-top">
-          <ProgressBar percentage={value} label="Progress" labelId='defaultProgressbar'/>
+          <ProgressBar percentage={value} label="Progress" labelId="defaultProgressbar" />
         </div>
         <div className="u-margin-top">
-          <ProgressBar label="With label" percentage={value} large labelId='labelId' />
+          <ProgressBar label="With label" percentage={value} large labelId="labelId" />
         </div>
       </div>
     </div>

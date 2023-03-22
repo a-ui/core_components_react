@@ -1,4 +1,4 @@
-import { Tag } from '@acpaas-ui/react-components';
+import { Tag } from '@a-ui/react';
 import { useState } from 'react';
 
 export function TagExamples() {

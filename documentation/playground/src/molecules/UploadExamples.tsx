@@ -1,4 +1,4 @@
-import { Upload } from '@acpaas-ui/react-components';
+import { Upload } from '@a-ui/react';
 import { useState } from 'react';
 
 export function UploadExamples() {
