@@ -42,11 +42,12 @@ export function Playground() {
       <IconExamples />
       <AvatarExamples />
       <BadgeExamples />
-      <ButtonExamples />
       <BreadcrumbExamples />
+      <ButtonExamples />
       <CheckboxExamples />
       <LabelExamples />
       <ListExamples />
+      <PageIndicatorExamples />
       <ProgressBarExamples />
       <RadioExamples />
       <RangeSliderExamples />
@@ -68,15 +69,14 @@ export function Playground() {
       <ImageExamples />
       <ModalExamples />
       <NavigationListExamples />
-      <PageIndicatorExamples />
       <PaginationExamples />
       <StepIndicatorExamples />
       <TagExamples />
       <UploadExamples />
       <h1>Organisms</h1>
+      <TagListExamples />
       <FooterExamples />
       <HeaderExamples />
-      <TagListExamples />
     </>
   );
 }

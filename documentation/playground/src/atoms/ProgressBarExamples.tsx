@@ -15,15 +15,17 @@ export function ProgressBarExamples() {
   }, [value]);
 
   return (
-    <>
-      <h1>Progress bars</h1>
-      <div className="u-margin-top">
-        <ProgressBar percentage={value} label="Progress" />
+    <div className="u-margin">
+      <h2>Progress bars</h2>
+      <div className="u-margin">
+        <div className="u-margin-top">
+          <ProgressBar percentage={value} label="Progress" labelId='defaultProgressbar'/>
+        </div>
+        <div className="u-margin-top">
+          <ProgressBar label="With label" percentage={value} large labelId='labelId' />
+        </div>
       </div>
-      <div className="u-margin-top">
-        <ProgressBar label="With label" percentage={value} large />
-      </div>
-    </>
+    </div>
   );
 }
 

@@ -101,7 +101,7 @@ export default {
         defaultValue: { summary: false }
       },
       description:
-        'The header and data rows can also be configured with leading checkbox components, which allow for the selection of one, multiple or all rows.'
+        'The header and data rows can also be configured with leading checkbox components, which allow for the selection of one, multiple or all rows. When using a table with selectable rows, the checkboxLabel property should be added to the rows for screen reader users. '
     },
     selected: {
       control: { type: 'object' },

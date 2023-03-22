@@ -20,23 +20,24 @@ export function AutocompleteExamples() {
   return (
     <div className="u-margin" style={{ width: '420px' }}>
       <h2>Autocomplete</h2>
-      <div className="u-margin-bottom"></div>
-      <Autocomplete id="autocomplete-example-1" label="Select National Parc (Uncontrolled)" items={items} />
+      <div className="u-margin">
+        <Autocomplete id="autocomplete-example-1" label="Select National Parc (Uncontrolled)" items={items} />
 
-      <Autocomplete
-        id="autocomplete-example-2"
-        noResultsText="NOTHING FOUND"
-        label="Select National Parc (Controlled)"
-        items={items}
-        inputValue={inputValue}
-        onInputChange={setInputValue}
-        onChange={setValue}
-        value={value}
-      />
+        <Autocomplete
+          id="autocomplete-example-2"
+          noResultsText="NOTHING FOUND"
+          label="Select National Parc (Controlled)"
+          items={items}
+          inputValue={inputValue}
+          onInputChange={setInputValue}
+          onChange={setValue}
+          value={value}
+        />
 
-      <Button className="u-margin-top" size="small" theme="warning" onClick={() => setValue('8')}>
-        Click to select "Bryce Canyon"
-      </Button>
+        <Button className="u-margin-top" size="small" theme="warning" onClick={() => setValue('8')}>
+          Click to select "Bryce Canyon"
+        </Button>
+      </div>
     </div>
   );
 }

@@ -4,9 +4,9 @@ import { useState } from 'react';
 export function NavigationListExamples() {
   const [active, setActive] = useState('1');
   return (
-    <div className="u-margin-bottom">
+    <div className="u-margin">
       <h2>Navigation Lists</h2>
-      <div style={{ maxWidth: '300px' }}>
+      <div className="u-margin" style={{ maxWidth: '300px' }}>
         <NavigationList
           border={true}
           items={[

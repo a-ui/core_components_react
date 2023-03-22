@@ -52,7 +52,7 @@ export const TextField = forwardRef(function TextField(
   return (
     <div className={classes} data-qa={qa}>
       {renderLabel({ label, id, required, inline })}
-      {renderDescription({ description, state })}
+      {renderDescription({ id, description, state })}
       <div className="a-input__wrapper">
         {!!iconLeft && <Icon name={iconLeft} />}
         {!!addonLeft && <div className="a-input__addon">{addonLeft}</div>}
@@ -68,7 +68,8 @@ export const TextField = forwardRef(function TextField(
           maxLength={maxLength}
           onChange={_handleChange}
           {...extraProps}
-          {...(charCounter && maxLength ? { 'aria-describedby': `${id}-description` } : {})}
+          {...(charCounter && maxLength ? { 'aria-describedby': `${id}--counter` } : {})}
+          {...(description ? { 'aria-describedby': `${id}--description` } : {})}
         ></input>
         {!!iconRight && !iconLeft && <Icon name={iconRight} />}
         {!!addonRight && <div className="a-input__addon">{addonRight}</div>}

@@ -36,6 +36,8 @@ export function TableHeader({
               checked={!!allSelected}
               indeterminate={!!selected.length && !allSelected}
               onChange={onSelectAll}
+              label="selecteren"
+              showLabel={false}
             />
           </th>
         ) : null}

@@ -4,7 +4,7 @@ import { useState } from 'react';
 export function AccordionExamples() {
   const [open, setOpen] = useState(false);
   return (
-    <div className="u-margin-bottom">
+    <div className="u-margin">
       <h2>Accordions</h2>
       <div className="u-margin">
         <Accordion>

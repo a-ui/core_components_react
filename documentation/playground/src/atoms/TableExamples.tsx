@@ -46,7 +46,8 @@ const ROWS_EXAMPLE: TableRowSchema[] = [
     description: 'Tasty, frozen treat for a hot day',
     stock: 160,
     price: '€2,49',
-    date: '2022-10-10'
+    date: '2022-10-10',
+    checkboxLabel:'rij 0'
   },
   {
     id: '1',
@@ -54,7 +55,8 @@ const ROWS_EXAMPLE: TableRowSchema[] = [
     description: 'Salty, crunchy goodness',
     stock: 48,
     price: '€1,99',
-    date: '2021-10-10'
+    date: '2021-10-10',
+    checkboxLabel:'rij 1'
   },
   {
     id: '2',
@@ -66,17 +68,19 @@ const ROWS_EXAMPLE: TableRowSchema[] = [
       </p>
     ),
     price: '€1,49',
-    date: '2020-10-10'
+    date: '2020-10-10',
+    checkboxLabel:'rij 2'
   }
 ];
 
 export function TableExamples() {
   const [event, setEvent] = useState('none');
   return (
-    <>
-      <h1 className="u-margin-bottom">Table</h1>
-      <p>Last event: {event}</p>
+    <div className='u-margin'>
+      <h2 className="u-margin-bottom">Table</h2>
       <div className="u-margin">
+
+      <p>Last event: {event}</p>
         <Table
           id="table-1"
           selectable
@@ -105,7 +109,7 @@ export function TableExamples() {
           }}
         />
       </div>
-    </>
+    </div>
   );
 }
 

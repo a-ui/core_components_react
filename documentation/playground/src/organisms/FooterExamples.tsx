@@ -8,11 +8,13 @@ export function FooterExamples() {
     { label: 'Cookie instellingen', href: '#' }
   ];
   return (
-    <>
+    <div className="u-margin">
       <h2>Footer</h2>
-      <Footer items={items} />
-      <Footer backToTop backToTopAriaLabel="Naar omhoog" items={items} />
-    </>
+      <div className="u-margin">
+        <Footer items={items} />
+        <Footer backToTop backToTopAriaLabel="Naar omhoog" items={items} />
+      </div>
+    </div>
   );
 }
 

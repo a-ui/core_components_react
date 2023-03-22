@@ -8,34 +8,36 @@ export function ModalExamples() {
   const [controlledOpen, setControlledOpen] = useState(false);
   const [title, setTitle] = useState('');
   return (
-    <>
-      <h1>Modals</h1>
-      <Button theme="danger" onClick={() => setControlledOpen(true)}>
-        CONTROLLED MODAL TRIGGER
-      </Button>
-      <Modal
-        onClose={() => setControlledOpen(false)}
-        onCancel={() => setControlledOpen(false)}
-        onConfirm={() => setTitle('GEBRUIK ANNULEREN OM AF TE SLUITEN')}
-        open={controlledOpen}
-        appRootId="aui-react-playground"
-        title={title}
-      >
-        <div>This is a controlled modal.</div>
-      </Modal>
-      <p></p>
-      <Modal
-        onClose={() => setClosedCount(closedCount + 1)}
-        onAfterOpen={() => setOpenCount(openCount + 1)}
-        title="Hello world!"
-        trigger={<Button>UNCONTROLLED MODAL TRIGGER</Button>}
-        appRootId="aui-react-playground"
-      >
-        <div>This modal is uncontrolled.</div>
-      </Modal>
-      <p>Modal has been opened "{openCount}" times.</p>
-      <p>Modal has been closed "{closedCount}" times.</p>
-    </>
+    <div className="u-margin">
+      <h2>Modals</h2>
+      <div className="u-margin">
+        <Button theme="danger" onClick={() => setControlledOpen(true)}>
+          CONTROLLED MODAL TRIGGER
+        </Button>
+        <Modal
+          onClose={() => setControlledOpen(false)}
+          onCancel={() => setControlledOpen(false)}
+          onConfirm={() => setTitle('GEBRUIK ANNULEREN OM AF TE SLUITEN')}
+          open={controlledOpen}
+          appRootId="aui-react-playground"
+          title={title}
+        >
+          <div>This is a controlled modal.</div>
+        </Modal>
+        <p></p>
+        <Modal
+          onClose={() => setClosedCount(closedCount + 1)}
+          onAfterOpen={() => setOpenCount(openCount + 1)}
+          title="Hello world!"
+          trigger={<Button>UNCONTROLLED MODAL TRIGGER</Button>}
+          appRootId="aui-react-playground"
+        >
+          <div>This modal is uncontrolled.</div>
+        </Modal>
+        <p>Modal has been opened "{openCount}" times.</p>
+        <p>Modal has been closed "{closedCount}" times.</p>
+      </div>
+    </div>
   );
 }
 

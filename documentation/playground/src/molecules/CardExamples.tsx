@@ -2,7 +2,7 @@ import { Card } from '@acpaas-ui/react-components';
 
 export function CardExamples() {
   return (
-    <div className="u-margin-bottom">
+    <div className="u-margin">
       <h2>Cards</h2>
       <div style={{ maxWidth: '420px' }} className="u-margin">
         <Card

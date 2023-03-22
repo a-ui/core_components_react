@@ -7,17 +7,19 @@ export function CheckboxExamples() {
     setFirstChecked(event.target.checked);
   };
   return (
-    <div className="u-margin-bottom">
+    <div className="u-margin">
       <h2>Checkboxes</h2>
-      <Checkbox name="checkbox" id="check-1" label="Controlled" onChange={onCheckboxChange} checked={firstChecked} />
-      <Checkbox name="checkbox" id="check-2" label="Controlled no onChange" checked={true} />
-      <Checkbox name="checkbox" id="check-3" label="Controlled no onChange" checked={false} />
-      <Checkbox name="checkbox" id="check-4" label="Indeterminate" indeterminate />
-      <Checkbox name="checkbox" id="check-5" label="Uncontrolled" />
-      <Checkbox name="checkbox" id="check-6" label="Disabled unchecked" disabled />
-      <Checkbox name="checkbox" id="check-7" label="Disabled indeterminate" disabled indeterminate />
-      <Checkbox name="checkbox" id="check-8" label="Disabled checked" disabled checked />
-      <Checkbox name="checkbox" id="check-9" label="Hidden label" showLabel={false} />
+      <div className="u-margin">
+        <Checkbox name="checkbox" id="check-1" label="Controlled" onChange={onCheckboxChange} checked={firstChecked} />
+        <Checkbox name="checkbox" id="check-2" label="Controlled no onChange" checked={true} />
+        <Checkbox name="checkbox" id="check-3" label="Controlled no onChange" checked={false} />
+        <Checkbox name="checkbox" id="check-4" label="Indeterminate" indeterminate />
+        <Checkbox name="checkbox" id="check-5" label="Uncontrolled" />
+        <Checkbox name="checkbox" id="check-6" label="Disabled unchecked" disabled />
+        <Checkbox name="checkbox" id="check-7" label="Disabled indeterminate" disabled indeterminate />
+        <Checkbox name="checkbox" id="check-8" label="Disabled checked" disabled checked />
+        <Checkbox name="checkbox" id="check-9" label="Hidden label" showLabel={false} />
+      </div>
     </div>
   );
 }

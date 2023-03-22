@@ -40,6 +40,8 @@ export function TableBody({
                 id={`aui-table-checkbox-row-${tableId}-${row.id}`}
                 checked={(selected || []).includes(row.id)}
                 onChange={(e) => selectRow(e, row)}
+                label={row.checkboxLabel}
+                showLabel={false}
               />
             </td>
           ) : null}

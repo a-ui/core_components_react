@@ -1,7 +1,7 @@
 export interface PageIndicatorPage {
   id: string;
   ariaControls?: string;
-  ariaLabel?: string;
+  ariaLabel: string;
 }
 
 export interface PageIndicatorProps {

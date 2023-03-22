@@ -7,50 +7,52 @@ export function ToggleExamples() {
   const [toggle3Checked, setToggle3Checked] = useState(true);
   const [toggle4Checked, setToggle4Checked] = useState(false);
   return (
-    <>
-      <h1>Toggles</h1>
-      <Toggle
-        checked={toggle1Checked}
-        checkedLabel="Menu"
-        uncheckedLabel="Close"
-        showLabels
-        onClick={setToggle1Checked}
-      />
-      <br />
-      <Toggle
-        id="toggle-small"
-        size="small"
-        checkedLabel="Open menu"
-        checkedIcon="mouse"
-        uncheckedIcon="mouse"
-        uncheckedLabel="Close menu"
-        checked={toggle2Checked}
-        onClick={setToggle2Checked}
-      />
-      <br />
-      <Toggle
-        id="toggle-large"
-        size="large"
-        checkedLabel="Open menu"
-        checked={toggle3Checked}
-        onClick={setToggle3Checked}
-        checkedIcon="navigation-menu"
-        uncheckedIcon="maps"
-        uncheckedLabel="Close menu"
-      />
-      <br />
-      <Toggle
-        checked={toggle4Checked}
-        onClick={setToggle4Checked}
-        showLabels
-        id="toggle-with-labels"
-        checkedLabel="List view"
-        checkedIcon="list-bullets"
-        uncheckedTheme="warning"
-        uncheckedLabel="Card view"
-        uncheckedIcon="maps"
-      />
-    </>
+    <div className="u-margin">
+      <h2>Toggles</h2>
+      <div className="u-margin">
+        <Toggle
+          checked={toggle1Checked}
+          checkedLabel="Menu"
+          uncheckedLabel="Close"
+          showLabels
+          onClick={setToggle1Checked}
+        />
+        <br />
+        <Toggle
+          id="toggle-small"
+          size="small"
+          checkedLabel="Open menu"
+          checkedIcon="mouse"
+          uncheckedIcon="mouse"
+          uncheckedLabel="Close menu"
+          checked={toggle2Checked}
+          onClick={setToggle2Checked}
+        />
+        <br />
+        <Toggle
+          id="toggle-large"
+          size="large"
+          checkedLabel="Open menu"
+          checked={toggle3Checked}
+          onClick={setToggle3Checked}
+          checkedIcon="navigation-menu"
+          uncheckedIcon="maps"
+          uncheckedLabel="Close menu"
+        />
+        <br />
+        <Toggle
+          checked={toggle4Checked}
+          onClick={setToggle4Checked}
+          showLabels
+          id="toggle-with-labels"
+          checkedLabel="List view"
+          checkedIcon="list-bullets"
+          uncheckedTheme="warning"
+          uncheckedLabel="Card view"
+          uncheckedIcon="maps"
+        />
+      </div>
+    </div>
   );
 }
 

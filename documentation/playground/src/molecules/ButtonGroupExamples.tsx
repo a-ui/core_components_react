@@ -2,16 +2,18 @@ import { Button, ButtonGroup } from '@acpaas-ui/react-components';
 
 export function ButtonGroupExamples() {
   return (
-    <>
-      <h1>Button Group</h1>
-      <ButtonGroup>
-        <Button>Hello</Button>
-        <Button>World!</Button>
-        <Button>We</Button>
-        <Button>Are</Button>
-        <Button>A group!</Button>
-      </ButtonGroup>
-    </>
+    <div className="u-margin">
+      <h2>Button Group</h2>
+      <div className="u-margin">
+        <ButtonGroup>
+          <Button>Hello</Button>
+          <Button>World!</Button>
+          <Button>We</Button>
+          <Button>Are</Button>
+          <Button>A group!</Button>
+        </ButtonGroup>
+      </div>
+    </div>
   );
 }
 
