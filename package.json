@@ -1,7 +1,15 @@
 {
   "name": "@a-ui/react",
-  "version": "7.0.0-alpha.2",
+  "version": "7.0.0-alpha.3",
   "license": "MIT",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
   "scripts": {
     "test": "yarn nx test",
     "playground": "yarn nx run documentation-playground:serve:development",
