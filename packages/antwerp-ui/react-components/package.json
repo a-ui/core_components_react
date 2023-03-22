@@ -1,6 +1,7 @@
 {
   "name": "@a-ui/react",
-  "version": "7.0.0-alpha.0",
+  "version": "7.0.0-alpha.5",
+  "license": "MIT",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {

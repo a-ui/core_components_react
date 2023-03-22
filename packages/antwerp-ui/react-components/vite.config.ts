@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 import { join } from 'path';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   plugins: [
@@ -15,6 +16,14 @@ export default defineConfig({
     react(),
     viteTsConfigPaths({
       root: '../../../'
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'README.md',
+          dest: ''
+        }
+      ]
     })
   ],
 
@@ -35,7 +44,6 @@ export default defineConfig({
       external: ['react', 'react-dom', 'react/jsx-runtime']
     }
   },
-
   test: {
     globals: true,
     cache: {

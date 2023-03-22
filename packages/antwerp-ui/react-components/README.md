@@ -1,7 +1,10 @@
 # @a-ui/react
 
-This library was generated with [Nx](https://nx.dev).
+A-UI React Components using Core Branding 6.2.0.
 
-## Running unit tests
+## Getting Started
 
-Run `nx test @a-ui/react` to execute the unit tests via [Vitest](https://vitest.dev/).
+- `npm install @a-ui/react`
+
+- Import the core branding to style the components:
+  `@import url("https://cdn.antwerpen.be/core_branding_scss/6.2.0/main.min.css");`
