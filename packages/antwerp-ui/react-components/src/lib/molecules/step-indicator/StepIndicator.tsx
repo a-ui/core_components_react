@@ -25,8 +25,9 @@ export function StepIndicator({
           'is-incompleted': !step.complete,
           'is-active': !!step.active
         });
+        const href = step.link?.href;
         return (
-          <li key={step.id || index} className={classes}>
+          <li key={step.id} className={classes}>
             {wrapWithIf(
               <>
                 <span className="u-screen-reader-only">{screenReaderStepLabel}</span>
@@ -36,9 +37,8 @@ export function StepIndicator({
                   {step.complete ? <span className="u-screen-reader-only">{screenReaderCompleteLabel}</span> : null}
                 </span>
               </>,
-              // eslint-disable-next-line jsx-a11y/anchor-has-content
-              <a onClick={(e) => handleStepClick(e, index, step?.id)} href={step.link?.href}></a>,
-              !!step.link?.href
+              <a onClick={(e) => handleStepClick(e, index, step?.id)} href={href}></a>,
+              !!href
             )}
           </li>
         );

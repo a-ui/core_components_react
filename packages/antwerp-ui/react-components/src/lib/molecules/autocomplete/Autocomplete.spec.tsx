@@ -44,14 +44,14 @@ describe('Autocomplete', () => {
   it('should call onInputChange when text is typed', () => {
     const mockOnChange = jest.fn();
     const { getByRole } = render(<Autocomplete label="InputChangeTest" onInputChange={mockOnChange} />);
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     fireEvent.change(input, { target: { value: 'Aca' } });
     expect(mockOnChange).toHaveBeenCalled();
   });
 
   it('should filter the results', async () => {
     const { getByRole, queryAllByText } = render(<Autocomplete items={items} />);
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     fireEvent.change(input, { target: { value: 'Aca' } });
     expect(queryAllByText('Canyonlands')).toEqual([]);
   });
@@ -59,7 +59,7 @@ describe('Autocomplete', () => {
   it('should call onChange when an item is clicked', async () => {
     const mockOnChange = jest.fn();
     const { getByRole, getByText } = render(<Autocomplete name="name" onChange={mockOnChange} items={items} />);
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     fireEvent.change(input, { target: { value: 'Aca' } });
     fireEvent.click(getByText('Acadia'));
     fireEvent.mouseDown(getByText('Acadia'));
@@ -69,7 +69,7 @@ describe('Autocomplete', () => {
   it('should set value back if not complete empty', async () => {
     const mockOnChange = jest.fn();
     const { getByRole, getByText } = render(<Autocomplete name="name" onChange={mockOnChange} items={items} />);
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     fireEvent.change(input, { target: { value: 'Aca' } });
     fireEvent.click(getByText('Acadia'));
     expect(mockOnChange).toHaveBeenCalledWith('1', 'name');
@@ -83,7 +83,7 @@ describe('Autocomplete', () => {
     const { baseElement, getByRole, getByText } = render(
       <Autocomplete name="keyboard-test" items={items} onChange={mockOnChange} />
     );
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     fireEvent.keyDown(input, { key: 'ArrowDown', code: 40 });
     expect(baseElement.getElementsByClassName('m-flyout')[0].className.includes('is-open')).toBeTruthy();
     expect(getByText('Acadia').parentElement?.className).toContain('is-highlighted');
@@ -97,14 +97,14 @@ describe('Autocomplete', () => {
 
   it('should be controlled if the props are provided', () => {
     const { getByRole } = render(<Autocomplete inputValue="Hello" value="2" />);
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     expect(input.getAttribute('value')).toEqual('Hello');
   });
 
   it('should call onChange when input is emptied', async () => {
     const mockOnChange = jest.fn();
     const { getByRole, getByText } = render(<Autocomplete name="name" onChange={mockOnChange} items={items} />);
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     fireEvent.change(input, { target: { value: 'Aca' } });
     fireEvent.click(getByText('Acadia'));
     expect(mockOnChange).toHaveBeenCalledWith('1', 'name');
@@ -114,7 +114,7 @@ describe('Autocomplete', () => {
 
   it('should be able to use keyboard controls even without items', () => {
     const { baseElement, getByRole } = render(<Autocomplete name="keyboard-test" />);
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     fireEvent.keyDown(input, { key: 'ArrowUp', code: 38 });
     fireEvent.keyDown(input, { key: 'ArrowDown', code: 40 });
     fireEvent.keyDown(input, { key: 'UNKNOWN', code: 2332 });
@@ -123,7 +123,7 @@ describe('Autocomplete', () => {
 
   it('should close options when pressing escape', () => {
     const { baseElement, getByRole } = render(<Autocomplete />);
-    const input = getByRole('textbox');
+    const input = getByRole('combobox');
     fireEvent.click(input);
     expect(baseElement.getElementsByClassName('m-flyout')[0].className.includes('is-open')).toBeTruthy();
     fireEvent.keyDown(input, { key: 'Escape', code: 27 });

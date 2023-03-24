@@ -30,9 +30,10 @@
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["{projectRoot}/coverage"],
       "options": {
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "coverage": true,
+        "reportsDirectory": "coverage"
       }
     }
   }

@@ -27,6 +27,18 @@ describe('UI Components - Molecules - Pagination', () => {
     expect(getByRole('link')).toBeTruthy();
   });
 
+  it('should render without href', () => {
+    const { baseElement } = render(
+      <StepIndicator
+        steps={[
+          { id: 'step1', label: 'First', link: {} },
+          { id: 'step2', label: 'First' }
+        ]}
+      />
+    );
+    expect(baseElement).toBeTruthy();
+  });
+
   it('should render complete steps', () => {
     const { container } = render(<StepIndicator steps={[{ id: 'step1', label: 'First', complete: true }]} />);
     expect(container.getElementsByClassName('u-screen-reader-only')[1].innerHTML).toEqual(' (voltooid)');

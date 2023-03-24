@@ -26,20 +26,6 @@ describe.only('UI Components - Atoms - Copyright', () => {
     expect(container.innerHTML).toContain('<span class="a-copyright__label">');
   });
 
-  it('should set the aria-expanded attribute and calls the expand and shrink function in an image', () => {
-    const { getByRole } = render(<Copyright {...defaultProps} forImage link="hello" />);
-    const element = getByRole('link');
-    expect(element).toHaveAttribute('aria-expanded', 'false');
-    fireEvent.focus(element);
-    expect(element).toHaveAttribute('aria-expanded', 'true');
-    fireEvent.blur(element);
-    expect(element).toHaveAttribute('aria-expanded', 'false');
-    fireEvent.mouseEnter(element);
-    expect(element).toHaveAttribute('aria-expanded', 'true');
-    fireEvent.mouseLeave(element);
-    expect(element).toHaveAttribute('aria-expanded', 'false');
-  });
-
   it('should render a span element for the sign prop', () => {
     const sign = 'Copyright';
     const { getByRole } = render(<Copyright {...defaultProps} sign={sign} link="/test" />);

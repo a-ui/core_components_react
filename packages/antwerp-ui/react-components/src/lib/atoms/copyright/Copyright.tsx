@@ -1,12 +1,7 @@
-import { useState } from 'react';
 import { classNames } from '../../../utils/dom.utils';
 import { CopyrightProps } from './Copyright.types';
 
 export function Copyright({ sign, label, link, forImage, qa }: CopyrightProps) {
-  const [expanded, setExpanded] = useState(false);
-  const expand = () => forImage && setExpanded(true);
-  const shrink = () => forImage && setExpanded(false);
-
   const classes = classNames({
     'a-copyright': true,
     'm-image__copyright': !!forImage
@@ -14,15 +9,7 @@ export function Copyright({ sign, label, link, forImage, qa }: CopyrightProps) {
   const ElementTag = `${link ? 'a' : 'div'}` as keyof JSX.IntrinsicElements;
 
   return (
-    <ElementTag
-      href={link}
-      className={classes}
-      data-qa={qa}
-      onFocus={expand}
-      onBlur={shrink}
-      onMouseEnter={expand}
-      onMouseLeave={shrink}
-    >
+    <ElementTag href={link} className={classes} data-qa={qa}>
       <span className="a-copyright__sign">{sign}</span>
       {label ? <span className="a-copyright__label">{label}</span> : null}
     </ElementTag>

@@ -56,7 +56,7 @@ export function Upload({
             accept={acceptedFormat}
             className="m-upload__input"
             disabled={disabled}
-            {...(maxSize ? { 'aria-describedby': `${id}-description` } : {})}
+            aria-describedby={`${id}-description`}
           />
           <div className="m-upload__content">
             <label htmlFor={id} className="m-upload__message u-margin-bottom">
