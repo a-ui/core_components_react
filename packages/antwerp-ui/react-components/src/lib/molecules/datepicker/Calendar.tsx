@@ -187,7 +187,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
 Calendar.defaultProps = {
   isOpen: true,
   ariaLabel: 'Kalender',
-  ariaLabelCurrentDay: 'huidige dag',
+  ariaLabelCurrentDay: 'Huidige dag',
   ariaLabelPreviousMonth: 'Ga naar de vorige maand',
   ariaLabelPreviousYear: 'Ga naar het vorig jaar',
   ariaLabelPreviousYears: 'Ga naar de voorgaande jaren',
