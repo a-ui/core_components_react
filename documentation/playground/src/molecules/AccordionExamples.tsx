@@ -9,6 +9,7 @@ export function AccordionExamples() {
       <div className="u-margin">
         <Accordion>
           <AccordionTab header="lorem ipsum">
+            <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at vehicula quam. Duis non tincidunt quam,
             vel fermentum turpis. Curabitur dictum, purus sollicitudin vestibulum vulputate, tellus sapien dictum
             tortor, in interdum massa quam at mi. In in accumsan urna. Curabitur a dictum turpis, vel pellentesque
@@ -18,6 +19,7 @@ export function AccordionExamples() {
             Cras purus sem, dapibus vitae sem quis, malesuada condimentum quam. Vivamus gravida vel lorem aliquet
             varius. Vivamus tincidunt vehicula tortor nec facilisis. Nunc porta aliquet iaculis. Proin lobortis nulla
             nisi, nec vulputate mi dictum a.
+            </p>s
           </AccordionTab>
           <AccordionTab header="Dog image">
             <img src="https://placedog.net/400/300?r" alt="A random dog" />
