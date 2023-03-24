@@ -19,18 +19,20 @@ export default {
       },
       control: { type: 'object' },
       defaultValue: {
-        src: 'https://placedog.net/400/300?r',
+        src: 'https://placedog.net/1000/300?r',
         alt: 'A random dog'
       },
-      description: 'The `image` prop sets the image, for the card component.'
+      description:
+        'The `image` prop sets the image, for the card component. It can have any of the props of an `Image` component passed as an attribute (use `children` prop to pass optional `Copyright`).'
     },
     title: {
       table: {
-        type: { summary: 'string' }
+        type: { summary: 'object' }
       },
-      defaultValue: 'Card Title',
-      control: { type: 'text' },
-      description: 'The `title` prop sets the title for the card component.'
+      defaultValue: { label: 'Card Title' },
+      control: { type: 'object' },
+      description:
+        "The `title` prop sets the title for the card component. It has the following format `{ label: 'string', tag: 'h1', id: 'title ID', className: 'h3' }` (`tag` can be omitted for an 'h5' tag)."
     },
     subTitle: {
       table: {
@@ -41,14 +43,14 @@ export default {
       description:
         'The `subTitle` prop sets the subtitle for the card component. In most cases this should be a date or date and time format.'
     },
-    content: {
+    description: {
       table: {
         type: { summary: 'string' }
       },
       defaultValue:
         'Arma virumque cano, Troiae qui primus ab oris Italiam, fato profugus, Laviniaque venit litora, multum ille et terris iactatus et alto vi superum saevae memorem Iunonis ob iram. Multa quoque et bello passus, dum conderet urbem, inferretque deos Latio, genus unde Latinum, Albanique patres, atque altae moenia Romae.',
       control: { type: 'text' },
-      description: 'The `content` prop sets the text content for the card component.'
+      description: 'The `description` prop sets the text content for the card component.'
     },
     link: {
       table: {
@@ -62,15 +64,12 @@ export default {
       },
       description: 'The `link` prop sets the footer action for the card component.'
     },
-    titleId: {
-      control: { type: 'text' },
+    children: {
+      control: { type: false },
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'aui-card-title' }
+        type: { summary: 'ReactNode' }
       },
-      defaultValue: 'aui-card-title',
-      description:
-        'The `titleId` prop is the id of the title that is also used in the `aria-labelledby` attribute.'
+      description: 'React Node(s) inside the card, can be used to have complete custom card content.'
     },
     qa: QA_PROP_STORY
   }

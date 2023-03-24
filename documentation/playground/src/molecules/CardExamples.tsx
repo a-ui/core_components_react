@@ -1,4 +1,4 @@
-import { Card } from '@a-ui/react';
+import { Button, Card, Copyright, Flyout } from '@a-ui/react';
 
 export function CardExamples() {
   return (
@@ -7,14 +7,31 @@ export function CardExamples() {
       <div style={{ maxWidth: '420px' }} className="u-margin">
         <Card
           image={{
-            src: 'https://placedog.net/400/300?r',
-            alt: 'A random dog'
+            src: 'https://placedog.net/1000/1000?r',
+            alt: 'A random dog',
+            children: (
+              <Copyright forImage sign="©" label="With link" link="https://www.google.be" qa="image copyright" />
+            )
           }}
-          title="Card Title"
+          title={{ label: 'Card Title', tag: 'h2' }}
           subTitle="May 4th 2021, 12:34"
-          content="Arma virumque cano, Troiae qui primus ab oris Italiam, fato profugus, Laviniaque venit litora, multum ille et terris iactatus et alto vi superum saevae memorem Iunonis ob iram. Multa quoque et bello passus, dum conderet urbem, inferretque deos Latio, genus unde Latinum, Albanique patres, atque altae moenia Romae."
+          description="Arma virumque cano, Troiae qui primus ab oris Italiam, fato profugus, Laviniaque venit litora, multum ille et terris iactatus et alto vi superum saevae memorem Iunonis ob iram. Multa quoque et bello passus, dum conderet urbem, inferretque deos Latio, genus unde Latinum, Albanique patres, atque altae moenia Romae."
           link={{ label: 'link label', target: 'https://www.google.be' }}
         />
+        <Card
+          image={{
+            src: 'https://placedog.net/1000/800?r',
+            alt: 'Another random dog'
+          }}
+          title={{ label: 'Free', tag: 'h5' }}
+          subTitle="Card with free content"
+        >
+          <h6>Two custom buttons</h6>
+          <Button title="Click me" theme="danger">
+            Custom button one
+          </Button>
+          <Flyout trigger={<Button>Custom button two</Button>}>Surprise!</Flyout>
+        </Card>
       </div>
     </div>
   );

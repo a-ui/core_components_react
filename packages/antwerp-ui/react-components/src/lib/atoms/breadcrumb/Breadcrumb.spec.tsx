@@ -24,10 +24,10 @@ describe('UI Components - Atoms - Breadcrumb', () => {
     const { baseElement } = render(
       <Breadcrumb
         items={[
-          { label: 'Hello', href: 'link-1' },
-          { label: 'World', href: 'link-2' },
-          { label: '', href: 'hello' },
-          { label: 'last' }
+          { id: '1', label: 'Hello', href: 'link-1' },
+          { id: '2', label: 'World', href: 'link-2' },
+          { id: '3', label: '', href: 'hello' },
+          { id: '4', label: 'last' }
         ]}
       />
     );
@@ -37,9 +37,15 @@ describe('UI Components - Atoms - Breadcrumb', () => {
 
   it('should render the title', () => {
     const { baseElement } = render(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      <Breadcrumb items={[{ label: 'Hello', href: 'link-1' }, { href: '/hello' }]} title={{ label: 'TitleTest' }} />
+      <Breadcrumb
+        items={[
+          { id: '1', label: 'Hello', href: 'link-1' },
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          { id: '2', href: '/hello' }
+        ]}
+        title={{ label: 'TitleTest' }}
+      />
     );
     expect(baseElement.getElementsByTagName('h1').length).toBe(1);
     expect(baseElement.getElementsByTagName('h1')[0].innerHTML).toEqual('TitleTest');
@@ -49,8 +55,8 @@ describe('UI Components - Atoms - Breadcrumb', () => {
     const { baseElement } = render(
       <Breadcrumb
         items={[
-          { label: 'Hello', href: 'link-1' },
-          { label: 'Hello too', href: 'link-2' }
+          { id: '1', label: 'Hello', href: 'link-1' },
+          { id: '2', label: 'Hello too', href: 'link-2' }
         ]}
         renderLinkFunction={() => <span>CUSTOMLINK</span>}
       />
@@ -62,8 +68,8 @@ describe('UI Components - Atoms - Breadcrumb', () => {
     const { baseElement } = render(
       <Breadcrumb
         items={[
-          { label: 'Hello', href: 'link-1' },
-          { label: 'Goodbye', href: '/goodbye' }
+          { id: '1', label: 'Hello', href: 'link-1' },
+          { id: '2', label: 'Goodbye', href: '/goodbye' }
         ]}
       />
     );

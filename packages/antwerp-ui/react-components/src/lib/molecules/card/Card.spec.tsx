@@ -15,18 +15,26 @@ describe('UI Components - Molecules - Card', () => {
 
   it('should render a title', () => {
     const { baseElement } = render(
-      <Card image={{ src: 'https://placedog.net/400/300?r', alt: 'A random dog' }} title="Card Title" />
+      <Card image={{ src: 'https://placedog.net/400/300?r', alt: 'A random dog' }} title={{ label: 'Card Title' }} />
     );
     expect(baseElement.getElementsByClassName('m-card__body')).toBeTruthy();
     expect(baseElement.getElementsByClassName('h5')).toBeTruthy();
+    expect(baseElement.querySelector('h4')).toBeTruthy();
     expect(screen.getByText('Card Title')).toBeTruthy();
+  });
+
+  it('should render a title with a specific h tag', () => {
+    const { baseElement } = render(<Card title={{ label: 'Card Title', tag: 'h1', className: 'h2' }} />);
+    expect(baseElement.querySelector('h4')).toBeFalsy();
+    expect(baseElement.querySelector('h1')).toBeTruthy();
+    expect(baseElement.getElementsByClassName('h2')).toBeTruthy();
   });
 
   it('should render a subtitle', () => {
     const { baseElement } = render(
       <Card
         image={{ src: 'https://placedog.net/400/300?r', alt: 'A random dog' }}
-        title="Card Title"
+        title={{ label: 'Card Title' }}
         subTitle="Card Subtitle"
       />
     );
@@ -35,24 +43,24 @@ describe('UI Components - Molecules - Card', () => {
     expect(screen.getByText('Card Subtitle')).toBeTruthy();
   });
 
-  it('should render a text content ', () => {
+  it('should render a text description ', () => {
     const { baseElement } = render(
       <Card
         image={{ src: 'https://placedog.net/400/300?r', alt: 'A random dog' }}
-        title="Card Title"
+        title={{ label: 'Card Title' }}
         subTitle="Card Subtitle"
-        content="Card content"
+        description="Card description"
       />
     );
     expect(baseElement.getElementsByClassName('m-card__body')).toBeTruthy();
-    expect(screen.getByText('Card content')).toBeTruthy();
+    expect(screen.getByText('Card description')).toBeTruthy();
   });
 
   it('should render a link', () => {
     const { baseElement } = render(
       <Card
         image={{ src: 'https://placedog.net/400/300?r', alt: 'A random dog' }}
-        title="Card Title"
+        title={{ label: 'Card Title' }}
         subTitle="Card Subtitle"
         link={{ label: 'link label', target: 'https://www.google.be' }}
       />
@@ -66,7 +74,7 @@ describe('UI Components - Molecules - Card', () => {
     const { baseElement } = render(
       <Card
         image={{ src: 'https://placedog.net/400/300?r', alt: 'A random dog' }}
-        title="Card Title"
+        title={{ label: 'Card Title' }}
         subTitle="Card Subtitle"
         link={{ label: 'link label' }}
       />

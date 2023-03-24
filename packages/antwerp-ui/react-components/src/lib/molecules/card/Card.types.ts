@@ -1,12 +1,13 @@
-import { Link } from '../../../constants/application.types';
+import { ReactNode } from 'react';
+import { Link, Title } from '../../../constants/application.types';
 import { ImageProps } from '../image';
 
 export interface CardProps {
-  titleId?: string;
   image?: ImageProps;
-  title?: string;
+  title?: Title;
   subTitle?: string;
-  content?: string;
+  description?: string;
+  children?: ReactNode;
   link?: Link;
   qa?: string;
 }
