@@ -7,36 +7,36 @@ const BreadcrumbExamples = () => (
     <div className="u-margin">
       <Breadcrumb
         items={[
-          { label: 'Hello', href: 'https://www.google.be' },
-          { label: 'World', href: 'https://www.wikipedia.be' },
-          { label: '!!!' }
+          { id: '1', label: 'Hello', href: 'https://www.google.be' },
+          { id: '2', label: 'World', href: 'https://www.wikipedia.be' },
+          { id: '3', label: '!!!' }
         ]}
       />
       <Breadcrumb
         items={[
-          { label: 'Hello', href: 'https://www.google.be' },
-          { label: 'World', href: 'https://www.wikipedia.be' }
+          { id: '1', label: 'Hello', href: 'https://www.google.be' },
+          { id: '2', label: 'World', href: 'https://www.wikipedia.be' }
         ]}
       />
       <Breadcrumb
         items={[
-          { label: 'Hello', href: 'https://www.google.be' },
-          { label: 'World', href: 'https://www.wikipedia.be' }
+          { id: '1', label: 'Hello', href: 'https://www.google.be' },
+          { id: '2', label: 'World', href: 'https://www.wikipedia.be' }
         ]}
         title={{ label: 'I am a default title' }}
       />
       <Breadcrumb
         items={[
-          { label: 'Hello', href: 'https://www.google.be' },
-          { label: 'World', href: 'https://www.wikipedia.be' }
+          { id: '1', label: 'Hello', href: 'https://www.google.be' },
+          { id: '2', label: 'World', href: 'https://www.wikipedia.be' }
         ]}
         title={{ label: 'I am an h2 title', tag: 'h2', className: 'h4' }}
       />
 
       <Breadcrumb
         items={[
-          { label: 'Hello', href: 'https://www.google.be' },
-          { label: 'World', href: 'https://www.wikipedia.be' }
+          { id: '1', label: 'Hello', href: 'https://www.google.be' },
+          { id: '2', label: 'World', href: 'https://www.wikipedia.be' }
         ]}
         renderLinkFunction={(link) => <a href="https://www.google.be">LINK: {link.href} is now GOOGLE</a>}
       />

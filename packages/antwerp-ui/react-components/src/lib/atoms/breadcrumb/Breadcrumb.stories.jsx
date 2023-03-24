@@ -16,16 +16,16 @@ export default {
     items: {
       control: { type: 'object' },
       defaultValue: [
-        { label: 'Home', href: '/' },
-        { label: 'Google', href: 'https://www.google.be' },
-        { label: 'Current Page' }
+        { id: 'home', label: 'Home', href: '/' },
+        { id: 'google', label: 'Google', href: 'https://www.google.be' },
+        { id: 'current', label: 'Current Page' }
       ],
       table: {
         type: { summary: 'array' },
         defaultValue: { summary: '[]' }
       },
       description:
-        'Array of Breadcrumb items link, a link has following attributes: `label`, `href`. The  last `step` in the items (the current page title) is simply displayed as a non-interactive page title label (no `href`!).'
+        'Array of Breadcrumb items link, a link has following attributes: `id`, `label` and `href`. The  last `step` in the items (the current page title) is simply displayed as a non-interactive page title label (no `href`!).'
     },
     title: {
       control: { type: 'object' },

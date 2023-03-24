@@ -4,12 +4,8 @@ import { BreadcrumbProps } from './Breadcrumb.types';
 export function Breadcrumb({ title, items, renderLinkFunction, qa }: BreadcrumbProps) {
   const renderItems = () =>
     Array.isArray(items)
-      ? items.map((item, index) => {
-          return (
-            <li key={`${item.label || item.href}_${index}`}>
-              {renderLinkFunction ? renderLinkFunction(item) : renderHTMLLink(item)}
-            </li>
-          );
+      ? items.map((item) => {
+          return <li key={`${item.id}`}>{renderLinkFunction ? renderLinkFunction(item) : renderHTMLLink(item)}</li>;
         })
       : null;
 
