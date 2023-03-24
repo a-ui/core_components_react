@@ -7,20 +7,20 @@ import { RangeSliderHandle } from './RangeSliderHandle';
 
 export function RangeSlider({
   label,
-  start = 0,
+  start = RangeSlider.defaultProps.start,
   end,
-  min = 0,
-  max = 10,
-  step = 1,
-  unit = '',
-  minRange = 1,
-  range = false,
+  min = RangeSlider.defaultProps.min,
+  max = RangeSlider.defaultProps.max,
+  step = RangeSlider.defaultProps.step,
+  unit = RangeSlider.defaultProps.unit,
+  minRange = RangeSlider.defaultProps.minRange,
+  range = RangeSlider.defaultProps.range,
   labelStart,
   labelEnd,
   iconStart,
   iconEnd,
-  ariaLabelMin = 'Minimum',
-  ariaLabelMax = 'Maximimum',
+  ariaLabelMin,
+  ariaLabelMax,
   tickMarks,
   qa,
   onChange
@@ -117,5 +117,17 @@ export function RangeSlider({
     </div>
   );
 }
+
+RangeSlider.defaultProps = {
+  start: 0,
+  min: 0,
+  max: 10,
+  step: 1,
+  unit: '',
+  minRange: 1,
+  range: false,
+  ariaLabelMin: 'Minimum',
+  ariaLabelMax: 'Maximimum'
+};
 
 export default RangeSlider;
