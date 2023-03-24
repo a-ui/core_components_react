@@ -3,7 +3,7 @@ import { AvatarProps } from '../avatar';
 import { CheckboxProps } from '../checkbox';
 
 export interface DefinitionListProps {
-  items: { term: string; description: string }[];
+  items: { id: string; term: string; description: string }[];
   qa?: string;
 }
 
@@ -26,6 +26,7 @@ export interface ListItemProps {
   children?: ReactNode;
   tabIndex?: number;
   highlighted?: boolean;
+  id: string;
   onClick?: (name?: string) => void;
   onMouseDown?: (event: MouseEvent) => void;
   qa?: string;
@@ -37,6 +38,7 @@ export interface ListItemAvatarProps {
   link?: { href?: string; target?: string };
   active?: boolean;
   iconRight?: string;
+  id: string;
   onClick?: (name?: string) => void;
   user?: { name?: string; function?: string; email?: string };
   qa?: string;

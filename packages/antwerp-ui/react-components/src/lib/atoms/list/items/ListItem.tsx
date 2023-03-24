@@ -10,6 +10,7 @@ export function ListItem({
   highlighted,
   iconLeft,
   iconRight,
+  id,
   children,
   onClick,
   onMouseDown,
@@ -32,7 +33,7 @@ export function ListItem({
   };
 
   return (
-    <li className="a-list__item" data-qa={qa}>
+    <li className="a-list__item" id={id} data-qa={qa}>
       <ItemTag
         className={listItemContentClasses}
         onClick={onLinkClick}

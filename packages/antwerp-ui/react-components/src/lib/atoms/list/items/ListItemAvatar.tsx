@@ -4,23 +4,20 @@ import { Icon } from '../../../base/icon';
 import { Avatar } from '../../avatar';
 import { ListItemAvatarProps } from '../list.types';
 
-export function ListItemAvatar({ avatar, name, link, active, user, iconRight, onClick, qa }: ListItemAvatarProps) {
+export function ListItemAvatar({ avatar, name, link, active, user, iconRight, id, onClick, qa }: ListItemAvatarProps) {
   const ItemTag = `${link && (link.href || link.href === '') ? 'a' : 'span'}` as keyof JSX.IntrinsicElements;
-
   const classes = classNames({
     'a-avatar-list__item': true,
     'is-active': !!active
   });
-
   const onLinkClick = (event: MouseEvent) => {
     if (onClick) {
       event.preventDefault();
       onClick(name);
     }
   };
-
   return (
-    <li className={classes} data-qa={qa}>
+    <li className={classes} id={id} data-qa={qa}>
       <ItemTag
         className="a-avatar-list__item-container"
         onClick={onLinkClick}

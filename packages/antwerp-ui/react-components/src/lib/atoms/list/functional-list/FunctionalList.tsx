@@ -17,8 +17,11 @@ export function FunctionalList({ onItemClick, type, ordered, flushed, lined, chi
 
   return (
     <ListTag className={classes} data-qa={qa}>
-      {Children.map(children || [], (child: ReactElement, index) => {
-        return cloneElement(child, { key: index, onClick: child.props.onClick || onItemClick });
+      {Children.map(children || [], (child: ReactElement) => {
+        return cloneElement(child, {
+          key: child.props.id,
+          onClick: child.props.onClick || onItemClick
+        });
       })}
     </ListTag>
   );

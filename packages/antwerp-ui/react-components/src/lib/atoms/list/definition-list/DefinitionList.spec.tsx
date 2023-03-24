@@ -14,7 +14,7 @@ describe('UI Components - Atoms - DefinitionList', () => {
   });
 
   it('should render items', () => {
-    const { baseElement } = render(<DefinitionList items={[{ term: 'Hello', description: 'World' }]} />);
+    const { baseElement } = render(<DefinitionList items={[{ id: '1', term: 'Hello', description: 'World' }]} />);
     expect(baseElement.getElementsByTagName('dt')[0]).toBeTruthy();
     expect(baseElement.getElementsByTagName('dd')[0]).toBeTruthy();
   });

@@ -56,13 +56,15 @@ export default {
     children: {
       control: false,
       defaultValue: [
-        <ListItem name="first" active link={{ href: '#' }}>
+        <ListItem id="1" key="1" name="first" active link={{ href: '#' }}>
           First active item
         </ListItem>,
-        <ListItem name="second" iconLeft="mouse" iconRight="arrow-right-1" link={{ href: '#' }}>
+        <ListItem id="2" key="2" name="second" iconLeft="mouse" iconRight="arrow-right-1" link={{ href: '#' }}>
           Second clickable item
         </ListItem>,
-        <ListItem name="third">Third item</ListItem>
+        <ListItem id="3" key="3" name="third">
+          Third item
+        </ListItem>
       ],
       table: {
         type: { summary: 'ReactElement[]' }
@@ -96,12 +98,16 @@ AvatarList.args = {
       avatar={{ letter: 'AE' }}
       active
       iconRight="navigation-menu-horizontal"
+      id="albert"
+      key="albert"
     />,
     <ListItemAvatar
       name="dog"
       user={{ name: 'A dog', function: 'Dog', email: 'dog@antwerpen.be' }}
       avatar={{ image: 'https://placedog.net/100/100?r' }}
       iconRight="navigation-menu-horizontal"
+      id="dog"
+      key="dog"
     />,
     <ListItemAvatar
       name="isaac"
@@ -109,6 +115,8 @@ AvatarList.args = {
       link={{ href: '#' }}
       user={{ name: 'Isaac Newton', email: 'isaac.newton@antwerpen.be' }}
       iconRight="navigation-menu-horizontal"
+      id="isaac"
+      key="isaac"
     />
   ],
   type: 'avatar'
@@ -116,8 +124,8 @@ AvatarList.args = {
 export const CheckboxList = Template.bind({});
 CheckboxList.args = {
   children: [
-    <ListItemCheckbox name="checkbox-1" id="checkbox-1" label="First item" />,
-    <ListItemCheckbox name="checkbox-2" id="checkbox-2" label="Second item" />
+    <ListItemCheckbox name="checkbox-1" id="checkbox-1" key="checkbox-1" label="First item" />,
+    <ListItemCheckbox name="checkbox-2" id="checkbox-2" key="checkbox-2" label="Second item" />
   ],
   type: 'checkbox'
 };

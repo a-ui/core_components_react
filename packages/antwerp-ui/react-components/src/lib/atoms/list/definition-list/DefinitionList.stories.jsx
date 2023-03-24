@@ -16,16 +16,18 @@ export default {
     items: {
       control: { type: 'array' },
       defaultValue: [
-        {term: 'Hello', description: 'World'},
-        {term: 'Term', description: 'Term description'},
+        { id: '1', term: 'Hello', description: 'World' },
+        { id: '2', term: 'Term', description: 'Term description' }
       ],
       table: {
         type: { summary: 'string' },
-        defaultValue: {summary: []}
+        defaultValue: { summary: [] }
       },
-      description: 'Items of the definition list. Array of objects `{term: "string", description: "string"}`.'
+      description:
+        'Items of the definition list. Array of objects `{id: "string", term: "string", description: "string"}`.'
     },
-    qa: QA_PROP_STORY}
+    qa: QA_PROP_STORY
+  }
 };
 
 export const definitionList = '';
