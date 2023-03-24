@@ -69,7 +69,8 @@ export const Flyout = forwardRef(function Flyout(
 
 Flyout.defaultProps = {
   hasPadding: true,
-  scrollable: false
+  scrollable: false,
+  orientation: 'bottom-left'
 };
 
 export default Flyout;

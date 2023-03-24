@@ -5,14 +5,14 @@ import { QA_PROP_STORY } from '../../../constants/stories.settings';
 export default {
   title: 'React/Molecules/Flyout',
   component: Flyout,
-    parameters: {
-      docs: {
-        description: {
-          component:
-            'A flyout is a contextual panel that floats over the page and is directly attached to the component that triggered it. It can be used to display additional (rich) information, navigation or contextual menus, suggested options or results, etc.',
-        },
-      },
-    },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A flyout is a contextual panel that floats over the page and is directly attached to the component that triggered it. It can be used to display additional (rich) information, navigation or contextual menus, suggested options or results, etc.'
+      }
+    }
+  },
   argTypes: {
     trigger: {
       table: {
@@ -24,9 +24,10 @@ export default {
     orientation: {
       control: { type: 'select' },
       table: {
-        type: { summary: 'string' }
+        type: { summary: 'string' },
+        defaultValue: { summary: 'bottom-left' }
       },
-      defaultValue: '',
+      defaultValue: 'bottom-left',
       description:
         'The orientation attribute allows to re-orient the flyout to snap to either a right or/and top side of a triggering component.',
       options: ['', 'upper-left', 'upper-right', 'bottom-left', 'bottom-right']
@@ -80,7 +81,8 @@ export default {
         type: { summary: 'function' }
       },
       action: 'onStateChange',
-      description: 'Function that is triggered when the state of the flyout is changed to open or closed state. The first parameter is the new state.'
+      description:
+        'Function that is triggered when the state of the flyout is changed to open or closed state. The first parameter is the new state.'
     },
     qa: QA_PROP_STORY
   }
