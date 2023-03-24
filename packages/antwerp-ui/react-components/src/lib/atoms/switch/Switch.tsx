@@ -72,7 +72,6 @@ export function Switch({
 
 Switch.defaultProps = {
   disabled: false,
-  id: 'aui-switch',
   internalIOLabels: false,
   labelId: 'aui-switch-label',
   statusLabelOff: 'Uit',
