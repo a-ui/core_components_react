@@ -14,7 +14,7 @@ module.exports = {
     storyStoreV7: true
   },
   async viteFinal(config) {
-    if (!config?.server?.hmr?.port === 6006) {
+    if (!config?.server) {
       config.base = '/core_components_react';
     }
     return config;
