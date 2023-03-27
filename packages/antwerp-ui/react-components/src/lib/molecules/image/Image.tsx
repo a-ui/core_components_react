@@ -1,20 +1,16 @@
-import { ReactNode } from 'react';
 import { classNames } from '../../../utils/dom.utils';
 import { ImageProps } from './Image.types';
-
-type ImageChildren = ReactNode | ReactNode[] | undefined;
 
 export function Image({ alt, children, src, noClass, qa }: ImageProps) {
   const classes = classNames({
     'm-image': !noClass
   });
 
-  const isFigCaptionOrCopyright = (child: ImageChildren) => {
-    const element = child as React.ReactElement;
+  const isFigCaptionOrCopyright = (child: React.ReactElement) => {
     return (
       child &&
       typeof child === 'object' &&
-      (element.type === 'figcaption' || (typeof element.type !== 'string' && element.type.name === 'Copyright'))
+      (child.type === 'figcaption' || (typeof child.type !== 'string' && child.type.name === 'Copyright'))
     );
   };
 
