@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import jest from 'jest-mock';
 import '@testing-library/jest-dom';
 import { Image } from './Image';
 import { ImageProps } from './Image.types';
@@ -32,5 +33,17 @@ describe('Image', () => {
       </Image>
     );
     expect(container.innerHTML).toContain('href="https://www.google.be/"');
+  });
+
+  it('should log a warning if children are not Copryight or figcaption', () => {
+    const warnSpy = jest.spyOn(console, 'warn');
+    render(
+      <Image {...defaultProps}>
+        <div>Hello</div>
+      </Image>
+    );
+    expect(warnSpy).toHaveBeenCalledWith(
+      "[AUI] Warning - Image's children should only be a Copyright component or a figcaption element."
+    );
   });
 });

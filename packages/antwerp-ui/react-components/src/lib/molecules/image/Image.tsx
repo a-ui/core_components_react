@@ -1,4 +1,5 @@
 import { classNames } from '../../../utils/dom.utils';
+import { logWarning } from '../../../utils/log.utils';
 import { ImageProps } from './Image.types';
 
 export function Image({ alt, children, src, noClass, qa }: ImageProps) {
@@ -15,7 +16,7 @@ export function Image({ alt, children, src, noClass, qa }: ImageProps) {
   };
 
   if (!!children && !isFigCaptionOrCopyright(children)) {
-    console.warn("Image's children should only be a Copyright component or a figcaption element.");
+    logWarning("Image's children should only be a Copyright component or a figcaption element");
   }
 
   return (
