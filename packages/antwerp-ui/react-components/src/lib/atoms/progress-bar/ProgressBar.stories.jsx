@@ -65,6 +65,15 @@ export default {
       },
       description: 'Use this prop to set the `aria-valuemax` attribute.'
     },
+    showLabel: {
+      control: { type: 'boolean' },
+      defaultValue: true,
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: true }
+      },
+      description: 'Set to false to hide the label (by replacing it with an `aria-label`).'
+    },
     labelId: {
       control: { type: 'text' },
       table: {

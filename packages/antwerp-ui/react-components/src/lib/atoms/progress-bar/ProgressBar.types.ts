@@ -6,5 +6,6 @@ export interface ProgressBarProps {
   minValue?: number;
   maxValue?: number;
   large?: boolean;
+  showLabel?: boolean;
   qa?: string;
 }

@@ -4,6 +4,7 @@ import { ProgressBarProps } from './ProgressBar.types';
 export function ProgressBar({
   label,
   labelId,
+  showLabel,
   percentage,
   ariaValueNow,
   minValue,
@@ -20,9 +21,11 @@ export function ProgressBar({
 
   return (
     <div className={classes} data-qa={qa}>
-      <div id={labelId} className="a-progress__label">
-        {label}
-      </div>
+      {showLabel ? (
+        <div id={labelId} className="a-progress__label">
+          {label}
+        </div>
+      ) : null}
       <div className="a-progress__inner">
         <div
           className="a-progress__bar"
@@ -32,6 +35,7 @@ export function ProgressBar({
           aria-valuemin={minValue}
           aria-valuemax={maxValue}
           style={{ width: `${percentage}%` }}
+          {...(!showLabel ? { 'aria-label': label } : {})}
         ></div>
       </div>
     </div>
@@ -42,6 +46,7 @@ ProgressBar.defaultProps = {
   percentage: 0,
   minValue: 0,
   maxValue: 100,
+  showLabel: true,
   labelId: 'aui-progress-label',
   size: ''
 };

@@ -24,4 +24,13 @@ describe('ProgressBar', () => {
     expect(progressBar).toContain('aria-valuemin="1"');
     expect(progressBar).toContain('aria-valuemax="10"');
   });
+
+  it('should add aria-label when label is hided', () => {
+    const { baseElement, container } = render(
+      <ProgressBar label="Hidden label" showLabel={false} percentage={0} ariaValueNow={4} minValue={1} maxValue={10} />
+    );
+    const progressBar = container.innerHTML;
+    expect(progressBar).toContain('aria-label="Hidden label"');
+    expect(baseElement.getElementsByClassName('a-progress__label').length).toBe(0);
+  });
 });
