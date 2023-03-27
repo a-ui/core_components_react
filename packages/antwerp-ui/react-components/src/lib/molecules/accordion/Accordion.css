@@ -1,0 +1,32 @@
+.m-accordion--open.m-accordion__tab {
+  border-bottom: 1px solid #949494;
+}
+.m-accordion__tab {
+  overflow: hidden;
+}
+.m-accordion__content--open {
+  animation: slide-down 0.5s ease-in-out both;
+}
+
+.m-accordion__content--animate {
+  animation: slide-up 0.5s ease-in-out both;
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}

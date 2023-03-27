@@ -1,5 +1,6 @@
 import { AccordionProps } from './Accordion.types';
 import { classNames } from '../../../utils/dom.utils';
+import './Accordion.css';
 
 export function Accordion({ children = [], type, qa }: AccordionProps) {
   const accordionClass = classNames({
