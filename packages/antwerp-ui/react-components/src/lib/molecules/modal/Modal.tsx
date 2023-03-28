@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, MouseEventHandler } from 'react';
 import ReactModal from 'react-modal';
 import { DEFAULT_SIZE, SIZE_MAP } from '../../../constants/layout.settings';
 import { classNames } from '../../../utils/dom.utils';
@@ -8,36 +8,33 @@ import { ModalProps } from './Modal.types';
 export function Modal({
   appRootId,
   ariaCloseLabel,
-  cancelText,
+  cancelButton,
   children,
   closeButton,
-  confirmText,
+  confirmButton,
   onAfterOpen,
-  onCancel,
   onClose,
-  onConfirm,
   open,
   qa,
-  showCancel,
-  showConfirm,
+  shouldCloseOnOverlayClick,
   size,
   title,
   trigger
 }: ModalProps) {
   const [modalOpen, setModalOpen] = React.useState(!!open);
   const showModal = open === false || open === true ? open : modalOpen;
+  const HeaderTag = title?.tag || 'h6';
 
-  const runFunctionAndClose = (toRun?: () => void) => {
+  const runFunctionAndClose = (
+    ev: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    toRun?: MouseEventHandler<HTMLButtonElement>
+  ) => {
     return toRun && typeof toRun === 'function'
-      ? Promise.resolve(toRun()).then(() => setModalOpen(false))
+      ? Promise.resolve(toRun(ev)).then(() => setModalOpen(false))
       : setModalOpen(false);
   };
 
-  const handleCancel = () => runFunctionAndClose(onCancel);
-
-  const handleConfirm = () => runFunctionAndClose(onConfirm);
-
-  const handleClose = () => runFunctionAndClose(onClose);
+  const handleClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => runFunctionAndClose(e, onClose);
 
   return (
     <>
@@ -58,12 +55,16 @@ export function Modal({
         data-qa={qa}
         ariaHideApp={true}
         onAfterOpen={onAfterOpen}
-        shouldCloseOnOverlayClick={true}
+        shouldCloseOnOverlayClick={cancelButton || confirmButton || closeButton ? shouldCloseOnOverlayClick : true}
       >
         <div className="m-modal__content">
           {(title || closeButton) && (
             <div className="m-modal__header u-margin-bottom-xs">
-              {title && <h6>{title}</h6>}
+              {title && title?.label && (
+                <HeaderTag className={title.className} id={title.id}>
+                  {title.label}
+                </HeaderTag>
+              )}
               {closeButton && (
                 <Button
                   className="m-modal__close"
@@ -77,14 +78,14 @@ export function Modal({
             </div>
           )}
           {children && <div className="u-margin-bottom">{children}</div>}
-          {showConfirm || showCancel ? (
+          {confirmButton || cancelButton ? (
             <div className="m-modal__footer">
-              {showConfirm && <Button onClick={handleConfirm}>{confirmText}</Button>}
-              {showCancel && (
-                <Button emphasis="medium" onClick={handleCancel}>
-                  {cancelText}
-                </Button>
-              )}
+              {confirmButton ? (
+                <Button {...confirmButton} onClick={(e) => runFunctionAndClose(e, confirmButton.onClick)} />
+              ) : null}
+              {cancelButton ? (
+                <Button {...cancelButton} onClick={(e) => runFunctionAndClose(e, cancelButton.onClick)} />
+              ) : null}
             </div>
           ) : null}
         </div>
@@ -95,9 +96,8 @@ export function Modal({
 
 Modal.defaultProps = {
   ariaCloseLabel: 'Sluiten',
-  cancelText: 'Annuleren',
   closeButton: true,
-  confirmText: 'Bevestigen',
+  shouldCloseOnOverlayClick: true,
   showCancel: true,
   showConfirm: true,
   size: '',

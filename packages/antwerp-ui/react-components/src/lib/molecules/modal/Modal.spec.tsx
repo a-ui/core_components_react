@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import jest from 'jest-mock';
 import { act } from 'react-dom/test-utils';
+import { ButtonProps } from '../../atoms/button';
 import { Modal } from './Modal';
 
 describe('UI Components - Molecules - Modal', () => {
@@ -50,8 +51,14 @@ describe('UI Components - Molecules - Modal', () => {
 
   it('should close modal on confirm click', async () => {
     const mockConfirm = jest.fn();
+    const confirmButton: ButtonProps = {
+      id: `aui-modal-confirm`,
+      size: 'small',
+      onClick: mockConfirm,
+      children: 'Bevestigen'
+    };
     const { baseElement, getByText } = render(
-      <Modal onConfirm={mockConfirm} trigger={<p>Open</p>} appRootId="root">
+      <Modal confirmButton={confirmButton} trigger={<p>Open</p>} appRootId="root">
         <p className="modal-content">Modal content</p>
       </Modal>
     );
@@ -64,8 +71,15 @@ describe('UI Components - Molecules - Modal', () => {
 
   it('should close modal on cancel click', async () => {
     const mockCancel = jest.fn();
+    const cancelButton: ButtonProps = {
+      id: `aui-modal-cancel`,
+      size: 'small',
+      emphasis: 'medium',
+      onClick: mockCancel,
+      children: 'Annuleren'
+    };
     const { baseElement, getByText } = render(
-      <Modal onCancel={mockCancel} trigger={<p>Open</p>} appRootId="root">
+      <Modal cancelButton={cancelButton} trigger={<p>Open</p>} appRootId="root">
         <p className="modal-content">Modal content</p>
       </Modal>
     );
@@ -76,21 +90,9 @@ describe('UI Components - Molecules - Modal', () => {
     expect(mockCancel).toBeCalledTimes(1);
   });
 
-  it('should close modal if onCancel is not defined', async () => {
-    const { baseElement, getByText } = render(
-      <Modal trigger={<p>Open</p>} appRootId="root">
-        <p className="modal-content">Modal content</p>
-      </Modal>
-    );
-    await act(async () => fireEvent.click(getByText('Open')));
-    expect(baseElement.getElementsByClassName('modal-content').length).toBe(1);
-    await act(async () => fireEvent.click(getByText('Annuleren')));
-    expect(baseElement.getElementsByClassName('modal-content').length).toBe(0);
-  });
-
   it('should not show the footer/header', () => {
     const { baseElement } = render(
-      <Modal showCancel={false} closeButton={false} showConfirm={false} open appRootId="root">
+      <Modal closeButton={false} open appRootId="root">
         <p className="modal-content">Modal content</p>
       </Modal>
     );
@@ -100,7 +102,7 @@ describe('UI Components - Molecules - Modal', () => {
 
   it('should show title', () => {
     const { getByText } = render(
-      <Modal appRootId="root" open title="Title">
+      <Modal appRootId="root" open title={{ label: 'Title' }}>
         <p className="modal-content">Modal content</p>
       </Modal>
     );
@@ -108,8 +110,14 @@ describe('UI Components - Molecules - Modal', () => {
   });
 
   it('should be controlled', async () => {
+    const cancelButton: ButtonProps = {
+      id: `aui-modal-cancel`,
+      size: 'small',
+      emphasis: 'medium',
+      children: 'Annuleren'
+    };
     const { baseElement, getByText } = render(
-      <Modal open trigger={<p>Open</p>} appRootId="root">
+      <Modal cancelButton={cancelButton} open trigger={<p>Open</p>} appRootId="root">
         <p className="modal-content">Modal content</p>
       </Modal>
     );

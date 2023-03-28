@@ -53,55 +53,46 @@ export default {
       description: 'Hide/show the close button.'
     },
     title: {
-      control: {
-        type: 'text'
+      table: {
+        type: { summary: 'object' }
       },
-      description: 'Modal title text.',
-      defaultValue: 'Hello world!',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '' }
-      }
+      defaultValue: { label: 'Modal Title' },
+      control: { type: 'object' },
+      description:
+        "The `title` prop sets the title for the card component. It has the following format `{ label: 'string', tag: 'h1', id: 'title ID', className: 'h3' }` (`tag` can be omitted for an 'h6' tag)."
     },
-    showConfirm: {
-      control: { type: 'boolean' },
-      description: 'Show or hide confirm button.',
-      defaultValue: true,
+    confirmButton: {
+      control: { type: 'object' },
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: true }
-      }
-    },
-    confirmText: {
-      control: {
-        type: 'text'
+        type: { summary: 'object' }
       },
-      description: 'Confirm button label.',
-      defaultValue: 'Bevestigen',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Bevestigen' }
-      }
-    },
-    showCancel: {
-      control: { type: 'boolean' },
-      description: 'Show or hide cancel button.',
-      defaultValue: true,
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: true }
-      }
-    },
-    cancelText: {
-      control: {
-        type: 'text'
+      defaultValue: {
+        id: `aui-modal-confirm`,
+        size: 'small',
+        onClick: () => {
+          return;
+        },
+        children: 'Annuleren'
       },
-      description: 'Cancel button label.',
-      defaultValue: 'Annuleren',
+      description:
+        "The `confirmButton` is an object which uses the `Button` component's props as attributes to create an action button in a `Modal`."
+    },
+    cancelButton: {
+      control: { type: 'object' },
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Annuleren' }
-      }
+        type: { summary: 'object' }
+      },
+      defaultValue: {
+        id: `aui-modal-cancel`,
+        size: 'small',
+        emphasis: 'medium',
+        onClick: () => {
+          return;
+        },
+        children: 'Annuleren'
+      },
+      description:
+        "The `cancelButton` is an object which uses the `Button` component's props as attributes to create an action button in a `Modal`."
     },
     trigger: {
       control: null,
@@ -129,21 +120,15 @@ export default {
       options: ['', 'large'],
       description: 'Modal size.'
     },
-    onConfirm: {
-      control: { type: 'function' },
+    shouldCloseOnOverlayClick: {
+      control: { type: 'boolean' },
       table: {
-        type: { summary: 'function' }
+        type: { summary: 'boolean' },
+        defaultValue: { summary: true }
       },
-      action: 'onConfirm',
-      description: 'Confirm callback, called when clicking on the confirm button.'
-    },
-    onCancel: {
-      control: { type: 'function' },
-      table: {
-        type: { summary: 'function' }
-      },
-      action: 'onCancel',
-      description: 'Cancel callback, called when clicking on the cancel button.'
+      defaultValue: true,
+      description:
+        'Controls whether or not the Modal should be closed when clicking outside of it. If there is no `confirmButton`, `cancelButton` or `closeButton` is set to false, then the `shouldCloseOnOverlayClick` is set to true by default.'
     },
     onClose: {
       control: { type: 'function' },

@@ -1,21 +1,20 @@
 import { ReactElement, ReactNode } from 'react';
+import { Title } from '../../../constants/application.types';
+import { ButtonProps } from '../../atoms/button';
 
 export interface ModalProps {
   appRootId: string;
   ariaCloseLabel?: string;
-  cancelText?: string;
+  cancelButton?: ButtonProps;
   children: ReactNode;
   closeButton?: boolean;
-  confirmText?: string;
+  confirmButton?: ButtonProps;
   onAfterOpen?: () => void;
-  onCancel?: () => void;
   onClose?: () => void;
-  onConfirm?: () => void;
   open?: boolean;
   qa?: string;
-  showCancel?: boolean;
-  showConfirm?: boolean;
+  shouldCloseOnOverlayClick?: boolean;
   size?: '' | 'large';
-  title?: string;
+  title?: Title;
   trigger?: ReactElement;
 }
