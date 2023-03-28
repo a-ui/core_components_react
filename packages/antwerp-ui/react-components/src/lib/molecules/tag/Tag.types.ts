@@ -1,5 +1,3 @@
-import { MouseEvent } from 'react';
-
 export interface TagProps {
   label: string;
   name?: string;

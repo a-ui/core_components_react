@@ -120,7 +120,7 @@ describe('UI Components - Atoms - Table', () => {
         selectable={true}
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        actions={{ label: 'Actions', buttons: [{ label: 'Buy', id: 'buy', onActionClick: mockOnClick }, null] }}
+        actions={{ label: 'Actions', buttons: [{ children: 'Buy', id: 'buy', onActionClick: mockOnClick }, null] }}
       />
     );
     expect(screen.getAllByText('Actions').length).toEqual(1);

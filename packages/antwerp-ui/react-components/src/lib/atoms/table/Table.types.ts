@@ -1,5 +1,3 @@
-// import { ButtonProps } from '../button';
-
 import { MouseEvent, ReactNode } from 'react';
 import { ButtonProps } from '../button';
 
@@ -7,7 +5,6 @@ export interface TableProps {
   actions?: {
     label?: string;
     buttons: (ButtonProps & {
-      label: string;
       onActionClick?: (event: MouseEvent<HTMLButtonElement>, rowId: string) => void;
     })[];
   };

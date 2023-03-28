@@ -220,7 +220,7 @@ export default {
         defaultValue: { summary: '{}' }
       },
       description:
-        'Table cells can also contain buttons, placed at the far right of a data row. The `actions` prop expect an optional `label` as column header and an array of `Button` properties. Two extra prop have been added: `label` to define the button label and `onActionClick` which append the row `id` as second argument to the normal button `onClick` behavior.'
+        'Table cells can also contain buttons, placed at the far right of a data row. The `actions` prop expect an optional `label` as column header and an array of `Button` properties. One extra prop have been added: `onActionClick` which append the row `id` as second argument to the normal button `onClick` behavior. Use `children` to set the content of the buttons.'
     },
     qa: QA_PROP_STORY
   }
@@ -236,9 +236,9 @@ table.args = {
   actions: {
     label: 'Acties',
     buttons: [
-      { label: 'Kopen', id: 'buy' },
+      { children: 'Kopen', id: 'buy' },
       {
-        label: 'Verwijder',
+        children: 'Verwijder',
         id: 'delete',
         theme: 'danger',
         iconLeft: 'close'

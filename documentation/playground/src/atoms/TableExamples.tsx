@@ -98,7 +98,7 @@ export function TableExamples() {
             label: 'Acties',
             buttons: [
               {
-                label: 'Verwijder',
+                children: 'Verwijder',
                 id: 'delete',
                 theme: 'danger',
                 addOn: { type: 'icon', align: 'left', iconProps: { name: 'close' } },
