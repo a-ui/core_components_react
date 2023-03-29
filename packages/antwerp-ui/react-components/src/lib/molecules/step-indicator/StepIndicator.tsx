@@ -30,7 +30,11 @@ export function StepIndicator({
           <li key={step.id} className={classes}>
             {wrapWithIf(
               <>
-                <span className="u-screen-reader-only">{screenReaderStepLabel}</span>
+                {!step.label ? (
+                  <span className="u-screen-reader-only">
+                    {screenReaderStepLabel} {index + 1}
+                  </span>
+                ) : null}
                 <span className="m-step-indicator__number"></span>
                 <span className="m-step-indicator__label">
                   {step.label || null}

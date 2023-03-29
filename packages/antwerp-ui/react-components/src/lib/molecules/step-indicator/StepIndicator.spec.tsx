@@ -39,9 +39,14 @@ describe('UI Components - Molecules - Pagination', () => {
     expect(baseElement).toBeTruthy();
   });
 
+  it('should render screen reader text if no label is provided', () => {
+    const { container } = render(<StepIndicator steps={[{ id: 'step1' }]} />);
+    expect(container.getElementsByClassName('u-screen-reader-only')[0].innerHTML).toEqual('Stap  1');
+  });
+
   it('should render complete steps', () => {
     const { container } = render(<StepIndicator steps={[{ id: 'step1', label: 'First', complete: true }]} />);
-    expect(container.getElementsByClassName('u-screen-reader-only')[1].innerHTML).toEqual(' (voltooid)');
+    expect(container.getElementsByClassName('u-screen-reader-only')[0].innerHTML).toEqual(' (voltooid)');
   });
 
   it('should call onStepClick', () => {

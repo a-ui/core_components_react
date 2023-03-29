@@ -16,6 +16,7 @@ export function StepIndicatorExamples() {
             { id: 'step4', link: { href: '#' } }
           ]}
           onStepClick={setClickedOn}
+          screenReaderStepLabel="Stap"
         />
       </div>
     </div>
