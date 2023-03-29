@@ -14,7 +14,6 @@ describe('UI Components - Organisms - Header', () => {
         logoSrc="https://a-ui.github.io/core_branding_scss/images/a-logo.svg"
         logoHref="/main"
         logoAlt="AltText"
-        ariaLabel="header"
       />
     );
     expect(baseElement.getElementsByClassName('o-header__logo')[0]).toBeTruthy();
