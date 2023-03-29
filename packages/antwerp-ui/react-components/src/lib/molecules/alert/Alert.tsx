@@ -5,22 +5,10 @@ import { THEME_ICON_MAP } from '../../../constants/layout.settings';
 import { Button } from '../../atoms/button';
 
 const renderModalAlert = (className: string, props: AlertProps) => {
-  const {
-    ariaLabelClose,
-    cancelLabel,
-    children,
-    confirmLabel,
-    onCancel,
-    onClose,
-    onConfirm,
-    qa,
-    theme,
-    title,
-    titleId
-  } = props;
-
+  const { ariaLabelClose, cancelButton, children, confirmButton, onClose, qa, theme, title, titleId } = props;
+  const HeaderTag = props.title?.tag || 'h5';
   const textClass = classNames({
-    'u-margin-bottom': !!(onConfirm || onCancel)
+    'u-margin-bottom': !!(confirmButton || cancelButton)
   });
 
   return (
@@ -38,27 +26,20 @@ const renderModalAlert = (className: string, props: AlertProps) => {
           <Icon name={THEME_ICON_MAP[theme]} />
         </span>
       )}
-      <h4 id={titleId} className="h5 u-margin-bottom-xs">
-        {title}
-      </h4>
+      <HeaderTag id={titleId} className="h5 u-margin-bottom-xs">
+        {title?.label}
+      </HeaderTag>
       <p className={textClass}>{children}</p>
       <div className="m-alert__actions">
-        {onConfirm ? (
-          <Button id={`${titleId}-aui-alert-confirm`} size="small" theme={theme} onClick={onConfirm}>
-            {confirmLabel}
-          </Button>
-        ) : null}
-        {onCancel ? (
-          <Button id={`${titleId}-aui-alert-cancel`} size="small" theme={theme} emphasis="medium" onClick={onCancel}>
-            {cancelLabel}
-          </Button>
-        ) : null}
+        {confirmButton ? <Button {...confirmButton} /> : null}
+        {cancelButton ? <Button {...cancelButton} /> : null}
       </div>
     </div>
   );
 };
 
 const renderInlineAlert = (className: string, props: AlertProps) => {
+  const HeaderTag = props.title?.tag || 'h5';
   return (
     <div role="alert" className={className} aria-labelledby={props.titleId} data-qa={props.qa}>
       {!!props.theme && (
@@ -67,9 +48,9 @@ const renderInlineAlert = (className: string, props: AlertProps) => {
         </span>
       )}
       {!!props.title && (
-        <h5 id={props.titleId} className="paragraph has-base-font">
-          {props.title}
-        </h5>
+        <HeaderTag id={props.titleId} className="paragraph has-base-font">
+          {props.title?.label}
+        </HeaderTag>
       )}
       <p>{props.children}</p>
     </div>
@@ -80,18 +61,15 @@ export function Alert(props: AlertProps) {
   const alertClasses = classNames({
     'm-alert': true,
     [`m-alert--${props.theme}`]: !!props.theme,
-    'm-alert--inline': !props.modal
+    'm-alert--inline': !!props.inline
   });
 
-  return props.modal ? renderModalAlert(alertClasses, props) : renderInlineAlert(alertClasses, props);
+  return props.inline ? renderInlineAlert(alertClasses, props) : renderModalAlert(alertClasses, props);
 }
 
 Alert.defaultProps = {
-  title: '',
-  titleId: 'aui-alert-title',
-  ariaLabelClose: 'Sluiten',
-  confirmLabel: 'Bevestigen',
-  cancelLabel: 'Annuleren'
+  title: { label: '' },
+  ariaLabelClose: 'Sluiten'
 };
 
 export default Alert;

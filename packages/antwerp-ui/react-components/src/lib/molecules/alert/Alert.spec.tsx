@@ -1,25 +1,37 @@
 import { Alert } from './Alert';
 import jest from 'jest-mock';
 import { render, screen, fireEvent } from '@testing-library/react';
-
-const doNothing = () => true;
+import { ButtonProps } from '../../atoms/button';
 
 describe.only('UI Components - Molecules - Alert', () => {
+  const titleId = 'aui-alert-title';
+  const title = { label: 'Modal alert default' };
+  const confirmButton: ButtonProps = {
+    id: `title2-aui-alert-confirm`,
+    size: 'small',
+    theme: 'success',
+    children: 'OK'
+  };
+  const cancelButton: ButtonProps = {
+    id: `title2-aui-alert-cancel`,
+    size: 'small',
+    theme: 'success',
+    emphasis: 'medium',
+    children: 'Annuleren'
+  };
   it('should render successfully', () => {
-    const { baseElement } = render(<Alert />);
+    const { baseElement } = render(<Alert titleId={titleId} />);
     expect(baseElement).toBeTruthy();
   });
 
   it.only('should render a default modal alert with buttons', () => {
     const { baseElement } = render(
       <Alert
-        title="Modal alert default"
-        modal
+        title={title}
+        titleId={titleId}
         ariaLabelClose="close icon"
-        onConfirm={doNothing}
-        confirmLabel="Got it"
-        onCancel={doNothing}
-        cancelLabel="Cancel"
+        confirmButton={confirmButton}
+        cancelButton={cancelButton}
       >
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa{' '}
         <a href="https://www.google.be">justo sit amet risus</a>. Sed posuere consectetur est at lobortis. Donec
@@ -33,21 +45,10 @@ describe.only('UI Components - Molecules - Alert', () => {
     expect(baseElement.getElementsByClassName('m-alert__actions')[0].children[1].tagName).toEqual('BUTTON');
   });
 
-  it('should not render actions if their functions are not provided', () => {
-    const { baseElement } = render(
-      <Alert title="Modal alert default" modal ariaLabelClose="close icon" confirmLabel="Got it" cancelLabel="Cancel">
-        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa{' '}
-        <a href="https://www.google.be">justo sit amet risus</a>. Sed posuere consectetur est at lobortis. Donec
-        ullamcorper nulla non metus auctor fringilla.
-      </Alert>
-    );
-    expect(baseElement.getElementsByClassName('m-alert__actions')[0].children.length).toEqual(0);
-  });
-
   it('should trigger onClose when modal is closed', () => {
     const onClose = jest.fn();
     const { baseElement } = render(
-      <Alert title="Modal alert default" modal ariaLabelClose="close icon" onClose={onClose}>
+      <Alert titleId={titleId} title={title} ariaLabelClose="close icon" onClose={onClose}>
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa{' '}
         <a href="https://www.google.be">justo sit amet risus</a>. Sed posuere consectetur est at lobortis. Donec
         ullamcorper nulla non metus auctor fringilla.
@@ -62,7 +63,7 @@ describe.only('UI Components - Molecules - Alert', () => {
 
   it('should render a success modal', () => {
     const { baseElement } = render(
-      <Alert title="Modal alert default" modal theme="success" ariaLabelClose="close icon">
+      <Alert titleId={titleId} title={title} theme="success" ariaLabelClose="close icon">
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa{' '}
         <a href="https://www.google.be">justo sit amet risus</a>. Sed posuere consectetur est at lobortis. Donec
         ullamcorper nulla non metus auctor fringilla.
@@ -73,9 +74,9 @@ describe.only('UI Components - Molecules - Alert', () => {
     expect(baseElement.getElementsByClassName('m-alert--success')[0]).toBeTruthy();
   });
 
-  it('should render a default inline modal with correct title ', () => {
+  it('should render an inline modal with correct title if inline property is true ', () => {
     render(
-      <Alert title="Modal alert default">
+      <Alert titleId={titleId} title={title} inline>
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa{' '}
         <a href="https://www.google.be">justo sit amet risus</a>. Sed posuere consectetur est at lobortis. Donec
         ullamcorper nulla non metus auctor fringilla.
@@ -87,7 +88,7 @@ describe.only('UI Components - Molecules - Alert', () => {
 
   it('should render a warning inline modal with correct title ', () => {
     const { baseElement } = render(
-      <Alert title="Modal alert default" theme="warning">
+      <Alert titleId={titleId} title={title} inline theme="warning">
         Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa{' '}
         <a href="https://www.google.be">justo sit amet risus</a>. Sed posuere consectetur est at lobortis. Donec
         ullamcorper nulla non metus auctor fringilla.
@@ -98,28 +99,13 @@ describe.only('UI Components - Molecules - Alert', () => {
     expect(baseElement.getElementsByClassName('m-alert--warning')[0]).toBeTruthy();
   });
 
-  it('should trigger onCancel/onConfirm when buttons are clicked', () => {
-    const onConfirmMock = jest.fn();
-    const onCancelMock = jest.fn();
-
-    const { baseElement } = render(
-      <Alert
-        title="Modal alert default"
-        modal
-        ariaLabelClose="close icon"
-        onConfirm={onConfirmMock}
-        onCancel={onCancelMock}
-      >
-        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa{' '}
-        <a href="https://www.google.be">justo sit amet risus</a>. Sed posuere consectetur est at lobortis. Donec
-        ullamcorper nulla non metus auctor fringilla.
-      </Alert>
-    );
-    const confirmButton = baseElement.getElementsByClassName('a-button')[1];
-    const cancelButton = baseElement.getElementsByClassName('a-button')[2];
-    fireEvent.click(confirmButton);
-    fireEvent.click(cancelButton);
-    expect(onConfirmMock).toHaveBeenCalledTimes(1);
-    expect(onCancelMock).toHaveBeenCalledTimes(1);
+  it('should change headerTag based on title prop', () => {
+    const { baseElement, rerender } = render(<Alert titleId={titleId} title={{ label: 'Alert', tag: 'h1' }} />);
+    expect(baseElement.querySelector('h5')).toBeFalsy();
+    expect(baseElement.querySelector('h1')).toBeTruthy();
+    rerender(<Alert titleId={titleId} title={{ label: 'Alert', tag: 'h3' }} inline />);
+    expect(baseElement.querySelector('h5')).toBeFalsy();
+    expect(baseElement.querySelector('h1')).toBeFalsy();
+    expect(baseElement.querySelector('h3')).toBeTruthy();
   });
 });

@@ -1,16 +1,16 @@
 import { MouseEventHandler, ReactNode } from 'react';
+import { Title } from '../../../constants/application.types';
+import { ButtonProps } from '../../atoms/button';
 
 export interface AlertProps {
   ariaLabelClose?: string;
-  cancelLabel?: string;
+  cancelButton?: ButtonProps;
   children?: ReactNode;
-  confirmLabel?: string;
-  modal?: boolean;
-  onCancel?: MouseEventHandler<HTMLButtonElement>;
+  confirmButton?: ButtonProps;
+  inline?: boolean;
   onClose?: MouseEventHandler<HTMLButtonElement>;
-  onConfirm?: MouseEventHandler<HTMLButtonElement>;
   qa?: string;
   theme?: 'success' | 'warning' | 'danger';
-  title?: string;
-  titleId?: string;
+  title?: Title;
+  titleId: string;
 }
