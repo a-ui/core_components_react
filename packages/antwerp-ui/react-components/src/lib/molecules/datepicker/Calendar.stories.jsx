@@ -7,7 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: ''
+        component: 'Calendar component used in the DatePicker.'
       }
     }
   },
