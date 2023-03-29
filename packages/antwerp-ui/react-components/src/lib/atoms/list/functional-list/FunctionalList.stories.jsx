@@ -1,8 +1,6 @@
 import FunctionalList from './FunctionalList';
 import { QA_PROP_STORY } from '../../../../constants/stories.settings';
 import ListItem from '../items/ListItem';
-import ListItemAvatar from '../items/ListItemAvatar';
-import ListItemCheckbox from '../items/ListItemCheckbox';
 
 export default {
   title: 'React/Atoms/List/FunctionalList',
@@ -88,44 +86,3 @@ export default {
 const Template = ({ ...args }) => <FunctionalList {...args}></FunctionalList>;
 
 export const functionalList = '';
-
-export const AvatarList = Template.bind({});
-AvatarList.args = {
-  children: [
-    <ListItemAvatar
-      name="albert"
-      user={{ name: 'Albert Einstein' }}
-      avatar={{ letter: 'AE' }}
-      active
-      iconRight="navigation-menu-horizontal"
-      id="albert"
-      key="albert"
-    />,
-    <ListItemAvatar
-      name="dog"
-      user={{ name: 'A dog', function: 'Dog', email: 'dog@antwerpen.be' }}
-      avatar={{ image: 'https://placedog.net/100/100?r' }}
-      iconRight="navigation-menu-horizontal"
-      id="dog"
-      key="dog"
-    />,
-    <ListItemAvatar
-      name="isaac"
-      avatar={{ letter: 'IN' }}
-      link={{ href: '#' }}
-      user={{ name: 'Isaac Newton', email: 'isaac.newton@antwerpen.be' }}
-      iconRight="navigation-menu-horizontal"
-      id="isaac"
-      key="isaac"
-    />
-  ],
-  type: 'avatar'
-};
-export const CheckboxList = Template.bind({});
-CheckboxList.args = {
-  children: [
-    <ListItemCheckbox name="checkbox-1" id="checkbox-1" key="checkbox-1" label="First item" />,
-    <ListItemCheckbox name="checkbox-2" id="checkbox-2" key="checkbox-2" label="Second item" />
-  ],
-  type: 'checkbox'
-};
