@@ -2,11 +2,18 @@ import { useState } from 'react';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import RangeSlider from './RangeSlider';
 
-
 //   tickMarks,
 export default {
   title: 'React/Atoms/RangeSlider',
   component: RangeSlider,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Use the range slider component when the user needs to select a value or value range within certain minimum and maximum values.'
+      }
+    }
+  },
   argTypes: {
     label: {
       control: { type: 'text' },
@@ -28,7 +35,7 @@ export default {
     end: {
       control: false,
       table: {
-        type: { summary: 'number' },
+        type: { summary: 'number' }
       },
       description: 'The `end` prop sets the value for the right handle if the `range` prop is set to `true`.'
     },
@@ -165,8 +172,6 @@ export default {
   }
 };
 
-
-
 const Template = ({ ...args }) => {
   const [handleStartValue, setHandleStartValue] = useState(5);
   const [handleEndValue, setHandleEndValue] = useState(12);
@@ -176,15 +181,17 @@ const Template = ({ ...args }) => {
     setHandleEndValue(end);
   };
 
-  return <RangeSlider
-    {...args}
-    onChange={(start, end) => {
-      handleChange(start, end);
-      args.onChange(start,end);
-    }}
-    start={handleStartValue}
-    end={handleEndValue}
-  />
+  return (
+    <RangeSlider
+      {...args}
+      onChange={(start, end) => {
+        handleChange(start, end);
+        args.onChange(start, end);
+      }}
+      start={handleStartValue}
+      end={handleEndValue}
+    />
+  );
 };
 
 export const rangeSlider = Template.bind({});
