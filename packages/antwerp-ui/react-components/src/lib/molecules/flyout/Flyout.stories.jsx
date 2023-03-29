@@ -56,7 +56,6 @@ export default {
       table: {
         type: { summary: 'boolean' }
       },
-      defaultValue: false,
       description: 'By using the `open` prop you can set the flyout to be open by default.'
     },
     scrollable: {
