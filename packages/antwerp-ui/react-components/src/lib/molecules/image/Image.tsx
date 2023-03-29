@@ -7,7 +7,7 @@ export function Image({ alt, children, src, noClass, qa }: ImageProps) {
     'm-image': !noClass
   });
 
-  const isFigCaptionOrCopyright = (child: React.ReactElement) => {
+  const validateChildren = (child: React.ReactElement) => {
     return (
       child &&
       typeof child === 'object' &&
@@ -15,7 +15,7 @@ export function Image({ alt, children, src, noClass, qa }: ImageProps) {
     );
   };
 
-  if (!!children && !isFigCaptionOrCopyright(children)) {
+  if (!!children && !validateChildren(children)) {
     logWarning("Image's children should only be a Copyright component or a figcaption element");
   }
 
