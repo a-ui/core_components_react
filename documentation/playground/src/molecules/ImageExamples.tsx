@@ -12,6 +12,9 @@ export function ImageExamples() {
         <Image src="https://placedog.net/400/300?r" alt="A random dog">
           <Copyright sign="™" label="Without link" qa="image copyright" />
         </Image>
+        <Image src="https://placedog.net/400/300?r" alt="A random dog">
+          <div>This div should log a warning</div>
+        </Image>
       </div>
     </div>
   );
