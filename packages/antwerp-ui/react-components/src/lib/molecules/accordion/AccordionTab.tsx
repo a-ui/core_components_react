@@ -21,7 +21,7 @@ export function AccordionTab({ id, header, children, open, onToggle, qa }: Accor
         {header}
       </button>
       <div style={openState ? { maxHeight: 'none' } : {}} className="m-accordion__content">
-        <div className="u-margin-xs">{children}</div>
+        {children}
       </div>
     </div>
   );
