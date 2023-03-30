@@ -8,12 +8,12 @@ See [README.md](README.md).
 
 Here is the branching strategy for contributions:
 
-- Always start from the active development branch (`develop-v7`) and pull latest changes.
+- Always start from the active development branch (`development`) and pull latest changes.
 - Branch from the active development branch and use following branch names:
-  - `develop-v7/components/<COMPONENT>` to add new **components**.
-  - `develop-v7/feature/<FEATURE> ` to add new **features** to existing components.
-  - `develop-v7/bug/<BUG>` for **bug fixing**.
-  - `develop-v7/docs/<DOCS>` to add/improve **documentation**.
+  - `development/components/<COMPONENT>` to add new **components**.
+  - `development/feature/<FEATURE> ` to add new **features** to existing components.
+  - `development/bug/<BUG>` for **bug fixing**.
+  - `development/docs/<DOCS>` to add/improve **documentation**.
 - (If available) Use **Jira** ticket numbers in commits.
 
 ## Project structure
