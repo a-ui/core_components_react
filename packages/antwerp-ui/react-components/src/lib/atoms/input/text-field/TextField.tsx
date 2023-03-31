@@ -9,7 +9,7 @@ export const TextField = forwardRef(function TextField(
   {
     addon,
     charCounter,
-    characterCountText,
+    charCountText,
     description,
     disabled,
     id,
@@ -86,7 +86,7 @@ export const TextField = forwardRef(function TextField(
       </div>
       {renderCharacterCounter({
         id,
-        characterCountText,
+        charCountText,
         charCounter,
         characterCount: value ? value.length : characterCount,
         maxLength
@@ -98,7 +98,7 @@ export const TextField = forwardRef(function TextField(
 TextField.defaultProps = {
   type: 'text',
   id: 'aui-text-field',
-  characterCountText: '%count% / %max%'
+  charCountText: '%count% / %max%'
 };
 
 export default TextField;

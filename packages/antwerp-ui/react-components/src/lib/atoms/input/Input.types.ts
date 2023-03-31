@@ -2,7 +2,7 @@ import { ChangeEvent, FocusEvent, MouseEvent, KeyboardEvent } from 'react';
 
 interface InputProps {
   charCounter?: boolean;
-  characterCountText?: string;
+  charCountText?: string;
   description?: string;
   disabled?: boolean;
   id?: string;
@@ -36,7 +36,7 @@ export type LabelProps = Pick<TextFieldProps, 'label' | 'required' | 'inline' | 
 export type DescriptionProps = Pick<TextFieldProps, 'id' | 'description' | 'state'>;
 export type CharacterCounterProps = {
   id?: string;
-  characterCountText?: string;
+  charCountText?: string;
   charCounter?: boolean;
   characterCount: number;
   maxLength?: number;

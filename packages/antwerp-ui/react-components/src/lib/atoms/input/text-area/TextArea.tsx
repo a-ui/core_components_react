@@ -6,7 +6,7 @@ import { TextAreaProps } from '../Input.types';
 
 export function TextArea({
   charCounter,
-  characterCountText,
+  charCountText,
   description,
   disabled,
   id,
@@ -65,7 +65,7 @@ export function TextArea({
       </div>
       {renderCharacterCounter({
         id,
-        characterCountText,
+        charCountText,
         charCounter,
         characterCount: value ? value.length : characterCount,
         maxLength
@@ -76,7 +76,7 @@ export function TextArea({
 
 TextArea.defaultProps = {
   id: 'aui-text-area',
-  characterCountText: '%count% / %max%'
+  charCountText: '%count% / %max%'
 };
 
 export default TextArea;

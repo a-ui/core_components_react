@@ -22,7 +22,7 @@ export function TextFieldExamples() {
           id="textfield-2"
           description="Help text"
           charCounter
-          characterCountText="Je kan nog %left% karakters typen."
+          charCountText="Je kan nog %left% karakters typen."
           maxLength={200}
         />
         <TextField label="Controlled - no onChange" id="textfield-3" value="hello" charCounter maxLength={100} />

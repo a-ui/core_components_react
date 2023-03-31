@@ -21,7 +21,7 @@ export function TextAreaExamples() {
           id="textarea-1"
           description="Help text"
           charCounter
-          characterCountText="Out of %max% characters, a total of %count% were typed, with %left% characters remaining."
+          charCountText="Out of %max% characters, a total of %count% were typed, with %left% characters remaining."
           maxLength={200}
         />
         <TextArea label="Controlled - no onChange" id="textarea-2" value="hello" charCounter maxLength={100} />

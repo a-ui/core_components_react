@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `characterCountText` property on `TextField` and `TextArea`
+- `charCountText` property on `TextField` and `TextArea`
 
 ## [7.0.0-beta.0] - 2023-03-30
 

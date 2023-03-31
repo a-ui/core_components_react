@@ -120,7 +120,7 @@ export default {
       },
       description: 'The `maxLength` attribute sets a character limitation for the value of the `TextField`.'
     },
-    characterCountText: {
+    charCountText: {
       control: { type: 'text' },
       defaultValue: '%count% / %max%',
       table: {

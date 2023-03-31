@@ -33,14 +33,14 @@ export const renderDescription = ({ id, description, state }: DescriptionProps) 
 
 export const renderCharacterCounter = ({
   id,
-  characterCountText,
+  charCountText,
   charCounter,
   characterCount,
   maxLength
 }: CharacterCounterProps) => {
   return charCounter && maxLength ? (
     <small aria-live="polite" id={`${id}--counter`} className="a-input__description u-text-left">
-      {characterCountText
+      {charCountText
         ?.replace('%max%', maxLength.toString())
         .replace('%count%', characterCount.toString())
         .replace('%left%', (maxLength - characterCount).toString())}
