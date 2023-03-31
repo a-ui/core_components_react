@@ -1,6 +1,8 @@
 import { classNames, isScrollAtTheEnd } from './dom.utils';
 import { renderHTMLLink } from './render.utils';
 import { getPosition, getSteps, getValueFromPosition, pagesArray } from './math.utils';
+import { invalidIcon } from './file.utils';
+import jest from 'jest-mock';
 
 describe('Utils - DOM Utils', () => {
   describe('- classNames', () => {
@@ -130,6 +132,20 @@ describe('Utils - Math Utils', () => {
       expect(getSteps(1, 3, 1)).toEqual([1, 2, 3]);
       expect(getSteps(1, 3, 2)).toEqual([1, 3]);
       expect(getSteps(1, 5, -2)).toEqual([5]);
+    });
+  });
+});
+
+describe('Utils - File Utils', () => {
+  describe('- invalidIcon', () => {
+    function MockSVGGraphicsElement() {}
+
+    Object.defineProperty(MockSVGGraphicsElement.prototype, 'getBBox', {
+      value: jest.fn(() => ({ width: 0, height: 0 }))
+    });
+    it('returns true if an icon is invalid', () => {
+      const icon = new (MockSVGGraphicsElement as any)();
+      expect(invalidIcon(icon)).toEqual(true);
     });
   });
 });

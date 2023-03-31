@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `charCountText` property on `TextField` and `TextArea`
+- A warning is logged for wrong or unknown icons
 
 ## [7.0.0-beta.0] - 2023-03-30
 

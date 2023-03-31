@@ -1,3 +1,5 @@
+import { logWarning } from './log.utils';
+
 const MB = 1048576;
 
 export function hasValidFormat(file: File, acceptedFormat?: string): boolean {
@@ -21,4 +23,9 @@ export function areFilesValid(
   maxSize?: number
 ): { validSize: boolean; validFormat: boolean }[] {
   return files.map((f) => ({ validFormat: hasValidFormat(f, acceptedFormat), validSize: hasValidSize(f, maxSize) }));
+}
+
+export function invalidIcon(icon: SVGGraphicsElement): boolean {
+  const { width, height } = icon.getBBox();
+  return width === 0 && height === 0;
 }

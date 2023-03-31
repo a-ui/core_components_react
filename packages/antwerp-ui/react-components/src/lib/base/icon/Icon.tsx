@@ -1,6 +1,8 @@
 import { IconProps } from './Icon.types';
 import { ICONS_URL, SCREEN_READER_CLASS } from '../../../constants/settings';
 import { classNames } from '../../../utils/dom.utils';
+import { invalidIcon } from '../../../utils/file.utils';
+import { logWarning } from '../../../utils/log.utils';
 
 const ICONS_SVG_HTML_ID = 'ai-svg';
 
@@ -15,6 +17,17 @@ export function Icon({ name, screenReaderText, thin, qa }: IconProps) {
     if (!document.getElementById(ICONS_SVG_HTML_ID)) {
       document.body.appendChild(svgWrapper);
     }
+    queryIcons()?.forEach((icon) => {
+      if (invalidIcon(icon)) {
+        logWarning(
+          `The provided icon with name "${name}" does not seem to exist. Please make sure the 'name' is correct`
+        );
+      }
+    });
+  };
+
+  const queryIcons = () => {
+    return Array.from(document.querySelectorAll(`.ai-${name.replace('ai-', '')} use`)) as SVGGraphicsElement[];
   };
 
   if (typeof document !== 'undefined' && !document.getElementById(ICONS_SVG_HTML_ID)) {

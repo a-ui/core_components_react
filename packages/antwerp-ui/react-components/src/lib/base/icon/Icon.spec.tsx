@@ -46,10 +46,15 @@ describe('UI Components - Base - Icon', () => {
   it('should fetch the icons', () => {
     const dom = new JSDOM();
     const fetchMock = jest.fn(() => Promise.resolve({ text: () => 'fake-fetch' }));
+    const getBBoxMock = jest.fn(() => ({ width: 0, height: 0 }));
     global.document = dom.window.document;
     // @ts-ignore
     global.fetch = fetchMock as jest.Mock;
-    render(<Icon name="alarm-bell" screenReaderText="Click here" />);
+
+    const { baseElement } = render(<Icon name="alarm-bell" screenReaderText="Click here" />);
+    const useElement = baseElement.querySelector('use');
+    Object.defineProperty(useElement, 'getBBox', { value: getBBoxMock });
+
     expect(fetchMock).toBeCalledTimes(1);
   });
 
