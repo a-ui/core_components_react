@@ -1,4 +1,4 @@
-import { State } from '../../../constants/layout.settings';
+import { State, Theme, THEME_ICON_MAP } from '../../../constants/layout.settings';
 import { classNames } from '../../../utils/dom.utils';
 import { Icon } from '../../base/icon';
 import { DescriptionProps, LabelProps, CharacterCounterProps } from './Input.types';
@@ -24,17 +24,26 @@ export const renderDescription = ({ id, description, state }: DescriptionProps) 
   });
   return description ? (
     <small id={`${id}--description`} className={descriptionClasses}>
-      {state === State.SUCCESS && <Icon name="check-1" />}
-      {state === State.ERROR && <Icon name="alert-triangle" />}
+      {state === State.SUCCESS && <Icon name={THEME_ICON_MAP[Theme.SUCCESS]} />}
+      {state === State.ERROR && <Icon name={THEME_ICON_MAP[Theme.WARNING]} />}
       {description}
     </small>
   ) : null;
 };
 
-export const renderCharacterCounter = ({ id, charCounter, characterCount, maxLength }: CharacterCounterProps) => {
+export const renderCharacterCounter = ({
+  id,
+  characterCountText,
+  charCounter,
+  characterCount,
+  maxLength
+}: CharacterCounterProps) => {
   return charCounter && maxLength ? (
-    <small aria-live="polite" id={`${id}--counter`} className="a-input__description u-text-right">
-      {`${characterCount} / ${maxLength}`}
+    <small aria-live="polite" id={`${id}--counter`} className="a-input__description u-text-left">
+      {characterCountText
+        ?.replace('%max%', maxLength.toString())
+        .replace('%count%', characterCount.toString())
+        .replace('%left%', (maxLength - characterCount).toString())}
     </small>
   ) : null;
 };

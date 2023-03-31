@@ -6,6 +6,7 @@ import { TextAreaProps } from '../Input.types';
 
 export function TextArea({
   charCounter,
+  characterCountText,
   description,
   disabled,
   id,
@@ -20,7 +21,11 @@ export function TextArea({
   size,
   state,
   value,
-  ...extraProps
+  onBlur,
+  onClick,
+  onFocus,
+  onKeyDown,
+  onKeyUp
 }: TextAreaProps) {
   const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
   const wrapperClasses = classNames({
@@ -51,16 +56,27 @@ export function TextArea({
           {...(description ? { 'aria-describedby': `${id}--description` } : {})}
           maxLength={maxLength}
           onChange={_handleChange}
-          {...extraProps}
+          onBlur={onBlur}
+          onClick={onClick}
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
         ></textarea>
       </div>
-      {renderCharacterCounter({ id, charCounter, characterCount: value ? value.length : characterCount, maxLength })}
+      {renderCharacterCounter({
+        id,
+        characterCountText,
+        charCounter,
+        characterCount: value ? value.length : characterCount,
+        maxLength
+      })}
     </div>
   );
 }
 
 TextArea.defaultProps = {
-  id: 'aui-text-area'
+  id: 'aui-text-area',
+  characterCountText: '%count% / %max%'
 };
 
 export default TextArea;

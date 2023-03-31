@@ -7,13 +7,11 @@ import { ForwardedRef, forwardRef, useState } from 'react';
 
 export const TextField = forwardRef(function TextField(
   {
-    addonLeft,
-    addonRight,
+    addon,
     charCounter,
+    characterCountText,
     description,
     disabled,
-    iconLeft,
-    iconRight,
     id,
     inline,
     label,
@@ -27,11 +25,19 @@ export const TextField = forwardRef(function TextField(
     state,
     type = 'text',
     value,
-    ...extraProps
+    onBlur,
+    onClick,
+    onFocus,
+    onKeyDown,
+    onKeyUp
   }: TextFieldProps,
   inputRef: ForwardedRef<HTMLInputElement>
 ) {
   const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
+  const addonLeft = addon?.type === 'text' && addon.placement === 'left' ? addon.content : null;
+  const addonRight = addon?.type === 'text' && addon.placement === 'right' ? addon.content : null;
+  const iconLeft = addon?.type === 'icon' && addon.placement === 'left' ? addon.content : null;
+  const iconRight = addon?.type === 'icon' && addon.placement === 'right' ? addon.content : null;
 
   const classes = classNames({
     'a-input': true,
@@ -67,21 +73,32 @@ export const TextField = forwardRef(function TextField(
           required={required}
           maxLength={maxLength}
           onChange={_handleChange}
-          {...extraProps}
+          onBlur={onBlur}
+          onClick={onClick}
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
           {...(charCounter && maxLength ? { 'aria-describedby': `${id}--counter` } : {})}
           {...(description ? { 'aria-describedby': `${id}--description` } : {})}
         ></input>
         {!!iconRight && !iconLeft && <Icon name={iconRight} />}
         {!!addonRight && <div className="a-input__addon">{addonRight}</div>}
       </div>
-      {renderCharacterCounter({ id, charCounter, characterCount: value ? value.length : characterCount, maxLength })}
+      {renderCharacterCounter({
+        id,
+        characterCountText,
+        charCounter,
+        characterCount: value ? value.length : characterCount,
+        maxLength
+      })}
     </div>
   );
 });
 
 TextField.defaultProps = {
   type: 'text',
-  id: 'aui-text-field'
+  id: 'aui-text-field',
+  characterCountText: '%count% / %max%'
 };
 
 export default TextField;

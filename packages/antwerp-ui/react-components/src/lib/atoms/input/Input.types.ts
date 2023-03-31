@@ -2,6 +2,7 @@ import { ChangeEvent, FocusEvent, MouseEvent, KeyboardEvent } from 'react';
 
 interface InputProps {
   charCounter?: boolean;
+  characterCountText?: string;
   description?: string;
   disabled?: boolean;
   id?: string;
@@ -15,34 +16,27 @@ interface InputProps {
   size?: 'small' | 'medium' | 'large';
   state?: 'success' | 'error';
   value?: string;
+  onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onClick?: (event: MouseEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onKeyUp?: (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export interface TextFieldProps extends InputProps {
-  addonLeft?: string;
-  addonRight?: string;
-  iconLeft?: string;
-  iconRight?: string;
+  addon?: { type: 'icon' | 'text'; content: string; placement: 'left' | 'right' };
   role?: string;
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  onClick?: (event: MouseEvent<HTMLInputElement>) => void;
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-  onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
   type?: InputTypes;
 }
 
-export interface TextAreaProps extends InputProps {
-  onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
-  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  onClick?: (event: MouseEvent<HTMLTextAreaElement>) => void;
-  onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void;
-  onKeyDown?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-}
+export interface TextAreaProps extends InputProps {}
 
 export type LabelProps = Pick<TextFieldProps, 'label' | 'required' | 'inline' | 'id'>;
 export type DescriptionProps = Pick<TextFieldProps, 'id' | 'description' | 'state'>;
 export type CharacterCounterProps = {
   id?: string;
+  characterCountText?: string;
   charCounter?: boolean;
   characterCount: number;
   maxLength?: number;

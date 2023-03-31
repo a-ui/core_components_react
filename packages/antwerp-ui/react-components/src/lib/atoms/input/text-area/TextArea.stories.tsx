@@ -96,6 +96,16 @@ export default {
       },
       description: 'The `maxLength` attribute sets a character limitation for the value of the `TextArea`.'
     },
+    characterCountText: {
+      control: { type: 'text' },
+      defaultValue: '%count% / %max%',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '%count% / %max%' }
+      },
+      description:
+        'The text for the charCounter can be changed by providing a string which replaces placeholder text with their corresponding values. `%count%` equals the amount of characters typed in the textarea, `%max%` equals the `maxLength prop` and `%left%` is the difference between `maxLength` and the amount of characters typed.'
+    },
     state: {
       control: { type: 'select' },
       options: ['', 'error', 'success'],
@@ -157,6 +167,15 @@ export default {
       action: 'onKeyDown',
       description:
         'Function triggered when the user presses a key inside the `TextArea`. The first parameter of this function is of type `(React).KeyboardEvent`.'
+    },
+    onKeyUp: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      action: 'onKeyUp',
+      description:
+        'Function triggered when the user releases a key inside the `TextArea`. The first parameter of this function is of type `(React).KeyboardEvent`.'
     },
     qa: QA_PROP_STORY,
     id: {

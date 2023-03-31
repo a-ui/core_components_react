@@ -120,6 +120,16 @@ export default {
       },
       description: 'The `maxLength` attribute sets a character limitation for the value of the `TextField`.'
     },
+    characterCountText: {
+      control: { type: 'text' },
+      defaultValue: '%count% / %max%',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '%count% / %max%' }
+      },
+      description:
+        'The text for the charCounter can be changed by providing a string which replaces placeholder text with their corresponding values. `%count%` equals the amount of characters typed in the textfield, `%max%` equals the `maxLength prop` and `%left%` is the difference between `maxLength` and the amount of characters typed.'
+    },
     state: {
       control: { type: 'select' },
       options: ['', 'error', 'success'],
@@ -137,39 +147,14 @@ export default {
       },
       description: 'The `size` prop allows different size variants (in height) of the `TextField`.'
     },
-    iconLeft: {
-      control: { type: 'select' },
+    addon: {
+      control: { type: 'object' },
+      defaultValue: { type: 'icon', content: 'phone', placement: 'left' },
       table: {
-        type: { summary: 'string' }
+        type: { summary: 'object' }
       },
       description:
-        'Set this prop to use an icon as a leading add-on inside the `TextField` (icon name can be used with or without `ai`-prefix).',
-      options: ['', 'archive', 'add', 'check-1', 'close']
-    },
-    iconRight: {
-      control: { type: 'select' },
-      table: {
-        type: { summary: 'string' }
-      },
-      description:
-        'Set this prop to use an icon as a trailing add-on inside the `TextField` (icon name can be used with or without `ai`-prefix).',
-      options: ['', 'archive', 'add', 'check-1', 'close']
-    },
-    addonLeft: {
-      control: { type: 'text' },
-      table: {
-        type: { summary: 'string' }
-      },
-      description:
-        'Leading add-ons for the `TextField`, clarifying text such as a currency notation or unit of measure.'
-    },
-    addonRight: {
-      control: { type: 'text' },
-      table: {
-        type: { summary: 'string' }
-      },
-      description:
-        'Trailing add-ons for the `TextField`, clarifying text such as a currency notation or unit of measure.'
+        'Set this prop to add a leading or trailing add-on (icon or text) inside the `TextField`. Addons have the following properties: `type`, `content` and `placement`, where `type` is either `icon` or `text` and `placement` is either `left` or `right`.'
     },
     onChange: {
       control: { type: 'function' },
@@ -215,6 +200,15 @@ export default {
       action: 'onKeyDown',
       description:
         'Function triggered when the user presses a key inside the `TextField`. The first parameter of this function is of type `(React).KeyboardEvent`.'
+    },
+    onKeyUp: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      action: 'onKeyUp',
+      description:
+        'Function triggered when the user releases a key inside the `TextField`. The first parameter of this function is of type `(React).KeyboardEvent`.'
     },
     qa: QA_PROP_STORY,
     id: {

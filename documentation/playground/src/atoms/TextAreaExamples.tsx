@@ -15,7 +15,15 @@ export function TextAreaExamples() {
           charCounter
           maxLength={100}
         />
-        <TextArea label="Uncontrolled" required id="textarea-1" description="Help text" charCounter maxLength={200} />
+        <TextArea
+          label="Uncontrolled"
+          required
+          id="textarea-1"
+          description="Help text"
+          charCounter
+          characterCountText="Out of %max% characters, a total of %count% were typed, with %left% characters remaining."
+          maxLength={200}
+        />
         <TextArea label="Controlled - no onChange" id="textarea-2" value="hello" charCounter maxLength={100} />
         <TextArea label="Error" id="textarea-3" description="There is an error" state="error" />
         <TextArea label="Small success" id="textarea-4" description="Ok!" state="success" size="small" />
