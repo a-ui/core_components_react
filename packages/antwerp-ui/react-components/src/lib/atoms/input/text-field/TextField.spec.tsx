@@ -53,25 +53,29 @@ describe('UI Components - Atoms - Input - TextField', () => {
   });
 
   it('should add an icon when iconLeft is defined', () => {
-    const { baseElement } = render(<TextField icon={{ name: 'ai-single-neutral', placement: 'left' }} />);
+    const { baseElement } = render(
+      <TextField addon={{ type: 'icon', content: 'ai-single-neutral', placement: 'left' }} />
+    );
     expect(baseElement.getElementsByClassName('has-icon-left').length).toBe(1);
     expect(baseElement.getElementsByClassName('ai-single-neutral').length).toBe(1);
   });
 
   it('should add an icon when iconRight is defined', () => {
-    const { baseElement } = render(<TextField icon={{ name: 'ai-single-neutral', placement: 'right' }} />);
+    const { baseElement } = render(
+      <TextField addon={{ type: 'icon', content: 'ai-single-neutral', placement: 'right' }} />
+    );
     expect(baseElement.getElementsByClassName('has-icon-right').length).toBe(1);
     expect(baseElement.getElementsByClassName('ai-single-neutral').length).toBe(1);
   });
 
   it('should add an addon when addonLeft is defined', () => {
-    const { baseElement } = render(<TextField addon={{ label: 'left', placement: 'left' }} />);
+    const { baseElement } = render(<TextField addon={{ type: 'text', content: 'left', placement: 'left' }} />);
     expect(baseElement.getElementsByClassName('has-addon-left').length).toBe(1);
     expect(baseElement.getElementsByClassName('a-input__addon')[0].textContent === 'left').toBeTruthy();
   });
 
   it('should add ann addon when addonRight is defined', () => {
-    const { baseElement } = render(<TextField addon={{ label: 'right', placement: 'left' }} />);
+    const { baseElement } = render(<TextField addon={{ type: 'text', content: 'right', placement: 'right' }} />);
     expect(baseElement.getElementsByClassName('a-input__addon').length).toBe(1);
     expect(baseElement.getElementsByClassName('has-addon-right').length).toBe(1);
   });

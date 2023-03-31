@@ -139,6 +139,7 @@ export function Autocomplete({
         <FunctionalList lined onItemClick={selectValue}>
           {results.map((r, i) => (
             <ListItem
+              id={r.value}
               tabIndex={-1}
               highlighted={i === cursor}
               onMouseDown={(e) => e.preventDefault()}
@@ -153,7 +154,7 @@ export function Autocomplete({
         </FunctionalList>
       ) : (
         <FunctionalList lined>
-          <ListItem>
+          <ListItem id="aui-autocomplete-no-results">
             <small>{noResultsText}</small>
           </ListItem>
         </FunctionalList>

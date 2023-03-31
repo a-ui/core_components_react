@@ -13,6 +13,7 @@ export const TextField = forwardRef(function TextField(
     description,
     disabled,
     id,
+    role,
     inline,
     label,
     maxLength,
@@ -78,6 +79,7 @@ export const TextField = forwardRef(function TextField(
           onFocus={onFocus}
           onKeyDown={onKeyDown}
           onKeyUp={onKeyUp}
+          role={role}
           {...(charCounter && maxLength ? { 'aria-describedby': `${id}--counter` } : {})}
           {...(description ? { 'aria-describedby': `${id}--description` } : {})}
         ></input>
