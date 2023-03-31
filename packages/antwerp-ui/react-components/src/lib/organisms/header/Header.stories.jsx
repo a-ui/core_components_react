@@ -25,9 +25,9 @@ export default {
       control: { type: 'text' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'https://a-ui.github.io/core_branding_scss/images/a-logo.svg' }
+        defaultValue: { summary: 'https://cdn.antwerpen.be/core_branding_scss/6.2.3/assets/images/a-logo.svg' }
       },
-      defaultValue: 'https://a-ui.github.io/core_branding_scss/images/a-logo.svg',
+      defaultValue: 'https://cdn.antwerpen.be/core_branding_scss/6.2.3/assets/images/a-logo.svg',
       description: 'The url for the src logo image in the header component.'
     },
     logoAlt: {

@@ -28,7 +28,7 @@ export function Header({ logoHref, logoAlt, buttons, logoSrc, skipToMainLabel, q
 Header.defaultProps = {
   logoHref: '/',
   logoAlt: 'Naar de startpagina',
-  logoSrc: 'https://a-ui.github.io/core_branding_scss/images/a-logo.svg',
+  logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.2.3/assets/images/a-logo.svg',
   skipToMainLabel: 'Ga naar inhoud',
   buttons: []
 };
