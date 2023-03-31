@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Core branding update to 6.2.3
+- Conditionally remove `aria-labbeledby` on the `ProgressBar` when an `aria-label` is used
 
 ## [7.0.0-beta.0] - 2023-03-30
 

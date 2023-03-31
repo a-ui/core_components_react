@@ -30,12 +30,11 @@ export function ProgressBar({
         <div
           className="a-progress__bar"
           role="progressbar"
-          aria-labelledby={labelId}
           aria-valuenow={value}
           aria-valuemin={minValue}
           aria-valuemax={maxValue}
           style={{ width: `${percentage}%` }}
-          {...(!showLabel ? { 'aria-label': label } : {})}
+          {...(!showLabel ? { 'aria-label': label } : { 'aria-labelledby': labelId })}
         ></div>
       </div>
     </div>
