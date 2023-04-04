@@ -9,7 +9,7 @@ import {
   startOfMonth,
   startOfWeek
 } from 'date-fns';
-import { DaysViewProps } from '../datepicker.types';
+import { DaysViewProps } from '../Datepicker.types';
 import { DayButton } from './DayButton';
 
 export function DaysView({

@@ -1,20 +1,17 @@
-import { FocusEvent, KeyboardEventHandler, MouseEventHandler } from 'react';
-// import { TextFieldProps } from '../../atoms/input';
-// export interface DatepickerInputProps {
-//   qa?: string;
-//   format?: string;
-//   mask?: string;
-//   inputProps?: Pick<
-//     TextFieldProps,
-//     'id' | 'label' | 'description' | 'disabled' | 'name' | 'placeholder' | 'required' | 'size'
-//   >;
-//   value?: string;
-//   onChange?: (value: string, isValid: boolean) => void;
-// }
-// export interface DatepickerInputIconProps {
-//   onClick: MouseEventHandler<HTMLSpanElement>;
-//   onEnter: KeyboardEventHandler<HTMLSpanElement>;
-// }
+import { FocusEvent } from 'react';
+import { TextFieldProps } from '../../atoms/input';
+
+export interface DatepickerProps {
+  qa?: string;
+  format?: string;
+  mask?: string;
+  inputProps?: Pick<TextFieldProps, 'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size'>;
+  value?: string;
+  invalidDateText?: string;
+  iconButtonLabel?: string;
+  calendarProps?: DatepickerCalendarProps;
+  onChange?: (value: string) => void;
+}
 
 export interface CalendarProps {
   ariaLabel?: string;
@@ -35,6 +32,22 @@ export interface CalendarProps {
   unavailableTo?: string;
   value?: string;
 }
+
+type DatepickerCalendarProps = Pick<
+  CalendarProps,
+  | 'ariaLabel'
+  | 'ariaLabelCurrentDay'
+  | 'ariaLabelNextMonth'
+  | 'ariaLabelNextYear'
+  | 'ariaLabelNextYears'
+  | 'ariaLabelPreviousMonth'
+  | 'ariaLabelPreviousYear'
+  | 'ariaLabelPreviousYears'
+  | 'qa'
+  | 'unavailable'
+  | 'unavailableFrom'
+  | 'unavailableTo'
+>;
 
 export interface MonthsViewProps {
   value?: Date;

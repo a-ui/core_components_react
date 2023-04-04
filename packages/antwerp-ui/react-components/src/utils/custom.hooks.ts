@@ -1,4 +1,4 @@
-import { RefObject, UIEvent, UIEventHandler, useEffect, useRef, useState } from 'react';
+import { MouseEventHandler, RefObject, UIEvent, UIEventHandler, useEffect, useRef, useState } from 'react';
 import { isScrollAtTheEnd } from './dom.utils';
 
 export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean, boolean] {
@@ -32,4 +32,23 @@ export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean,
   };
 
   return [scrollDivRef, handleScroll, isScrollStart, isScrollEnd];
+}
+
+export function useOutsideClick(onOutsideClick: (event: EventTarget | null) => void) {
+  const elementRef: RefObject<any> = useRef(null);
+
+  const handleClick = (event: MouseEvent) => {
+    if (!(elementRef?.current?.contains(event?.target) ?? false)) {
+      onOutsideClick(event?.target);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleClick);
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  });
+
+  return { elementRef };
 }

@@ -3,10 +3,14 @@ import { ICONS_URL, SCREEN_READER_CLASS } from '../../../constants/settings';
 import { classNames } from '../../../utils/dom.utils';
 import { invalidIcon } from '../../../utils/file.utils';
 import { logWarning } from '../../../utils/log.utils';
+import { ForwardedRef, forwardRef } from 'react';
 
 const ICONS_SVG_HTML_ID = 'ai-svg';
 
-export function Icon({ name, screenReaderText, thin, qa }: IconProps) {
+export const Icon = forwardRef(function Icon(
+  { name, tabIndex, onKeyDown, className, role, onClick, screenReaderText, thin, qa }: IconProps,
+  iconRef: ForwardedRef<HTMLSpanElement>
+) {
   const fetchIcons = async function () {
     if (!fetch) return null;
     const response = await fetch(ICONS_URL);
@@ -37,11 +41,20 @@ export function Icon({ name, screenReaderText, thin, qa }: IconProps) {
   const classes = classNames({
     ai: true,
     [`ai-${name?.replace('ai-', '')}`]: !!name,
-    'ai--thin': !!thin
+    'ai--thin': !!thin,
+    [className || '']: !!className
   });
 
   return (
-    <span className={classes} data-qa={qa}>
+    <span
+      ref={iconRef}
+      onKeyDown={onKeyDown}
+      tabIndex={tabIndex}
+      role={role}
+      onClick={onClick}
+      className={classes}
+      data-qa={qa}
+    >
       {name ? (
         <svg aria-hidden="true">
           <use href={`#ai-${name.replace('ai-', '')}`} />
@@ -50,6 +63,4 @@ export function Icon({ name, screenReaderText, thin, qa }: IconProps) {
       {!!screenReaderText && <span className={SCREEN_READER_CLASS}>{screenReaderText}</span>}
     </span>
   );
-}
-
-export default Icon;
+});

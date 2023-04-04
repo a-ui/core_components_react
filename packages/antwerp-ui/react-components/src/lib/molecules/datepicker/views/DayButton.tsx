@@ -1,7 +1,8 @@
 import { classNames } from '../../../../utils/dom.utils';
 import { useMemo } from 'react';
-import { DayButtonProps } from '../datepicker.types';
+import { DayButtonProps } from '../Datepicker.types';
 import { endOfMonth, format, isAfter, isBefore, isSameDay, startOfMonth } from 'date-fns';
+import { isInRange } from 'packages/antwerp-ui/react-components/src/utils/time.utils';
 
 export function DayButton({
   date,
@@ -14,10 +15,7 @@ export function DayButton({
   ariaLabelCurrentDay
 }: DayButtonProps) {
   const isUnavailable = useMemo(
-    () =>
-      (unavailableTo && (isBefore(date, new Date(unavailableTo)) || isSameDay(date, new Date(unavailableTo)))) ||
-      (unavailableFrom && (isAfter(date, new Date(unavailableFrom)) || isSameDay(date, new Date(unavailableFrom)))) ||
-      !!unavailable?.find((u) => isSameDay(date, new Date(u))),
+    () => isInRange(date, unavailableFrom, unavailableTo, unavailable),
     [unavailable, unavailableFrom, unavailableTo, date]
   );
 

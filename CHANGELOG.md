@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Datepicker` component
 - `charCountText` property on `TextField` and `TextArea`
 - A warning is logged for wrong or unknown icons
 

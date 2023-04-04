@@ -10,3 +10,6 @@ export const SCREEN_READER_CLASS = 'u-screen-reader-only';
 // CONSTANTS
 export const SORT_ASCENDING = 'ascending';
 export const SORT_DESCENDING = 'descending';
+
+// DATES
+export const DEFAULT_DATE_FORMAT = 'dd/MM/yyyy';

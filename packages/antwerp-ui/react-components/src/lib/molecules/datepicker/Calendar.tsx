@@ -3,7 +3,7 @@ import { Button } from '../../atoms/button';
 import { classNames } from '../../../utils/dom.utils';
 import { DaysView } from './views/DaysView';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
-import { getMonth, getYear, addMonths, subMonths, format, addYears, subYears } from 'date-fns';
+import { getMonth, getYear, addMonths, subMonths, format, addYears, subYears, formatISO } from 'date-fns';
 import { Icon } from '../../base/icon';
 import { MonthsView } from './views/MonthsView';
 import { YearsView } from './views/YearsView';
@@ -103,7 +103,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     const handleChange = (value: Date) => {
       if (activeView === CalendarView.DAYS) {
         setActiveDate(value);
-        return onChange && onChange(value.toISOString());
+        return onChange && onChange(formatISO(value));
       } else if (activeView === CalendarView.MONTHS) {
         setActiveMonth(getMonth(value));
         return setActiveView(CalendarView.DAYS);
