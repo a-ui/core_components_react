@@ -2,7 +2,7 @@ import { classNames } from '../../../../utils/dom.utils';
 import { useMemo } from 'react';
 import { DayButtonProps } from '../Datepicker.types';
 import { endOfMonth, format, isAfter, isBefore, isSameDay, startOfMonth } from 'date-fns';
-import { isInRange } from 'packages/antwerp-ui/react-components/src/utils/time.utils';
+import { isInRange } from '../../../../utils/time.utils';
 
 export function DayButton({
   date,

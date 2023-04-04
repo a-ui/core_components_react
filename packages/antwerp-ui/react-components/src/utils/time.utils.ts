@@ -1,4 +1,4 @@
-import { endOfMonth, format, isAfter, isBefore, isSameDay } from 'date-fns';
+import { isAfter, isBefore, isSameDay } from 'date-fns';
 
 export function isInRange(date: Date, from?: string, to?: string, list?: string[]): boolean {
   return (
