@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed problem were range Rangepicker would jump when clicking on dots
+- Fixed problem were range `RangeSlider` dots would jump when clicking on handles
 
 ### Changed
 
