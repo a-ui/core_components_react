@@ -15,7 +15,7 @@ export function RangeSliderExamples() {
       <h2>Range Sliders</h2>
       <div className="u-margin">
         <div style={{ marginLeft: '40px', width: '400px' }}>
-          <RangeSlider />
+          <RangeSlider label="Uncontrolled (not available)" />
         </div>
         <div className="u-margin-xl">
           <RangeSlider

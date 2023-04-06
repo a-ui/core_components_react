@@ -36,16 +36,24 @@ const clamp = (value: number, min: number, max: number) => {
   return Math.min(Math.max(value, min), max);
 };
 
-export const getPosition = (coordinate: number, grab: number, direction: number | undefined) => {
-  return direction ? coordinate - direction - grab : coordinate - grab;
+export const getPosition = (coordinate: number, direction?: number) => {
+  return direction ? coordinate - direction : coordinate;
 };
 
-export const getValueFromPosition = (pos: number, limit: number, step: number, max: number, min: number) => {
+export const getValueFromPosition = (
+  pos: number,
+  limit: number,
+  step: number,
+  min: number,
+  max: number,
+  sliderMin: number,
+  sliderMax: number
+) => {
   const percentage = clamp(pos, 0, limit) / (limit || 1);
 
-  const baseVal = step * Math.round((percentage * (max - min)) / step);
+  const baseVal = (step * Math.round(percentage * (sliderMax - sliderMin))) / step;
 
-  let value = baseVal + min;
+  let value = baseVal + sliderMin;
 
   if (value >= max) value = max;
   if (value <= min) value = min;

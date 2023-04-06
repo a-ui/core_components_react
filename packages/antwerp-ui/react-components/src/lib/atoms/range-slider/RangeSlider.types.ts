@@ -1,10 +1,10 @@
 export interface RangeSliderProps {
   label?: string;
-  start?: number;
+  start: number;
   end?: number;
-  min?: number;
-  max?: number;
-  step?: number;
+  min: number;
+  max: number;
+  step: number;
   minRange?: number | false;
   unit?: string;
   range?: boolean;
@@ -31,10 +31,11 @@ export interface RangeSliderHandleProps {
   value: number;
   min: number;
   max: number;
+  sliderMin: number;
+  sliderMax: number;
   step: number;
   direction?: number;
   sliderPos?: number;
-  range?: boolean;
   onUpdate: (value: number) => void;
   getPositionFromValue: (value: number) => number;
   ariaLabel?: string;

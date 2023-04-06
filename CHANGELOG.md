@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] -
 
+### Fixed
+
+- Fixed problem were range Rangepicker would jump when clicking on dots
+
 ### Changed
 
 - Core branding update to 6.2.3

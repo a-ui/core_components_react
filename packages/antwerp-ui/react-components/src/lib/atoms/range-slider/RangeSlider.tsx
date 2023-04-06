@@ -84,6 +84,8 @@ export function RangeSlider({
           onUpdate={handleUpdateStart}
           min={min}
           max={range && minRange ? max - minRange : max}
+          sliderMin={min}
+          sliderMax={max}
           step={step}
           sliderPos={sliderPos}
           direction={direction}
@@ -96,6 +98,8 @@ export function RangeSlider({
             onUpdate={handleUpdateEnd}
             min={min + minRange}
             max={max}
+            sliderMin={min}
+            sliderMax={max}
             step={step}
             sliderPos={sliderPos}
             direction={direction}

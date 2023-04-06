@@ -6,6 +6,8 @@ export function RangeSliderHandle({
   value,
   min,
   max,
+  sliderMin,
+  sliderMax,
   step,
   direction,
   sliderPos,
@@ -15,7 +17,6 @@ export function RangeSliderHandle({
 }: RangeSliderHandleProps) {
   const [limit, setLimit] = React.useState(0);
   const handleRef = React.useRef(null);
-  const GRAB = 5;
 
   React.useEffect(() => {
     if (sliderPos) {
@@ -48,14 +49,13 @@ export function RangeSliderHandle({
 
   const position = (e: MouseEvent | React.TouchEvent) => {
     const clientCoordinateStyle = 'clientX';
-    let coordinate;
-    if (e.type !== 'touchmove') {
-      coordinate = (e as MouseEvent)[clientCoordinateStyle];
-    } else {
-      coordinate = (e as React.TouchEvent).touches[0][clientCoordinateStyle];
-    }
-    const pos = getPosition(coordinate, GRAB, direction);
-    return getValueFromPosition(pos, limit, step, max, min);
+    const coordinate =
+      e.type !== 'touchmove'
+        ? (e as MouseEvent)[clientCoordinateStyle]
+        : (e as React.TouchEvent).touches[0][clientCoordinateStyle];
+
+    const pos = getPosition(coordinate, direction);
+    return getValueFromPosition(pos, limit, step, min, max, sliderMin, sliderMax);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
