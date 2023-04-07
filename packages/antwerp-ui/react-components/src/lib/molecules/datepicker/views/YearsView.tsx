@@ -1,6 +1,6 @@
 import { format, getDate, getYear } from 'date-fns';
 import { classNames } from '../../../../utils/dom.utils';
-import { YearsViewProps } from '../datepicker.types';
+import { YearsViewProps } from '../Datepicker.types';
 
 export function YearsView({ yearsRowsStart, value, activeMonth, onChange }: YearsViewProps) {
   const renderYear = (year: number) => {
