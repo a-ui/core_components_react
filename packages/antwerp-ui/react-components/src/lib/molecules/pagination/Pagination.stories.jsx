@@ -13,6 +13,12 @@ export default {
       }
     }
   },
+  args: {
+    itemsPerPage: 10,
+    totalItems: 100,
+    display: 'numbers',
+    text: '%currentPage% of %totalPages%'
+  },
   argTypes: {
     currentPage: {
       table: {
@@ -26,7 +32,6 @@ export default {
       table: {
         type: { summary: 'number' }
       },
-      defaultValue: 10,
       description: 'The amount of items that should be displayed per page.'
     },
     totalItems: {
@@ -34,7 +39,6 @@ export default {
       table: {
         type: { summary: 'number' }
       },
-      defaultValue: 100,
       description: 'The total amount of items.'
     },
     onChange: {
@@ -52,7 +56,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'numbers' }
       },
-      defaultValue: 'numbers',
       options: ['text', 'numbers'],
       description: 'Set the type of pagination, or with all numbers or with one single text label.'
     },
@@ -68,7 +71,6 @@ export default {
     text: {
       if: { arg: 'display', eq: 'text' },
       control: { type: 'text' },
-      defaultValue: '%currentPage% of %totalPages%',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '%currentPage% van de %totalPages%' }

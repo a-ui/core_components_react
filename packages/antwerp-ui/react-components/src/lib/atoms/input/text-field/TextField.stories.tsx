@@ -12,10 +12,22 @@ export default {
       }
     }
   },
+  args: {
+    label: 'Enter your name',
+    description: 'Description',
+    type: 'text',
+    disabled: false,
+    readOnly: false,
+    inline: false,
+    required: false,
+    charCounter: false,
+    charCountText: '%count% / %max%',
+    addon: { type: 'icon', content: 'phone', placement: 'left' },
+    id: 'textfield-story'
+  },
   argTypes: {
     label: {
       control: { type: 'text' },
-      defaultValue: 'Enter your name',
       table: {
         defaultValue: { summary: '' },
         type: { summary: 'string' }
@@ -25,7 +37,6 @@ export default {
     },
     description: {
       control: { type: 'text' },
-      defaultValue: 'Description',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -34,7 +45,6 @@ export default {
     },
     type: {
       control: { type: 'select' },
-      defaultValue: 'text',
       options: [
         'date',
         'datetime-local',
@@ -67,7 +77,6 @@ export default {
     },
     disabled: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -77,7 +86,6 @@ export default {
     },
     readOnly: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -86,7 +94,6 @@ export default {
     },
     inline: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -95,7 +102,6 @@ export default {
     },
     required: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -105,7 +111,6 @@ export default {
     },
     charCounter: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -122,7 +127,6 @@ export default {
     },
     charCountText: {
       control: { type: 'text' },
-      defaultValue: '%count% / %max%',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '%count% / %max%' }
@@ -149,7 +153,6 @@ export default {
     },
     addon: {
       control: { type: 'object' },
-      defaultValue: { type: 'icon', content: 'phone', placement: 'left' },
       table: {
         type: { summary: 'object' }
       },
@@ -213,7 +216,6 @@ export default {
     qa: QA_PROP_STORY,
     id: {
       control: { type: 'text' },
-      defaultValue: 'textfield-story',
       table: {
         type: { summary: 'string' }
       },

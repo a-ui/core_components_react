@@ -12,15 +12,19 @@ export default {
       }
     }
   },
+  args: {
+    name: 'single-neutral',
+    thin: false
+  },
   argTypes: {
     name: {
       control: { type: 'select' },
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string' }
       },
-      defaultValue: 'single-neutral',
       options: ['single-neutral', 'social-media-snapchat', 'os-system-apple', 'love-it'],
-      description: 'Name of the icon, can be used with or without `ai`. E.g. `love-it` or `ai-love-it` are both valid names.',
+      description:
+        'Name of the icon, can be used with or without `ai`. E.g. `love-it` or `ai-love-it` are both valid names.'
     },
     thin: {
       control: { type: 'boolean' },
@@ -28,8 +32,8 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      defaultValue: false,
-      description: 'If you use a more detailed icon it can become unreadable. Use the `thin` prop to make strokes a bit thinner.',
+      description:
+        'If you use a more detailed icon it can become unreadable. Use the `thin` prop to make strokes a bit thinner.'
     },
     screenReaderText: {
       control: { type: 'text' },
@@ -37,7 +41,7 @@ export default {
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
-      },
+      }
     },
     qa: QA_PROP_STORY
   }

@@ -12,6 +12,9 @@ export default {
       }
     }
   },
+  args: {
+    children: 'default label'
+  },
   argTypes: {
     type: {
       control: { type: 'select' },
@@ -25,7 +28,6 @@ export default {
     children: {
       control: 'text',
       table: { type: { summary: 'string' } },
-      defaultValue: 'default label',
       description: 'Sets the label text.'
     },
     qa: QA_PROP_STORY

@@ -64,6 +64,18 @@ export default {
       }
     }
   },
+  args: {
+    striped: false,
+    selectable: false,
+    open: false,
+    small: false,
+    sort: 'description',
+    sortDirection: 'descending',
+    defaultValue: false,
+    fixedColumnRight: false,
+    fixedColumnLeft: false,
+    id: 'example-table'
+  },
   argTypes: {
     rows: {
       control: { type: 'object' },
@@ -85,7 +97,6 @@ export default {
     },
     striped: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -95,7 +106,6 @@ export default {
     },
     selectable: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -114,7 +124,6 @@ export default {
     },
     open: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -123,7 +132,6 @@ export default {
         'An open table removes the most outward borders of the table, providing a slightly lighter visual style. This does not apply for responsive tables.'
     },
     small: {
-      defaultValue: false,
       control: { type: 'boolean' },
       table: {
         type: { summary: 'boolean' },
@@ -133,7 +141,6 @@ export default {
         'The theme table with reduced padding can only be used in a setting where much data needs to be displayed in a limited space, such as a technical dashboard.'
     },
     sort: {
-      defaultValue: 'description',
       control: { type: 'text' },
       table: {
         type: { summary: 'string' },
@@ -143,7 +150,6 @@ export default {
         'Current sort of the `Table`, this prop expects a column `value`. Will render the sortable header accordingly.'
     },
     sortDirection: {
-      defaultValue: 'descending',
       control: { type: 'text' },
       table: {
         type: { summary: 'string' },
@@ -154,7 +160,6 @@ export default {
     },
     responsive: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true }
@@ -164,7 +169,6 @@ export default {
     },
     fixedColumnRight: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -173,7 +177,6 @@ export default {
     },
     fixedColumnLeft: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -205,7 +208,6 @@ export default {
     },
     id: {
       control: { type: 'text' },
-      defaultValue: 'example-table',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'aui-table' }

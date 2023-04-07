@@ -12,10 +12,19 @@ export default {
       }
     }
   },
+  args: {
+    statusLabelOn: 'Aan',
+    statusLabelOff: 'Uit',
+    statusLabelSide: '',
+    internalIOLabels: false,
+    disabled: false,
+    label: 'Switch me!',
+    labelId: 'aui-switch-label',
+    id: 'aui-switch'
+  },
   argTypes: {
     statusLabelOn: {
       control: { type: 'text' },
-      defaultValue: 'Aan',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Aan' }
@@ -24,7 +33,6 @@ export default {
     },
     statusLabelOff: {
       control: { type: 'text' },
-      defaultValue: 'Uit',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Uit' }
@@ -34,7 +42,6 @@ export default {
     statusLabelSide: {
       control: { type: 'select' },
       options: ['', 'left', 'right'],
-      defaultValue: '',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -51,7 +58,6 @@ export default {
     },
     internalIOLabels: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -69,7 +75,6 @@ export default {
     },
     disabled: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -87,7 +92,6 @@ export default {
     },
     label: {
       control: { type: 'text' },
-      defaultValue: 'Switch me!',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -96,7 +100,6 @@ export default {
     },
     labelId: {
       control: { type: 'text' },
-      defaultValue: 'aui-switch-label',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'aui-switch-label' }
@@ -105,7 +108,6 @@ export default {
     },
     id: {
       control: { type: 'text' },
-      defaultValue: 'aui-switch',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'aui-switch' }

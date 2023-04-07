@@ -12,15 +12,19 @@ export default {
       }
     }
   },
+  args: {
+    steps: [
+      { id: 'step1', complete: true, label: 'Stap 1', link: { href: '#' } },
+      { id: 'step2', active: true, label: 'Stap 2 - Gegevens' },
+      { id: 'step3' },
+      { id: 'step4', link: { href: '#' } }
+    ],
+    screenReaderStepLabel: 'Stap ',
+    screenReaderCompleteLabel: ' (voltooid)'
+  },
   argTypes: {
     steps: {
       control: { type: 'array' },
-      defaultValue: [
-        { id: 'step1', complete: true, label: 'Stap 1', link: { href: '#' } },
-        { id: 'step2', active: true, label: 'Stap 2 - Gegevens' },
-        { id: 'step3' },
-        { id: 'step4', link: { href: '#' } }
-      ],
       table: {
         type: { summary: 'array' },
         defaultValue: { summary: '' }
@@ -40,7 +44,6 @@ export default {
     screenReaderStepLabel: {
       description: 'Steps screen reader text.',
       control: { type: 'text' },
-      defaultValue: 'Stap ',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Stap ' }
@@ -49,7 +52,6 @@ export default {
     screenReaderCompleteLabel: {
       description: 'Complete steps screen reader text.',
       control: { type: 'text' },
-      defaultValue: ' (voltooid)',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: ' (voltooid)' }

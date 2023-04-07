@@ -13,10 +13,18 @@ export default {
       }
     }
   },
+  args: {
+    activePage: 'page-1',
+    pages: [
+      { id: 'page-1', ariaControls: 'panel-1', ariaLabel: 'Page 1' },
+      { id: 'page-2', ariaControls: 'panel-2', ariaLabel: 'Page 2' },
+      { id: 'page-3', ariaControls: 'panel-3', ariaLabel: 'Page 3' }
+    ],
+    size: ''
+  },
   argTypes: {
     activePage: {
       control: { type: null },
-      defaultValue: 'page-1',
       table: {
         type: { summary: 'text' },
         defaultValue: { summary: 'page-1' }
@@ -30,11 +38,6 @@ export default {
         type: { summary: 'array' },
         defaultValue: { summary: '[]' }
       },
-      defaultValue: [
-        { id: 'page-1', ariaControls: 'panel-1', ariaLabel: 'Page 1' },
-        { id: 'page-2', ariaControls: 'panel-2', ariaLabel: 'Page 2' },
-        { id: 'page-3', ariaControls: 'panel-3', ariaLabel: 'Page 3' }
-      ],
       description: 'Allows to define pages displayed with the component.'
     },
     size: {
@@ -43,7 +46,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
       },
-      defaultValue: '',
       options: ['', 'large', 'small'],
       description: 'Size of the component.'
     },

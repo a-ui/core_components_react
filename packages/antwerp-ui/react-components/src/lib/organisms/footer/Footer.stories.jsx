@@ -12,10 +12,19 @@ export default {
       }
     }
   },
+  args: {
+    backToTop: false,
+    backToTopAriaLabel: 'Ga naar boven',
+    items: [
+      { label: '© stad Antwerpen' },
+      { label: 'Privacy', href: '#' },
+      { label: 'Toegankelijkheid', href: '#' },
+      { label: 'Cookie instellingen', href: '#' }
+    ]
+  },
   argTypes: {
     backToTop: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -25,7 +34,6 @@ export default {
     },
     backToTopAriaLabel: {
       control: { type: 'text' },
-      defaultValue: 'Ga naar boven',
       if: { arg: 'backToTop' },
       table: {
         type: { summary: 'string' },
@@ -35,12 +43,6 @@ export default {
     },
     items: {
       control: { type: 'array' },
-      defaultValue: [
-        { label: '© stad Antwerpen' },
-        { label: 'Privacy', href: '#' },
-        { label: 'Toegankelijkheid', href: '#' },
-        { label: 'Cookie instellingen', href: '#' }
-      ],
       table: {
         type: { summary: 'array' },
         defaultValue: { summary: '' }

@@ -12,10 +12,12 @@ export default {
       }
     }
   },
+  args: {
+    children: '1'
+  },
   argTypes: {
     children: {
       control: { type: 'text' },
-      defaultValue: '1',
       table: {
         type: { summary: 'integer' },
         defaultValue: { summary: '' }

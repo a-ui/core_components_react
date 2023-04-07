@@ -12,10 +12,15 @@ export default {
       }
     }
   },
+  args: {
+    label: 'Wordt geladen...',
+    showText: false,
+    size: '',
+    vertical: false
+  },
   argTypes: {
     label: {
       control: { type: 'text' },
-      defaultValue: 'Wordt geladen...',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Wordt geladen...' }
@@ -24,18 +29,15 @@ export default {
     },
     showText: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      description:
-        'Controls whether the label should be used as a visual element or as a screen reader only element.'
+      description: 'Controls whether the label should be used as a visual element or as a screen reader only element.'
     },
     size: {
       control: { type: 'select' },
       options: ['', 'small', 'medium', 'large'],
-      defaultValue: '',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -44,7 +46,6 @@ export default {
     },
     vertical: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }

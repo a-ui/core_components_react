@@ -11,10 +11,24 @@ export default {
       }
     }
   },
+  args: {
+    isOpen: true,
+    unavailable: [new Date(Date.now() - 86400000)],
+    unavailableTo: new Date(Date.now() - 691200000),
+    unavailableFrom: new Date(Date.now() + 691200000),
+    value: new Date(Date.now() + 86400000),
+    ariaLabel: 'Kalender',
+    ariaLabelCurrentDay: 'Huidige dag',
+    ariaLabelPreviousMonth: 'Ga naar de vorige maand',
+    ariaLabelPreviousYear: 'Ga naar het vorig jaar',
+    ariaLabelPreviousYears: 'Ga naar de voorgaande jaren',
+    ariaLabelNextMonth: 'Ga naar de volgende maand',
+    ariaLabelNextYear: 'Ga naar het volgend jaar',
+    ariaLabelNextYears: 'Ga naar de volgende jaren'
+  },
   argTypes: {
     isOpen: {
       control: { type: 'boolean' },
-      defaultValue: true,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true }
@@ -23,7 +37,6 @@ export default {
     },
     unavailable: {
       control: { type: 'array' },
-      defaultValue: [new Date(Date.now() - 86400000)],
       table: {
         type: { summary: 'array' },
         defaultValue: { summary: '[]' }
@@ -33,7 +46,6 @@ export default {
     },
     unavailableTo: {
       control: { type: 'date' },
-      defaultValue: new Date(Date.now() - 691200000),
       table: {
         type: { summary: 'Date' }
       },
@@ -41,7 +53,6 @@ export default {
     },
     unavailableFrom: {
       control: { type: 'date' },
-      defaultValue: new Date(Date.now() + 691200000),
       table: {
         type: { summary: 'Date' }
       },
@@ -49,7 +60,6 @@ export default {
     },
     value: {
       control: { type: 'date' },
-      defaultValue: new Date(Date.now() + 86400000),
       table: {
         type: { summary: 'Date' }
       },
@@ -76,7 +86,6 @@ export default {
     },
     ariaLabel: {
       control: { type: 'text' },
-      defaultValue: 'Kalender',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Kalender' }
@@ -85,7 +94,6 @@ export default {
     },
     ariaLabelCurrentDay: {
       control: { type: 'text' },
-      defaultValue: 'Huidige dag',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Huidige dag' }
@@ -95,7 +103,6 @@ export default {
     },
     ariaLabelPreviousMonth: {
       control: { type: 'text' },
-      defaultValue: 'Ga naar de vorige maand',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Ga naar de vorige maand' }
@@ -105,7 +112,6 @@ export default {
     },
     ariaLabelPreviousYear: {
       control: { type: 'text' },
-      defaultValue: 'Ga naar het vorig jaar',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Ga naar het vorig jaar' }
@@ -115,7 +121,6 @@ export default {
     },
     ariaLabelPreviousYears: {
       control: { type: 'text' },
-      defaultValue: 'Ga naar de voorgaande jaren',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Ga naar de voorgaande jaren' }
@@ -125,7 +130,6 @@ export default {
     },
     ariaLabelNextMonth: {
       control: { type: 'text' },
-      defaultValue: 'Ga naar de volgende maand',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Ga naar de volgende maand' }
@@ -135,7 +139,6 @@ export default {
     },
     ariaLabelNextYear: {
       control: { type: 'text' },
-      defaultValue: 'Ga naar het volgend jaar',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Ga naar het volgend jaar' }
@@ -145,7 +148,6 @@ export default {
     },
     ariaLabelNextYears: {
       control: { type: 'text' },
-      defaultValue: 'Ga naar de volgende jaren',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Ga naar de volgende jaren' }

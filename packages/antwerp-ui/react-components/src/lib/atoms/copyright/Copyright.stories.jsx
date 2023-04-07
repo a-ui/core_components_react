@@ -8,14 +8,18 @@ export default {
     docs: {
       description: {
         component:
-          "A copyright component provides a visually distinctive method for displaying information related to a copyright notice. Always use it when copyright information legally needs to be shown. When there is no legal obligation for the copyright information to be shown. Only use the `Copyright` component within the `Image` component."
+          'A copyright component provides a visually distinctive method for displaying information related to a copyright notice. Always use it when copyright information legally needs to be shown. When there is no legal obligation for the copyright information to be shown. Only use the `Copyright` component within the `Image` component.'
       }
     }
+  },
+  args: {
+    sign: '©',
+    label: '',
+    forImage: false
   },
   argTypes: {
     sign: {
       control: { type: 'text' },
-      defaultValue: '©',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '©' }
@@ -24,7 +28,6 @@ export default {
     },
     label: {
       control: { type: 'text' },
-      defaultValue: '',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -42,12 +45,12 @@ export default {
     },
     forImage: {
       control: { type: 'boolean', disable: true },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true }
       },
-      description: 'Indicates if the Copyright is inside an image, only use the `Copyright` component within the `Image` component.'
+      description:
+        'Indicates if the Copyright is inside an image, only use the `Copyright` component within the `Image` component.'
     },
     qa: QA_PROP_STORY
   }

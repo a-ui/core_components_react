@@ -1,5 +1,4 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
-import { Avatar } from '../avatar';
 import Button from './Button';
 
 export default {
@@ -12,6 +11,10 @@ export default {
           'Buttons are the primary call-to-action components by which we allow users to take action. Buttons are used for actions that affect the front-end or back-end.'
       }
     }
+  },
+  args: {
+    fullWidth: false,
+    children: 'Click me'
   },
   argTypes: {
     id: {
@@ -61,7 +64,6 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      defaultValue: false,
       description: 'The button can have a scalable width and take up the full width of the parent container.'
     },
     addOn: {
@@ -85,7 +87,6 @@ export default {
       table: {
         type: { summary: 'ReactNode | string' }
       },
-      defaultValue: 'Click me',
       description: 'React Node(s) inside the button component.'
     },
     htmlType: {

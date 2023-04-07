@@ -11,10 +11,21 @@ export default {
       }
     }
   },
+  args: {
+    name: 'aui-autocomplete',
+    items: [
+      { label: 'Acadia', value: '1' },
+      { label: 'American Samoa', value: '2' },
+      { label: 'Arches', value: '3' },
+      { label: 'Canyonlands', value: '4' },
+      { label: 'Capitol Reef', value: '5' }
+    ],
+    label: 'National Parks',
+    noResultsText: 'Sorry, niet gevonden'
+  },
   argTypes: {
     name: {
       control: { type: 'text' },
-      defaultValue: 'aui-autocomplete',
       table: {
         type: { summary: 'string' }
       },
@@ -23,13 +34,6 @@ export default {
     },
     items: {
       control: { type: 'array' },
-      defaultValue: [
-        { label: 'Acadia', value: '1' },
-        { label: 'American Samoa', value: '2' },
-        { label: 'Arches', value: '3' },
-        { label: 'Canyonlands', value: '4' },
-        { label: 'Capitol Reef', value: '5' }
-      ],
       table: {
         type: { summary: 'array' },
         defaultValue: { summary: '[]' }
@@ -39,34 +43,30 @@ export default {
     },
     label: {
       control: { type: 'text' },
-      defaultValue: 'National Parcs',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
       },
-      description:
-        'The label of the `Autocomplete` component.'
+      description: 'The label of the `Autocomplete` component.'
     },
     noResultsText: {
       control: { type: 'text' },
-      defaultValue: 'Sorry, niet gevonden',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Geen resultaten' }
       },
-      description:
-        'The text when no item match the provided search term.'
+      description: 'The text when no item match the provided search term.'
     },
     inputValue: {
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string' }
       },
       description:
         'The `inputValue` prop controls the value of the `Autocomplete` input field. This prop makes the `Autocomplete` a controlled component and should be used together with `onInputChange`.'
     },
     value: {
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string' }
       },
       description:
         'The `value` prop controls the value of the selected `Autocomplete` item. This prop makes the `Autocomplete` a controlled component and should be used together with `onChange`.'

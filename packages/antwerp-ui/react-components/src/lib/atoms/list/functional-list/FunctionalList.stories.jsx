@@ -13,6 +13,23 @@ export default {
       }
     }
   },
+  args: {
+    type: '',
+    ordered: false,
+    lined: true,
+    flushed: false,
+    children: [
+      <ListItem id="1" key="1" name="first" active link={{ href: '#' }}>
+        First active item
+      </ListItem>,
+      <ListItem id="2" key="2" name="second" iconLeft="mouse" iconRight="arrow-right-1" link={{ href: '#' }}>
+        Second clickable item
+      </ListItem>,
+      <ListItem id="3" key="3" name="third">
+        Third item
+      </ListItem>
+    ]
+  },
   argTypes: {
     type: {
       control: false,
@@ -20,13 +37,11 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
       },
-      defaultValue: '',
       description:
         'Set the type of list to `avatar` or `checkbox`. This transforms the `FunctionalList` in an avatar list or checkbox list. The components `AvatarList` and `CheckboxList` can be used as syntactic sugar.'
     },
     ordered: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -35,7 +50,6 @@ export default {
     },
     lined: {
       control: { type: 'boolean' },
-      defaultValue: true,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -44,7 +58,6 @@ export default {
     },
     flushed: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -53,17 +66,6 @@ export default {
     },
     children: {
       control: false,
-      defaultValue: [
-        <ListItem id="1" key="1" name="first" active link={{ href: '#' }}>
-          First active item
-        </ListItem>,
-        <ListItem id="2" key="2" name="second" iconLeft="mouse" iconRight="arrow-right-1" link={{ href: '#' }}>
-          Second clickable item
-        </ListItem>,
-        <ListItem id="3" key="3" name="third">
-          Third item
-        </ListItem>
-      ],
       table: {
         type: { summary: 'ReactElement[]' }
       },
@@ -82,7 +84,5 @@ export default {
     qa: QA_PROP_STORY
   }
 };
-
-const Template = ({ ...args }) => <FunctionalList {...args}></FunctionalList>;
 
 export const functionalList = '';

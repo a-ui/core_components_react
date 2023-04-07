@@ -13,10 +13,17 @@ export default {
       }
     }
   },
+  args: {
+    ordered: false,
+    flushed: false,
+    children: [
+      <ListItemCheckbox name="checkbox-1" id="checkbox-1" key="checkbox-1" label="First item" />,
+      <ListItemCheckbox name="checkbox-2" id="checkbox-2" key="checkbox-2" label="Second item" />
+    ]
+  },
   argTypes: {
     ordered: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -25,7 +32,6 @@ export default {
     },
     flushed: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -34,10 +40,6 @@ export default {
     },
     children: {
       control: false,
-      defaultValue: [
-        <ListItemCheckbox name="checkbox-1" id="checkbox-1" key="checkbox-1" label="First item" />,
-        <ListItemCheckbox name="checkbox-2" id="checkbox-2" key="checkbox-2" label="Second item" />
-      ],
       table: {
         type: { summary: 'ReactElement[]' }
       },

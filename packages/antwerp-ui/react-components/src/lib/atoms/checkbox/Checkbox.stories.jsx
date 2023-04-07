@@ -13,10 +13,18 @@ export default {
       }
     }
   },
+  args: {
+    label: 'I agree',
+    showLabel: true,
+    checked: false,
+    disabled: false,
+    indeterminate: false,
+    id: 'checkbox-example',
+    name: 'agree-checkbox'
+  },
   argTypes: {
     label: {
       control: { type: 'text' },
-      defaultValue: 'I agree',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -25,7 +33,6 @@ export default {
     },
     showLabel: {
       control: { type: 'boolean' },
-      defaultValue: true,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true }
@@ -38,13 +45,11 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      defaultValue: false,
       description:
         'Checked state. When this prop is set, the `Checkbox` becomes a controlled component; use it together with `onChange`.'
     },
     disabled: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -54,7 +59,6 @@ export default {
     },
     indeterminate: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -73,7 +77,6 @@ export default {
     },
     id: {
       control: { type: 'text' },
-      defaultValue: 'checkbox-example',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -83,7 +86,6 @@ export default {
     },
     name: {
       control: { type: 'text' },
-      defaultValue: 'agree-checkbox',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }

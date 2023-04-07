@@ -12,10 +12,18 @@ export default {
       }
     }
   },
+  args: {
+    image: 'https://placedog.net/100/100?r',
+    letter: 'NT',
+    icon: 'single-neutral',
+    rounded: false,
+    size: '',
+    ariaLabel: 'Gebruiker',
+    imageAlt: 'Avatar'
+  },
   argTypes: {
     image: {
       control: { type: 'text' },
-      defaultValue: 'https://placedog.net/100/100?r',
       table: {
         type: { summary: 'url' },
         defaultValue: { summary: '' }
@@ -29,7 +37,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
       },
-      defaultValue: 'NT',
       description:
         'The `letter` prop will allow an authenticated user to display their initials (will display up to 3 characters. Extra characters will be ignored). If an image is provided, it will override the letter parameter.'
     },
@@ -39,7 +46,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'single-neutral' }
       },
-      defaultValue: 'single-neutral',
       options: ['single-neutral', 'social-media-snapchat', 'house-chimney', 'bicycle', 'flash'],
       description:
         'The `icon` prop displays an icon in the avatar for guest users. Authenticated users will have this replaced with their initials, or an image, if they provided one.'
@@ -50,7 +56,6 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      defaultValue: false,
       description: 'Adds a class to the underlying HTML to change the style to rounded.'
     },
     size: {
@@ -60,7 +65,6 @@ export default {
         defaultValue: { summary: '' }
       },
       options: ['', 'small', 'medium', 'large'],
-      defaultValue: '',
       description: 'Sets the size for the component. Can be omitted for `medium`.'
     },
     ariaLabel: {
@@ -69,7 +73,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'Gebruiker' }
       },
-      defaultValue: 'Gebruiker',
       description: 'The `ariaLabel` describes an accessible name for the icon inside the `Avatar` component.'
     },
     imageAlt: {
@@ -78,7 +81,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'Avatar' }
       },
-      defaultValue: 'Avatar',
       description: 'Image alt text for the provided image.'
     },
     qa: QA_PROP_STORY
