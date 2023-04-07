@@ -1,6 +1,6 @@
 import jest from 'jest-mock';
 import { NavigationList } from './NavigationList';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('UI Components - Molecules - Navigation', () => {
@@ -42,12 +42,12 @@ describe('UI Components - Molecules - Navigation', () => {
     expect(mockClick).toBeCalledTimes(1);
   });
 
-  it('should set tab-index when scrolled', () => {
+  it('should set tab-index when scrolled', async () => {
     const mockClick = jest.fn();
     const { getByRole } = render(
       <NavigationList onItemClick={mockClick} items={[{ id: '1', label: 'Active' }]} direction="horizontal" />
     );
     fireEvent.scroll(getByRole('list'), { target: { scrollLeft: 10 } });
-    expect(getByRole('list').getAttribute('tabindex')).toEqual('0');
+    await waitFor(() => expect(getByRole('list').getAttribute('tabindex')).toEqual('0'));
   });
 });

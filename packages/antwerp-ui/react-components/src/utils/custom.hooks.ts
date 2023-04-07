@@ -1,4 +1,4 @@
-import { MouseEventHandler, RefObject, UIEvent, UIEventHandler, useEffect, useRef, useState } from 'react';
+import { RefObject, UIEvent, UIEventHandler, useEffect, useRef, useState } from 'react';
 import { isScrollAtTheEnd } from './dom.utils';
 
 export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean, boolean] {
@@ -7,8 +7,10 @@ export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean,
   const scrollDivRef = useRef(null);
 
   const setScrollPoints = (target: Element) => {
-    setIsScrollStart(target.scrollLeft === 0);
-    setIsScrollEnd(isScrollAtTheEnd(target));
+    setTimeout(() => {
+      setIsScrollStart(target.scrollLeft === 0);
+      setIsScrollEnd(isScrollAtTheEnd(target));
+    }, 100);
   };
 
   useEffect(() => {
