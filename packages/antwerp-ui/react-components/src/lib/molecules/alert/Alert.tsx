@@ -26,7 +26,7 @@ const renderModalAlert = (className: string, props: AlertProps) => {
           <Icon name={THEME_ICON_MAP[theme]} />
         </span>
       )}
-      <HeaderTag id={titleId} className="h5 u-margin-bottom-xs">
+      <HeaderTag id={titleId} className="u-margin-bottom-xs">
         {title?.label}
       </HeaderTag>
       <p className={textClass}>{children}</p>
