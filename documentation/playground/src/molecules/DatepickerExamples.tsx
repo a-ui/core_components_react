@@ -22,16 +22,21 @@ export function DatepickerExamples() {
       </div>
       <h2>Datepicker</h2>
       <div className="u-margin">
-        <p className="u-margin-top">Without value</p>
+        <p className="u-margin-top">Without value (format dd/mm/yyyy)</p>
         <Datepicker
+          inputProps={{ id: 'aui-datepicker-1' }}
           calendarProps={{
             unavailable: [new Date(Date.now()).toISOString()],
             unavailableTo: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
             unavailableFrom: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString()
           }}
         />
-        <p className="u-margin-top">With value</p>
-        <Datepicker format="dd-MM-yyyy" value={new Date(Date.now()).toISOString()} />
+        <p className="u-margin-top">With value (format dd-mm-yyyy)</p>
+        <Datepicker
+          inputProps={{ id: 'aui-datepicker-2' }}
+          format="dd-MM-yyyy"
+          value={new Date(Date.now()).toISOString()}
+        />
       </div>
     </div>
   );

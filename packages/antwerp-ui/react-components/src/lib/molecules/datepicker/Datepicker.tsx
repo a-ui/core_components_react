@@ -36,6 +36,7 @@ export function Datepicker({
   const toggleOpen = () => setIsOpen(!isOpen);
 
   const handleBlur = (e: FocusEvent) => {
+    console.log('blur');
     if (!e.currentTarget.contains(e.relatedTarget)) {
       setIsOpen(false);
     }
@@ -98,7 +99,7 @@ export function Datepicker({
           name="calendar"
           role="button"
           onClick={toggleOpen}
-          className={'ai-calendar is-clickable'}
+          className={'is-clickable'}
           onKeyDown={handleIconKeyDown}
           ref={iconRef}
         />
