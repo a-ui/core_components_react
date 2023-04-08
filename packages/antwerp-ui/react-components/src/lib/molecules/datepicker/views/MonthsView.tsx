@@ -1,12 +1,12 @@
 import { format, getDate, getMonth, getYear } from 'date-fns';
 import { classNames } from '../../../../utils/dom.utils';
-import { MonthsViewProps } from '../datepicker.types';
+import { MonthsViewProps } from '../Datepicker.types';
 
 export function MonthsView({ onChange, value, activeYear }: MonthsViewProps) {
   const renderMonth = (month: number) => {
     const classes = classNames({
       'is-current': month === getMonth(new Date()) && activeYear === getYear(new Date()),
-      'is-selected': !!(value && month === getMonth(value))
+      'is-selected': !!(value && month === getMonth(value) && activeYear === getYear(value))
     });
     const monthValue = new Date(activeYear, month, value ? getDate(value) : 1);
     return (
