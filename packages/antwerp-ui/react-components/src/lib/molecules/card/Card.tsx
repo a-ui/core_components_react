@@ -13,7 +13,7 @@ export function Card({ title, subTitle, description, children, image, link, qa }
       )}
       <div className="m-card__body">
         {!!title?.label && (
-          <HeaderTag id={`${title?.id}`} className={`${title.className || 'h5'} u-margin-bottom-xs`}>
+          <HeaderTag id={`${title?.id}`} className={`u-margin-bottom-xs ${title.className ?? ''}`}>
             {title.label}
           </HeaderTag>
         )}
