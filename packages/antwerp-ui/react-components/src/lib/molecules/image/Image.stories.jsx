@@ -1,5 +1,5 @@
 import { Copyright } from '../../atoms/copyright';
-import {QA_PROP_STORY} from '../../../constants/stories.settings';
+import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Image from './Image';
 
 export default {
@@ -13,10 +13,15 @@ export default {
       }
     }
   },
+  args: {
+    alt: '',
+    src: 'https://placedog.net/400/300?r',
+    copyrighted: false,
+    children: <Copyright sign="©" label="All rights reserved" link="#" />
+  },
   argTypes: {
     alt: {
       control: { type: 'text' },
-      defaultValue: '',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -26,7 +31,6 @@ export default {
     },
     src: {
       control: { type: 'text' },
-      defaultValue: 'https://placedog.net/400/300?r',
       table: {
         type: { summary: 'url' },
         defaulValue: { summary: '' }
@@ -36,7 +40,6 @@ export default {
     },
     copyrighted: {
       control: { type: 'boolean' },
-      defaultValue: false,
       description:
         'Control whether the example should be of a copyrighted image or not. An image can have a Copyright component as its child.'
     },
@@ -44,7 +47,6 @@ export default {
       control: { type: 'object' },
       if: { arg: 'copyrighted', truthy: true },
       component: Copyright,
-      defaultValue: <Copyright sign="©" label="All rights reserved" link="#" />,
       table: {
         disable: true
       },

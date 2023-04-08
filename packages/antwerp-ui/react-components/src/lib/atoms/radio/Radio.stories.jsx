@@ -12,10 +12,17 @@ export default {
       }
     }
   },
+  args: {
+    label: 'Option one',
+    checked: false,
+    disabled: false,
+    autoFocus: false,
+    name: 'radio-example',
+    id: 'radio-example'
+  },
   argTypes: {
     label: {
       control: { type: 'text' },
-      defaultValue: 'Option one',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -24,7 +31,6 @@ export default {
     },
     checked: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -34,7 +40,6 @@ export default {
     },
     disabled: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -43,7 +48,6 @@ export default {
     },
     autoFocus: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -52,7 +56,6 @@ export default {
     },
     name: {
       control: { type: 'text' },
-      defaultValue: 'radio-example',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -71,7 +74,6 @@ export default {
     },
     id: {
       control: { type: 'text' },
-      defaultValue: 'radio-example',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }

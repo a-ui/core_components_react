@@ -14,10 +14,25 @@ export default {
       }
     }
   },
+  args: {
+    label: 'Price',
+    min: 0,
+    max: 20,
+    step: 1,
+    unit: '$',
+    range: false,
+    minRange: 1,
+    labelStart: '',
+    labelEnd: '',
+    iconStart: 'ai-accounting-bill',
+    iconEnd: 'ai-accounting-bills',
+    ariaLabelMin: 'Minimum',
+    ariaLabelMax: 'Maximum',
+    tickMarks: false
+  },
   argTypes: {
     label: {
       control: { type: 'text' },
-      defaultValue: 'Price',
       table: {
         type: { summary: 'string' }
       },
@@ -41,7 +56,6 @@ export default {
     },
     min: {
       control: { type: 'number' },
-      defaultValue: 0,
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 0 }
@@ -50,7 +64,6 @@ export default {
     },
     max: {
       control: { type: 'number' },
-      defaultValue: 20,
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 10 }
@@ -59,7 +72,6 @@ export default {
     },
     step: {
       control: { type: 'number' },
-      defaultValue: 1,
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 1 }
@@ -68,7 +80,6 @@ export default {
     },
     unit: {
       control: { type: 'text' },
-      defaultValue: '$',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -77,7 +88,6 @@ export default {
     },
     range: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -86,7 +96,6 @@ export default {
     },
     minRange: {
       control: { type: 'number' },
-      defaultValue: 1,
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 1 }
@@ -96,7 +105,6 @@ export default {
     },
     labelStart: {
       control: { type: 'text' },
-      defaultValue: '',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -105,7 +113,6 @@ export default {
     },
     labelEnd: {
       control: { type: 'text' },
-      defaultValue: '',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -115,7 +122,6 @@ export default {
     iconStart: {
       control: { type: 'select' },
       options: ['', 'ai-accounting-bill', 'volume-control-off', 'arrow-left-1'],
-      defaultValue: 'ai-accounting-bill',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -125,7 +131,6 @@ export default {
     iconEnd: {
       control: { type: 'select' },
       options: ['', 'ai-accounting-bills', 'volume-control-full', 'arrow-right-1'],
-      defaultValue: 'ai-accounting-bills',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -143,7 +148,6 @@ export default {
     },
     ariaLabelMin: {
       control: { type: 'text' },
-      defaultValue: 'Minimum',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Minimum' }
@@ -152,7 +156,6 @@ export default {
     },
     ariaLabelMax: {
       control: { type: 'text' },
-      defaultValue: 'Maximum',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Maximum' }
@@ -161,7 +164,6 @@ export default {
     },
     tickMarks: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }

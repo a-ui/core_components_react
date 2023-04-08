@@ -12,13 +12,15 @@ export default {
       }
     }
   },
+  args: {
+    items: [
+      { id: '1', term: 'Hello', description: 'World' },
+      { id: '2', term: 'Term', description: 'Term description' }
+    ]
+  },
   argTypes: {
     items: {
       control: { type: 'array' },
-      defaultValue: [
-        { id: '1', term: 'Hello', description: 'World' },
-        { id: '2', term: 'Term', description: 'Term description' }
-      ],
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: [] }

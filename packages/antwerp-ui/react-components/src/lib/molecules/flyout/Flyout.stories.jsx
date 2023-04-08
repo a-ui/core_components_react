@@ -13,12 +13,19 @@ export default {
       }
     }
   },
+  args: {
+    trigger: <Button>Open flyout</Button>,
+    orientation: 'bottom-left',
+    size: '',
+    hasPadding: true,
+    scrollable: true,
+    children: 'Flyout content'
+  },
   argTypes: {
     trigger: {
       table: {
         type: { summary: 'ReactNode' }
       },
-      defaultValue: <Button>Open flyout</Button>,
       description: 'ReactNode that is the trigger for the flyout to open or close. Required to render the `Flyout`.'
     },
     orientation: {
@@ -27,7 +34,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'bottom-left' }
       },
-      defaultValue: 'bottom-left',
       description:
         'The orientation attribute allows to re-orient the flyout to snap to either a right or/and top side of a triggering component.',
       options: ['', 'upper-left', 'upper-right', 'bottom-left', 'bottom-right']
@@ -37,7 +43,6 @@ export default {
       table: {
         type: { summary: 'string' }
       },
-      defaultValue: '',
       description:
         'Flyouts can be used in 2 size variations. Medium (default) and small sizes both lock in the flyout to a predetermined maximum width.',
       options: ['', 'small', 'medium']
@@ -47,7 +52,6 @@ export default {
       table: {
         type: { summary: 'boolean' }
       },
-      defaultValue: true,
       description:
         'By default a flyout will provide internal padding on all its sides, though this can be disabled to provide an edge-to-edge style for hosting lists.'
     },
@@ -63,7 +67,6 @@ export default {
       table: {
         type: { summary: 'boolean' }
       },
-      defaultValue: false,
       description: 'The scrollable attribute will add a scrollbar to the content of the flyout.'
     },
     children: {
@@ -71,7 +74,6 @@ export default {
       table: {
         type: { summary: 'ReactNode' }
       },
-      defaultValue: 'Flyout content',
       description: 'React Node(s) inside the flyout content.'
     },
     onStateChange: {

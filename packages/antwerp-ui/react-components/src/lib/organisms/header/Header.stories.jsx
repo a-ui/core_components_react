@@ -11,6 +11,13 @@ export default {
       }
     }
   },
+  args: {
+    logoHref: '/',
+    logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.2.3/assets/images/a-logo.svg',
+    logoAlt: 'Naar de startpagina',
+    skipToMainLabel: 'Ga naar inhoud',
+    buttons: [{ label: 'Hello world' }]
+  },
   argTypes: {
     logoHref: {
       control: { type: 'text' },
@@ -18,7 +25,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '/' }
       },
-      defaultValue: '/',
       description: 'The url where a click on the logo in the header component leads to.'
     },
     logoSrc: {
@@ -27,7 +33,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'https://cdn.antwerpen.be/core_branding_scss/6.2.3/assets/images/a-logo.svg' }
       },
-      defaultValue: 'https://cdn.antwerpen.be/core_branding_scss/6.2.3/assets/images/a-logo.svg',
       description: 'The url for the src logo image in the header component.'
     },
     logoAlt: {
@@ -36,7 +41,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'Naar de startpagina' }
       },
-      defaultValue: 'Naar de startpagina',
       description: 'The alternative text for the logo image in the header component.'
     },
     skipToMainLabel: {
@@ -45,7 +49,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'Ga naar inhoud' }
       },
-      defaultValue: 'Ga naar inhoud',
       description: 'The label for the skip to main content button in the header.'
     },
     buttons: {
@@ -53,7 +56,6 @@ export default {
         type: { summary: 'array' },
         defaultValue: { summary: '[]' }
       },
-      defaultValue: [{ label: 'Hello world' }],
       description: 'Array of top right header buttons, use objects of button properties with extra property `label`.'
     },
     qa: QA_PROP_STORY

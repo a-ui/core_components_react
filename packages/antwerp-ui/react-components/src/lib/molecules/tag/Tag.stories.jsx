@@ -12,10 +12,18 @@ export default {
       }
     }
   },
+  args: {
+    label: 'I am a Tag!',
+    isToggle: false,
+    active: false,
+    iconLeft: 'hammer-wench',
+    removable: false,
+    name: 'aui-tag',
+    ariaLabelDelete: 'Delete'
+  },
   argTypes: {
     label: {
       control: { type: 'text' },
-      defaultValue: 'I am a Tag!',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -25,7 +33,6 @@ export default {
 
     isToggle: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -36,7 +43,6 @@ export default {
     active: {
       control: { type: 'boolean' },
       if: { arg: 'isToggle', truthy: true },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -46,7 +52,6 @@ export default {
     },
     iconLeft: {
       control: { type: 'select' },
-      defaultValue: 'hammer-wench',
       options: [
         '',
         'tags',
@@ -63,7 +68,6 @@ export default {
     },
     removable: {
       control: { type: 'boolean' },
-      defaultValue: false,
       if: { arg: 'isToggle', truthy: false },
       table: {
         type: { summary: 'boolean' },
@@ -83,7 +87,6 @@ export default {
     },
     name: {
       control: { type: 'text' },
-      defaultValue: 'aui-tag',
       table: {
         type: { summary: 'string' }
       },
@@ -92,7 +95,6 @@ export default {
     },
     ariaLabelDelete: {
       control: { type: 'text' },
-      defaultValue: 'Delete',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Verwijderen' }

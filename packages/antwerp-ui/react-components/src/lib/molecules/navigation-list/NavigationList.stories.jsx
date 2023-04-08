@@ -12,6 +12,15 @@ export default {
       }
     }
   },
+  args: {
+    border: false,
+    items: [
+      { id: 'item-overview', label: 'Overzicht', active: true },
+      { id: 'item-attachments', label: 'Bijlagen' },
+      { id: 'item-locations', label: 'Locaties' },
+      { id: 'item-communications', label: 'Communicatie', disabled: true }
+    ]
+  },
   argTypes: {
     direction: {
       control: { type: 'select' },
@@ -35,9 +44,7 @@ export default {
       table: {
         type: { summary: 'boolean' }
       },
-      defaultValue: false,
-      description:
-        'When using a horizontal navigation list, the `hasBorder` property will add a border to the bottom.'
+      description: 'When using a horizontal navigation list, the `hasBorder` property will add a border to the bottom.'
     },
     onItemClick: {
       control: { type: 'function' },
@@ -53,13 +60,8 @@ export default {
       table: {
         type: { summary: 'object' }
       },
-      defaultValue: [
-        { id: 'item-overview', label: 'Overzicht', active: true },
-        { id: 'item-attachments', label: 'Bijlagen' },
-        { id: 'item-locations', label: 'Locaties' },
-        { id: 'item-communications', label: 'Communicatie', disabled: true }
-      ],
-      description: 'The items of the `NavigationList` component. Navigation list items have following fields: id, label, href, active and disabled.'
+      description:
+        'The items of the `NavigationList` component. Navigation list items have following fields: id, label, href, active and disabled.'
     },
     qa: QA_PROP_STORY
   }

@@ -13,10 +13,41 @@ export default {
       }
     }
   },
+  args: {
+    ordered: false,
+    flushed: false,
+    children: [
+      <ListItemAvatar
+        name="albert"
+        user={{ name: 'Albert Einstein' }}
+        avatar={{ letter: 'AE' }}
+        active
+        iconRight="navigation-menu-horizontal"
+        id="albert"
+        key="albert"
+      />,
+      <ListItemAvatar
+        name="dog"
+        user={{ name: 'A dog', function: 'Dog', email: 'dog@antwerpen.be' }}
+        avatar={{ image: 'https://placedog.net/100/100?r' }}
+        iconRight="navigation-menu-horizontal"
+        id="dog"
+        key="dog"
+      />,
+      <ListItemAvatar
+        name="isaac"
+        avatar={{ letter: 'IN' }}
+        link={{ href: '#' }}
+        user={{ name: 'Isaac Newton', email: 'isaac.newton@antwerpen.be' }}
+        iconRight="navigation-menu-horizontal"
+        id="isaac"
+        key="isaac"
+      />
+    ]
+  },
   argTypes: {
     ordered: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -25,7 +56,6 @@ export default {
     },
     flushed: {
       control: { type: 'boolean' },
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -34,34 +64,6 @@ export default {
     },
     children: {
       control: false,
-      defaultValue: [
-        <ListItemAvatar
-          name="albert"
-          user={{ name: 'Albert Einstein' }}
-          avatar={{ letter: 'AE' }}
-          active
-          iconRight="navigation-menu-horizontal"
-          id="albert"
-          key="albert"
-        />,
-        <ListItemAvatar
-          name="dog"
-          user={{ name: 'A dog', function: 'Dog', email: 'dog@antwerpen.be' }}
-          avatar={{ image: 'https://placedog.net/100/100?r' }}
-          iconRight="navigation-menu-horizontal"
-          id="dog"
-          key="dog"
-        />,
-        <ListItemAvatar
-          name="isaac"
-          avatar={{ letter: 'IN' }}
-          link={{ href: '#' }}
-          user={{ name: 'Isaac Newton', email: 'isaac.newton@antwerpen.be' }}
-          iconRight="navigation-menu-horizontal"
-          id="isaac"
-          key="isaac"
-        />
-      ],
       table: {
         type: { summary: 'ReactElement[]' }
       },

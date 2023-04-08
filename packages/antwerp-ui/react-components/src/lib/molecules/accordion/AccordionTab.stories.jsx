@@ -12,10 +12,14 @@ export default {
       }
     }
   },
+  args: {
+    header: 'Hello who?',
+    children: 'Hello World!',
+    id: 'accordion-tab'
+  },
   argTypes: {
     header: {
       control: { type: 'text' },
-      defaultValue: 'Hello who?',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -24,7 +28,6 @@ export default {
     },
     children: {
       control: { type: 'text' },
-      defaultValue: 'Hello World!',
       table: {
         type: { summary: 'ReactNode ' }
       },
@@ -33,13 +36,11 @@ export default {
     },
     id: {
       control: { type: 'text' },
-      defaultValue: 'accordion-tab',
       table: {
         type: { summary: 'ReactNode ' },
         defaultValue: { summary: '' }
       },
-      description:
-        'The `id` is set on the button HTML element of the `AccordionTab`.'
+      description: 'The `id` is set on the button HTML element of the `AccordionTab`.'
     },
     open: {
       control: { type: 'boolean' },

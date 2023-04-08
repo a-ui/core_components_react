@@ -12,10 +12,17 @@ export default {
       }
     }
   },
+  args: {
+    percentage: 10,
+    large: false,
+    label: 'Downloading...',
+    minValue: 0,
+    maxValue: 100,
+    showLabel: true
+  },
   argTypes: {
     percentage: {
       control: { type: 'number' },
-      defaultValue: 10,
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 0 }
@@ -28,7 +35,6 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      defaultValue: false,
       description: 'Set the size of the bar to `large`.'
     },
     label: {
@@ -37,7 +43,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
       },
-      defaultValue: 'Downloading...',
       description: 'Label of the progress bar.'
     },
     ariaValueNow: {
@@ -49,7 +54,6 @@ export default {
     },
     minValue: {
       control: { type: 'number' },
-      defaultValue: 0,
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 0 }
@@ -58,7 +62,6 @@ export default {
     },
     maxValue: {
       control: { type: 'number' },
-      defaultValue: 100,
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 100 }
@@ -67,7 +70,6 @@ export default {
     },
     showLabel: {
       control: { type: 'boolean' },
-      defaultValue: true,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true }

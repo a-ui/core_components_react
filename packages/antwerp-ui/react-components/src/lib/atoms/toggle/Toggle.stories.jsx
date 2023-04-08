@@ -13,6 +13,18 @@ export default {
       }
     }
   },
+  args: {
+    id: '',
+    checked: false,
+    showLabels: true,
+    size: '',
+    checkedLabel: 'Open',
+    uncheckedLabel: 'Close',
+    checkedIcon: 'navigation-menu',
+    uncheckedIcon: 'close',
+    checkedTheme: '',
+    uncheckedTheme: 'danger'
+  },
   argTypes: {
     id: {
       control: { type: 'text' },
@@ -20,7 +32,6 @@ export default {
         defaultValue: { summary: '' },
         type: { summary: 'string' }
       },
-      defaultValue: '',
       description: 'ID for `Toggle` component.'
     },
     checked: {
@@ -29,7 +40,6 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      defaultValue: false,
       description: 'Toggles between the two toggle states.'
     },
     showLabels: {
@@ -38,7 +48,6 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: true }
       },
-      defaultValue: true,
       description: 'Controls if labels are shown or not.'
     },
     size: {
@@ -48,7 +57,6 @@ export default {
         defaultValue: { summary: '' }
       },
       options: ['', 'small', 'large'],
-      defaultValue: '',
       description: 'Sets the size of the component. Can be omitted for medium.'
     },
     checkedLabel: {
@@ -57,7 +65,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
       },
-      defaultValue: 'Open',
       description: 'Text in checked state label.'
     },
     uncheckedLabel: {
@@ -66,7 +73,6 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
       },
-      defaultValue: 'Close',
       description: 'Text in unchecked state label.'
     },
     checkedIcon: {
@@ -75,7 +81,6 @@ export default {
         type: { summary: 'string' }
       },
       options: ['navigation-menu', 'single-neutral', 'social-media-snapchat', 'os-system-apple', 'love-it'],
-      defaultValue: 'navigation-menu',
       description: 'Icon in checked state.'
     },
     uncheckedIcon: {
@@ -83,7 +88,6 @@ export default {
       table: {
         type: { summary: 'string' }
       },
-      defaultValue: 'close',
       options: ['close', 'mouse', 'list-bullets', 'os-system-apple', 'love-it'],
       description: 'Icon in unchecked state.'
     },
@@ -94,7 +98,6 @@ export default {
         defaultValue: { summary: '' }
       },
       options: ['', 'primary', 'success', 'warning', 'danger'],
-      defaultValue: '',
       description: 'Theme of the button in checked state.'
     },
     uncheckedTheme: {
@@ -104,7 +107,6 @@ export default {
         defaultValue: { summary: '' }
       },
       options: ['', 'primary', 'success', 'warning', 'danger'],
-      defaultValue: 'danger',
       description: 'Theme of the button in unchecked state.'
     },
     onClick: {

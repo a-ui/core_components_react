@@ -12,14 +12,17 @@ export default {
       }
     }
   },
+  args: {
+    items: [
+      { id: 'home', label: 'Home', href: '/' },
+      { id: 'google', label: 'Google', href: 'https://www.google.be' },
+      { id: 'current', label: 'Current Page' }
+    ],
+    title: { label: '', tag: 'h1', className: 'h4' }
+  },
   argTypes: {
     items: {
       control: { type: 'object' },
-      defaultValue: [
-        { id: 'home', label: 'Home', href: '/' },
-        { id: 'google', label: 'Google', href: 'https://www.google.be' },
-        { id: 'current', label: 'Current Page' }
-      ],
       table: {
         type: { summary: 'array' },
         defaultValue: { summary: '[]' }
@@ -29,7 +32,6 @@ export default {
     },
     title: {
       control: { type: 'object' },
-      defaultValue: { label: '', tag: 'h1', className: 'h4' },
       table: {
         type: { summary: 'object' }
       },

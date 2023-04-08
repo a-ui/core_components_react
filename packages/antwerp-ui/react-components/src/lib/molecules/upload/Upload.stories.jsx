@@ -13,6 +13,19 @@ export default {
       }
     }
   },
+  args: {
+    files: [],
+    id: 'aui-upload-stories',
+    label: 'Sleep een bestand hier of klik om te bladeren',
+    multiple: true,
+    disabled: false,
+    acceptedFormat: '*',
+    maxSize: 1,
+    maxSizeLabel: 'Maximale bestandsgrootte:',
+    formatErrorLabel: 'Dit bestandsformaat is niet toegestaan.',
+    sizeErrorLabel: 'Maximale bestandsgrootte overschreden.',
+    deleteAriaLabel: 'Verwijder bestand'
+  },
   argTypes: {
     files: {
       control: null,
@@ -20,7 +33,6 @@ export default {
         type: { summary: 'File[]' },
         defaultValue: { summary: '[]' }
       },
-      defaultValue: [],
       description: 'List of files displayed under the `Upload` component.'
     },
     id: {
@@ -28,13 +40,11 @@ export default {
       table: {
         type: { summary: 'string' }
       },
-      defaultValue: 'aui-upload-stories',
       description: "ID on input element. Make sure it's unique across all `Upload` components."
     },
     label: {
       control: { type: 'text' },
       description: 'Override default text of upload zone. This can be rich text (ReactElement).',
-      defaultValue: 'Sleep een bestand hier of klik om te bladeren',
       table: {
         type: { summary: 'ReactElement | string' },
         defaultValue: { summary: 'Sleep een bestand hier of klik om te bladeren' }
@@ -43,7 +53,6 @@ export default {
     multiple: {
       control: { type: 'boolean' },
       description: 'Sets `multiple` attribute on `input`.',
-      defaultValue: true,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: true }
@@ -52,7 +61,6 @@ export default {
     disabled: {
       control: { type: 'boolean' },
       description: 'Disables the input.',
-      defaultValue: false,
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
@@ -62,7 +70,6 @@ export default {
       control: { type: 'text' },
       description:
         'Allows to set accepted format. Should be MIME type or `.ext`, accepts wildcard when using MIME types, like `image/*`.',
-      defaultValue: '*',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '*' }
@@ -71,7 +78,6 @@ export default {
     maxSize: {
       control: { type: 'number' },
       description: 'Sets maximum allowed size for single file (in MB). 10MB by default.',
-      defaultValue: 1,
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 10 }
@@ -98,7 +104,6 @@ export default {
     maxSizeLabel: {
       control: { type: 'text' },
       description: 'Override default text of the maximum size notice.',
-      defaultValue: 'Maximale bestandsgrootte:',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Maximale bestandsgrootte:' }
@@ -107,7 +112,6 @@ export default {
     formatErrorLabel: {
       control: { type: 'text' },
       description: 'Override default text of the format error notice.',
-      defaultValue: 'Dit bestandsformaat is niet toegestaan.',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Dit bestandsformaat is niet toegestaan.' }
@@ -116,7 +120,6 @@ export default {
     sizeErrorLabel: {
       control: { type: 'text' },
       description: 'Override default text of the size error notice.',
-      defaultValue: 'Maximale bestandsgrootte overschreden.',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Maximale bestandsgrootte overschreden.' }
@@ -125,7 +128,6 @@ export default {
     deleteAriaLabel: {
       control: { type: 'text' },
       description: 'Override the `aria-label` attribute on the file removal button.',
-      defaultValue: 'Verwijder bestand',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Verwijder bestand' }

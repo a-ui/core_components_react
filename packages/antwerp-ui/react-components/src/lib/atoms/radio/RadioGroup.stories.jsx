@@ -14,10 +14,14 @@ export default {
       }
     }
   },
+  args: {
+    label: 'Choose your fighter',
+    value: '',
+    name: 'fighter-selection'
+  },
   argTypes: {
     label: {
       control: { type: 'text' },
-      defaultValue: 'Choose your fighter',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -26,7 +30,6 @@ export default {
     },
     value: {
       control: { type: 'text' },
-      defaultValue: '',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -36,7 +39,6 @@ export default {
     },
     name: {
       control: { type: 'text' },
-      defaultValue: 'fighter-selection',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
@@ -47,10 +49,11 @@ export default {
     onChange: {
       control: { type: 'function' },
       table: {
-        type: { summary: 'function' },
+        type: { summary: 'function' }
       },
       action: 'onChange',
-      description: 'Function triggered when an option is selected. The first parameter of this function is the selected value as `string`.'
+      description:
+        'Function triggered when an option is selected. The first parameter of this function is the selected value as `string`.'
     },
     qa: QA_PROP_STORY
   }

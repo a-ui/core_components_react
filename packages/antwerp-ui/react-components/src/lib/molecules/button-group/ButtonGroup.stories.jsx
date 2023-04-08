@@ -12,9 +12,11 @@ export default {
       }
     }
   },
+  args: {
+    vertical: false
+  },
   argTypes: {
     vertical: {
-      defaultValue: false,
       control: { type: 'boolean' },
       table: {
         type: { summary: 'boolean' },

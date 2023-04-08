@@ -14,6 +14,30 @@ export default {
       }
     }
   },
+  args: {
+    title: { label: 'Alert title' },
+    theme: '',
+    inline: false,
+    children:
+      'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.',
+    confirmButton: {
+      id: `title2-aui-alert-confirm`,
+      size: 'small',
+      theme: 'neutral',
+      onClick: doNothing,
+      children: 'OK'
+    },
+    cancelButton: {
+      id: `title2-aui-alert-confirm`,
+      size: 'small',
+      theme: 'neutral',
+      emphasis: 'medium',
+      onClick: doNothing,
+      children: 'Annuleren'
+    },
+    ariaLabelClose: 'Close',
+    titleId: 'aui-alert-title'
+  },
   argTypes: {
     title: {
       control: { type: 'object' },
@@ -21,7 +45,6 @@ export default {
         type: { summary: 'object' },
         defaultValue: { summary: '' }
       },
-      defaultValue: { label: 'Alert Title' },
       description:
         'The `title` prop is the required title of a modal alert or the optional descriptive title of an inline alert. It is an object in the form of `{ "label": "string", "tag": "h1" | "h2" | "h3" | "h4" | "h5" | "h6" }`'
     },
@@ -30,7 +53,6 @@ export default {
       table: {
         type: { summary: 'string' }
       },
-      defaultValue: '',
       options: ['', 'success', 'warning', 'danger'],
       description:
         'Theme of the alert, by default the recognisable Antwerp “Endeavour”-blue theme is used. Additional themes for "success", "warning" and "danger" use their own corresponding thematic colours as defined in the colour palette for those states and are accompanied by clarifying leading icons.'
@@ -40,7 +62,6 @@ export default {
       table: {
         type: { summary: 'boolean' }
       },
-      defaultValue: false,
       description: 'Use this prop to indicate if the alert should be presented as an inline or modal type window.'
     },
     children: {
@@ -48,21 +69,12 @@ export default {
       table: {
         type: { summary: 'ReactNode' }
       },
-      defaultValue:
-        'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.',
       description: 'Rich text (HTML) / string to be shown as content inside the `Alert` component.'
     },
     confirmButton: {
       control: { type: 'object' },
       table: {
         type: { summary: 'object' }
-      },
-      defaultValue: {
-        id: `title2-aui-alert-confirm`,
-        size: 'small',
-        theme: 'neutral',
-        onClick: doNothing,
-        children: 'OK'
       },
       description:
         "The `confirmButton` is an object which uses the `Button` component's props as attributes to create an action button in a modal `Alert`."
@@ -71,14 +83,6 @@ export default {
       control: { type: 'object' },
       table: {
         type: { summary: 'object' }
-      },
-      defaultValue: {
-        id: `title2-aui-alert-confirm`,
-        size: 'small',
-        theme: 'neutral',
-        emphasis: 'medium',
-        onClick: doNothing,
-        children: 'Annuleren'
       },
       description:
         "The `cancelButton` is an object which uses the `Button` component's props as attributes to create an action button in a modal `Alert`."
@@ -93,7 +97,6 @@ export default {
     },
     ariaLabelClose: {
       control: { type: 'text' },
-      defaultValue: 'Close',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'Sluiten' }
@@ -105,7 +108,6 @@ export default {
       table: {
         type: { summary: 'string' }
       },
-      defaultValue: 'aui-alert-title',
       description: 'The `titleId` prop is the id of the title that is also used in the `aria-labelledby` attribute.'
     },
     qa: QA_PROP_STORY
