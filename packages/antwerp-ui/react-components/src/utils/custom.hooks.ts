@@ -1,4 +1,4 @@
-import { MouseEventHandler, RefObject, UIEvent, UIEventHandler, useEffect, useRef, useState } from 'react';
+import { RefObject, UIEvent, UIEventHandler, useEffect, useRef, useState } from 'react';
 import { isScrollAtTheEnd } from './dom.utils';
 
 export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean, boolean] {
