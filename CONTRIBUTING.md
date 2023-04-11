@@ -8,6 +8,7 @@ See [README.md](README.md).
 
 Here is the branching strategy for contributions:
 
+- Check with "Huisstijl team" if change is necessary
 - Always start from the active development branch (`development`) and pull latest changes.
 - Branch from the active development branch and use following branch names:
   - `development/components/<COMPONENT>` to add new **components**.
@@ -45,6 +46,7 @@ Here is the branching strategy for contributions:
   - Does it already exist?
   - Check with "Digitale Huisstijl" before starting.
 - Generate component with `yarn g`, this will create boilerplate files for the component.
+- Component folder e.g. `src/lib/atoms/hello-world` (Use _dash_ for composed names!)
 - Development steps (order can vary)
   - Define your props/interface
   - Write tests
@@ -57,25 +59,26 @@ Here is the branching strategy for contributions:
 ### Naming/Casing
 
 - CamelCase for components, component tests, component stories and component styles (avoid styles!!).
+  - Extra styling should flow back to the core branding css
   - e.g. HelloWorld.tsx, HelloWorld.spec.tsx, HelloWorld.stories.jsx and HelloWorld.types.ts.
 - Lowercase with dots for other Javascript files, e.g. `dom.utils.ts`
 - Component folders use dashes, e.g. `hello-world`
 
 ### Components development
 
-- Use [React hooks](https://reactjs.org/docs/hooks-intro.html) over lifecycle methods.
+- Use [React hooks](https://reactjs.org/docs/hooks-intro.html).
 - Be specific in React types ([more info](https://dev.to/fromaline/jsxelement-vs-reactelement-vs-reactnode-2mh2)), use `interface` for the public component props.
-- Every component should have a `qa` prop that becomes a `data-qa` HTML attribute on the main HTML element.
+- Every component should have a `qa` prop that becomes a `data-qa` HTML attribute on the main HTML element. This `data-qa` attribute is used by testing tools.
 - Prop names should be in line with the [Antwerp digital branding guidelines](https://digitale-huisstijl.antwerpen.be/getting-started).
 - Aim for [controlled components](https://reactjs.org/docs/forms.html#controlled-components) (vs. uncontrolled).
 - Components that are tied to each other can be in the same folder, e.g. `Radio` and `RadioGroup`.
-- If no logic order is possible, try to order list alphabetically (e.g. multiple `import` lines, multiline props, ...)
+- If no logical order is possible, try to order list alphabetically (e.g. multiple `import` lines, multiline props, ...)
 - WCAG considerations!
 
 ### Styling
 
 - Try to avoid custom CSS, discrepancies should flow back to the core branding.
-- Don't add inline style via `style` prop.
+- Don't add inline style via `style` prop (unless the implementation does not allow it otherwise).
 - Use the `classNames` helper (return a class string given an object, every thruthy field of the object is incorporated in the returned string) to interfer conditional classnames.
 
 ### Testing
