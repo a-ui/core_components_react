@@ -73,7 +73,7 @@ Here is the branching strategy for contributions:
 - Aim for [controlled components](https://reactjs.org/docs/forms.html#controlled-components) (vs. uncontrolled).
 - Components that are tied to each other can be in the same folder, e.g. `Radio` and `RadioGroup`.
 - If no logical order is possible, try to order list alphabetically (e.g. multiple `import` lines, multiline props, ...)
-- WCAG considerations!
+- WCAG considerations; each component should comply to WCAG 2.1 level AA
 
 ### Styling
 
