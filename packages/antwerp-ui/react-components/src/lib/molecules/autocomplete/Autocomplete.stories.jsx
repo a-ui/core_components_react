@@ -21,7 +21,8 @@ export default {
       { label: 'Capitol Reef', value: '5' }
     ],
     label: 'National Parks',
-    noResultsText: 'Sorry, niet gevonden'
+    noResultsText: 'Sorry, niet gevonden',
+    multiple: false
   },
   argTypes: {
     name: {
@@ -57,6 +58,14 @@ export default {
       },
       description: 'The text when no item match the provided search term.'
     },
+    multiple: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      description: 'The `multiple` (if set to `true`) prop will allow the user to select multiple values.'
+    },
     inputValue: {
       table: {
         type: { summary: 'string' }
@@ -70,6 +79,13 @@ export default {
       },
       description:
         'The `value` prop controls the value of the selected `Autocomplete` item. This prop makes the `Autocomplete` a controlled component and should be used together with `onChange`.'
+    },
+    selection: {
+      table: {
+        type: { summary: 'Array' }
+      },
+      description:
+        'The `selection` prop controls the value of the selected `Autocomplete` items when `multiple` is set to `true`. This prop makes the `Autocomplete` a controlled component and should be used together with `onChange`.'
     },
     id: {
       control: { type: 'text' },
@@ -86,7 +102,7 @@ export default {
       },
       action: 'onChange',
       description:
-        'Function triggered when selecting an option from the `Autocomplete` dropdown. The first parameter of this function is the selected value, the second parameter is the `name` of the `Autocomplete` component.'
+        'Function triggered when selecting an option from the `Autocomplete` dropdown. The first parameter of this function is the selected value, the second parameter is the `name` of the `Autocomplete` component. When the `multiple` prop is set to `true`, there is a third parameter that returns the selection of values as an array of values.'
     },
     onInputChange: {
       control: { type: 'function' },

@@ -129,4 +129,29 @@ describe('Autocomplete', () => {
     fireEvent.keyDown(input, { key: 'Escape', code: 27 });
     expect(baseElement.getElementsByClassName('m-flyout')[0].className.includes('is-open')).toBeFalsy();
   });
+
+  it('should select multiple options', () => {
+    const mockOnChange = jest.fn();
+    const { getByRole, getByText } = render(
+      <Autocomplete multiple name="name" items={items} onChange={mockOnChange} />
+    );
+    const input = getByRole('combobox');
+    fireEvent.click(input);
+    fireEvent.click(getByText('Acadia'));
+    fireEvent.click(getByText('Canyonlands'));
+    expect(mockOnChange).toHaveBeenCalledWith('4', 'name', ['1', '4']);
+  });
+
+  it('should unselect an item when clicking on it if it is selected', () => {
+    const mockOnChange = jest.fn();
+    const { getByRole, getByText } = render(
+      <Autocomplete multiple name="name" items={items} onChange={mockOnChange} />
+    );
+    const input = getByRole('combobox');
+    fireEvent.click(input);
+    fireEvent.click(getByText('Acadia'));
+    expect(mockOnChange).toHaveBeenCalledWith('1', 'name', ['1']);
+    fireEvent.click(getByText('Acadia'));
+    expect(mockOnChange).toHaveBeenCalledWith('1', 'name', []);
+  });
 });

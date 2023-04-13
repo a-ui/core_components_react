@@ -15,22 +15,42 @@ const items = [
 ];
 
 export function AutocompleteExamples() {
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState('');
   const [inputValue, setInputValue] = useState('');
+  const [selectedValues, setSelectedValues] = useState<string[]>([value]);
+
+  const handleChange = (value: string, name?: string, selection?: string[]) => {
+    setValue(value);
+    selection && setSelectedValues(selection);
+    console.log(`value ${value}`, `name ${name}`, 'selection', selection);
+  };
+
   return (
     <div className="u-margin" style={{ width: '420px' }}>
       <h2>Autocomplete</h2>
       <div className="u-margin">
-        <Autocomplete id="autocomplete-example-1" label="Select National Parc (Uncontrolled)" items={items} />
+        <Autocomplete id="autocomplete-example-1" multiple label="Select National Parc (Uncontrolled)" items={items} />
 
+        <div>value: {items.find((i) => i.value === value)?.label}</div>
+        <div>
+          selection:{' '}
+          {selectedValues
+            .map((v) => {
+              return items.find((i) => i.value === v)?.label;
+            })
+            .join(', ')}
+        </div>
         <Autocomplete
           id="autocomplete-example-2"
           noResultsText="NOTHING FOUND"
           label="Select National Parc (Controlled)"
           items={items}
+          name="test"
           inputValue={inputValue}
+          selection={selectedValues}
+          multiple
           onInputChange={setInputValue}
-          onChange={setValue}
+          onChange={handleChange}
           value={value}
         />
 
