@@ -154,4 +154,16 @@ describe('Autocomplete', () => {
     fireEvent.click(getByText('Acadia'));
     expect(mockOnChange).toHaveBeenCalledWith('1', 'name', []);
   });
+
+  it('should handle multiple values with keyboard controls', () => {
+    const mockOnChange = jest.fn();
+    const { getByRole } = render(<Autocomplete multiple name="name" items={items} onChange={mockOnChange} />);
+    const input = getByRole('combobox');
+    fireEvent.click(input);
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'Enter' });
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'Enter' });
+    expect(mockOnChange).toHaveBeenCalledWith('2', 'name', ['1', '2']);
+  });
 });
