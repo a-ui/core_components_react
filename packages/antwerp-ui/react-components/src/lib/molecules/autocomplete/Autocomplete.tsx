@@ -129,6 +129,10 @@ export function Autocomplete({
     }
   };
 
+  const isValueActive = (val: string) => {
+    return multiple ? selectedValues.includes(val) : val === selectedValue;
+  };
+
   return (
     <Flyout
       scrollable
@@ -166,7 +170,7 @@ export function Autocomplete({
               tabIndex={-1}
               highlighted={i === cursor}
               onMouseDown={(e) => e.preventDefault()}
-              active={r.value === selectedValue || selectedValues.includes(r.value)}
+              active={isValueActive(r.value)}
               name={r.value}
               link={{ href: '' }}
               key={r.value}

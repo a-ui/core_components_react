@@ -15,9 +15,9 @@ const items = [
 ];
 
 export function AutocompleteExamples() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState<string>();
   const [inputValue, setInputValue] = useState('');
-  const [selectedValues, setSelectedValues] = useState<string[]>([value]);
+  const [selectedValues, setSelectedValues] = useState<string[]>(value ? [value] : []);
 
   const handleChange = (value: string, name?: string, selection?: string[]) => {
     setValue(value);
@@ -44,7 +44,7 @@ export function AutocompleteExamples() {
                 <Tag
                   key={v}
                   label={items.find((i) => i.value === v)?.label || ''}
-                  name={v}
+                  name={v ?? undefined}
                   removable
                   onClick={handleRemove}
                 />
