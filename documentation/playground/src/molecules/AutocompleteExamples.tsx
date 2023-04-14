@@ -1,4 +1,4 @@
-import { Autocomplete, Button } from '@a-ui/react';
+import { Autocomplete, Button, Tag } from '@a-ui/react';
 import { useState } from 'react';
 
 const items = [
@@ -22,7 +22,11 @@ export function AutocompleteExamples() {
   const handleChange = (value: string, name?: string, selection?: string[]) => {
     setValue(value);
     selection && setSelectedValues(selection);
-    console.log(`value ${value}`, `name ${name}`, 'selection', selection);
+  };
+
+  const handleRemove = (name: string) => {
+    const valueToRemove = name.replace('-delete', '');
+    setSelectedValues(selectedValues.filter((v) => v !== valueToRemove));
   };
 
   return (
@@ -31,14 +35,21 @@ export function AutocompleteExamples() {
       <div className="u-margin">
         <Autocomplete id="autocomplete-example-1" multiple label="Select National Parc (Uncontrolled)" items={items} />
 
-        <div>value: {items.find((i) => i.value === value)?.label}</div>
-        <div>
-          selection:{' '}
+        <div className="u-margin-xs">Last value clicked: {items.find((i) => i.value === value)?.label}</div>
+        <div className="u-margin-xs">
           {selectedValues
+            .filter((v) => v !== '')
             .map((v) => {
-              return items.find((i) => i.value === v)?.label;
-            })
-            .join(', ')}
+              return (
+                <Tag
+                  key={v}
+                  label={items.find((i) => i.value === v)?.label || ''}
+                  name={v}
+                  removable
+                  onClick={handleRemove}
+                />
+              );
+            })}
         </div>
         <Autocomplete
           id="autocomplete-example-2"
