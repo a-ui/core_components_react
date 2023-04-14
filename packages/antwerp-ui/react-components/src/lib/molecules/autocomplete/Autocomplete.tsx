@@ -85,11 +85,10 @@ export function Autocomplete({
     const actualValue = items?.find((i) => i.value === val);
     actualValue && setSelected(actualValue.value);
 
-    const isSelected = selectedValues.includes(val);
-    const newSelectedValues =
-      !isSelected && !selectedValues.find((v) => v === val)
-        ? Array.from(new Set([...selectedValues, val].filter((v) => v !== '')))
-        : Array.from(new Set(selectedValues.filter((value) => value !== val)));
+    const newSelectedValues = !selectedValues.includes(val)
+      ? [...selectedValues, val].filter((v) => v !== '')
+      : selectedValues.filter((value) => value !== val);
+
     setSelectedValues(newSelectedValues);
     onChange && onChange(val, name, newSelectedValues);
   };
@@ -105,7 +104,7 @@ export function Autocomplete({
   const onEnter = () => {
     const highlighted = results && results[cursor];
     if (highlighted) {
-      selectValue(highlighted.value);
+      multiple ? selectMultiple(highlighted.value) : selectValue(highlighted.value);
     }
   };
 
