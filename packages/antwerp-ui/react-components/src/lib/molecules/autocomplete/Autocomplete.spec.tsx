@@ -166,4 +166,22 @@ describe('Autocomplete', () => {
     fireEvent.keyDown(input, { key: 'Enter' });
     expect(mockOnChange).toHaveBeenCalledWith('2', 'name', ['1', '2']);
   });
+
+  it('should update state if selection prop changes', () => {
+    const mockOnChange = jest.fn();
+    let selection = ['1', '2', '3'];
+    const { rerender, getByRole, getByText } = render(
+      <Autocomplete selection={selection} items={items} multiple name="name" onChange={mockOnChange} />
+    );
+    const input = getByRole('combobox');
+    fireEvent.click(input);
+    fireEvent.click(getByText('Acadia'));
+    expect(mockOnChange).toHaveBeenCalledWith('1', 'name', ['2', '3']);
+
+    selection = ['1', '2'];
+    rerender(<Autocomplete selection={selection} items={items} multiple name="name" onChange={mockOnChange} />);
+    fireEvent.click(input);
+    fireEvent.click(getByText('Acadia'));
+    expect(mockOnChange).toHaveBeenCalledWith('1', 'name', ['2']);
+  });
 });

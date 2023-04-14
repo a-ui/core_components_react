@@ -39,6 +39,12 @@ export function Autocomplete({
   }, [value]);
 
   useEffect(() => {
+    if (selection) {
+      setSelectedValues(selection);
+    }
+  }, [selection]);
+
+  useEffect(() => {
     setResults(
       (items || []).filter((i) => (fieldValue ? i.label?.toLowerCase().includes(fieldValue.toLowerCase()) : true))
     );
