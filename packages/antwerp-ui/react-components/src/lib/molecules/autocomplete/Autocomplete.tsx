@@ -83,7 +83,6 @@ export function Autocomplete({
 
   const selectMultiple = (val: string) => {
     const actualValue = items?.find((i) => i.value === val);
-    // actualValue && handleInput(actualValue.label);
     actualValue && setSelected(actualValue.value);
 
     const isSelected = selectedValues.includes(val);
