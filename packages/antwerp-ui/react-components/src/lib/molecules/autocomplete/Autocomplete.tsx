@@ -39,10 +39,9 @@ export function Autocomplete({
   }, [value]);
 
   useEffect(() => {
-    !multiple &&
-      setResults(
-        (items || []).filter((i) => (fieldValue ? i.label?.toLowerCase().includes(fieldValue.toLowerCase()) : true))
-      );
+    setResults(
+      (items || []).filter((i) => (fieldValue ? i.label?.toLowerCase().includes(fieldValue.toLowerCase()) : true))
+    );
   }, [fieldValue]);
 
   useEffect(() => {
@@ -84,7 +83,7 @@ export function Autocomplete({
 
   const selectMultiple = (val: string) => {
     const actualValue = items?.find((i) => i.value === val);
-    actualValue && handleInput(actualValue.label);
+    // actualValue && handleInput(actualValue.label);
     actualValue && setSelected(actualValue.value);
 
     const isSelected = selectedValues.includes(val);
