@@ -68,7 +68,7 @@ export function Autocomplete({
     setIsOpen(true);
     if (selectedValue && !val) {
       setSelected('');
-      onChange && onChange('', name);
+      !multiple && onChange && onChange('', name);
     }
     onInputChange && onInputChange(val, name);
   };
@@ -90,7 +90,7 @@ export function Autocomplete({
       ? [...selectedMultiple, val].filter((v) => v !== '')
       : selectedMultiple.filter((value) => value !== val);
     setSelectedMultiple(newSelectedMultiple);
-    onChange && onChange(multiple ? newSelectedMultiple : val, name);
+    onChange && onChange(newSelectedMultiple, name);
   };
 
   const setValueBack = () => {

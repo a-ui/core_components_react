@@ -139,7 +139,7 @@ describe('Autocomplete', () => {
     fireEvent.click(input);
     fireEvent.click(getByText('Acadia'));
     fireEvent.click(getByText('Canyonlands'));
-    expect(mockOnChange).toHaveBeenCalledWith('4', 'name', ['1', '4']);
+    expect(mockOnChange).toHaveBeenCalledWith(['1', '4'], 'name');
   });
 
   it('should unselect an item when clicking on it if it is selected', () => {
@@ -150,9 +150,9 @@ describe('Autocomplete', () => {
     const input = getByRole('combobox');
     fireEvent.click(input);
     fireEvent.click(getByText('Acadia'));
-    expect(mockOnChange).toHaveBeenCalledWith('1', 'name', ['1']);
+    expect(mockOnChange).toHaveBeenCalledWith(['1'], 'name');
     fireEvent.click(getByText('Acadia'));
-    expect(mockOnChange).toHaveBeenCalledWith('1', 'name', []);
+    expect(mockOnChange).toHaveBeenCalledWith([], 'name');
   });
 
   it('should handle multiple values with keyboard controls', () => {
@@ -164,24 +164,24 @@ describe('Autocomplete', () => {
     fireEvent.keyDown(input, { key: 'Enter' });
     fireEvent.keyDown(input, { key: 'ArrowDown' });
     fireEvent.keyDown(input, { key: 'Enter' });
-    expect(mockOnChange).toHaveBeenCalledWith('2', 'name', ['1', '2']);
+    expect(mockOnChange).toHaveBeenCalledWith(['1', '2'], 'name');
   });
 
   it('should update state if selection prop changes', () => {
     const mockOnChange = jest.fn();
     let selection = ['1', '2', '3'];
     const { rerender, getByRole, getByText } = render(
-      <Autocomplete selection={selection} items={items} multiple name="name" onChange={mockOnChange} />
+      <Autocomplete value={selection} items={items} multiple name="name" onChange={mockOnChange} />
     );
     const input = getByRole('combobox');
     fireEvent.click(input);
     fireEvent.click(getByText('Acadia'));
-    expect(mockOnChange).toHaveBeenCalledWith('1', 'name', ['2', '3']);
+    expect(mockOnChange).toHaveBeenCalledWith(['2', '3'], 'name');
 
     selection = ['1', '2'];
-    rerender(<Autocomplete selection={selection} items={items} multiple name="name" onChange={mockOnChange} />);
+    rerender(<Autocomplete value={selection} items={items} multiple name="name" onChange={mockOnChange} />);
     fireEvent.click(input);
     fireEvent.click(getByText('Acadia'));
-    expect(mockOnChange).toHaveBeenCalledWith('1', 'name', ['2']);
+    expect(mockOnChange).toHaveBeenCalledWith(['2'], 'name');
   });
 });
