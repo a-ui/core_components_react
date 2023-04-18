@@ -5,10 +5,9 @@ export interface AutocompleteProps {
   name?: string;
   multiple?: boolean;
   inputValue?: string;
-  selection?: string[];
-  value?: string;
+  value?: string | string[];
   noResultsText?: string;
   qa?: string;
-  onChange?: (value: string, name?: string, selection?: string[]) => void;
+  onChange?: (value: string | string[], name?: string) => void;
   onInputChange?: (value: string, name?: string) => void;
 }

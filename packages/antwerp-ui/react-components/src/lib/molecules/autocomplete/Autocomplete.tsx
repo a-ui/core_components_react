@@ -13,7 +13,6 @@ export function Autocomplete({
   name,
   multiple,
   inputValue,
-  selection,
   value,
   onInputChange,
   onChange,
@@ -23,9 +22,9 @@ export function Autocomplete({
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState(items);
   const [input, setInput] = useState(inputValue || '');
-  const [selected, setSelected] = useState(value || '');
+  const [selected, setSelected] = useState<string>((!multiple && (value as string)) || '');
   const [cursor, setCursor] = useState(-1);
-  const [selectedValues, setSelectedValues] = useState<string[]>(selection || []);
+  const [selectedMultiple, setSelectedMultiple] = useState<string[]>((multiple && (value as string[])) || []);
 
   const fieldValue = inputValue || inputValue === '' ? inputValue : input;
   const selectedValue = value || value === '' ? value : selected;
@@ -33,16 +32,13 @@ export function Autocomplete({
   const flyoutRef = React.useRef(null);
 
   useEffect(() => {
-    if (value) {
-      selectValue(value, true);
+    if (value && !multiple) {
+      selectValue(value as string, true);
+    }
+    if (value && multiple) {
+      setSelectedMultiple(value as string[]);
     }
   }, [value]);
-
-  useEffect(() => {
-    if (selection) {
-      setSelectedValues(selection);
-    }
-  }, [selection]);
 
   useEffect(() => {
     setResults(
@@ -90,13 +86,11 @@ export function Autocomplete({
   const selectMultiple = (val: string) => {
     const actualValue = items?.find((i) => i.value === val);
     actualValue && setSelected(actualValue.value);
-
-    const newSelectedValues = !selectedValues.includes(val)
-      ? [...selectedValues, val].filter((v) => v !== '')
-      : selectedValues.filter((value) => value !== val);
-
-    setSelectedValues(newSelectedValues);
-    onChange && onChange(val, name, newSelectedValues);
+    const newSelectedMultiple = !selectedMultiple.includes(val)
+      ? [...selectedMultiple, val].filter((v) => v !== '')
+      : selectedMultiple.filter((value) => value !== val);
+    setSelectedMultiple(newSelectedMultiple);
+    onChange && onChange(multiple ? newSelectedMultiple : val, name);
   };
 
   const setValueBack = () => {
@@ -133,7 +127,7 @@ export function Autocomplete({
   };
 
   const isValueActive = (val: string) => {
-    return multiple ? selectedValues.includes(val) : val === selectedValue;
+    return multiple ? selectedMultiple.includes(val) : val === selectedValue;
   };
 
   return (
