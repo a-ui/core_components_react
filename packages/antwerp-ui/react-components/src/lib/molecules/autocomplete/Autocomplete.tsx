@@ -11,6 +11,7 @@ export function Autocomplete({
   label,
   items,
   name,
+  multiple,
   inputValue,
   value,
   onInputChange,
@@ -21,8 +22,9 @@ export function Autocomplete({
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState(items);
   const [input, setInput] = useState(inputValue || '');
-  const [selected, setSelected] = useState(value || '');
+  const [selected, setSelected] = useState<string>((!multiple && (value as string)) || '');
   const [cursor, setCursor] = useState(-1);
+  const [selectedMultiple, setSelectedMultiple] = useState<string[]>((multiple && (value as string[])) || []);
 
   const fieldValue = inputValue || inputValue === '' ? inputValue : input;
   const selectedValue = value || value === '' ? value : selected;
@@ -30,8 +32,11 @@ export function Autocomplete({
   const flyoutRef = React.useRef(null);
 
   useEffect(() => {
-    if (value) {
-      selectValue(value, true);
+    if (value && !multiple) {
+      selectValue(value as string, true);
+    }
+    if (value && multiple) {
+      setSelectedMultiple(value as string[]);
     }
   }, [value]);
 
@@ -63,19 +68,29 @@ export function Autocomplete({
     setIsOpen(true);
     if (selectedValue && !val) {
       setSelected('');
-      onChange && onChange('', name);
+      !multiple && onChange && onChange('', name);
     }
     onInputChange && onInputChange(val, name);
   };
 
   const selectValue = (val: string, silence = false) => {
-    if (value !== '' && (!value || value === val)) {
+    if (!multiple && value !== '' && (!value || value === val)) {
       const actualValue = items?.find((i) => i.value === val);
       handleInput(actualValue?.label || '');
       setSelected(actualValue?.value || '');
       closeFlyout();
     }
     !silence && onChange && onChange(val, name);
+  };
+
+  const selectMultiple = (val: string) => {
+    const actualValue = items?.find((i) => i.value === val);
+    actualValue && setSelected(actualValue.value);
+    const newSelectedMultiple = !selectedMultiple.includes(val)
+      ? [...selectedMultiple, val].filter((v) => v !== '')
+      : selectedMultiple.filter((value) => value !== val);
+    setSelectedMultiple(newSelectedMultiple);
+    onChange && onChange(newSelectedMultiple, name);
   };
 
   const setValueBack = () => {
@@ -89,7 +104,7 @@ export function Autocomplete({
   const onEnter = () => {
     const highlighted = results && results[cursor];
     if (highlighted) {
-      selectValue(highlighted.value);
+      multiple ? selectMultiple(highlighted.value) : selectValue(highlighted.value);
     }
   };
 
@@ -109,6 +124,10 @@ export function Autocomplete({
       default:
         break;
     }
+  };
+
+  const isValueActive = (val: string) => {
+    return multiple ? selectedMultiple.includes(val) : val === selectedValue;
   };
 
   return (
@@ -136,14 +155,19 @@ export function Autocomplete({
       onStateChange={handleStateChange}
     >
       {results && results.length ? (
-        <FunctionalList lined onItemClick={selectValue}>
+        <FunctionalList
+          lined
+          onItemClick={(v) => {
+            multiple ? selectMultiple(v) : selectValue(v);
+          }}
+        >
           {results.map((r, i) => (
             <ListItem
               id={r.value}
               tabIndex={-1}
               highlighted={i === cursor}
               onMouseDown={(e) => e.preventDefault()}
-              active={r.value === selectedValue}
+              active={isValueActive(r.value)}
               name={r.value}
               link={{ href: '' }}
               key={r.value}

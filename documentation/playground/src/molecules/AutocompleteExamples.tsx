@@ -1,4 +1,4 @@
-import { Autocomplete, Button } from '@a-ui/react';
+import { Autocomplete, Button, Tag } from '@a-ui/react';
 import { useState } from 'react';
 
 const items = [
@@ -15,28 +15,62 @@ const items = [
 ];
 
 export function AutocompleteExamples() {
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState<string>();
   const [inputValue, setInputValue] = useState('');
+  const handleChangeSingle = (value: string | string[], name?: string) => {
+    setValue(value as string);
+  };
+
+  const [valueMulti, setValueMulti] = useState<string[]>([]);
+  const handleChangeMulti = (value: string | string[], name?: string) => {
+    setValueMulti(value as string[]);
+  };
+  const handleRemove = (name: string) => {
+    const valueToRemove = name.replace('-delete', '');
+    setValueMulti(valueMulti.filter((v) => v !== valueToRemove));
+  };
+
   return (
     <div className="u-margin" style={{ width: '420px' }}>
       <h2>Autocomplete</h2>
       <div className="u-margin">
         <Autocomplete id="autocomplete-example-1" label="Select National Parc (Uncontrolled)" items={items} />
-
         <Autocomplete
           id="autocomplete-example-2"
           noResultsText="NOTHING FOUND"
           label="Select National Parc (Controlled)"
           items={items}
+          name="test"
           inputValue={inputValue}
-          onInputChange={setInputValue}
-          onChange={setValue}
           value={value}
+          onInputChange={setInputValue}
+          onChange={handleChangeSingle}
         />
-
         <Button className="u-margin-top" size="small" theme="warning" onClick={() => setValue('8')}>
           Click to select "Bryce Canyon"
         </Button>
+
+        <div className="u-margin-top-xs u-margin-bottom-xs">
+          {valueMulti.map((v) => {
+            return (
+              <Tag
+                key={v}
+                label={items.find((i) => i.value === v)?.label || ''}
+                name={v ?? undefined}
+                removable
+                onClick={handleRemove}
+              />
+            );
+          })}
+        </div>
+        <Autocomplete
+          id="autocomplete-example-3"
+          label="Autocomplete multiple"
+          items={items}
+          value={valueMulti}
+          multiple
+          onChange={handleChangeMulti}
+        />
       </div>
     </div>
   );
