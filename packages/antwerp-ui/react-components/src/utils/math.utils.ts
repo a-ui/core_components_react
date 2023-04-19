@@ -1,3 +1,5 @@
+import React from 'react';
+
 const getRange = (start: number, end: number) => {
   return Array(end - start + 1)
     .fill(0)
@@ -58,6 +60,26 @@ export const getValueFromPosition = (
   if (value >= max) value = max;
   if (value <= min) value = min;
   return value;
+};
+
+export const getPositionValue = (
+  e: MouseEvent | React.MouseEvent | React.TouchEvent,
+  limit: number,
+  step: number,
+  min: number,
+  max: number,
+  sliderMin: number,
+  sliderMax: number,
+  direction?: number
+) => {
+  const clientCoordinateStyle = 'clientX';
+  const coordinate =
+    e.type !== 'touchmove'
+      ? (e as MouseEvent | React.MouseEvent)[clientCoordinateStyle]
+      : (e as React.TouchEvent).touches[0][clientCoordinateStyle];
+
+  const pos = getPosition(coordinate, direction);
+  return getValueFromPosition(pos, limit, step, min, max, sliderMin, sliderMax);
 };
 
 export const getSteps = (min: number, max: number, step: number): number[] => {

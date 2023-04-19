@@ -1,5 +1,5 @@
-import React from 'react';
-import { getSteps, lineValuesToPosition } from '../../../utils/math.utils';
+import React, { MouseEvent } from 'react';
+import { getPositionValue, getSteps, lineValuesToPosition } from '../../../utils/math.utils';
 import { Icon } from '../../base/icon';
 import { RangeSliderProps } from './RangeSlider.types';
 import { RangeSliderBar } from './RangeSliderBar';
@@ -61,6 +61,19 @@ export function RangeSlider({
 
   const getPositionFromValue = (value: number) => lineValuesToPosition(value, min, max, limit);
 
+  const position = (e: MouseEvent | React.TouchEvent) => {
+    return getPositionValue(e, limit, step, min, max, min, max, direction);
+  };
+
+  const updateHandleValue = (e: MouseEvent) => {
+    const newPosition = position(e);
+    if (range && end && Math.abs(newPosition - end) < Math.abs(newPosition - start)) {
+      handleUpdateEnd(newPosition);
+      return;
+    }
+    handleUpdateStart(newPosition);
+  };
+
   return (
     <div className="a-range-slider" data-qa={qa} ref={sliderRef}>
       <div className="a-range-slider__labels">
@@ -70,7 +83,7 @@ export function RangeSlider({
           {` ${unit}`}
         </div>
       </div>
-      <div className="a-range-slider__inner">
+      <div className="a-range-slider__inner" onClick={updateHandleValue}>
         {tickMarks && (
           <div className="a-range-slider__tickmarks">
             {getSteps(min, max, step).map((st) => (

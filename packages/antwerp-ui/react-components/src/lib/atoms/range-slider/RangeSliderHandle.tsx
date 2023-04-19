@@ -1,4 +1,4 @@
-import { getPosition, getValueFromPosition } from '../../../utils/math.utils';
+import { getPositionValue } from '../../../utils/math.utils';
 import React from 'react';
 import { RangeSliderHandleProps } from './RangeSlider.types';
 
@@ -48,14 +48,7 @@ export function RangeSliderHandle({
   };
 
   const position = (e: MouseEvent | React.TouchEvent) => {
-    const clientCoordinateStyle = 'clientX';
-    const coordinate =
-      e.type !== 'touchmove'
-        ? (e as MouseEvent)[clientCoordinateStyle]
-        : (e as React.TouchEvent).touches[0][clientCoordinateStyle];
-
-    const pos = getPosition(coordinate, direction);
-    return getValueFromPosition(pos, limit, step, min, max, sliderMin, sliderMax);
+    return getPositionValue(e, limit, step, min, max, sliderMin, sliderMax, direction);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {

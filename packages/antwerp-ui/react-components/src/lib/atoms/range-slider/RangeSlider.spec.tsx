@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { RangeSlider } from './RangeSlider';
 import RangeSliderHandle from './RangeSliderHandle';
+import * as utils from '../../../utils/math.utils';
 
 describe('UI Components - Atoms - Slider', () => {
   const defaultProps = {
@@ -128,6 +129,28 @@ describe('UI Components - Atoms - Slider', () => {
     expect(mockOnChange).not.toHaveBeenCalled();
   });
 
+  it('should update the end value when clicked on the bar', () => {
+    const getPositionValueMock = jest.fn().mockReturnValue(10);
+    // eslint-disable-next-line
+    // @ts-ignore
+    jest.spyOn(utils, 'getPositionValue').mockImplementationOnce(getPositionValueMock);
+    const mockOnChange = jest.fn();
+    const { baseElement } = render(
+      <RangeSlider {...defaultProps} onChange={mockOnChange} range minRange={1} start={1} end={4} />
+    );
+    const bar = baseElement.getElementsByClassName('a-range-slider__inner')[0] as HTMLElement;
+    fireEvent.click(bar);
+    expect(mockOnChange).toHaveBeenCalled();
+  });
+
+  it('should update the start value when clicked on the bar', () => {
+    const mockOnChange = jest.fn();
+    const { baseElement } = render(<RangeSlider {...defaultProps} onChange={mockOnChange} />);
+    const bar = baseElement.getElementsByClassName('a-range-slider__inner')[0];
+    fireEvent.click(bar);
+    expect(mockOnChange).toHaveBeenCalled();
+  });
+
   describe('UI Components - Atoms - RangeSliderHandle', () => {
     const mockOnUpdate = jest.fn();
     const mockGetPositionFromValue = jest.fn(() => 50);
@@ -136,6 +159,8 @@ describe('UI Components - Atoms - Slider', () => {
       min: 0,
       max: 10,
       step: 1,
+      sliderMin: 0,
+      sliderMax: 10,
       onUpdate: mockOnUpdate,
       getPositionFromValue: mockGetPositionFromValue
     };
