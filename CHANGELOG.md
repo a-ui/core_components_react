@@ -1,4 +1,4 @@
-Version 7.0.0-beta.0
+Version 7.0.0-beta.1
 
 # Changelog
 
@@ -7,7 +7,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] -
+## [Unreleased]
+
+### Fixed
+
+- Datepicker animation fix: it now uses the Flyout animation on open/close
+
+## [7.0.0-beta.1] - 2023-04-20
+
+### Breaking from previous beta
+
+- Improvements on `TextField` and `TextArea`: `iconLeft`, `iconRight`, `addonLeft` and `addonRight` are replaced by `addon` object
 
 ### Fixed
 
@@ -15,18 +25,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Core branding update to 6.2.3
+- Core branding update to v6.2.3
 - Conditionally remove `aria-labbeledby` on the `ProgressBar` when an `aria-label` is used
-- Small improvements on `TextField` and `TextArea`: `iconLeft`, `iconRight`, `addonLeft` and `addonRight` are replaced by `addon` object
-- Use Core Branding logo as default for the Header
-- Updated contributing guide
+- Use Core Branding logo as default for the `Header`
+- Updated contributing guidelines
 
 ### Added
 
 - `Datepicker` component
 - `charCountText` property on `TextField` and `TextArea`
-- A warning is logged for wrong or unknown icons
-- Autocomplete `multiple` option
+- `multiple` option for `Autocomplete`
+- A warning is logged for a wrong or unknown `Icon`
 
 ## [7.0.0-beta.0] - 2023-03-30
 

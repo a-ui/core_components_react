@@ -102,17 +102,15 @@ export function Datepicker({
           onKeyDown={handleIconKeyDown}
           ref={iconRef}
         />
-        {isOpen && (
-          <Calendar
-            ref={datepickerRef}
-            className="m-datepicker--fixed"
-            isOpen={isOpen}
-            onChange={handleCalendarDateChange}
-            onBlur={handleBlur}
-            value={currentValue}
-            {...calendarProps}
-          />
-        )}
+        <Calendar
+          ref={datepickerRef}
+          className="m-datepicker--fixed"
+          isOpen={isOpen}
+          onChange={handleCalendarDateChange}
+          onBlur={handleBlur}
+          value={currentValue}
+          {...calendarProps}
+        />
       </div>
     </div>
   );

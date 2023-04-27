@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import { Icon } from './Icon';
 
+Icon.displayName = 'Icon';
+
 export default {
   title: 'React/Base/Icon',
   component: Icon,

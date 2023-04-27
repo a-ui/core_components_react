@@ -38,7 +38,7 @@ export function useOutsideClick(onOutsideClick: (event: EventTarget | null) => v
   const elementRef: RefObject<any> = useRef(null);
 
   const handleClick = (event: MouseEvent) => {
-    if (!(elementRef?.current?.contains(event?.target) ?? false)) {
+    if (!elementRef?.current?.contains(event?.target)) {
       onOutsideClick(event?.target);
     }
   };
