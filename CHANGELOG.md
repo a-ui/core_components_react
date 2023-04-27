@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Datepicker animation fix: it now uses the Flyout animation on open/close
+
 ## [7.0.0-beta.1] - 2023-04-20
 
 ### Breaking from previous beta
