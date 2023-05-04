@@ -14,7 +14,8 @@ export default {
   },
   args: {
     fullWidth: false,
-    children: 'Click me'
+    children: 'Click me',
+    disabled: false
   },
   argTypes: {
     id: {
@@ -38,6 +39,14 @@ export default {
       },
       options: ['small', 'medium', 'large'],
       description: 'Set the size of the button, `medium` is the default and can be omitted.'
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      description: 'Set the state of the button to disabled.'
     },
     emphasis: {
       control: { type: 'select' },

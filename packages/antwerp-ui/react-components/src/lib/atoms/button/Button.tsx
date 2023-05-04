@@ -10,6 +10,7 @@ export function Button({
   ariaLabel,
   children,
   className,
+  disabled,
   emphasis,
   fullWidth,
   htmlType,
@@ -51,6 +52,7 @@ export function Button({
       type={htmlType}
       aria-label={ariaLabel}
       data-qa={qa}
+      disabled={disabled}
       {...(extraProps['aria-haspopup'] ? { 'aria-haspopup': true } : {})}
       {...(extraProps['aria-expanded'] === true || extraProps['aria-expanded'] === false
         ? { 'aria-expanded': extraProps['aria-expanded'] }

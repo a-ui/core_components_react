@@ -6,6 +6,7 @@ export interface ButtonProps {
   ariaLabel?: string;
   children?: React.ReactNode;
   className?: string;
+  disabled?: boolean;
   fullWidth?: boolean;
   htmlType?: 'button' | 'submit' | 'reset';
   id?: string;

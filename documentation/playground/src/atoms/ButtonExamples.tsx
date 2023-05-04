@@ -24,6 +24,7 @@ export function ButtonExamples() {
         <Button theme="warning" emphasis="medium">
           Warning outline
         </Button>
+        <Button disabled>Disabled button</Button>
       </div>
     </div>
   );
