@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Clicking on the Rangeslider line moves the handle around
 
+### Added
+
+- `disabled` prop for `Button`
+
 ## [7.0.0-beta.1] - 2023-04-20
 
 ### Breaking from previous beta
@@ -41,7 +45,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `charCountText` property on `TextField` and `TextArea`
 - `multiple` option for `Autocomplete`
 - A warning is logged for a wrong or unknown `Icon`
-- `disabled` prop for `Button`
 
 ## [7.0.0-beta.0] - 2023-03-30
 
