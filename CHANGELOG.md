@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Datepicker animation fix: it now uses the Flyout animation on open/close
+- Autocomplete items list can be updated after rendering (e.g. after an async call)
 
 ### Changed
 

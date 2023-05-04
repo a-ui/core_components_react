@@ -44,7 +44,7 @@ export function Autocomplete({
     setResults(
       (items || []).filter((i) => (fieldValue ? i.label?.toLowerCase().includes(fieldValue.toLowerCase()) : true))
     );
-  }, [fieldValue]);
+  }, [fieldValue, items]);
 
   useEffect(() => {
     if (flyoutRef.current) {
