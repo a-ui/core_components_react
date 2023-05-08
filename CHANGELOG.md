@@ -14,8 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Datepicker animation fix: it now uses the Flyout animation on open/close
 - Autocomplete items list can be updated after rendering (e.g. after an async call)
 
-### Changed
+### Change
 
+- Core branding update to v6.3.0
 - Clicking on the Rangeslider line moves the handle around
 
 ### Added

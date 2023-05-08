@@ -13,7 +13,7 @@ export default {
   },
   args: {
     logoHref: '/',
-    logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.2.3/assets/images/a-logo.svg',
+    logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.3.0/assets/images/a-logo.svg',
     logoAlt: 'Naar de startpagina',
     skipToMainLabel: 'Ga naar inhoud',
     buttons: [{ label: 'Hello world' }]
@@ -31,7 +31,7 @@ export default {
       control: { type: 'text' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'https://cdn.antwerpen.be/core_branding_scss/6.2.3/assets/images/a-logo.svg' }
+        defaultValue: { summary: 'https://cdn.antwerpen.be/core_branding_scss/6.3.0/assets/images/a-logo.svg' }
       },
       description: 'The url for the src logo image in the header component.'
     },
