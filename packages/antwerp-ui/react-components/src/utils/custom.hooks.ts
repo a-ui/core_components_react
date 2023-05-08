@@ -7,7 +7,7 @@ export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean,
   const scrollDivRef = useRef(null);
 
   const setScrollPoints = (target: Element) => {
-    setIsScrollStart(target.scrollLeft === 0);
+    setIsScrollStart(target.scrollLeft <= 0);
     setIsScrollEnd(isScrollAtTheEnd(target));
   };
 
