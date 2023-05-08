@@ -81,7 +81,7 @@ export default {
         type: { summary: 'object' }
       },
       description:
-        'Set the add-on inside the button. The `addOn` prop is an object with following fields _{type: "avatar" | "icon" | "spinner", align?: "left" | "center" | "right", avatarProps?: AvatarProps, iconProps?: IconProps }_'
+        'Set the add-on inside the button. The `addOn` prop is an object with following fields _{type: "avatar" | "icon" | "spinner", align?: "left" | "center" | "right", avatarProps?: AvatarProps, iconProps?: IconProps }_. The default align is `center` and makes the button an icon button.'
     },
     onClick: {
       control: { type: 'function' },
