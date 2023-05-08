@@ -16,7 +16,17 @@ export default {
     logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.3.0/assets/images/a-logo.svg',
     logoAlt: 'Naar de startpagina',
     skipToMainLabel: 'Ga naar inhoud',
-    buttons: [{ label: 'Hello world' }]
+    menuItems: [
+      { label: 'Hello world' },
+      {
+        label: 'Firstname Lastname',
+        addOn: { type: 'avatar', avatarProps: { image: 'https://placedog.net/100/100?r' } },
+        flyout: {
+          children: 'Flyout content',
+          orientation: 'bottom-right'
+        }
+      }
+    ]
   },
   argTypes: {
     logoHref: {
@@ -51,12 +61,13 @@ export default {
       },
       description: 'The label for the skip to main content button in the header.'
     },
-    buttons: {
+    menuItems: {
       table: {
         type: { summary: 'array' },
         defaultValue: { summary: '[]' }
       },
-      description: 'Array of top right header buttons, use objects of button properties with extra property `label`.'
+      description:
+        'Array of top right header menu items, use objects of button properties with extra property `label` and `flyout`. Use the `FlyoutProps` in the `flyout` property to add a menu item with a flyout.'
     },
     qa: QA_PROP_STORY
   }

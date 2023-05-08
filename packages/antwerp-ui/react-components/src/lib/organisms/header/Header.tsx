@@ -1,7 +1,8 @@
 import { Button } from '../../atoms/button';
+import { Flyout } from '../../molecules/flyout';
 import { HeaderProps } from './Header.types';
 
-export function Header({ logoHref, logoAlt, buttons, logoSrc, skipToMainLabel, qa }: HeaderProps) {
+export function Header({ logoHref, logoAlt, menuItems, logoSrc, skipToMainLabel, qa }: HeaderProps) {
   return (
     <header className="o-header" data-qa={qa}>
       <div className="o-header__content-wrapper">
@@ -14,11 +15,22 @@ export function Header({ logoHref, logoAlt, buttons, logoSrc, skipToMainLabel, q
           </a>
         </div>
         <div className="o-header__menu-items">
-          {(buttons || []).map((b) => (
-            <Button {...b} key={b.id} emphasis="low" theme="neutral" className="o-header__button">
-              {b.label}
-            </Button>
-          ))}
+          {(menuItems || []).map((m) =>
+            m.flyout ? (
+              <Flyout
+                {...m.flyout}
+                trigger={
+                  <Button {...m} key={m.id} emphasis="low" theme="neutral" className="o-header__button">
+                    {m.label}
+                  </Button>
+                }
+              />
+            ) : (
+              <Button {...m} key={m.id} emphasis="low" theme="neutral" className="o-header__button">
+                {m.label}
+              </Button>
+            )
+          )}
         </div>
       </div>
     </header>
@@ -30,7 +42,7 @@ Header.defaultProps = {
   logoAlt: 'Naar de startpagina',
   logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.3.0/assets/images/a-logo.svg',
   skipToMainLabel: 'Ga naar inhoud',
-  buttons: []
+  menuItems: []
 };
 
 export default Header;

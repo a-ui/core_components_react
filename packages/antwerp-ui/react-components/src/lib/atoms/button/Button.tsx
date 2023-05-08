@@ -40,8 +40,9 @@ export function Button({
   const classes = classNames(classObject);
 
   useEffect(() => {
-    if (classObject['has-icon'] && !ariaLabel) logWarning('Using an Icon Button without an aria-label');
-  }, [classObject]);
+    if (addOn?.type === 'icon' && !['left', 'right'].includes(addOn?.align || '') && !ariaLabel)
+      logWarning('Using an Icon Button without an aria-label');
+  }, [addOn, ariaLabel]);
 
   return (
     <button
