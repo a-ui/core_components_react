@@ -31,8 +31,8 @@ Jest and react test library
 
 ### Components
 
-- (Optional, done in prepublish step) `yarn build` to build the components
 - (Optional) `npm adduser`
+- `yarn build` to build the components
 - `cd dist/a-ui/react && yarn publish`
 - `git tag v<VERSION>`
 - `git push origin --tags`
