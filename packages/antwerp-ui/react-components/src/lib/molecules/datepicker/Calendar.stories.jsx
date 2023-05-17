@@ -1,6 +1,8 @@
 import Calendar from './Calendar';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Calendar.displayName = 'Calendar';
+
 export default {
   title: 'React/Molecules/Calendar',
   component: Calendar,

@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../../constants/stories.settings';
 import TextField from './TextField';
 
+TextField.displayName = 'TextField';
+
 export default {
   title: 'React/Atoms/Input/TextField',
   component: TextField,

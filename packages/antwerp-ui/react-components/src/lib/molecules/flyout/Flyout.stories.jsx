@@ -2,6 +2,8 @@ import Button from '../../atoms/button/Button';
 import { Flyout } from './Flyout';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Flyout.displayName = 'Flyout';
+
 export default {
   title: 'React/Molecules/Flyout',
   component: Flyout,
