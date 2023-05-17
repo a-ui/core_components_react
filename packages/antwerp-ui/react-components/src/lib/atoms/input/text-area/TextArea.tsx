@@ -28,11 +28,16 @@ export function TextArea({
   onKeyUp
 }: TextAreaProps) {
   const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
-  const wrapperClasses = classNames({
+  const inputClasses = classNames({
     'a-input': true,
     'a-input--inline': !!inline,
     [`a-input--${SIZE_MAP[size || DEFAULT_SIZE]}`]: !!size,
     'has-error': state === State.ERROR
+  });
+
+  const wrapperClasses = classNames({
+    'a-input__wrapper': true,
+    'a-input__wrapper--inline': !!inline
   });
 
   const _handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -41,10 +46,10 @@ export function TextArea({
   };
 
   return (
-    <div className={wrapperClasses} data-qa={qa}>
+    <div className={inputClasses} data-qa={qa}>
       {renderLabel({ label, id, required, inline })}
       {renderDescription({ id, description, state })}
-      <div className="a-input__wrapper">
+      <div className={wrapperClasses}>
         <textarea
           value={value}
           name={name}

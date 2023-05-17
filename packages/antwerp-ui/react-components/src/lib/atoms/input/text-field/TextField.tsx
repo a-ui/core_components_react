@@ -51,6 +51,11 @@ export const TextField = forwardRef(function TextField(
     'has-error': state === 'error'
   });
 
+  const wrapperClasses = classNames({
+    'a-input__wrapper': true,
+    'a-input__wrapper--inline': !!inline
+  });
+
   const _handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCharacterCount(event.target.value.length);
     return onChange && onChange(event);
@@ -60,7 +65,7 @@ export const TextField = forwardRef(function TextField(
     <div className={classes} data-qa={qa}>
       {renderLabel({ label, id, required, inline })}
       {renderDescription({ id, description, state })}
-      <div className="a-input__wrapper">
+      <div className={wrapperClasses}>
         {!!iconLeft && <Icon name={iconLeft} />}
         {!!addonLeft && <div className="a-input__addon">{addonLeft}</div>}
         <input
