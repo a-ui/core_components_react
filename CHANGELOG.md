@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Added `a-input__wrapper--inline` class for inline `TextField` and `TextArea` component
+- `Footer` default props are now correctly set
 
 ### Added
 

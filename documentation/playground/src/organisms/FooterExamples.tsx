@@ -10,7 +10,7 @@ export function FooterExamples() {
   return (
     <div className="u-margin">
       <h2>Footer</h2>
-      <Footer backToTop backToTopAriaLabel="Naar omhoog" items={items} />
+      <Footer backToTop items={items} />
     </div>
   );
 }

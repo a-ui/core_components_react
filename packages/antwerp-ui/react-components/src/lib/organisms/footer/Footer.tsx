@@ -38,9 +38,9 @@ export function Footer({ backToTop, backToTopAriaLabel, items, qa }: FooterProps
   );
 }
 
-Footer.default = {
+Footer.defaultProps = {
   items: [],
-  ariaLabel: 'Terug naar omhoog'
+  backToTopAriaLabel: 'Terug naar omhoog'
 };
 
 export default Footer;
