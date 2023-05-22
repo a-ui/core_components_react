@@ -11,6 +11,7 @@ import {
 } from 'date-fns';
 import { DaysViewProps } from '../Datepicker.types';
 import { DayButton } from './DayButton';
+import { useLocale } from '../../../../utils/time.utils';
 
 export function DaysView({
   value,
@@ -18,14 +19,17 @@ export function DaysView({
   activeMonth,
   activeYear,
   ariaLabelCurrentDay,
+  locale,
   unavailableFrom,
   unavailableTo,
   unavailable
 }: DaysViewProps) {
+  const dateFnsLocale = useLocale(locale);
+
   const renderWeek = (weekDay: Date) => {
     const days: React.ReactElement[] = [];
-    let index = startOfWeek(weekDay);
-    const endWeek = endOfWeek(weekDay);
+    let index = startOfWeek(weekDay, dateFnsLocale);
+    const endWeek = endOfWeek(weekDay, dateFnsLocale);
     while (!isAfter(index, endWeek)) {
       const activeMonthYear = new Date(activeYear, activeMonth);
       days.push(
@@ -49,7 +53,7 @@ export function DaysView({
   const renderBody = () => {
     const weeks = [];
     const current = new Date(activeYear, activeMonth);
-    let index = startOfWeek(startOfMonth(current));
+    let index = startOfWeek(startOfMonth(current), dateFnsLocale);
     const end = endOfMonth(current);
     while (!isAfter(index, end)) {
       weeks.push(renderWeek(index));
@@ -58,7 +62,10 @@ export function DaysView({
     return weeks;
   };
 
-  const daysOfWeek = eachDayOfInterval({ start: startOfWeek(new Date()), end: endOfWeek(new Date()) });
+  const daysOfWeek = eachDayOfInterval({
+    start: startOfWeek(new Date(), dateFnsLocale),
+    end: endOfWeek(new Date(), dateFnsLocale)
+  });
 
   return (
     <div className="m-datepicker__grid">
@@ -67,7 +74,7 @@ export function DaysView({
           <tr className="m-datepicker__grid-head">
             {daysOfWeek.map((day) => (
               <th key={`aui-calendar-weekday-${day}`} scope="col">
-                <span title={format(day, 'EEEE')}>{format(day, 'EEEEEE')}</span>
+                <span title={format(day, 'EEEE', dateFnsLocale)}>{format(day, 'EEEEEE', dateFnsLocale)}</span>
               </th>
             ))}
           </tr>

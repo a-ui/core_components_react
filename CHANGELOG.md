@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `a-input__wrapper--inline` class for inline `TextField` and `TextArea` component
 
+### Added
+
+- `locale` props for `Calendar` (and Datepicker via `calendarProps`)
+
 ## [7.0.0-beta.3] - 2023-05-08
 
 ### Fixed

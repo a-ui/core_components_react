@@ -13,3 +13,6 @@ export const SORT_DESCENDING = 'descending';
 
 // DATES
 export const DEFAULT_DATE_FORMAT = 'dd/MM/yyyy';
+
+// LOCALES
+export const DEFAULT_LOCALE = 'nl';

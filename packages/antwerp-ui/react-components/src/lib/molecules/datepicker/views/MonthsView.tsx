@@ -1,8 +1,12 @@
 import { format, getDate, getMonth, getYear } from 'date-fns';
 import { classNames } from '../../../../utils/dom.utils';
 import { MonthsViewProps } from '../Datepicker.types';
+import { DEFAULT_LOCALE } from '../../../../constants/settings';
+import { useLocale } from '../../../../utils/time.utils';
 
-export function MonthsView({ onChange, value, activeYear }: MonthsViewProps) {
+export function MonthsView({ onChange, value, activeYear, locale = DEFAULT_LOCALE }: MonthsViewProps) {
+  const dateFnsLocale = useLocale(locale);
+
   const renderMonth = (month: number) => {
     const classes = classNames({
       'is-current': month === getMonth(new Date()) && activeYear === getYear(new Date()),
@@ -12,7 +16,7 @@ export function MonthsView({ onChange, value, activeYear }: MonthsViewProps) {
     return (
       <td>
         <button type="button" className={classes} onClick={() => onChange(monthValue)}>
-          {format(monthValue, 'MMMM')}
+          {format(monthValue, 'MMMM', dateFnsLocale)}
         </button>
       </td>
     );
@@ -24,10 +28,8 @@ export function MonthsView({ onChange, value, activeYear }: MonthsViewProps) {
     while (index < 12) {
       monthPairs.push(
         <tr key={`aui-calendar-month-pair-${index}`}>
-          <>
-            {renderMonth(index)}
-            {renderMonth(index + 1)}
-          </>
+          {renderMonth(index)}
+          {renderMonth(index + 1)}
         </tr>
       );
       index += 2;

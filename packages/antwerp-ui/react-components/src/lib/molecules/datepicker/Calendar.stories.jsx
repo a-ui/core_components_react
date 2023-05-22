@@ -26,7 +26,8 @@ export default {
     ariaLabelPreviousYears: 'Ga naar de voorgaande jaren',
     ariaLabelNextMonth: 'Ga naar de volgende maand',
     ariaLabelNextYear: 'Ga naar het volgend jaar',
-    ariaLabelNextYears: 'Ga naar de volgende jaren'
+    ariaLabelNextYears: 'Ga naar de volgende jaren',
+    locale: 'enUS'
   },
   argTypes: {
     isOpen: {
@@ -85,6 +86,15 @@ export default {
       action: 'onChange',
       description:
         'Function triggered when the value of the `Calendar` has changed. Returns the new value as ISOString.'
+    },
+    locale: {
+      control: { type: 'text' },
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'nl' }
+      },
+      description:
+        'Use this prop to localize the calendar. List of available locales: https://github.com/date-fns/date-fns/tree/main/src/locale.'
     },
     ariaLabel: {
       control: { type: 'text' },

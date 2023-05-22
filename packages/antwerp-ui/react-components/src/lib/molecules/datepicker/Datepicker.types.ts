@@ -15,6 +15,7 @@ export interface DatepickerProps {
 
 export interface CalendarProps {
   ariaLabel?: string;
+  locale?: string;
   ariaLabelCurrentDay?: string;
   ariaLabelNextMonth?: string;
   ariaLabelNextYear?: string;
@@ -44,6 +45,7 @@ type DatepickerCalendarProps = Pick<
   | 'ariaLabelPreviousYear'
   | 'ariaLabelPreviousYears'
   | 'qa'
+  | 'locale'
   | 'unavailable'
   | 'unavailableFrom'
   | 'unavailableTo'
@@ -53,6 +55,7 @@ export interface MonthsViewProps {
   value?: Date;
   onChange: (value: Date) => void;
   activeYear: number;
+  locale?: string;
 }
 
 export interface YearsViewProps {
@@ -64,7 +67,7 @@ export interface YearsViewProps {
 
 export type DaysViewProps = Pick<
   CalendarProps,
-  'ariaLabelCurrentDay' | 'unavailableFrom' | 'unavailableTo' | 'unavailable'
+  'ariaLabelCurrentDay' | 'locale' | 'unavailableFrom' | 'unavailableTo' | 'unavailable'
 > & {
   value?: Date;
   onChange: (value: Date) => void;
