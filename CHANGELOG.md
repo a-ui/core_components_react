@@ -1,4 +1,4 @@
-Version 7.0.0-beta.3
+Version 7.0.0-beta.4
 
 # Changelog
 
@@ -20,7 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `locale` props for `Calendar` (and Datepicker via `calendarProps`)
 
-
 ## [7.0.0-beta.3] - 2023-05-08
 
 ### Fixed
@@ -39,11 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `disabled` prop for `Button`
 
-
 ## [7.0.0-beta.2] - 2023-05-08
 
 Unpublished broken version
-
 
 ## [7.0.0-beta.1] - 2023-04-20
 
@@ -68,7 +65,6 @@ Unpublished broken version
 - `charCountText` property on `TextField` and `TextArea`
 - `multiple` option for `Autocomplete`
 - A warning is logged for a wrong or unknown `Icon`
-
 
 ## [7.0.0-beta.0] - 2023-03-30
 
