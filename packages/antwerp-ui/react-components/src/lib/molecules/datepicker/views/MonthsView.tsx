@@ -3,6 +3,7 @@ import { classNames } from '../../../../utils/dom.utils';
 import { MonthsViewProps } from '../Datepicker.types';
 import { DEFAULT_LOCALE } from '../../../../constants/settings';
 import { useLocale } from '../../../../utils/time.utils';
+import { titleize } from '../../../../utils/string.utils';
 
 export function MonthsView({ onChange, value, activeYear, locale = DEFAULT_LOCALE }: MonthsViewProps) {
   const dateFnsLocale = useLocale(locale);
@@ -16,7 +17,7 @@ export function MonthsView({ onChange, value, activeYear, locale = DEFAULT_LOCAL
     return (
       <td>
         <button type="button" className={classes} onClick={() => onChange(monthValue)}>
-          {format(monthValue, 'MMMM', dateFnsLocale)}
+          {titleize(format(monthValue, 'MMMM', dateFnsLocale))}
         </button>
       </td>
     );

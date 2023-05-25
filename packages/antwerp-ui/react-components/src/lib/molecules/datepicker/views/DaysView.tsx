@@ -12,6 +12,7 @@ import {
 import { DaysViewProps } from '../Datepicker.types';
 import { DayButton } from './DayButton';
 import { useLocale } from '../../../../utils/time.utils';
+import { titleize } from '../../../../utils/string.utils';
 
 export function DaysView({
   value,
@@ -74,7 +75,9 @@ export function DaysView({
           <tr className="m-datepicker__grid-head">
             {daysOfWeek.map((day) => (
               <th key={`aui-calendar-weekday-${day}`} scope="col">
-                <span title={format(day, 'EEEE', dateFnsLocale)}>{format(day, 'EEEEEE', dateFnsLocale)}</span>
+                <span title={titleize(format(day, 'EEEE', dateFnsLocale))}>
+                  {titleize(format(day, 'EEEEEE', dateFnsLocale))}
+                </span>
               </th>
             ))}
           </tr>

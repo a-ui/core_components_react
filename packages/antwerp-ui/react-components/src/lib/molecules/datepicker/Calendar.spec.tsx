@@ -170,9 +170,9 @@ describe('UI Components - Molecules - Calendar', () => {
     const { baseElement, queryByText } = render(<Calendar value={date} locale="unknown" />);
     const prevButton = baseElement.getElementsByClassName('m-datepicker__nav-pagination')[0]
       .childNodes[0] as HTMLButtonElement;
-    expect(queryByText('februari 2023')).toBeTruthy();
+    expect(queryByText('Februari 2023')).toBeTruthy();
     fireEvent.click(prevButton);
-    expect(queryByText('februari 2023')).toBeFalsy();
-    expect(queryByText('januari 2023')).toBeTruthy();
+    expect(queryByText('Februari 2023')).toBeFalsy();
+    expect(queryByText('Januari 2023')).toBeTruthy();
   });
 });

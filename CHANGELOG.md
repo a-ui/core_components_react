@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- All months/days start with a capital letter in the `Calendar` for any localization
+
 ## [7.0.0-beta.4] - 2023-05-24
 
 ### Fixed
