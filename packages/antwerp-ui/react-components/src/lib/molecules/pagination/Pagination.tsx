@@ -101,7 +101,7 @@ export function Pagination({
             <Icon name="arrow-left-1" />
           </a>
         </li>
-        {display === 'text' && renderTextPagination(currentPage, totalPages, text, ariaLabelPage)}
+        {display === 'text' && text && renderTextPagination(currentPage, totalPages, text, ariaLabelPage)}
         {display === 'numbers' && renderNumbersPagination(currentPage, totalPages, ariaLabelPage, pageChange)}
         <li className="m-pagination__next" key="pagination__next">
           <a href={'#'} className={paginationNextClass} aria-label={ariaLabelNextPage} onClick={onNext}>

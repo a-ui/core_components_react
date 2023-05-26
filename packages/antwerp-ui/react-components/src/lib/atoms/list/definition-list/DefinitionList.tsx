@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { DefinitionListProps } from '../list.types';
+import { DefinitionListProps } from '../List.types';
 
 export function DefinitionList({ items, qa }: DefinitionListProps) {
   return (

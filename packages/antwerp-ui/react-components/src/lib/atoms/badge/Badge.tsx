@@ -17,7 +17,7 @@ export function Badge({ ariaLabel, theme, emphasis, children, qa }: BadgeProps) 
     if (isNaN(number)) {
       logWarning('Using the Badge Component with a non-numerical value');
     }
-  }, [children]);
+  }, [children, number]);
 
   return (
     <span className={classes} aria-label={ariaLabel} data-qa={qa}>

@@ -1,6 +1,7 @@
 import { RefObject, UIEvent, UIEventHandler, useEffect, useRef, useState } from 'react';
 import { isScrollAtTheEnd } from './dom.utils';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean, boolean] {
   const [isScrollStart, setIsScrollStart] = useState(true);
   const [isScrollEnd, setIsScrollEnd] = useState(true);
@@ -35,6 +36,7 @@ export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean,
 }
 
 export function useOutsideClick(onOutsideClick: (event: EventTarget | null) => void) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const elementRef: RefObject<any> = useRef(null);
 
   const handleClick = (event: MouseEvent) => {

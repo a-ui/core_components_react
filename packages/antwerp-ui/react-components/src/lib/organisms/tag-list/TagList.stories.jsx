@@ -18,7 +18,7 @@ export default {
       table: {
         type: { summary: 'ReactNode[]' },
         description: 'The children of a `TagList` component are `Tag` components.'
-      },
+      }
     },
     qa: QA_PROP_STORY
   }
@@ -28,7 +28,7 @@ const Template = ({ ...args }) => (
   <TagList {...args}>
     <Tag label="Hello 1" iconLeft="tags" />
     <Tag label="Hello 2" toggle iconLeft="tags" />
-    <Tag label="Hello 3" iconLeft="tags"  />
+    <Tag label="Hello 3" iconLeft="tags" />
   </TagList>
 );
 

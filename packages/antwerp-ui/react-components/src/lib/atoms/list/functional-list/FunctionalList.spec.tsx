@@ -12,8 +12,12 @@ describe('UI Components - Atoms - FunctionalList', () => {
   it('should render the correct child items', () => {
     const { getByText } = render(
       <FunctionalList>
-        <ListItem iconLeft="mouse">List item 1</ListItem>
-        <ListItem iconRight="mouse">List item 2</ListItem>
+        <ListItem id="1" iconLeft="mouse">
+          List item 1
+        </ListItem>
+        <ListItem id="2" iconRight="mouse">
+          List item 2
+        </ListItem>
       </FunctionalList>
     );
     expect(getByText('List item 1')).toBeInTheDocument();
@@ -40,8 +44,10 @@ describe('UI Components - Atoms - FunctionalList', () => {
     const mockClick2 = jest.fn();
     const { getAllByRole } = render(
       <FunctionalList onItemClick={mockClick}>
-        <ListItem link={{ href: '' }}>List item 1</ListItem>
-        <ListItem link={{ href: '#' }} active onClick={mockClick2}>
+        <ListItem id="3" link={{ href: '' }}>
+          List item 1
+        </ListItem>
+        <ListItem id="4" link={{ href: '#' }} active onClick={mockClick2}>
           List item 2
         </ListItem>
       </FunctionalList>
@@ -86,7 +92,7 @@ describe('UI Components - Atoms - FunctionalList', () => {
   it('should render an avatar list', () => {
     const { container } = render(
       <FunctionalList type="avatar">
-        <ListItemAvatar iconRight="mouse"></ListItemAvatar>
+        <ListItemAvatar id="5" iconRight="mouse"></ListItemAvatar>
       </FunctionalList>
     );
     expect(container.querySelector('.a-avatar-list')).toBeInTheDocument();
@@ -96,7 +102,7 @@ describe('UI Components - Atoms - FunctionalList', () => {
   it('should provide syntatic sugar for an avatar list', () => {
     const { container } = render(
       <AvatarList type="avatar">
-        <ListItemAvatar iconRight="mouse"></ListItemAvatar>
+        <ListItemAvatar id="6" iconRight="mouse"></ListItemAvatar>
       </AvatarList>
     );
     expect(container.querySelector('.a-avatar-list')).toBeInTheDocument();
@@ -107,6 +113,7 @@ describe('UI Components - Atoms - FunctionalList', () => {
     const { getByText } = render(
       <FunctionalList type="avatar">
         <ListItemAvatar
+          id="7"
           user={{ name: 'Albert Einstein', function: 'Genius', email: 'albert.einstein@antwerpen.be' }}
         ></ListItemAvatar>
       </FunctionalList>
@@ -121,8 +128,8 @@ describe('UI Components - Atoms - FunctionalList', () => {
     const mockClick2 = jest.fn();
     const { getAllByRole } = render(
       <FunctionalList type="avatar" onItemClick={mockClick}>
-        <ListItemAvatar link={{ href: '' }} />
-        <ListItemAvatar link={{ href: '#' }} active onClick={mockClick2} />
+        <ListItemAvatar id="8" link={{ href: '' }} />
+        <ListItemAvatar id="9" link={{ href: '#' }} active onClick={mockClick2} />
       </FunctionalList>
     );
     fireEvent.click(getAllByRole('link')[0]);

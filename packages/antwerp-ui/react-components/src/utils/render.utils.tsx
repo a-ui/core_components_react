@@ -2,7 +2,6 @@ import { cloneElement, ReactElement, ReactNode } from 'react';
 import { Link } from '../constants/application.types';
 import { Size } from '../constants/layout.settings';
 import { Avatar } from '../lib/atoms/avatar';
-import { ButtonProps } from '../lib/atoms/button';
 import { ButtonAddOnProps } from '../lib/atoms/button/Button.types';
 import { Spinner } from '../lib/atoms/spinner';
 import { Icon } from '../lib/base/icon';
@@ -47,7 +46,7 @@ export function renderAddOn(addOn?: ButtonAddOnProps, size?: 'small' | 'medium' 
     return <Spinner ariaHidden size={size === Size.S ? Size.XS : Size.S} />;
   } else if (addOn?.type === 'avatar') {
     return <Avatar {...addOn?.avatarProps} size={size} />;
-  } else if (addOn?.type === 'icon') {
+  } else if (addOn?.type === 'icon' && addOn?.iconProps) {
     return <Icon {...addOn?.iconProps} />;
   }
   return null;

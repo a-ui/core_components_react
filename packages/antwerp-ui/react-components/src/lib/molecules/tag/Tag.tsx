@@ -20,7 +20,7 @@ export function Tag({ label, isToggle, active, iconLeft, removable, name, qa, on
   });
   const toggleProps = {
     name,
-    onClick: () => handleClick(name),
+    onClick: () => name && handleClick(name),
     'aria-pressed': isPressed
   };
 

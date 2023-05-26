@@ -7,9 +7,12 @@
     "playground": "yarn nx run documentation-playground:serve:development",
     "storybook": "yarn nx run @a-ui/storybook:start",
     "storybook:build": "yarn nx run @a-ui/storybook:build",
+    "lint": "eslint packages/antwerp-ui/react-components/src/**/*.{tsx,jsx,ts}",
+    "prettier:read": "prettier packages/antwerp-ui/react-components/src/**/*.{tsx,jsx,ts} --check",
     "generate": "yarn nx g @a-ui/react:component",
     "g": "yarn generate",
     "postinstall": "cd documentation/storybook && yarn install && cd ../..",
+    "prepare": "husky install",
     "build": "yarn nx build @a-ui/react"
   },
   "dependencies": {
@@ -18,6 +21,7 @@
     "@swc/core": "^1.3.32",
     "@types/react-modal": "^3.13.1",
     "date-fns": "^2.29.3",
+    "husky": "^8.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-modal": "^3.16.1",

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import jest from 'jest-mock';
 import { fireEvent, render } from '@testing-library/react';
 import { DayButton } from './DayButton';

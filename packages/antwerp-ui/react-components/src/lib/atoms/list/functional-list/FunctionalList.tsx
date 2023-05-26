@@ -1,6 +1,6 @@
 import { classNames } from '../../../../utils/dom.utils';
 import { Children, cloneElement, ReactElement } from 'react';
-import { FunctionalListProps } from '../list.types';
+import { FunctionalListProps } from '../List.types';
 
 export function FunctionalList({ onItemClick, type, ordered, flushed, lined, children, qa }: FunctionalListProps) {
   const classes = classNames({

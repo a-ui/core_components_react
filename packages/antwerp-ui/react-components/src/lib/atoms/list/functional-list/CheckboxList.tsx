@@ -1,4 +1,4 @@
-import { FunctionalListProps } from '../list.types';
+import { FunctionalListProps } from '../List.types';
 import FunctionalList from './FunctionalList';
 
 export function CheckboxList(props: FunctionalListProps) {

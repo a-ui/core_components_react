@@ -106,6 +106,7 @@ export default {
 };
 
 const Template = (args) => {
+  // eslint-disable-next-line no-empty-pattern
   const [{}, updateArgs] = useArgs();
   return (
     <Tag
