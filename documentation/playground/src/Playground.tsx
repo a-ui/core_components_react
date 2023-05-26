@@ -34,6 +34,7 @@ import ListExamples from './atoms/ListExamples';
 import RangeSliderExamples from './atoms/RangeSliderExamples';
 import AutocompleteExamples from './molecules/AutocompleteExamples';
 import DatepickerExamples from './molecules/DatepickerExamples';
+import MapExamples from './organisms/MapExamples';
 
 export function Playground() {
   return (
@@ -74,6 +75,7 @@ export function Playground() {
       <TagExamples />
       <UploadExamples />
       <h1>Organisms</h1>
+      <MapExamples />
       <TagListExamples />
       <FooterExamples />
       <HeaderExamples />
