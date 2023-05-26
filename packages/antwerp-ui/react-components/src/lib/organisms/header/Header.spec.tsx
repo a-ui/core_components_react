@@ -17,14 +17,19 @@ describe('UI Components - Organisms - Header', () => {
   });
 
   it('should render header buttons', () => {
-    const { baseElement, getByText } = render(<Header menuItems={[{ id: 'hello', label: 'Hello world' }]} />);
+    const { baseElement, getByText } = render(<Header menuItems={[{ label: 'Hello world' }]} />);
     expect(baseElement.getElementsByClassName('o-header__button')[0]).toBeTruthy();
     expect(getByText('Hello world')).toBeTruthy();
   });
 
   it('should render header buttons with flyouts', () => {
     const { baseElement, getByText } = render(
-      <Header menuItems={[{ id: 'hello', label: 'Hello flyout', flyout: { children: 'Flyout content' } }]} />
+      <Header
+        menuItems={[
+          { id: 'hello', label: 'Hello flyout', flyout: { children: 'Flyout content' } },
+          { label: 'Hello flyout two', flyout: { children: 'Flyout content' } }
+        ]}
+      />
     );
     expect(baseElement.getElementsByClassName('o-header__button')[0]).toBeTruthy();
     expect(getByText('Hello flyout')).toBeTruthy();
