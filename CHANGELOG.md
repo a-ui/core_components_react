@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add `Map` component
 - Fixed child elements without valid key bug for `Header` component
+- Add lint and prettier commands
+- Add husky pre-commit hooks
+- Fix linting issues and ts warnings/errors
 
 ## [7.0.0-beta.4] - 2023-05-24
 
