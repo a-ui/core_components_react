@@ -15,18 +15,25 @@ export function Header({ logoHref, logoAlt, menuItems, logoSrc, skipToMainLabel,
           </a>
         </div>
         <div className="o-header__menu-items">
-          {(menuItems || []).map((m) =>
+          {(menuItems || []).map((m, index) =>
             m.flyout ? (
               <Flyout
+                key={m.id || `menu-item-${index}`}
                 {...m.flyout}
                 trigger={
-                  <Button {...m} key={m.id} emphasis="low" theme="neutral" className="o-header__button">
+                  <Button {...m} emphasis="low" theme="neutral" className="o-header__button">
                     {m.label}
                   </Button>
                 }
               />
             ) : (
-              <Button {...m} key={m.id} emphasis="low" theme="neutral" className="o-header__button">
+              <Button
+                {...m}
+                key={m.id || `menu-item-${index}`}
+                emphasis="low"
+                theme="neutral"
+                className="o-header__button"
+              >
                 {m.label}
               </Button>
             )
