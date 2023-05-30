@@ -6,8 +6,9 @@ export function HeaderExamples() {
       <h2>Header</h2>
       <Header
         menuItems={[
-          { label: 'Hello world' },
+          { id: '1', label: 'Hello world' },
           {
+            id: '2',
             label: 'Firstname Lastname',
             addOn: { type: 'avatar', avatarProps: { image: 'https://placedog.net/100/100?r' } },
             flyout: {

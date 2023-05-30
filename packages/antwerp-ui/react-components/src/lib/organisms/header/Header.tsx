@@ -18,6 +18,7 @@ export function Header({ logoHref, logoAlt, menuItems, logoSrc, skipToMainLabel,
           {(menuItems || []).map((m) =>
             m.flyout ? (
               <Flyout
+                key={m.id}
                 {...m.flyout}
                 trigger={
                   <Button {...m} key={m.id} emphasis="low" theme="neutral" className="o-header__button">
