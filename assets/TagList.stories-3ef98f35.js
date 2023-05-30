@@ -18,7 +18,7 @@ export default {
       table: {
         type: { summary: 'ReactNode[]' },
         description: 'The children of a \`TagList\` component are \`Tag\` components.'
-      },
+      }
     },
     qa: QA_PROP_STORY
   }
@@ -28,10 +28,10 @@ const Template = ({ ...args }) => (
   <TagList {...args}>
     <Tag label="Hello 1" iconLeft="tags" />
     <Tag label="Hello 2" toggle iconLeft="tags" />
-    <Tag label="Hello 3" iconLeft="tags"  />
+    <Tag label="Hello 3" iconLeft="tags" />
   </TagList>
 );
 
 export const tagList = Template.bind({});
 `,locationsMap:{"tag-list":{startLoc:{col:17,line:27},endLoc:{col:1,line:33},startBody:{col:17,line:27},endBody:{col:1,line:33}}}},docs:{description:{component:"The tag list component shows a collection of one or multiple tags, that are in one way or another related to each other or to the context they are placed next to."}}},argTypes:{children:{table:{type:{summary:"ReactNode[]"},description:"The children of a `TagList` component are `Tag` components."}},qa:T}},d=a(({...t})=>g(s,{...t,children:[e(n,{label:"Hello 1",iconLeft:"tags"}),e(n,{label:"Hello 2",toggle:!0,iconLeft:"tags"}),e(n,{label:"Hello 3",iconLeft:"tags"})]}),"Template"),S=d.bind({}),j=["tagList"];export{j as __namedExportsOrder,Q as default,S as tagList};
-//# sourceMappingURL=TagList.stories-ef40b870.js.map
+//# sourceMappingURL=TagList.stories-3ef98f35.js.map
