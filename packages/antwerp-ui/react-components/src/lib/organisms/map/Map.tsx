@@ -2,11 +2,11 @@ import { MapProps } from './Map.types';
 import { classNames } from '../../../utils/dom.utils';
 import { Button, ButtonProps } from '../../atoms/button';
 // TODO: include map in css and remove this import
-import './dist/main.css';
+import './main.css';
 
 export function Map({
-  content,
-  contentOpen,
+  sidebar,
+  sidebarOpen,
   map,
   topLeftControls,
   topRightControls,
@@ -19,7 +19,7 @@ export function Map({
     return (
       <div className={`o-map__controls o-map__controls--${location}`}>
         {controls.map((buttonProps, index) => {
-          return <Button key={`map-control-${buttonProps.id || index}`} {...buttonProps} />;
+          return <Button key={`map-control-${buttonProps.id || index}`} size="small" {...buttonProps} />;
         })}
       </div>
     );
@@ -31,14 +31,14 @@ export function Map({
   });
   return (
     <div className={classes} data-qa={qa}>
-      {content && (
+      {sidebar && (
         <div
           className={classNames({
             'o-map__content': true,
-            'o-map__content--open': !!contentOpen
+            'o-map__content--open': !!sidebarOpen
           })}
         >
-          {content}
+          {sidebar}
         </div>
       )}
       <div className="o-map__wrapper">

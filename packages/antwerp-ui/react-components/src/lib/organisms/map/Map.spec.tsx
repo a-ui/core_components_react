@@ -29,7 +29,7 @@ describe('UI Components - Organisms - Header', () => {
     expect(baseElement.getElementsByClassName('o-map__controls--bottom-right').length).toBe(1);
   });
   it('should render with open content if contentOpen is true', () => {
-    const { baseElement } = render(<Map content="test" contentOpen />);
+    const { baseElement } = render(<Map sidebar="test" sidebarOpen />);
     expect(baseElement.getElementsByClassName('o-map__content--open').length).toBe(1);
   });
 });

@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 import { ButtonProps } from '../../atoms/button';
 
 export interface MapProps {
-  content?: ReactNode;
-  contentOpen?: boolean;
-  map?: ReactNode;
+  bottomLeftControls?: ButtonProps[];
+  bottomRightControls?: ButtonProps[];
   fullscreen?: boolean;
+  map?: ReactNode;
+  qa?: string;
+  sidebar?: ReactNode;
+  sidebarOpen?: boolean;
   topLeftControls?: ButtonProps[];
   topRightControls?: ButtonProps[];
-  bottomRightControls?: ButtonProps[];
-  bottomLeftControls?: ButtonProps[];
-  qa?: string;
 }
