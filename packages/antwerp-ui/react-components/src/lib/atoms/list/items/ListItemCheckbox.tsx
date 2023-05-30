@@ -1,5 +1,5 @@
 import { Checkbox } from '../../checkbox';
-import { ListItemCheckboxProps } from '../list.types';
+import { ListItemCheckboxProps } from '../List.types';
 
 export function ListItemCheckbox({ name, onClick, qa, ...props }: ListItemCheckboxProps) {
   const onItemClick = () => {

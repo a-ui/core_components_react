@@ -1,5 +1,3 @@
-import { logWarning } from './log.utils';
-
 const MB = 1048576;
 
 export function hasValidFormat(file: File, acceptedFormat?: string): boolean {

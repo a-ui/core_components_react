@@ -135,12 +135,15 @@ describe('Utils - Math Utils', () => {
 
 describe('Utils - File Utils', () => {
   describe('- invalidIcon', () => {
-    function MockSVGGraphicsElement() {}
+    function MockSVGGraphicsElement() {
+      return true;
+    }
 
     Object.defineProperty(MockSVGGraphicsElement.prototype, 'getBBox', {
       value: jest.fn(() => ({ width: 0, height: 0 }))
     });
     it('returns true if an icon is invalid', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const icon = new (MockSVGGraphicsElement as any)();
       expect(invalidIcon(icon)).toEqual(true);
     });

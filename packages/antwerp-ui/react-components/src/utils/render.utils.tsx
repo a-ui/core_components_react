@@ -2,7 +2,6 @@ import { cloneElement, ReactElement, ReactNode } from 'react';
 import { Link } from '../constants/application.types';
 import { Size } from '../constants/layout.settings';
 import { Avatar } from '../lib/atoms/avatar';
-import { ButtonProps } from '../lib/atoms/button';
 import { ButtonAddOnProps } from '../lib/atoms/button/Button.types';
 import { Spinner } from '../lib/atoms/spinner';
 import { Icon } from '../lib/base/icon';

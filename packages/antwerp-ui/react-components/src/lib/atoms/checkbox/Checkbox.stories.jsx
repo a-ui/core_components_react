@@ -98,7 +98,7 @@ export default {
 };
 
 const Template = (args) => {
-  const [{}, updateArgs] = useArgs();
+  const [, updateArgs] = useArgs();
   return (
     <Checkbox
       {...args}

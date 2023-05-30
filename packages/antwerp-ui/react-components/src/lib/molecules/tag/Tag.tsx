@@ -8,7 +8,7 @@ export function Tag({ label, isToggle, active, iconLeft, removable, name, qa, on
   const isRemovable = removable && !isToggle;
   const isPressed = active === true || active === false ? active : pressed;
 
-  const handleClick = (clickedName: string) => {
+  const handleClick = (clickedName?: string) => {
     isToggle && setPressed(!pressed);
     return (isToggle || isRemovable) && onClick && onClick(clickedName);
   };

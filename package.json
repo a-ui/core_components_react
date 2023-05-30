@@ -3,14 +3,17 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "test": "yarn nx test",
-    "playground": "yarn nx run documentation-playground:serve:development",
-    "storybook": "yarn nx run @a-ui/storybook:start",
-    "storybook:build": "yarn nx run @a-ui/storybook:build",
-    "generate": "yarn nx g @a-ui/react:component",
+    "build": "yarn nx build @a-ui/react",
     "g": "yarn generate",
+    "generate": "yarn nx g @a-ui/react:component",
+    "lint": "eslint packages/antwerp-ui/react-components/src/**/*.{tsx,jsx,ts}",
+    "playground": "yarn nx run documentation-playground:serve:development",
     "postinstall": "cd documentation/storybook && yarn install && cd ../..",
-    "build": "yarn nx build @a-ui/react"
+    "prettier:read": "prettier packages/antwerp-ui/react-components/src/**/*.{tsx,jsx,ts} --check",
+    "storybook:build": "yarn nx run @a-ui/storybook:build",
+    "storybook": "yarn nx run @a-ui/storybook:start",
+    "test": "yarn nx test",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@storybook/client-api": "^6.5.16",
@@ -18,6 +21,7 @@
     "@swc/core": "^1.3.32",
     "@types/react-modal": "^3.13.1",
     "date-fns": "^2.29.3",
+    "husky": "^8.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-modal": "^3.16.1",

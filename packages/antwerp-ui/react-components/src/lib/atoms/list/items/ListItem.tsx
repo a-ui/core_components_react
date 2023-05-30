@@ -1,7 +1,7 @@
 import { classNames } from '../../../../utils/dom.utils';
 import { MouseEvent } from 'react';
 import { Icon } from '../../../base/icon';
-import { ListItemProps } from '../list.types';
+import { ListItemProps } from '../List.types';
 
 export function ListItem({
   name,

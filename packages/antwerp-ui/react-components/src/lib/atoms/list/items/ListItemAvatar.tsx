@@ -2,7 +2,7 @@ import { classNames } from '../../../../utils/dom.utils';
 import { MouseEvent } from 'react';
 import { Icon } from '../../../base/icon';
 import { Avatar } from '../../avatar';
-import { ListItemAvatarProps } from '../list.types';
+import { ListItemAvatarProps } from '../List.types';
 
 export function ListItemAvatar({ avatar, name, link, active, user, iconRight, id, onClick, qa }: ListItemAvatarProps) {
   const ItemTag = `${link && (link.href || link.href === '') ? 'a' : 'span'}` as keyof JSX.IntrinsicElements;

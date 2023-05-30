@@ -7,5 +7,5 @@ export interface TagProps {
   iconLeft?: string;
   qa?: string;
   ariaLabelDelete?: string;
-  onClick?: (name: string) => void;
+  onClick?: (name?: string) => void;
 }
