@@ -9,6 +9,7 @@ import { MonthsView } from './views/MonthsView';
 import { YearsView } from './views/YearsView';
 import { useLocale } from '../../../utils/time.utils';
 import { DEFAULT_LOCALE } from '../../../constants/settings';
+import { titleize } from '../../../utils/string.utils';
 
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
   (
@@ -49,7 +50,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       const dateToShow = new Date(activeYear, activeMonth);
       return {
         [CalendarView.DAYS]: {
-          main: format(dateToShow, 'MMMM yyyy', dateFnsLocale),
+          main: titleize(format(dateToShow, 'MMMM yyyy', dateFnsLocale)),
           next: `${ariaLabelNextMonth}, ${format(addMonths(dateToShow, 1), 'MMMM yyyy', dateFnsLocale)}`,
           prev: `${ariaLabelPreviousMonth}, ${format(subMonths(dateToShow, 1), 'MMMM yyyy', dateFnsLocale)}`
         },
