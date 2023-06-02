@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Add the `Select` component
+
 ### Changed
 
 - All months/days start with a capital letter in the `Calendar` for any localization
