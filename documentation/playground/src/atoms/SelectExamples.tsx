@@ -17,7 +17,11 @@ export function SelectExamples() {
     setValue(e.target.value);
   };
   return (
-    <>
+    <div className="u-margin">
+      <h2>Select</h2>
+      <div className="u-margin">
+        <Select />
+      </div>
       <div className="u-margin">
         <Select
           required
@@ -53,7 +57,7 @@ export function SelectExamples() {
           options={options}
         />
       </div>
-    </>
+    </div>
   );
 }
 

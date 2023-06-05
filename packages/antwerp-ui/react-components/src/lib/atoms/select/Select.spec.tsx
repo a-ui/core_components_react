@@ -17,7 +17,7 @@ describe('UI Components - Atoms - Select', () => {
     options: options
   };
   it('should render successfully', () => {
-    const { baseElement } = render(<Select {...defaultProps} />);
+    const { baseElement } = render(<Select />);
     expect(baseElement).toBeTruthy();
   });
   it('should call onChange when an option is selected', () => {

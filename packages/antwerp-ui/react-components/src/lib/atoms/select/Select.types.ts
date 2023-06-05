@@ -3,11 +3,11 @@ import React from 'react';
 export interface SelectProps {
   description?: string;
   disabled?: boolean;
-  id: string;
+  id?: string;
   inline?: boolean;
-  label: string;
+  label?: string;
   name?: string;
-  options: SelectOption[];
+  options?: SelectOption[];
   placeholder?: string;
   required?: boolean;
   size?: 'small' | 'medium' | 'large';

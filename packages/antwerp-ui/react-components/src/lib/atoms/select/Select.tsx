@@ -50,7 +50,7 @@ export function Select({
           onChange={handleChange}
         >
           <option disabled>{placeholder}</option>
-          {options.map((o, index) => {
+          {(options || []).map((o, index) => {
             return (
               <option key={`${o.value}-${index}`} value={o.value} disabled={o.disabled}>
                 {o.label}

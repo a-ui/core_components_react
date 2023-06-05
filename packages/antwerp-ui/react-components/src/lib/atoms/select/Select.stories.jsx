@@ -117,7 +117,8 @@ export default {
     options: {
       control: { type: 'object' },
       table: {
-        type: { summary: 'object' }
+        type: { summary: 'object' },
+        defaultValue: { summary: '[]' }
       },
       description:
         'The `options` prop is an array of objects in the format `{ value: "string", label: "string", disabled?: boolean }`. It sets the `option` HTML elements in `Select` component.'
