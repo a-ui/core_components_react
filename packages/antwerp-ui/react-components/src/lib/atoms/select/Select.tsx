@@ -65,7 +65,7 @@ export function Select({
 }
 
 Select.defaultProps = {
-  placeholder: 'Maak uw keuze'
+  placeholder: 'Maak een keuze'
 };
 
 export default Select;

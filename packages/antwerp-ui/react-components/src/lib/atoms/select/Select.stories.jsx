@@ -61,7 +61,7 @@ export default {
       control: { type: 'text' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'Maak uw keuze' }
+        defaultValue: { summary: 'Maak een keuze' }
       },
       description: 'Sets a placeholder value for the `Select` component.'
     },
