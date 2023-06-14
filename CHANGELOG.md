@@ -1,4 +1,4 @@
-Version 7.0.0-beta.4
+Version 7.0.0
 
 # Changelog
 
