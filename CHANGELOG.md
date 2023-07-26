@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Can use both the `label` or `children` property in Table action buttons
 
+- Can use the `label` and `required` property in Datepicker component
+
 ## [7.0.0] - 2023-06-14
 
 ### Added

@@ -22,8 +22,9 @@ export function DatepickerExamples() {
       </div>
       <h2>Datepicker</h2>
       <div className="u-margin">
-        <p className="u-margin-top">Without value (format dd/mm/yyyy)</p>
         <Datepicker
+          label="Without value (format dd/mm/yyyy)"
+          required
           inputProps={{ id: 'aui-datepicker-1' }}
           calendarProps={{
             unavailable: [new Date(Date.now()).toISOString()],
@@ -31,8 +32,9 @@ export function DatepickerExamples() {
             unavailableFrom: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString()
           }}
         />
-        <p className="u-margin-top">With value (format dd-mm-yyyy)</p>
+        <div className="u-margin"></div>
         <Datepicker
+          label="With value (format dd-mm-yyyy)"
           inputProps={{ id: 'aui-datepicker-2' }}
           format="dd-MM-yyyy"
           value={new Date(Date.now()).toISOString()}

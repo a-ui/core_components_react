@@ -147,4 +147,10 @@ describe('UI Components - Molecules - Datepicker', () => {
     fireEvent.blur(calendar);
     expect(baseElement.querySelector('.is-open')).toBeFalsy();
   });
+
+  it("should render a label above the datepicker component's input field when passed as a prop", () => {
+    const label = 'Datepicker component';
+    const { getByText } = render(<Datepicker label={label} />);
+    expect(getByText(label)).toBeInTheDocument();
+  });
 });

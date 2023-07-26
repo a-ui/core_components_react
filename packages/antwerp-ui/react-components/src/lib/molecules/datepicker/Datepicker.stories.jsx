@@ -15,7 +15,9 @@ export default {
     value: new Date(Date.now()),
     format: 'dd/MM/yyyy',
     invalidDateText: 'Ongeldige datum',
-    iconButtonLabel: 'Open kalender'
+    iconButtonLabel: 'Open kalender',
+    label: 'Datepicker component',
+    required: false
   },
   argTypes: {
     value: {
@@ -34,6 +36,21 @@ export default {
       },
       description:
         'The format in which the value is displayed. Refer to the following page for valid formatting patterns: https://date-fns.org/v2.29.3/docs/format.'
+    },
+    label: {
+      control: { type: 'text' },
+      table: {
+        type: { summary: 'string' }
+      },
+      description: 'An optional label above the input field of the Datepicker component.'
+    },
+    required: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' }
+      },
+      description: 'Adds a red asterisk after the label',
+      if: { arg: 'label' }
     },
     invalidDateText: {
       control: { type: 'text' },
