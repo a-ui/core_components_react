@@ -66,6 +66,7 @@ export function TableBody({
                 {...x}
                 id={`aui-table-action-${tableId}-${x?.id}-${row.id}`}
                 size={x?.size || 'small'}
+                children={x?.label || x?.children}
               />
             )) || null,
             <td></td>,

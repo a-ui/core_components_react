@@ -5,6 +5,7 @@ export interface TableProps {
   actions?: {
     label?: string;
     buttons: (ButtonProps & {
+      label?: React.ReactNode;
       onActionClick?: (event: MouseEvent<HTMLButtonElement>, rowId: string) => void;
     })[];
   };
