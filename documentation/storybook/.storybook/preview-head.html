@@ -25,3 +25,11 @@
   }
 </style>
 <link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.3.0/main.min.css" />
+<script type="text/javascript">
+  const params = new URL(document.location).searchParams;
+  if (params.get('branding')) {
+    document.write(
+      `<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/${params.get('branding')}.min.css" />`
+    );
+  }
+</script>
