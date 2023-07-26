@@ -394,6 +394,14 @@
   }
 </style>
 <link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.3.0/main.min.css" />
+<script type="text/javascript">
+  const params = new URL(document.location).searchParams;
+  if (params.get('branding')) {
+    document.write(
+      `<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/${params.get('branding')}.min.css" />`
+    );
+  }
+</script>
 
     <script type="module" crossorigin src="/core_components_react/assets/iframe-3add7324.js"></script>
     <link rel="modulepreload" crossorigin href="/core_components_react/assets/es.object.get-own-property-descriptor-89e834e9.js">
