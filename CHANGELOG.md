@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Can use both the `label` or `children` property in Table action buttons
+- Export of types
+- Can use both the `label` (new) or `children` (existing) property for Table action buttons
 
 ## [7.0.0] - 2023-06-14
 
