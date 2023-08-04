@@ -18,7 +18,9 @@ export function Datepicker({
   inputProps,
   invalidDateText,
   iconButtonLabel,
-  calendarProps
+  calendarProps,
+  label,
+  required
 }: DatepickerProps) {
   const iconRef = useRef<HTMLSpanElement>(null);
   const [formattedValue, setFormattedValue] = useState(value ? fnsFormat(new Date(value), format) : '');
@@ -76,11 +78,12 @@ export function Datepicker({
 
   return (
     <div className="a-input has-icon-right" data-qa={qa}>
-      {renderLabel({ label: inputProps?.label, id: inputProps?.id, required: inputProps?.required })}
+      {renderLabel({ label: inputProps?.label, id: inputProps?.id, required })}
       {renderDescription({
         description: dateInvalidError || inputProps?.description,
         state: dateInvalidError ? 'error' : undefined
       })}
+      {label && renderLabel({ label, id: inputProps?.id, required })}
       <div className="a-input__wrapper">
         <TextField
           {...inputProps}

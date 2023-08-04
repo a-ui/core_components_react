@@ -7,6 +7,8 @@ export interface DatepickerProps {
   mask?: string;
   inputProps?: Pick<TextFieldProps, 'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size'>;
   value?: string;
+  label?: string;
+  required?: boolean;
   invalidDateText?: string;
   iconButtonLabel?: string;
   calendarProps?: DatepickerCalendarProps;
