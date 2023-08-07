@@ -27,7 +27,7 @@ export function Header({ logoHref, logoAlt, menuItems, logoSrc, skipToMainLabel,
                 }
               />
             ) : (
-              <Button {...m} key={m.id} emphasis="low" theme="neutral" className="o-header__button">
+              <Button emphasis="low" theme="neutral" {...m} key={m.id} className="o-header__button">
                 {m.label}
               </Button>
             )
