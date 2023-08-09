@@ -58,4 +58,5 @@ export default {
   }
 };
 
-export const checkboxList = '';
+const Template = (args) => <CheckboxList {...args} />;
+export const checkboxList = Template.bind({});

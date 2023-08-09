@@ -61,4 +61,5 @@ export default {
   }
 };
 
-export const stepIndicator = '';
+const Template = (args) => <StepIndicator {...args} />;
+export const stepIndicator = Template.bind({});

@@ -56,4 +56,5 @@ export default {
   }
 };
 
-export const spinner = '';
+const Template = (args) => <Spinner {...args} />;
+export const spinner = Template.bind({});

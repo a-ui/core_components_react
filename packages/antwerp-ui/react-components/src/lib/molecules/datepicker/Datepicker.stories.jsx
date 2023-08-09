@@ -97,4 +97,5 @@ export default {
   }
 };
 
-export const datepicker = '';
+const Template = (args) => <Datepicker {...args} />;
+export const datepicker = Template.bind({});

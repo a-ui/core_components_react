@@ -1,11 +1,9 @@
 import { QA_PROP_STORY } from '../../../../constants/stories.settings';
-import TextField from './TextField';
-
-TextField.displayName = 'TextField';
+import TextArea from './TextArea';
 
 export default {
-  title: 'React/Atoms/Input/TextField',
-  component: TextField,
+  title: 'React/Atoms/Input/TextArea',
+  component: TextArea,
   parameters: {
     docs: {
       description: {
@@ -17,14 +15,12 @@ export default {
   args: {
     label: 'Enter your name',
     description: 'Description',
-    type: 'text',
     disabled: false,
     readOnly: false,
     inline: false,
     required: false,
     charCounter: false,
     charCountText: '%count% / %max%',
-    addon: { type: 'icon', content: 'phone', placement: 'left' },
     id: 'textfield-story'
   },
   argTypes: {
@@ -35,7 +31,7 @@ export default {
         type: { summary: 'string' }
       },
       description:
-        'A `TextField` features at least a name label atop or to the left side of a container that itself contains an input. '
+        'A `TextArea` features at least a name label atop or to the left side of a container that itself contains an input. '
     },
     description: {
       control: { type: 'text' },
@@ -43,30 +39,7 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '' }
       },
-      description: 'The `description` prop adds a description or hint text between the label and the `TextField`.'
-    },
-    type: {
-      control: { type: 'select' },
-      options: [
-        'date',
-        'datetime-local',
-        'email',
-        'month',
-        'number',
-        'password',
-        'search',
-        'tel',
-        'text',
-        'time',
-        'url',
-        'week'
-      ],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'text' }
-      },
-      description:
-        'Both in web and native apps it is very important to use the correct input type for your field. These input types allow better input control and validation.'
+      description: 'The `description` prop adds a description or hint text between the label and the `TextArea`.'
     },
     value: {
       control: { type: 'text' },
@@ -75,7 +48,7 @@ export default {
         type: { summary: 'string' }
       },
       description:
-        'The value prop of the `TextField`. Setting it makes the component controlled; use it in combination with `onChange`.'
+        'The value prop of the `TextArea`. Setting it makes the component controlled; use it in combination with `onChange`.'
     },
     disabled: {
       control: { type: 'boolean' },
@@ -92,7 +65,7 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      description: 'Makes the `TextField` read-only.'
+      description: 'Makes the `TextArea` read-only.'
     },
     inline: {
       control: { type: 'boolean' },
@@ -100,7 +73,7 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       },
-      description: 'With the `inline` prop the `TextField` will not use the full width of the parent container.'
+      description: 'With the `inline` prop the `TextArea` will not use the full width of the parent container.'
     },
     required: {
       control: { type: 'boolean' },
@@ -109,7 +82,7 @@ export default {
         defaultValue: { summary: false }
       },
       description:
-        'The `required` prop adds a red asterix to the `TextField` label and adds the required attribute to the HTML input field.'
+        'The `required` prop adds a red asterix to the `TextArea` label and adds the required attribute to the HTML textarea field.'
     },
     charCounter: {
       control: { type: 'boolean' },
@@ -118,14 +91,14 @@ export default {
         defaultValue: { summary: false }
       },
       description:
-        'When the `maxLength` prop is set, the `charCounter` prop adds a character counter under the `TextField`.'
+        'When the `maxLength` prop is set, the `charCounter` prop adds a character counter under the `TextArea`.'
     },
     maxLength: {
       control: { type: 'number' },
       table: {
         type: { summary: 'integer' }
       },
-      description: 'The `maxLength` attribute sets a character limitation for the value of the `TextField`.'
+      description: 'The `maxLength` attribute sets a character limitation for the value of the `TextArea`.'
     },
     charCountText: {
       control: { type: 'text' },
@@ -134,7 +107,7 @@ export default {
         defaultValue: { summary: '%count% / %max%' }
       },
       description:
-        'The text for the charCounter can be changed by providing a string which replaces placeholder text with their corresponding values. `%count%` equals the amount of characters typed in the textfield, `%max%` equals the `maxLength prop` and `%left%` is the difference between `maxLength` and the amount of characters typed.'
+        'The text for the charCounter can be changed by providing a string which replaces placeholder text with their corresponding values. `%count%` equals the amount of characters typed in the textarea, `%max%` equals the `maxLength prop` and `%left%` is the difference between `maxLength` and the amount of characters typed.'
     },
     state: {
       control: { type: 'select' },
@@ -151,15 +124,7 @@ export default {
       table: {
         type: { summary: 'select' }
       },
-      description: 'The `size` prop allows different size variants (in height) of the `TextField`.'
-    },
-    addon: {
-      control: { type: 'object' },
-      table: {
-        type: { summary: 'object' }
-      },
-      description:
-        'Set this prop to add a leading or trailing add-on (icon or text) inside the `TextField`. Addons have the following properties: `type`, `content` and `placement`, where `type` is either `icon` or `text` and `placement` is either `left` or `right`.'
+      description: 'The `size` prop allows different size variants (in height) of the `TextArea`.'
     },
     onChange: {
       control: { type: 'function' },
@@ -168,7 +133,7 @@ export default {
       },
       action: 'onChange',
       description:
-        'Function triggered when the `TextField` value has changed. The first parameter of this function is of type `(React).ChangeEvent`.'
+        'Function triggered when the `TextArea` value has changed. The first parameter of this function is of type `(React).ChangeEvent`.'
     },
     onClick: {
       control: { type: 'function' },
@@ -177,7 +142,7 @@ export default {
       },
       action: 'onClick',
       description:
-        'Function triggered when the `TextField` is clicked. The first parameter of this function is of type `(React).MouseEvent`.'
+        'Function triggered when the `TextArea` is clicked. The first parameter of this function is of type `(React).MouseEvent`.'
     },
     onBlur: {
       control: { type: 'function' },
@@ -186,7 +151,7 @@ export default {
       },
       action: 'onBlur',
       description:
-        'Function triggered when the `TextField` is blurred. The first parameter of this function is of type `(React).FocusEvent`.'
+        'Function triggered when the `TextArea` is blurred. The first parameter of this function is of type `(React).FocusEvent`.'
     },
     onFocus: {
       control: { type: 'function' },
@@ -195,7 +160,7 @@ export default {
       },
       action: 'onFocus',
       description:
-        'Function triggered when the `TextField` is focused. The first parameter of this function is of type `(React).FocusEvent`.'
+        'Function triggered when the `TextArea` is focused. The first parameter of this function is of type `(React).FocusEvent`.'
     },
     onKeyDown: {
       control: { type: 'function' },
@@ -204,7 +169,7 @@ export default {
       },
       action: 'onKeyDown',
       description:
-        'Function triggered when the user presses a key inside the `TextField`. The first parameter of this function is of type `(React).KeyboardEvent`.'
+        'Function triggered when the user presses a key inside the `TextArea`. The first parameter of this function is of type `(React).KeyboardEvent`.'
     },
     onKeyUp: {
       control: { type: 'function' },
@@ -213,7 +178,7 @@ export default {
       },
       action: 'onKeyUp',
       description:
-        'Function triggered when the user releases a key inside the `TextField`. The first parameter of this function is of type `(React).KeyboardEvent`.'
+        'Function triggered when the user releases a key inside the `TextArea`. The first parameter of this function is of type `(React).KeyboardEvent`.'
     },
     qa: QA_PROP_STORY,
     id: {
@@ -221,16 +186,17 @@ export default {
       table: {
         type: { summary: 'string' }
       },
-      description: 'The `id` prop; set on the `input` HTML element.'
+      description: 'The `id` prop; set on the `textarea` HTML element.'
     },
     name: {
       control: { type: 'text' },
       table: {
         type: { summary: 'string' }
       },
-      description: 'The `name` prop; set on the `input` HTML element.'
+      description: 'The `name` prop; set on the `textarea` HTML element.'
     }
   }
 };
 
-export const textField = '';
+const Template = (args) => <TextArea {...args} />;
+export const textArea = Template.bind({});
