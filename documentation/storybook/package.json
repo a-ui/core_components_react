@@ -19,6 +19,9 @@
     "storybook": "^7.2.1",
     "vite": "^4.0.2"
   },
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "scripts": {
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 6006",
     "build": "NODE_OPTIONS=--openssl-legacy-provider storybook build"
