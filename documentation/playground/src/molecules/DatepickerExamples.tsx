@@ -39,6 +39,12 @@ export function DatepickerExamples() {
           format="dd-MM-yyyy"
           value={new Date(Date.now()).toISOString()}
         />
+        <Datepicker
+          label="With value (format dd-mm-yyyy)"
+          inputProps={{ state: 'error', description: 'Forced error' }}
+          format="dd-MM-yyyy"
+          value={new Date(Date.now()).toISOString()}
+        />
       </div>
     </div>
   );

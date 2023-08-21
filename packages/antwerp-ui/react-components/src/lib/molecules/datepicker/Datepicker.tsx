@@ -78,22 +78,20 @@ export function Datepicker({
 
   return (
     <div className="a-input has-icon-right" data-qa={qa}>
-      {renderLabel({ label: inputProps?.label, id: inputProps?.id, required })}
+      {(label || inputProps?.label) && renderLabel({ label: label || inputProps?.label, id: inputProps?.id, required })}
       {renderDescription({
         description: dateInvalidError || inputProps?.description,
-        state: dateInvalidError ? 'error' : undefined
+        state: dateInvalidError ? 'error' : inputProps?.state
       })}
-      {label && renderLabel({ label, id: inputProps?.id, required })}
       <div className="a-input__wrapper">
         <TextField
           {...inputProps}
           label={undefined}
           description={undefined}
           type="text"
-          id={inputProps?.id}
           value={formattedValue}
           onChange={handleChange}
-          state={dateInvalidError ? 'error' : undefined}
+          state={dateInvalidError ? 'error' : inputProps?.state}
         />
         <Icon
           tabIndex={0}
