@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+=======
+## Added
 - Can use both the `state` and `description` property for the `Autocomplete` component
+- Can use state and description in the `inputProps` for the Datepicker component
 
 ## [7.0.1] - 2023-08-10
 
