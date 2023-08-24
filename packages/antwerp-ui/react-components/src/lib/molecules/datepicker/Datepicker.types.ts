@@ -5,7 +5,10 @@ export interface DatepickerProps {
   qa?: string;
   format?: string;
   mask?: string;
-  inputProps?: Pick<TextFieldProps, 'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size'>;
+  inputProps?: Pick<
+    TextFieldProps,
+    'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size' | 'state'
+  >;
   value?: string;
   label?: string;
   required?: boolean;
