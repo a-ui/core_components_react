@@ -8,10 +8,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-<<<<<<< HEAD
-
-=======
->>>>>>> ac0a8aff58dd0524eb8c33c2188546e103de4c99
 =======
 ## Added
 - Can use both the `state` and `description` property for the `Autocomplete` component
