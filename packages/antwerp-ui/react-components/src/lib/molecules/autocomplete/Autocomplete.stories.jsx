@@ -89,6 +89,24 @@ export default {
       },
       description: 'The `id` prop; set on the `input` HTML element of the `Autocomplete` component.'
     },
+    description: {
+      control: { type: 'text' },
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '' }
+      },
+      description:
+        'The `description` prop adds a description or hint text between the label and the inputfield of the `Autocomplete`component'
+    },
+    state: {
+      control: { type: 'select' },
+      options: ['', 'error', 'success'],
+      table: {
+        type: { summary: 'select' }
+      },
+      description:
+        'When the `Autocomplete` is associated with a success or error state, the border of the inputfield as well as the description above will match to that thematic colour together with an identifiable icon.'
+    },
     onChange: {
       control: { type: 'function' },
       table: {

@@ -17,7 +17,9 @@ export function Autocomplete({
   onInputChange,
   onChange,
   noResultsText,
-  qa
+  qa,
+  description,
+  state
 }: AutocompleteProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState(items);
@@ -148,6 +150,8 @@ export function Autocomplete({
           aria-haspopup="true"
           aria-expanded={isOpen}
           onKeyDown={handleKeyDown}
+          description={description}
+          state={state}
         />
       }
       ref={flyoutRef}
