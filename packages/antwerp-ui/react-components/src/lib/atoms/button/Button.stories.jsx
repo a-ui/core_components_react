@@ -61,11 +61,11 @@ export default {
       control: { type: 'select' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'primary' }
+        defaultValue: { summary: '' }
       },
       description:
         'Buttons can also be themed to reflect the context in which they are being use. (High emphasis buttons are not available in the neutral theme).',
-      options: ['primary', 'success', 'warning', 'danger', 'neutral']
+      options: ['success', 'warning', 'danger', 'neutral']
     },
     fullWidth: {
       control: { type: 'boolean' },
