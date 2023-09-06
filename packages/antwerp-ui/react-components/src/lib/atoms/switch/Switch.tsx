@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import React, { MouseEvent } from 'react';
 import { SwitchProps } from './Switch.types';
 import { labelWrapper } from '../../../utils/render.utils';
 
@@ -16,7 +16,7 @@ export function Switch({
   statusLabelOn,
   statusLabelSide
 }: SwitchProps) {
-  const [checked, setChecked] = useState(!!checkedProp);
+  const [checked, setChecked] = React.useState(!!checkedProp);
   const isChecked = checkedProp === true || checkedProp === false ? !!checkedProp : checked;
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {

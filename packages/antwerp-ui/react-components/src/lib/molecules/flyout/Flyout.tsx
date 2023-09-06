@@ -1,4 +1,4 @@
-import React, { cloneElement, ForwardedRef, forwardRef, useImperativeHandle } from 'react';
+import React, { cloneElement, ForwardedRef, forwardRef } from 'react';
 import ReactDOM from 'react-dom';
 import { DEFAULT_SIZE, SIZE_MAP } from '../../../constants/layout.settings';
 import { classNames } from '../../../utils/dom.utils';
@@ -12,7 +12,7 @@ export const Flyout = forwardRef(function Flyout(
   const showFlyout = open === false || open === true ? open : isOpen;
 
   const flyoutRef = React.useRef(null);
-  useImperativeHandle(forwardRef, () => flyoutRef.current);
+  React.useImperativeHandle(forwardRef, () => flyoutRef.current);
 
   const _handleOutsideClick = React.useCallback(
     (e: MouseEvent) => {

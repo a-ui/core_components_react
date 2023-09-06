@@ -1,6 +1,6 @@
 import { isAfter, isBefore, isSameDay } from 'date-fns';
 import * as locales from 'date-fns/locale';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { DEFAULT_LOCALE } from '../constants/settings';
 
 export function isInRange(date: Date, from?: string, to?: string, list?: string[]): boolean {
@@ -14,11 +14,11 @@ export function isInRange(date: Date, from?: string, to?: string, list?: string[
 export function useLocale(locale: string = DEFAULT_LOCALE) {
   type localeType = keyof typeof locales;
 
-  const [localeState, setLocaleState] = useState({
+  const [localeState, setLocaleState] = React.useState({
     locale: locales[locale.replace('-', '') as localeType] || locales[DEFAULT_LOCALE]
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     setLocaleState({ locale: locales[locale.replace('-', '') as localeType] || locales[DEFAULT_LOCALE] });
   }, [locale]);
 

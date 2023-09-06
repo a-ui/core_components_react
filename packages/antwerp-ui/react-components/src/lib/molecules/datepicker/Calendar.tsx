@@ -1,8 +1,8 @@
+import React, { forwardRef } from 'react';
 import { CalendarProps, CalendarView } from './Datepicker.types';
 import { Button } from '../../atoms/button';
 import { classNames } from '../../../utils/dom.utils';
 import { DaysView } from './views/DaysView';
-import { forwardRef, useEffect, useMemo, useState } from 'react';
 import { getMonth, getYear, addMonths, subMonths, format, addYears, subYears, formatISO } from 'date-fns';
 import { Icon } from '../../base/icon';
 import { MonthsView } from './views/MonthsView';
@@ -36,17 +36,17 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     ref
   ) => {
     const dateFnsLocale = useLocale(locale);
-    const [activeDate, setActiveDate] = useState(value ? new Date(value) : undefined);
-    const [activeYear, setActiveYear] = useState(getYear(new Date(value || new Date())));
-    const [activeMonth, setActiveMonth] = useState(getMonth(new Date(value || new Date())));
-    const [activeView, setActiveView] = useState<CalendarView>(CalendarView.DAYS);
-    const [yearsRowsStart, setYearsRowsStart] = useState(activeYear - 7);
+    const [activeDate, setActiveDate] = React.useState(value ? new Date(value) : undefined);
+    const [activeYear, setActiveYear] = React.useState(getYear(new Date(value || new Date())));
+    const [activeMonth, setActiveMonth] = React.useState(getMonth(new Date(value || new Date())));
+    const [activeView, setActiveView] = React.useState<CalendarView>(CalendarView.DAYS);
+    const [yearsRowsStart, setYearsRowsStart] = React.useState(activeYear - 7);
 
-    useEffect(() => {
+    React.useEffect(() => {
       setActiveDate(value ? new Date(value) : undefined);
     }, [value]);
 
-    const activeTimeframeLabels = useMemo(() => {
+    const activeTimeframeLabels = React.useMemo(() => {
       const dateToShow = new Date(activeYear, activeMonth);
       return {
         [CalendarView.DAYS]: {

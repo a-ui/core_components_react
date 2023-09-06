@@ -2,7 +2,7 @@
 import { PaginationProps } from './Pagination.types';
 import { classNames } from '../../../utils/dom.utils';
 import { Icon } from '../../base/icon';
-import { MouseEvent, useEffect, useState } from 'react';
+import React, { MouseEvent } from 'react';
 import { DEFAULT_SIZE, SIZE_MAP } from '../../../constants/layout.settings';
 import { pagesArray } from '../../../utils/math.utils';
 
@@ -58,7 +58,7 @@ export function Pagination({
   text,
   qa
 }: PaginationProps) {
-  const [totalPages, setTotalPages] = useState<number>(0);
+  const [totalPages, setTotalPages] = React.useState<number>(0);
 
   const onPrev = (event: MouseEvent) => {
     event.preventDefault();
@@ -86,7 +86,7 @@ export function Pagination({
   const paginationPreviousClass = classNames({ 'is-disabled': currentPage <= 1 });
   const paginationNextClass = classNames({ 'is-disabled': currentPage >= totalPages });
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (totalItems && itemsPerPage) {
       const total = Math.ceil(Math.abs(totalItems) / Math.abs(itemsPerPage));
       setTotalPages(total);

@@ -1,25 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { RefObject, UIEvent, UIEventHandler, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { isScrollAtTheEnd } from './dom.utils';
 
-export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean, boolean] {
-  const [isScrollStart, setIsScrollStart] = useState(true);
-  const [isScrollEnd, setIsScrollEnd] = useState(true);
-  const scrollDivRef = useRef(null);
+export function useHorizontalScroll(): [React.RefObject<any>, React.UIEventHandler, boolean, boolean] {
+  const [isScrollStart, setIsScrollStart] = React.useState(true);
+  const [isScrollEnd, setIsScrollEnd] = React.useState(true);
+  const scrollDivRef = React.useRef(null);
 
   const setScrollPoints = (target: Element) => {
     setIsScrollStart(target.scrollLeft <= 0);
     setIsScrollEnd(isScrollAtTheEnd(target));
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     const target = scrollDivRef.current;
     if (target) {
       setScrollPoints(target);
     }
   }, [scrollDivRef]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     function handleResize() {
       scrollDivRef.current && setScrollPoints(scrollDivRef.current);
     }
@@ -27,7 +27,7 @@ export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean,
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleScroll = (e: UIEvent<Element>) => {
+  const handleScroll = (e: React.UIEvent<Element>) => {
     const target = e.target as Element;
     setScrollPoints(target);
   };
@@ -36,7 +36,7 @@ export function useHorizontalScroll(): [RefObject<any>, UIEventHandler, boolean,
 }
 
 export function useOutsideClick(onOutsideClick: (event: EventTarget | null) => void) {
-  const elementRef: RefObject<any> = useRef(null);
+  const elementRef: React.RefObject<any> = React.useRef(null);
 
   const handleClick = (event: MouseEvent) => {
     if (!elementRef?.current?.contains(event?.target)) {
@@ -44,7 +44,7 @@ export function useOutsideClick(onOutsideClick: (event: EventTarget | null) => v
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.addEventListener('click', handleClick);
     return () => {
       window.removeEventListener('click', handleClick);

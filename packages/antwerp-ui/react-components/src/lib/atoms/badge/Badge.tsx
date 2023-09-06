@@ -1,6 +1,6 @@
 import { BadgeProps } from './Badge.types';
 import { classNames } from '../../../utils/dom.utils';
-import { useEffect } from 'react';
+import React from 'react';
 import { DEFAULT_EMPHASIS, EMPHASIS_MAP } from '../../../constants/layout.settings';
 import { logWarning } from '../../../utils/log.utils';
 
@@ -13,7 +13,7 @@ export function Badge({ ariaLabel, theme, emphasis, children, qa }: BadgeProps) 
     [`a-badge--${EMPHASIS_MAP[emphasis || DEFAULT_EMPHASIS]}`]: !!EMPHASIS_MAP[emphasis || DEFAULT_EMPHASIS]
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isNaN(number)) {
       logWarning('Using the Badge Component with a non-numerical value');
     }

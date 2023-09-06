@@ -1,9 +1,9 @@
+import React, { forwardRef, ForwardedRef } from 'react';
 import { TextFieldProps } from '../Input.types';
 import { classNames } from '../../../../utils/dom.utils';
 import { DEFAULT_SIZE, SIZE_MAP } from '../../../../constants/layout.settings';
 import { Icon } from '../../../base/icon';
 import { renderCharacterCounter, renderDescription, renderLabel } from '../input.renders';
-import { ForwardedRef, forwardRef, useState } from 'react';
 
 export const TextField = forwardRef(function TextField(
   {
@@ -34,7 +34,7 @@ export const TextField = forwardRef(function TextField(
   }: TextFieldProps,
   inputRef: ForwardedRef<HTMLInputElement>
 ) {
-  const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
+  const [characterCount, setCharacterCount] = React.useState(value ? value.length : 0);
   const addonLeft = addon?.type === 'text' && addon.placement === 'left' ? addon.content : null;
   const addonRight = addon?.type === 'text' && addon.placement === 'right' ? addon.content : null;
   const iconLeft = addon?.type === 'icon' && addon.placement === 'left' ? addon.content : null;

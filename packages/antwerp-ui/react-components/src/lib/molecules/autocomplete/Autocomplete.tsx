@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TextField } from '../../atoms/input';
 import { FunctionalList, ListItem } from '../../atoms/list';
 import { Flyout } from '../flyout';
@@ -21,11 +21,11 @@ export function Autocomplete({
   description,
   state
 }: AutocompleteProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [results, setResults] = useState(items);
-  const [input, setInput] = useState(inputValue || '');
-  const [selected, setSelected] = useState<string>((!multiple && (value as string)) || '');
-  const [cursor, setCursor] = useState(-1);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [results, setResults] = React.useState(items);
+  const [input, setInput] = React.useState(inputValue || '');
+  const [selected, setSelected] = React.useState<string>((!multiple && (value as string)) || '');
+  const [cursor, setCursor] = React.useState(-1);
   const [selectedMultiple, setSelectedMultiple] = useState<string[]>((multiple && (value as string[])) || []);
 
   const fieldValue = inputValue || inputValue === '' ? inputValue : input;
@@ -33,7 +33,7 @@ export function Autocomplete({
 
   const flyoutRef = React.useRef(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (value && !multiple) {
       selectValue(value as string, true);
     }
@@ -42,13 +42,13 @@ export function Autocomplete({
     }
   }, [value]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setResults(
       (items || []).filter((i) => (fieldValue ? i.label?.toLowerCase().includes(fieldValue.toLowerCase()) : true))
     );
   }, [fieldValue, items]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (flyoutRef.current) {
       const current = flyoutRef.current as HTMLDivElement;
       const highlighted = current.querySelector(`.a-list__item:nth-child(${cursor + 1})`);

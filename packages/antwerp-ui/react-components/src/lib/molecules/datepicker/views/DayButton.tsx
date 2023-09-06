@@ -1,5 +1,5 @@
 import { classNames } from '../../../../utils/dom.utils';
-import { useMemo } from 'react';
+import React from 'react';
 import { DayButtonProps } from '../Datepicker.types';
 import { endOfMonth, format, isAfter, isBefore, isSameDay, startOfMonth } from 'date-fns';
 import { isInRange } from '../../../../utils/time.utils';
@@ -14,12 +14,12 @@ export function DayButton({
   onChange,
   ariaLabelCurrentDay
 }: DayButtonProps) {
-  const isUnavailable = useMemo(
+  const isUnavailable = React.useMemo(
     () => isInRange(date, unavailableFrom, unavailableTo, unavailable),
     [unavailable, unavailableFrom, unavailableTo, date]
   );
 
-  const isSelected = useMemo(() => !!value && isSameDay(value, date), [value, date]);
+  const isSelected = React.useMemo(() => !!value && isSameDay(value, date), [value, date]);
   const isCurrent = isSameDay(date, new Date());
 
   const classes = classNames({

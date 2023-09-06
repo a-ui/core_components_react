@@ -7,7 +7,7 @@ import { renderDescription, renderLabel } from '../../atoms/input/input.renders'
 import { TextField } from '../../atoms/input';
 import { useOutsideClick } from '../../../utils/custom.hooks';
 import Calendar from './Calendar';
-import React, { FocusEvent, KeyboardEvent, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent } from 'react';
 import { isInRange } from '../../../utils/time.utils';
 
 export function Datepicker({
@@ -22,11 +22,11 @@ export function Datepicker({
   label,
   required
 }: DatepickerProps) {
-  const iconRef = useRef<HTMLSpanElement>(null);
-  const [formattedValue, setFormattedValue] = useState(value ? fnsFormat(new Date(value), format) : '');
-  const [currentValue, setCurrentValue] = useState(value || '');
-  const [dateInvalidError, setDateInvalidError] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const iconRef = React.useRef<HTMLSpanElement>(null);
+  const [formattedValue, setFormattedValue] = React.useState(value ? fnsFormat(new Date(value), format) : '');
+  const [currentValue, setCurrentValue] = React.useState(value || '');
+  const [dateInvalidError, setDateInvalidError] = React.useState('');
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const handleOutsideClick = (target: EventTarget | null) => {
     if (!iconRef.current?.contains(target as Node)) {

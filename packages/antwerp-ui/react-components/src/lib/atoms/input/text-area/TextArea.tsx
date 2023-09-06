@@ -1,6 +1,6 @@
+import React from 'react';
 import { classNames } from '../../../../utils/dom.utils';
 import { DEFAULT_SIZE, SIZE_MAP, State } from '../../../../constants/layout.settings';
-import { useState } from 'react';
 import { renderCharacterCounter, renderDescription, renderLabel } from '../input.renders';
 import { TextAreaProps } from '../Input.types';
 
@@ -27,7 +27,7 @@ export function TextArea({
   onKeyDown,
   onKeyUp
 }: TextAreaProps) {
-  const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
+  const [characterCount, setCharacterCount] = React.useState(value ? value.length : 0);
   const inputClasses = classNames({
     'a-input': true,
     'a-input--inline': !!inline,
