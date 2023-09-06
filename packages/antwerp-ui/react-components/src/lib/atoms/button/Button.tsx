@@ -1,8 +1,8 @@
+import react from 'react';
 import { ButtonProps } from './Button.types';
 import { classNames } from '../../../utils/dom.utils';
 import { DEFAULT_EMPHASIS, DEFAULT_SIZE, Emphasis, SIZE_MAP, Theme } from '../../../constants/layout.settings';
 import { renderAddOn } from '../../../utils/render.utils';
-import { useEffect } from 'react';
 import { logWarning } from '../../../utils/log.utils';
 
 export function Button({
@@ -39,7 +39,7 @@ export function Button({
   };
   const classes = classNames(classObject);
 
-  useEffect(() => {
+  react.useEffect(() => {
     if (addOn?.type === 'icon' && !['left', 'right'].includes(addOn?.align || '') && !ariaLabel)
       logWarning('Using an Icon Button without an aria-label');
   }, [addOn, ariaLabel]);
