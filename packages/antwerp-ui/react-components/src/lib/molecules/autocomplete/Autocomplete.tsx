@@ -26,7 +26,7 @@ export function Autocomplete({
   const [input, setInput] = React.useState(inputValue || '');
   const [selected, setSelected] = React.useState<string>((!multiple && (value as string)) || '');
   const [cursor, setCursor] = React.useState(-1);
-  const [selectedMultiple, setSelectedMultiple] = useState<string[]>((multiple && (value as string[])) || []);
+  const [selectedMultiple, setSelectedMultiple] = React.useState<string[]>((multiple && (value as string[])) || []);
 
   const fieldValue = inputValue || inputValue === '' ? inputValue : input;
   const selectedValue = value || value === '' ? value : selected;
