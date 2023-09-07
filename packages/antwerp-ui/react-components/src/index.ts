@@ -17,7 +17,7 @@ export * from './lib/atoms/spinner';
 export * from './lib/atoms/switch';
 export * from './lib/atoms/table';
 export * from './lib/atoms/toggle';
-// export * from './lib/atoms/tooltip';
+export * from './lib/atoms/tooltip';
 
 export * from './lib/molecules/accordion';
 export * from './lib/molecules/alert';
@@ -27,7 +27,7 @@ export * from './lib/molecules/card';
 export * from './lib/molecules/datepicker';
 export * from './lib/molecules/flyout';
 export * from './lib/molecules/image';
-// export * from './lib/molecules/modal';
+export * from './lib/molecules/modal';
 export * from './lib/molecules/navigation-list';
 export * from './lib/molecules/page-indicator';
 export * from './lib/molecules/pagination';
