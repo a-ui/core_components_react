@@ -184,4 +184,16 @@ describe('Autocomplete', () => {
     fireEvent.click(getByText('Acadia'));
     expect(mockOnChange).toHaveBeenCalledWith(['2'], 'name');
   });
+
+  it('should render with an addon', () => {
+    const { baseElement } = render(
+      <Autocomplete
+        addon={{
+          type: 'spinner',
+          placement: 'left'
+        }}
+      />
+    );
+    expect(baseElement.getElementsByClassName('has-spinner').length).toBeTruthy();
+  });
 });

@@ -19,7 +19,8 @@ export function Autocomplete({
   noResultsText,
   qa,
   description,
-  state
+  state,
+  addon
 }: AutocompleteProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState(items);
@@ -152,6 +153,7 @@ export function Autocomplete({
           onKeyDown={handleKeyDown}
           description={description}
           state={state}
+          addon={addon ? { ...addon, content: addon.iconName } : undefined}
         />
       }
       ref={flyoutRef}

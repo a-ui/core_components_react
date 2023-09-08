@@ -105,4 +105,28 @@ describe('UI Components - Atoms - Input - TextField', () => {
     fireEvent.change(input, { target: { value: 'test' } });
     expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
+
+  it('should render with a spinner addon', () => {
+    const { baseElement } = render(
+      <>
+        <TextField
+          addon={{
+            type: 'spinner',
+            placement: 'left'
+          }}
+        />
+        <TextField
+          addon={{
+            type: 'spinner',
+            placement: 'right'
+          }}
+        />
+      </>
+    );
+
+    expect(baseElement.getElementsByClassName('has-spinner').length).toBeTruthy();
+    expect(baseElement.getElementsByClassName('has-spinner-left').length).toBeTruthy();
+    expect(baseElement.getElementsByClassName('has-spinner-right').length).toBeTruthy();
+    expect(baseElement.getElementsByClassName('has-icon-left').length).toBeTruthy();
+  });
 });

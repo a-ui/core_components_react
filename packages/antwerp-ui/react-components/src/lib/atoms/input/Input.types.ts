@@ -1,4 +1,5 @@
 import { ChangeEvent, FocusEvent, MouseEvent, KeyboardEvent } from 'react';
+import { IconProps } from '../../base/icon';
 
 interface InputProps {
   charCounter?: boolean;
@@ -19,7 +20,13 @@ interface InputProps {
 }
 
 export interface TextFieldProps extends InputProps {
-  addon?: { type: 'icon' | 'text'; content: string; placement: 'left' | 'right' };
+  addon?: {
+    type: 'icon' | 'text' | 'spinner';
+    size?: 'small' | 'medium' | 'large';
+    content?: string;
+    iconProps?: IconProps;
+    placement: 'left' | 'right';
+  };
   role?: string;
   type?: InputTypes;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;

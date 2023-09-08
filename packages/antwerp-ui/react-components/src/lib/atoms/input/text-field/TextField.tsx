@@ -4,6 +4,8 @@ import { DEFAULT_SIZE, SIZE_MAP } from '../../../../constants/layout.settings';
 import { Icon } from '../../../base/icon';
 import { renderCharacterCounter, renderDescription, renderLabel } from '../input.renders';
 import { ForwardedRef, forwardRef, useState } from 'react';
+import { Spinner } from '../../spinner';
+import './TextField.css';
 
 export const TextField = forwardRef(function TextField(
   {
@@ -44,11 +46,13 @@ export const TextField = forwardRef(function TextField(
     'a-input': true,
     'a-input--inline': !!inline,
     [`a-input--${SIZE_MAP[size || DEFAULT_SIZE]}`]: !!size,
-    'has-icon-left': !!iconLeft,
+    'has-icon-left': !!iconLeft || (addon?.type === 'spinner' && addon?.placement === 'left'),
     'has-icon-right': !iconLeft && !!iconRight,
     'has-addon-left': !!addonLeft,
     'has-addon-right': !!addonRight,
-    'has-error': state === 'error'
+    'has-error': state === 'error',
+    'has-spinner': addon?.type === 'spinner',
+    [`has-spinner-${addon?.placement}`]: !!addon
   });
 
   const wrapperClasses = classNames({
@@ -66,6 +70,7 @@ export const TextField = forwardRef(function TextField(
       {renderLabel({ label, id, required, inline })}
       {renderDescription({ id, description, state })}
       <div className={wrapperClasses}>
+        {addon?.type === 'spinner' && <Spinner size="small" />}
         {!!iconLeft && <Icon name={iconLeft} />}
         {!!addonLeft && <div className="a-input__addon">{addonLeft}</div>}
         <input
