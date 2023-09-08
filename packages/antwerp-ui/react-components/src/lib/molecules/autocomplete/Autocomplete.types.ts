@@ -12,7 +12,6 @@ export interface AutocompleteProps {
   state?: 'error' | 'success';
   addon?: {
     type: 'icon' | 'spinner';
-    size?: 'small' | 'medium' | 'large';
     iconName?: string;
     placement: 'left' | 'right';
   };

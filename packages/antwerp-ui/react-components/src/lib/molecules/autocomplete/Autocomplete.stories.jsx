@@ -118,7 +118,7 @@ export default {
         type: { summary: 'object' }
       },
       description:
-        'Set this prop to add a leading or trailing add-on (icon or spinner) inside the input field of the `Autocomplete` component. Addons have the following properties: `type`, `size`, `iconName` and `placement`, where `type` is either `icon` or `spinner`, `size` is either `small`, `medium` or `large` and `placement` is either `left` or `right`.'
+        'Set this prop to add a leading or trailing add-on (icon or spinner) inside the input field of the `Autocomplete` component. Addons have the following properties: `type`, `iconName` and `placement`, where `type` is either `icon` or `spinner` and `placement` is either `left` or `right`.'
     },
     onChange: {
       control: { type: 'function' },

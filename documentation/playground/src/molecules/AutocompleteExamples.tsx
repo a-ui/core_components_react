@@ -76,7 +76,7 @@ export function AutocompleteExamples() {
           label="Autocomplete icon addon"
           addon={{
             type: 'icon',
-            placement: 'left',
+            placement: 'right',
             iconName: 'a11y'
           }}
         />
