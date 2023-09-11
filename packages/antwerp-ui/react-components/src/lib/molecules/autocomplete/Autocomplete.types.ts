@@ -11,8 +11,8 @@ export interface AutocompleteProps {
   description?: string;
   state?: 'error' | 'success';
   addon?: {
-    type: 'icon' | 'spinner';
-    iconName?: string;
+    type: 'icon' | 'text' | 'spinner';
+    content?: string;
     placement: 'left' | 'right';
   };
   onChange?: (value: string | string[], name?: string) => void;

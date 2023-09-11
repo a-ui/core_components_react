@@ -153,7 +153,7 @@ export function Autocomplete({
           onKeyDown={handleKeyDown}
           description={description}
           state={state}
-          addon={addon ? { ...addon, content: addon.iconName } : undefined}
+          addon={addon ? { ...addon, content: addon.content } : undefined}
         />
       }
       ref={flyoutRef}
