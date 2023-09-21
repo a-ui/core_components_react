@@ -76,6 +76,7 @@ export default {
       table: {
         type: { summary: 'object' }
       },
+      if: { arg: 'inline', truthy: false },
       description:
         "The `confirmButton` is an object which uses the `Button` component's props as attributes to create an action button in a modal `Alert`."
     },
@@ -84,6 +85,7 @@ export default {
       table: {
         type: { summary: 'object' }
       },
+      if: { arg: 'inline', truthy: false },
       description:
         "The `cancelButton` is an object which uses the `Button` component's props as attributes to create an action button in a modal `Alert`."
     },
@@ -92,6 +94,7 @@ export default {
       table: {
         type: { summary: 'function' }
       },
+      if: { arg: 'inline', truthy: false },
       action: 'onClose',
       description: 'Function that is triggered when the modal alert is closed (i.e. the close button is clicked).'
     },
@@ -101,6 +104,7 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: 'Sluiten' }
       },
+      if: { arg: 'inline', truthy: false },
       description: 'The aria label used on the close icon when a modal alert is used.'
     },
     titleId: {

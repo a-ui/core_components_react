@@ -99,7 +99,7 @@ export function Datepicker({
           name="calendar"
           role="button"
           onClick={toggleOpen}
-          className={'is-clickable'}
+          className={!inputProps?.disabled ? 'is-clickable' : ''}
           onKeyDown={handleIconKeyDown}
           ref={iconRef}
         />

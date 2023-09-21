@@ -25,7 +25,7 @@ export function DatepickerExamples() {
         <Datepicker
           label="Without value (format dd/mm/yyyy)"
           required
-          inputProps={{ id: 'aui-datepicker-1' }}
+          inputProps={{ id: 'aui-datepicker-1', disabled: true }}
           calendarProps={{
             unavailable: [new Date(Date.now()).toISOString()],
             unavailableTo: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),

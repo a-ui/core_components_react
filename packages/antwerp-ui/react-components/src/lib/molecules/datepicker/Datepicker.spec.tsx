@@ -153,4 +153,9 @@ describe('UI Components - Molecules - Datepicker', () => {
     const { getByText } = render(<Datepicker label={label} />);
     expect(getByText(label)).toBeInTheDocument();
   });
+
+  it('should disable icon if iconProps.disabled is true', () => {
+    const { baseElement } = render(<Datepicker inputProps={{ disabled: true }} />);
+    expect(baseElement.querySelector('is-clickable')).not.toBeTruthy();
+  });
 });
