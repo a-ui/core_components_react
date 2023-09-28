@@ -20,6 +20,8 @@ jobs:
         run: yarn install
       - name: Build storybook
         run: yarn run storybook:build
+      - name: No Jekyll option
+        run: touch documentation/storybook/storybook-static/.nojekyll
       - name: Upload build artifact
         if: success()
         uses: actions/upload-artifact@v3
