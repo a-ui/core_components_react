@@ -1,0 +1,2 @@
+var s=Object.defineProperty;var a=(r,t)=>s(r,"name",{value:t,configurable:!0});import{r as d}from"./index-d23035ce.js";import{j as e,a as n}from"./jsx-runtime-bb315772.js";function o({items:r,qa:t}){return e("dl",{className:"a-definition-list","data-qa":t,children:r.map(i=>n(d.exports.Fragment,{children:[e("dt",{children:i.term}),e("dd",{children:i.description})]},i.id))})}a(o,"DefinitionList");o.defaultProps={items:[]};export{o as D};
+//# sourceMappingURL=DefinitionList-850b66f5.js.map
