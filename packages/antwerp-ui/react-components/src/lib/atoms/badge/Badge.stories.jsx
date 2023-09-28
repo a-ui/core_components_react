@@ -55,4 +55,5 @@ export default {
   }
 };
 
-export const badge = '';
+const Template = (args) => <Badge {...args} />;
+export const badge = Template.bind({});

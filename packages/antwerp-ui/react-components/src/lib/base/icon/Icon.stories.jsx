@@ -49,4 +49,5 @@ export default {
   }
 };
 
-export const icon = '';
+const Template = (args) => <Icon {...args} />;
+export const icon = Template.bind({});

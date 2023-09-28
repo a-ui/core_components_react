@@ -87,4 +87,5 @@ export default {
   }
 };
 
-export const avatar = '';
+const Template = (args) => <Avatar {...args} />;
+export const avatar = Template.bind({});

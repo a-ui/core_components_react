@@ -171,4 +171,5 @@ export default {
   }
 };
 
-export const calendar = '';
+const Template = (args) => <Calendar {...args} />;
+export const calendar = Template.bind({});

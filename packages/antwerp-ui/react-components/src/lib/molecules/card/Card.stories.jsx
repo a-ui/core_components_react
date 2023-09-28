@@ -77,4 +77,5 @@ export default {
   }
 };
 
-export const card = '';
+const Template = (args) => <Card {...args} />;
+export const card = Template.bind({});

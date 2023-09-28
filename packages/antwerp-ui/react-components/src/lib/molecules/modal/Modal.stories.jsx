@@ -152,4 +152,5 @@ export default {
   }
 };
 
-export const modal = '';
+const Template = (args) => <Modal {...args} />;
+export const modal = Template.bind({});

@@ -85,4 +85,5 @@ export default {
   }
 };
 
-export const radio = '';
+const Template = (args) => <Radio {...args} />;
+export const radio = Template.bind({});

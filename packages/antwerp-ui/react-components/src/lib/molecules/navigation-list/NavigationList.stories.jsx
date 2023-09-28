@@ -67,4 +67,5 @@ export default {
   }
 };
 
-export const navigationList = '';
+const Template = (args) => <NavigationList {...args} />;
+export const navigationList = Template.bind({});
