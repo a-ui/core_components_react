@@ -1,0 +1,2 @@
+import{a as c,j as e}from"./stories.settings-7040e2b8.js";function u({autoFocus:r,value:t,label:i,id:a,qa:o,name:s,onChange:n,checked:d,disabled:l}){return c("div",{className:"a-input__radio","data-qa":o,children:[e("input",{type:"radio",id:a,checked:d,name:s,value:t,onChange:h=>{n&&n(h)},disabled:l,autoFocus:r}),e("label",{htmlFor:a,children:i})]})}export{u as R};
+//# sourceMappingURL=Radio-5e5d3064.js.map
