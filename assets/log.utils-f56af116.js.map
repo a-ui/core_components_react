@@ -1,1 +1,0 @@
-{"version":3,"file":"log.utils-f56af116.js","sources":["../../../../packages/antwerp-ui/react-components/src/utils/log.utils.ts"],"sourcesContent":["export function logWarning(message: string) {\n  console.warn(`[AUI] Warning - ${message}.`);\n}\n"],"names":["logWarning","message","__name"],"mappings":"+EAAO,SAASA,EAAWC,EAAiB,CAClC,QAAA,KAAK,mBAAmBA,IAAU,CAC5C,CAFgBC,EAAAF,EAAA"}
