@@ -18,5 +18,6 @@ module.exports = {
       config.base = '/core_components_react';
     }
     return config;
-  }
+  },
+  staticDirs: ['.']
 };
