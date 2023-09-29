@@ -3,6 +3,7 @@ import { IconProps } from '../../base/icon';
 
 interface InputProps {
   charCounter?: boolean;
+  autoComplete?: string;
   charCountText?: string;
   description?: string;
   disabled?: boolean;

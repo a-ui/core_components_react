@@ -10,6 +10,7 @@ import './TextField.css';
 export const TextField = forwardRef(function TextField(
   {
     addon,
+    autoComplete,
     charCounter,
     charCountText,
     description,
@@ -79,6 +80,7 @@ export const TextField = forwardRef(function TextField(
           value={value}
           name={name}
           id={id}
+          autoComplete={autoComplete}
           disabled={disabled}
           readOnly={readOnly}
           required={required}

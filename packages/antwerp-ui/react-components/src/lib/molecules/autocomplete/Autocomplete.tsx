@@ -115,9 +115,11 @@ export function Autocomplete({
     const totalResults = results?.length || 0;
     switch (e.key) {
       case 'ArrowDown':
+        e.preventDefault();
         setCursor(cursor === -1 ? 0 : (cursor + 1) % totalResults);
         return setIsOpen(true);
       case 'ArrowUp':
+        e.preventDefault();
         setCursor(cursor === -1 ? totalResults - 1 : cursor - 1 < 0 ? totalResults - 1 : cursor - 1);
         return setIsOpen(true);
       case 'Enter':
@@ -147,6 +149,7 @@ export function Autocomplete({
           value={fieldValue}
           onChange={(e) => handleInput(e.target.value)}
           role="combobox"
+          autoComplete="off"
           aria-autocomplete="list"
           aria-haspopup="true"
           aria-expanded={isOpen}
