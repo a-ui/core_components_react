@@ -73,4 +73,5 @@ export default {
   }
 };
 
-export const header = '';
+const Template = (args) => <Header {...args} />;
+export const header = Template.bind({});

@@ -50,4 +50,5 @@ export default {
   }
 };
 
-export const breadcrumb = '';
+const Template = (args) => <Breadcrumb {...args} />;
+export const breadcrumb = Template.bind({});

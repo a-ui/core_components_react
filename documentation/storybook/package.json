@@ -5,19 +5,25 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.20.5",
-    "@storybook/addon-actions": "^6.5.14",
-    "@storybook/addon-essentials": "^6.5.14",
-    "@storybook/addon-interactions": "^6.5.14",
-    "@storybook/addon-links": "^6.5.14",
-    "@storybook/builder-vite": "^0.2.6",
-    "@storybook/react": "^6.5.14",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/addon-actions": "^7.2.1",
+    "@storybook/addon-essentials": "^7.2.1",
+    "@storybook/addon-interactions": "^7.2.1",
+    "@storybook/addon-links": "^7.2.1",
+    "@storybook/react": "^7.2.1",
+    "@storybook/react-vite": "^7.2.1",
+    "@storybook/testing-library": "^0.2.0",
+    "@storybook/theming": "7.2.1",
     "babel-loader": "^8.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.2.1",
     "vite": "^4.0.2"
   },
-  "dependencies": {},
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "scripts": {
-    "storybook": "NODE_OPTIONS=--openssl-legacy-provider  start-storybook -p 6006",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook"
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 6006",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider storybook build"
   }
 }

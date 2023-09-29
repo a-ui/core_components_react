@@ -118,4 +118,5 @@ export default {
   }
 };
 
-export const alert = '';
+const Template = (args) => <Alert {...args} />;
+export const alert = Template.bind({});

@@ -32,4 +32,5 @@ export default {
   }
 };
 
-export const definitionList = '';
+const Template = (args) => <DefinitionList {...args} />;
+export const definitionList = Template.bind({});

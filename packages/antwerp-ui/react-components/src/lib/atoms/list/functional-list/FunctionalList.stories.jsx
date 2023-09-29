@@ -85,4 +85,5 @@ export default {
   }
 };
 
-export const functionalList = '';
+const Template = (args) => <FunctionalList {...args} />;
+export const functionalList = Template.bind({});
