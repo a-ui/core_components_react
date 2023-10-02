@@ -382,22 +382,52 @@
     white-space: normal !important;
   }
 </style>
-<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.3.0/main.min.css" />
-<script type="text/javascript">
-  const params = new URL(document.location).searchParams;
-  if (params.get('branding') && params.get('file')) {
-    const version = params.get('version');
-    console.log(`https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get('file')}.min.css`);
-
-    document.write(
-      `<link rel="stylesheet" href="https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get(
-        'file'
-      )}.min.css" />`
-    );
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.5.0/main.min.css" />
+<script type="application/javascript">
+  function fetchBrandingVersions() {
+    try {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', './branding-versions.json', false); // false for synchronous
+      xhr.send();
+      if (xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        return data;
+      } else {
+        console.error(
+          `preview-head.html | fetchBrandingVersions - Error fetching branding data, status = "${xhr.status}"`
+        );
+        return null;
+      }
+    } catch (error) {
+      console.error(
+        `preview-head.html | fetchBrandingVersions - Error fetching branding data, message = "${error.message}"`
+      );
+      return null;
+    }
   }
+
+  function main() {
+    try {
+      const params = new URL(document.location).searchParams;
+      if (params.get('branding') && params.get('file')) {
+        const versions = fetchBrandingVersions();
+        const version = params.get('version') || versions[params.get('branding')];
+        console.log(`https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get('file')}.min.css`);
+        document.write(
+          `<link rel="stylesheet" href="https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get(
+            'file'
+          )}.min.css" />`
+        );
+      }
+    } catch (error) {
+      console.error(`preview-head.html | main - Error settings branding styling, message = "${error.message}"`);
+    }
+  }
+
+  main();
 </script>
 
-  <script type="module" crossorigin src="./assets/iframe-06090a60.js"></script>
+  <script type="module" crossorigin src="./assets/iframe-a04ca662.js"></script>
 </head>
 
 <body>

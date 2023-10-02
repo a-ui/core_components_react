@@ -1,0 +1,70 @@
+<script>
+  window.global = window;
+</script>
+<style>
+  #docs-root > .sbdocs-wrapper {
+    padding: 0px 20px;
+  }
+  #storybook-docs > .sbdocs-wrapper > .sbdocs-content > .sbdocs-title {
+    display: none;
+  }
+  #storybook-docs > .sbdocs-wrapper > .sbdocs-content > p:nth-child(2) {
+    display: none;
+  }
+  #story--react-molecules-flyout--flyout {
+    margin: 50px 0;
+  }
+  #story--react-organisms-header--header {
+    margin-bottom: 100px;
+  }
+  #story--react-molecules-datepicker--datepicker {
+    margin-bottom: 400px;
+  }
+  code {
+    white-space: normal !important;
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.5.0/main.min.css" />
+<script type="application/javascript">
+  function fetchBrandingVersions() {
+    try {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', './branding-versions.json', false); // false for synchronous
+      xhr.send();
+      if (xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        return data;
+      } else {
+        console.error(
+          `preview-head.html | fetchBrandingVersions - Error fetching branding data, status = "${xhr.status}"`
+        );
+        return null;
+      }
+    } catch (error) {
+      console.error(
+        `preview-head.html | fetchBrandingVersions - Error fetching branding data, message = "${error.message}"`
+      );
+      return null;
+    }
+  }
+
+  function main() {
+    try {
+      const params = new URL(document.location).searchParams;
+      if (params.get('branding') && params.get('file')) {
+        const versions = fetchBrandingVersions();
+        const version = params.get('version') || versions[params.get('branding')];
+        console.log(`https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get('file')}.min.css`);
+        document.write(
+          `<link rel="stylesheet" href="https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get(
+            'file'
+          )}.min.css" />`
+        );
+      }
+    } catch (error) {
+      console.error(`preview-head.html | main - Error settings branding styling, message = "${error.message}"`);
+    }
+  }
+
+  main();
+</script>
