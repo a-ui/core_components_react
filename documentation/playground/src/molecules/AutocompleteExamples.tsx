@@ -74,7 +74,7 @@ export function AutocompleteExamples() {
         <Autocomplete
           id="autocomplete-example-4"
           label="Autocomplete icon addon"
-          addon={{
+          addOn={{
             type: 'icon',
             placement: 'left',
             content: 'alert-triangle'
@@ -83,9 +83,9 @@ export function AutocompleteExamples() {
         <Autocomplete
           id="autocomplete-example-5"
           label="Autocomplete spinner addon"
-          addon={{
+          addOn={{
             type: 'spinner',
-            placement: 'right'
+            placement: 'left'
           }}
         />
       </div>

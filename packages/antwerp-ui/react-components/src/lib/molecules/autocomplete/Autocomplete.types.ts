@@ -10,7 +10,7 @@ export interface AutocompleteProps {
   qa?: string;
   description?: string;
   state?: 'error' | 'success';
-  addon?: {
+  addOn?: {
     type: 'icon' | 'text' | 'spinner';
     content?: string;
     placement: 'left' | 'right';

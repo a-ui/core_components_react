@@ -54,7 +54,7 @@ describe('UI Components - Atoms - Input - TextField', () => {
 
   it('should add an icon when iconLeft is defined', () => {
     const { baseElement } = render(
-      <TextField addon={{ type: 'icon', content: 'ai-single-neutral', placement: 'left' }} />
+      <TextField addOn={{ type: 'icon', content: 'ai-single-neutral', placement: 'left' }} />
     );
     expect(baseElement.getElementsByClassName('has-icon-left').length).toBe(1);
     expect(baseElement.getElementsByClassName('ai-single-neutral').length).toBe(1);
@@ -62,20 +62,20 @@ describe('UI Components - Atoms - Input - TextField', () => {
 
   it('should add an icon when iconRight is defined', () => {
     const { baseElement } = render(
-      <TextField addon={{ type: 'icon', content: 'ai-single-neutral', placement: 'right' }} />
+      <TextField addOn={{ type: 'icon', content: 'ai-single-neutral', placement: 'right' }} />
     );
     expect(baseElement.getElementsByClassName('has-icon-right').length).toBe(1);
     expect(baseElement.getElementsByClassName('ai-single-neutral').length).toBe(1);
   });
 
-  it('should add an addon when addonLeft is defined', () => {
-    const { baseElement } = render(<TextField addon={{ type: 'text', content: 'left', placement: 'left' }} />);
+  it('should add an addon when addOnLeft is defined', () => {
+    const { baseElement } = render(<TextField addOn={{ type: 'text', content: 'left', placement: 'left' }} />);
     expect(baseElement.getElementsByClassName('has-addon-left').length).toBe(1);
     expect(baseElement.getElementsByClassName('a-input__addon')[0].textContent === 'left').toBeTruthy();
   });
 
-  it('should add ann addon when addonRight is defined', () => {
-    const { baseElement } = render(<TextField addon={{ type: 'text', content: 'right', placement: 'right' }} />);
+  it('should add ann addon when addOnRight is defined', () => {
+    const { baseElement } = render(<TextField addOn={{ type: 'text', content: 'right', placement: 'right' }} />);
     expect(baseElement.getElementsByClassName('a-input__addon').length).toBe(1);
     expect(baseElement.getElementsByClassName('has-addon-right').length).toBe(1);
   });
@@ -110,13 +110,13 @@ describe('UI Components - Atoms - Input - TextField', () => {
     const { baseElement } = render(
       <>
         <TextField
-          addon={{
+          addOn={{
             type: 'spinner',
             placement: 'left'
           }}
         />
         <TextField
-          addon={{
+          addOn={{
             type: 'spinner',
             placement: 'right'
           }}
