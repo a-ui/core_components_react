@@ -118,4 +118,5 @@ export default {
   }
 };
 
-export const button = '';
+const Template = (args) => <Button {...args} />;
+export const button = Template.bind({});

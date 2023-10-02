@@ -142,4 +142,5 @@ export default {
   }
 };
 
-export const autocomplete = '';
+const Template = (args) => <Autocomplete {...args} />;
+export const autocomplete = Template.bind({});

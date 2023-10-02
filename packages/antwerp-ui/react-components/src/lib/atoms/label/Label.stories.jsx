@@ -34,4 +34,5 @@ export default {
   }
 };
 
-export const label = '';
+const Template = (args) => <Label {...args} />;
+export const label = Template.bind({});
