@@ -24,36 +24,37 @@
     white-space: normal !important;
   }
 </style>
-<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.3.0/main.min.css" />
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.5.0/main.min.css" />
 <script type="application/javascript">
-  function getBranding() {
+  function fetchBrandingVersions() {
     try {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', './branding-versions.json', false); // false for synchronous
       xhr.send();
-
       if (xhr.status === 200) {
         const data = JSON.parse(xhr.responseText);
         return data;
       } else {
-        console.log('Error fetching branding data: ', xhr.status);
+        console.error(
+          `preview-head.html | fetchBrandingVersions - Error fetching branding data, status = "${xhr.status}"`
+        );
         return null;
       }
     } catch (error) {
-      console.log('Error fetching branding data: ', error);
+      console.error(
+        `preview-head.html | fetchBrandingVersions - Error fetching branding data, message = "${error.message}"`
+      );
       return null;
     }
   }
 
   function main() {
     try {
-      const branding = getBranding();
-
       const params = new URL(document.location).searchParams;
       if (params.get('branding') && params.get('file')) {
-        const version = params.get('version') || branding[params.get('branding')];
+        const versions = fetchBrandingVersions();
+        const version = params.get('version') || versions[params.get('branding')];
         console.log(`https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get('file')}.min.css`);
-
         document.write(
           `<link rel="stylesheet" href="https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get(
             'file'
@@ -61,7 +62,7 @@
         );
       }
     } catch (error) {
-      console.log(error);
+      console.error(`preview-head.html | main - Error settings branding styling, message = "${error.message}"`);
     }
   }
 
