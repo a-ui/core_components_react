@@ -23,10 +23,10 @@ export default {
     label: 'National Parks',
     noResultsText: 'Sorry, niet gevonden',
     multiple: false,
-    addon: {
+    addOn: {
       type: 'icon',
       placement: 'left',
-      iconName: 'a11y'
+      content: 'a11y'
     }
   },
   argTypes: {
@@ -112,7 +112,7 @@ export default {
       description:
         'When the `Autocomplete` is associated with a success or error state, the border of the inputfield as well as the description above will match to that thematic colour together with an identifiable icon.'
     },
-    addon: {
+    addOn: {
       control: { type: 'object' },
       table: {
         type: { summary: 'object' }
