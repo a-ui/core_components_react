@@ -3,7 +3,7 @@ import { Tooltip as ReactTooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import { TooltipProps } from './Tooltip.types';
 
-import './Tooltip.css';
+import '../../../../public/styles/Tooltip.css';
 
 export function Tooltip({ anchor, anchorId, location, text, qa }: TooltipProps) {
   return (

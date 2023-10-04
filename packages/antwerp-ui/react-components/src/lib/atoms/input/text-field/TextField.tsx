@@ -5,7 +5,7 @@ import { Icon } from '../../../base/icon';
 import { renderCharacterCounter, renderDescription, renderLabel } from '../input.renders';
 import { ForwardedRef, forwardRef, useState } from 'react';
 import { Spinner } from '../../spinner';
-import './TextField.css';
+import '../../../../../public/styles/TextField.css';
 
 export const TextField = forwardRef(function TextField(
   {

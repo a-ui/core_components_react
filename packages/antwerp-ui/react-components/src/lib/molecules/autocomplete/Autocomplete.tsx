@@ -4,7 +4,7 @@ import { TextField } from '../../atoms/input';
 import { FunctionalList, ListItem } from '../../atoms/list';
 import { Flyout } from '../flyout';
 import { AutocompleteProps } from './Autocomplete.types';
-import './Autocomplete.css';
+import '../../../../public/styles/Autocomplete.css';
 
 export function Autocomplete({
   id,
