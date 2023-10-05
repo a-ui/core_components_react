@@ -5,6 +5,7 @@ export interface FlyoutProps {
   orientation?: 'upper-left' | 'upper-right' | 'bottom-left' | 'bottom-right';
   size?: 'small' | 'medium';
   hasPadding?: boolean;
+  className?: string;
   open?: boolean;
   scrollable?: boolean;
   onStateChange?: (newOpenState: boolean) => void;

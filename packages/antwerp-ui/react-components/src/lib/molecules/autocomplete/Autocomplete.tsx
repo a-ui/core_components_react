@@ -138,6 +138,7 @@ export function Autocomplete({
       scrollable
       hasPadding={false}
       qa={qa}
+      className="m-autocomplete"
       trigger={
         <TextField
           id={id}

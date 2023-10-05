@@ -14,16 +14,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Changed
 
 - Core branding update 6.5.0
+- `addon` property is CamelCased everywhere (`addOn`)
+
+## Fixed
+
+- Custom CSS is imported in build (tooltips, ...)
 
 ## 7.0.3 - 2023-09-21
 
 =======
 
-## Added
+### Added
 
 - Can use the `addon` property for the `Autocomplete` component
 
-## Fixed
+### Fixed
 
 - The `Datepicker` can not be opened via the calendar icon when disabled
 - The `Autocomplete` component now takes on the full width of its parent element
@@ -32,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 =======
 
-## Added
+### Added
 
 - Can use both the `state` and `description` property for the `Autocomplete` component
 - Can use state and description in the `inputProps` for the Datepicker component
@@ -78,7 +83,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Autocomplete items list can be updated after rendering (e.g. after an async call)
 - Scroll handlers (Table, Navigation list) don't show a shadow anymore on overscroll (e.g. Safari scroll bounce)
 
-### Change
+### Changed
 
 - Core branding update to v6.3.0
 - Clicking on the Rangeslider line moves the handle around

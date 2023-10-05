@@ -5,7 +5,18 @@ import { classNames } from '../../../utils/dom.utils';
 import { FlyoutProps } from './Flyout.types';
 
 export const Flyout = forwardRef(function Flyout(
-  { trigger, open, hasPadding, orientation, size, children, scrollable, onStateChange, qa }: FlyoutProps,
+  {
+    trigger,
+    open,
+    hasPadding,
+    className = '',
+    orientation,
+    size,
+    children,
+    scrollable,
+    onStateChange,
+    qa
+  }: FlyoutProps,
   forwardRef: ForwardedRef<null>
 ) {
   const [isOpen, setIsOpen] = React.useState(!!open);
@@ -45,6 +56,7 @@ export const Flyout = forwardRef(function Flyout(
 
   const flyoutClasses = classNames({
     'm-flyout': true,
+    [className]: !!className,
     'is-open': !!showFlyout,
     'u-text-right': !!orientation?.includes('right'),
     [`m-flyout--${orientation}`]: !!orientation,
