@@ -3,6 +3,6 @@
   color: var(--list-item-hover-color);
 }
 
-.m-flyout {
+.m-autocomplete.m-flyout {
   width: 100%;
 }

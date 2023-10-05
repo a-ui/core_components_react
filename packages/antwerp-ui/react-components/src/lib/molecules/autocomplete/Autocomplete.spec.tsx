@@ -188,7 +188,7 @@ describe('Autocomplete', () => {
   it('should render with an addon', () => {
     const { baseElement } = render(
       <Autocomplete
-        addon={{
+        addOn={{
           type: 'spinner',
           placement: 'left'
         }}

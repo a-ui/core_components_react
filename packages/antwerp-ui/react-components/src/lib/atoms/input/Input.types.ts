@@ -21,7 +21,7 @@ interface InputProps {
 }
 
 export interface TextFieldProps extends InputProps {
-  addon?: {
+  addOn?: {
     type: 'icon' | 'text' | 'spinner';
     size?: 'small' | 'medium' | 'large';
     content?: string;
