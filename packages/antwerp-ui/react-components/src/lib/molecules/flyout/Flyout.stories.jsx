@@ -91,4 +91,5 @@ export default {
   }
 };
 
-export const flyout = '';
+const Template = (args) => <Flyout {...args} />;
+export const flyout = Template.bind({});

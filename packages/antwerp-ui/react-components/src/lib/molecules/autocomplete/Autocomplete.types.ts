@@ -10,6 +10,11 @@ export interface AutocompleteProps {
   qa?: string;
   description?: string;
   state?: 'error' | 'success';
+  addOn?: {
+    type: 'icon' | 'text' | 'spinner';
+    content?: string;
+    placement: 'left' | 'right';
+  };
   onChange?: (value: string | string[], name?: string) => void;
   onInputChange?: (value: string, name?: string) => void;
 }

@@ -88,4 +88,5 @@ export default {
   }
 };
 
-export const progressBar = '';
+const Template = (args) => <ProgressBar {...args} />;
+export const progressBar = Template.bind({});

@@ -4,10 +4,13 @@ import { classNames } from '../../../../utils/dom.utils';
 import { DEFAULT_SIZE, SIZE_MAP } from '../../../../constants/layout.settings';
 import { Icon } from '../../../base/icon';
 import { renderCharacterCounter, renderDescription, renderLabel } from '../input.renders';
+import { Spinner } from '../../spinner';
+import './TextField.css';
 
 export const TextField = forwardRef(function TextField(
   {
-    addon,
+    addOn,
+    autoComplete,
     charCounter,
     charCountText,
     description,
@@ -35,20 +38,22 @@ export const TextField = forwardRef(function TextField(
   inputRef: ForwardedRef<HTMLInputElement>
 ) {
   const [characterCount, setCharacterCount] = React.useState(value ? value.length : 0);
-  const addonLeft = addon?.type === 'text' && addon.placement === 'left' ? addon.content : null;
-  const addonRight = addon?.type === 'text' && addon.placement === 'right' ? addon.content : null;
-  const iconLeft = addon?.type === 'icon' && addon.placement === 'left' ? addon.content : null;
-  const iconRight = addon?.type === 'icon' && addon.placement === 'right' ? addon.content : null;
+  const addOnLeft = addOn?.type === 'text' && addOn.placement === 'left' ? addOn.content : null;
+  const addOnRight = addOn?.type === 'text' && addOn.placement === 'right' ? addOn.content : null;
+  const iconLeft = addOn?.type === 'icon' && addOn.placement === 'left' ? addOn.content : null;
+  const iconRight = addOn?.type === 'icon' && addOn.placement === 'right' ? addOn.content : null;
 
   const classes = classNames({
     'a-input': true,
     'a-input--inline': !!inline,
     [`a-input--${SIZE_MAP[size || DEFAULT_SIZE]}`]: !!size,
-    'has-icon-left': !!iconLeft,
+    'has-icon-left': !!iconLeft || (addOn?.type === 'spinner' && addOn?.placement === 'left'),
     'has-icon-right': !iconLeft && !!iconRight,
-    'has-addon-left': !!addonLeft,
-    'has-addon-right': !!addonRight,
-    'has-error': state === 'error'
+    'has-addon-left': !!addOnLeft,
+    'has-addon-right': !!addOnRight,
+    'has-error': state === 'error',
+    'has-spinner': addOn?.type === 'spinner',
+    [`has-spinner-${addOn?.placement}`]: !!addOn
   });
 
   const wrapperClasses = classNames({
@@ -66,14 +71,16 @@ export const TextField = forwardRef(function TextField(
       {renderLabel({ label, id, required, inline })}
       {renderDescription({ id, description, state })}
       <div className={wrapperClasses}>
+        {addOn?.type === 'spinner' && <Spinner size="small" />}
         {!!iconLeft && <Icon name={iconLeft} />}
-        {!!addonLeft && <div className="a-input__addon">{addonLeft}</div>}
+        {!!addOnLeft && <div className="a-input__addon">{addOnLeft}</div>}
         <input
           ref={inputRef}
           type={type}
           value={value}
           name={name}
           id={id}
+          autoComplete={autoComplete}
           disabled={disabled}
           readOnly={readOnly}
           required={required}
@@ -89,7 +96,7 @@ export const TextField = forwardRef(function TextField(
           {...(description ? { 'aria-describedby': `${id}--description` } : {})}
         ></input>
         {!!iconRight && !iconLeft && <Icon name={iconRight} />}
-        {!!addonRight && <div className="a-input__addon">{addonRight}</div>}
+        {!!addOnRight && <div className="a-input__addon">{addOnRight}</div>}
       </div>
       {renderCharacterCounter({
         id,

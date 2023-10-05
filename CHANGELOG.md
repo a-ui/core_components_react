@@ -7,11 +7,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Changed
+
+- Core branding update 6.5.0
+
+### Fixed
+
+- Custom CSS is imported in build (tooltips, ...)
+- Fixed inconsistent casing for the `addOn` prop in the `Autocomplete` and `TextField` components.
+- Changed incorrect example in Storybook for the `addOn` prop in `Autocomplete` documentation.
+
+### Added
+
+- `autoComplete=off` property on `Autocomplete` component
+
+## 7.0.3 - 2023-09-21
+
+=======
+
+### Added
+
+- Can use the `addon` property for the `Autocomplete` component
+
+### Fixed
+
+- The `Datepicker` can not be opened via the calendar icon when disabled
+- The `Autocomplete` component now takes on the full width of its parent element
+
 ## 7.0.2 - 2023-08-30
 
 =======
 
-## Added
+### Added
 
 - Can use both the `state` and `description` property for the `Autocomplete` component
 - Can use state and description in the `inputProps` for the Datepicker component
@@ -57,7 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Autocomplete items list can be updated after rendering (e.g. after an async call)
 - Scroll handlers (Table, Navigation list) don't show a shadow anymore on overscroll (e.g. Safari scroll bounce)
 
-### Change
+### Changed
 
 - Core branding update to v6.3.0
 - Clicking on the Rangeslider line moves the handle around

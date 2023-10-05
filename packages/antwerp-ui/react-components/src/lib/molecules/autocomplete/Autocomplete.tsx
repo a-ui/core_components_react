@@ -19,7 +19,8 @@ export function Autocomplete({
   noResultsText,
   qa,
   description,
-  state
+  state,
+  addOn
 }: AutocompleteProps) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [results, setResults] = React.useState(items);
@@ -114,9 +115,11 @@ export function Autocomplete({
     const totalResults = results?.length || 0;
     switch (e.key) {
       case 'ArrowDown':
+        e.preventDefault();
         setCursor(cursor === -1 ? 0 : (cursor + 1) % totalResults);
         return setIsOpen(true);
       case 'ArrowUp':
+        e.preventDefault();
         setCursor(cursor === -1 ? totalResults - 1 : cursor - 1 < 0 ? totalResults - 1 : cursor - 1);
         return setIsOpen(true);
       case 'Enter':
@@ -137,6 +140,7 @@ export function Autocomplete({
       scrollable
       hasPadding={false}
       qa={qa}
+      className="m-autocomplete"
       trigger={
         <TextField
           id={id}
@@ -146,12 +150,14 @@ export function Autocomplete({
           value={fieldValue}
           onChange={(e) => handleInput(e.target.value)}
           role="combobox"
+          autoComplete="off"
           aria-autocomplete="list"
           aria-haspopup="true"
           aria-expanded={isOpen}
           onKeyDown={handleKeyDown}
           description={description}
           state={state}
+          addOn={addOn ? { ...addOn, content: addOn.content } : undefined}
         />
       }
       ref={flyoutRef}

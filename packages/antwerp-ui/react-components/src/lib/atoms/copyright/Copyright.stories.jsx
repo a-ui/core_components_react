@@ -56,4 +56,5 @@ export default {
   }
 };
 
-export const copyright = '';
+const Template = (args) => <Copyright {...args} />;
+export const copyright = Template.bind({});

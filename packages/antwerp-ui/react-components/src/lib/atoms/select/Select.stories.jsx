@@ -136,4 +136,5 @@ export default {
   }
 };
 
-export const select = '';
+const Template = (args) => <Select {...args} />;
+export const select = Template.bind({});

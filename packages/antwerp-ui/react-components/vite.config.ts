@@ -5,6 +5,7 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 import { join } from 'path';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 export default defineConfig({
   plugins: [
@@ -24,7 +25,8 @@ export default defineConfig({
           dest: ''
         }
       ]
-    })
+    }),
+    libInjectCss()
   ],
 
   // Configuration for building your library.

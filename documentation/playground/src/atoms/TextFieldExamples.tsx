@@ -18,7 +18,7 @@ export function TextFieldExamples() {
         <TextField
           label="Uncontrolled"
           required
-          addon={{ type: 'icon', placement: 'left', content: 'alarm-bell' }}
+          addOn={{ type: 'icon', placement: 'left', content: 'alarm-bell' }}
           id="textfield-2"
           description="Help text"
           charCounter

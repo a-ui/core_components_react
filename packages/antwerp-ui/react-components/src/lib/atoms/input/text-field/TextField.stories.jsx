@@ -24,7 +24,7 @@ export default {
     required: false,
     charCounter: false,
     charCountText: '%count% / %max%',
-    addon: { type: 'icon', content: 'phone', placement: 'left' },
+    addOn: { type: 'icon', content: 'phone', placement: 'left' },
     id: 'textfield-story'
   },
   argTypes: {
@@ -153,7 +153,7 @@ export default {
       },
       description: 'The `size` prop allows different size variants (in height) of the `TextField`.'
     },
-    addon: {
+    addOn: {
       control: { type: 'object' },
       table: {
         type: { summary: 'object' }
@@ -233,4 +233,5 @@ export default {
   }
 };
 
-export const textField = '';
+const Template = (args) => <TextField {...args} />;
+export const textField = Template.bind({});

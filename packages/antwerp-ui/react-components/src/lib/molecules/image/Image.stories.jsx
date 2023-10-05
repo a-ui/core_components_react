@@ -56,4 +56,5 @@ export default {
   }
 };
 
-export const image = '';
+const Template = (args) => <Image {...args} />;
+export const image = Template.bind({});

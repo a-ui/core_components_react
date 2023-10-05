@@ -2,3 +2,7 @@
   background-color: var(--list-item-hover-bg-color);
   color: var(--list-item-hover-color);
 }
+
+.m-autocomplete.m-flyout {
+  width: 100%;
+}

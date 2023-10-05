@@ -119,4 +119,5 @@ export default {
   }
 };
 
-export const switch_ = '';
+const Template = (args) => <Switch {...args} />;
+export const switch_ = Template.bind({});

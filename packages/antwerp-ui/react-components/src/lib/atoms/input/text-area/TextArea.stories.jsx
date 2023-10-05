@@ -198,4 +198,5 @@ export default {
   }
 };
 
-export const textArea = '';
+const Template = (args) => <TextArea {...args} />;
+export const textArea = Template.bind({});

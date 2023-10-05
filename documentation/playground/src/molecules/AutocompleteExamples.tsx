@@ -31,7 +31,7 @@ export function AutocompleteExamples() {
   };
 
   return (
-    <div className="u-margin" style={{ width: '420px' }}>
+    <div className="u-margin" style={{ width: '700px' }}>
       <h2>Autocomplete</h2>
       <div className="u-margin">
         <Autocomplete id="autocomplete-example-1" label="Select National Parc (Uncontrolled)" items={items} />
@@ -58,7 +58,7 @@ export function AutocompleteExamples() {
                 label={items.find((i) => i.value === v)?.label || ''}
                 name={v ?? undefined}
                 removable
-                onClick={handleRemove}
+                // onClick={handleRemove}
               />
             );
           })}
@@ -70,6 +70,23 @@ export function AutocompleteExamples() {
           value={valueMulti}
           multiple
           onChange={handleChangeMulti}
+        />
+        <Autocomplete
+          id="autocomplete-example-4"
+          label="Autocomplete icon addon"
+          addOn={{
+            type: 'icon',
+            placement: 'left',
+            content: 'alert-triangle'
+          }}
+        />
+        <Autocomplete
+          id="autocomplete-example-5"
+          label="Autocomplete spinner addon"
+          addOn={{
+            type: 'spinner',
+            placement: 'left'
+          }}
         />
       </div>
     </div>

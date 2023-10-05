@@ -54,4 +54,5 @@ export default {
   }
 };
 
-export const footer = '';
+const Template = (args) => <Footer {...args} />;
+export const footer = Template.bind({});

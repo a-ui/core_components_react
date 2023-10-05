@@ -41,7 +41,7 @@ export function Header({ logoHref, logoAlt, menuItems, logoSrc, skipToMainLabel,
 Header.defaultProps = {
   logoHref: '/',
   logoAlt: 'Naar de startpagina',
-  logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.3.0/assets/images/a-logo.svg',
+  logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.5.0/assets/images/a-logo.svg',
   skipToMainLabel: 'Ga naar inhoud',
   menuItems: []
 };

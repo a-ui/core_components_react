@@ -22,7 +22,12 @@ export default {
     ],
     label: 'National Parks',
     noResultsText: 'Sorry, niet gevonden',
-    multiple: false
+    multiple: false,
+    addOn: {
+      type: 'icon',
+      placement: 'left',
+      content: 'a11y'
+    }
   },
   argTypes: {
     name: {
@@ -107,6 +112,14 @@ export default {
       description:
         'When the `Autocomplete` is associated with a success or error state, the border of the inputfield as well as the description above will match to that thematic colour together with an identifiable icon.'
     },
+    addOn: {
+      control: { type: 'object' },
+      table: {
+        type: { summary: 'object' }
+      },
+      description:
+        'Set this prop to add a leading or trailing add-on (icon or spinner) inside the input field of the `Autocomplete` component. Addons have the following properties: `type`, `content` and `placement`, where `type` is either `icon`, `text` or `spinner`, `content` is either an icon name or a textual pre- or suffix and `placement` is either `left` or `right`.'
+    },
     onChange: {
       control: { type: 'function' },
       table: {
@@ -129,4 +142,5 @@ export default {
   }
 };
 
-export const autocomplete = '';
+const Template = (args) => <Autocomplete {...args} />;
+export const autocomplete = Template.bind({});
