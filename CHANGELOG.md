@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed inconsistent casing for the `addOn` prop in the `Autocomplete` and `TextField` components.
 - Changed incorrect example in Storybook for the `addOn` prop in `Autocomplete` documentation.
 
+### Added
+
+- `autoComplete=off` property on `Autocomplete` component
+
 ## 7.0.3 - 2023-09-21
 
 =======
