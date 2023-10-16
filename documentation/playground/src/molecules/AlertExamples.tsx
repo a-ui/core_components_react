@@ -17,7 +17,6 @@ export function AlertExamples() {
         </div>
         <div className="u-margin-top">
           <Alert
-            title={{ label: 'Modal alert success' }}
             titleId="title2"
             theme="success"
             confirmButton={{

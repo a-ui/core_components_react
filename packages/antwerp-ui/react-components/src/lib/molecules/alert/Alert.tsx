@@ -26,9 +26,11 @@ const renderModalAlert = (className: string, props: AlertProps) => {
           <Icon name={THEME_ICON_MAP[theme]} />
         </span>
       )}
-      <HeaderTag id={titleId} className="u-margin-bottom-xs">
-        {title?.label}
-      </HeaderTag>
+      {title?.label && (
+        <HeaderTag id={titleId} className="u-margin-bottom-xs">
+          {title.label}
+        </HeaderTag>
+      )}
       <p className={textClass}>{children}</p>
       <div className="m-alert__actions">
         {confirmButton ? <Button {...confirmButton} /> : null}
