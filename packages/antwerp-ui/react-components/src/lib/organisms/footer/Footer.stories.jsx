@@ -50,7 +50,7 @@ export default {
         defaultValue: { summary: '' }
       },
       description:
-        'The `items` prop contains the content that should be placed in the footer. This prop expects an array of items in the following format `{ label: "", target: "" }` where `target` can be empty.'
+        'The `items` prop contains the content that should be placed in the footer. This prop expects an array of items in the following format `{ label: "", href: "", target: "" }` and `target` can be empty.'
     },
     qa: QA_PROP_STORY
   }
