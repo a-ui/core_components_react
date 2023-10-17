@@ -1,8 +1,0 @@
-import{j as t,Q as p,a as g}from"./stories.settings-7040e2b8.js";import{T as o}from"./Tag-826bb271.js";import{r as d}from"./index-61bf1805.js";import{c as T}from"./dom.utils-26b7419a.js";import{w as f}from"./render.utils-72fc6f3a.js";import"./Icon-a4a94a86.js";import"./settings-577c54c5.js";import"./log.utils-973a80c9.js";import"./_commonjsHelpers-de833af9.js";import"./layout.settings-581780cb.js";import"./Avatar-6ff17722.js";import"./Spinner-63ac2c73.js";function l({children:a=[],qa:n}){const c=T({"o-tag-list":!0});return t("ul",{className:c,"data-qa":n,children:d.Children.map(a,m=>f(m,t("li",{className:"o-tag-list__item"}),!0))})}const q={title:"React/Organisms/TagList",component:l,parameters:{docs:{description:{component:"The tag list component shows a collection of one or multiple tags, that are in one way or another related to each other or to the context they are placed next to."}}},argTypes:{children:{table:{type:{summary:"ReactNode[]"},description:"The children of a `TagList` component are `Tag` components."}},qa:p}},h=({...a})=>g(l,{...a,children:[t(o,{label:"Hello 1",iconLeft:"tags"}),t(o,{label:"Hello 2",toggle:!0,iconLeft:"tags"}),t(o,{label:"Hello 3",iconLeft:"tags"})]}),e=h.bind({});var s,r,i;e.parameters={...e.parameters,docs:{...(s=e.parameters)==null?void 0:s.docs,source:{originalSource:`({
-  ...args
-}) => <TagList {...args}>
-    <Tag label="Hello 1" iconLeft="tags" />
-    <Tag label="Hello 2" toggle iconLeft="tags" />
-    <Tag label="Hello 3" iconLeft="tags" />
-  </TagList>`,...(i=(r=e.parameters)==null?void 0:r.docs)==null?void 0:i.source}}};const E=["tagList"];export{E as __namedExportsOrder,q as default,e as tagList};
-//# sourceMappingURL=TagList.stories-e3cca7c9.js.map
