@@ -2,6 +2,9 @@ import AvatarList from './AvatarList';
 import ListItemAvatar from '../items/ListItemAvatar';
 import { QA_PROP_STORY } from '../../../../constants/stories.settings';
 
+ListItemAvatar.displayName = 'ListItemAvatar';
+AvatarList.displayName = 'AvatarList';
+
 export default {
   title: 'React/Atoms/List/AvatarList',
   component: AvatarList,

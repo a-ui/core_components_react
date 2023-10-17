@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Select from './Select';
 
+Select.displayName = 'Select';
+
 export default {
   title: 'React/Atoms/Select',
   component: Select,

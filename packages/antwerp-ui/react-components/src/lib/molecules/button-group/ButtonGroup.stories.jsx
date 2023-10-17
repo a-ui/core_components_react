@@ -2,6 +2,9 @@ import { Button } from '../../atoms/button';
 import ButtonGroup from './ButtonGroup';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Button.displayName = 'Button';
+ButtonGroup.displayName = 'ButtonGroup';
+
 export default {
   title: 'React/Molecules/ButtonGroup',
   component: ButtonGroup,

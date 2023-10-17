@@ -2,6 +2,8 @@ import { useState } from 'react';
 import PageIndicator from './PageIndicator';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+PageIndicator.displayName = 'PageIndicator';
+
 export default {
   title: 'React/Molecules/PageIndicator',
   component: PageIndicator,

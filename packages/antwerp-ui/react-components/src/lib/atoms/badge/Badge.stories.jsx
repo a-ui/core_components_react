@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Badge from './Badge';
 
+Badge.displayName = 'Badge';
+
 export default {
   title: 'React/Atoms/Badge',
   component: Badge,

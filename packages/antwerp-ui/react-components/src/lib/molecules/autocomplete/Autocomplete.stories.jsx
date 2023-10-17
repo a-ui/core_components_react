@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import { Autocomplete } from './Autocomplete';
 
+Autocomplete.displayName = 'Autocomplete';
+
 export default {
   title: 'React/Molecules/Autocomplete',
   component: Autocomplete,

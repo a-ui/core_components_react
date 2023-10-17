@@ -2,6 +2,9 @@ import FunctionalList from './FunctionalList';
 import { QA_PROP_STORY } from '../../../../constants/stories.settings';
 import ListItem from '../items/ListItem';
 
+ListItem.displayName = 'ListItem';
+FunctionalList.displayName = 'FunctionalList';
+
 export default {
   title: 'React/Atoms/List/FunctionalList',
   component: FunctionalList,

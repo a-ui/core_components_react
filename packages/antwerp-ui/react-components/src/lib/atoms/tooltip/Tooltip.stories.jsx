@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Tooltip from './Tooltip';
 
+Tooltip.displayName = 'Tooltip';
+
 export default {
   title: 'React/Atoms/Tooltip',
   component: Tooltip,

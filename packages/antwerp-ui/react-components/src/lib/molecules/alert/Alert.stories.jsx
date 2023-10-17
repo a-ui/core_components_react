@@ -1,6 +1,8 @@
 import { Alert } from './Alert';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Alert.displayName = 'Alert';
+
 /* eslint-disable-next-line */
 const doNothing = () => {};
 

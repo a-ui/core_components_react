@@ -2,6 +2,9 @@ import CheckboxList from './CheckboxList';
 import { QA_PROP_STORY } from '../../../../constants/stories.settings';
 import ListItemCheckbox from '../items/ListItemCheckbox';
 
+CheckboxList.displayName = 'CheckboxList';
+ListItemCheckbox.displayName = 'ListItemCheckbox';
+
 export default {
   title: 'React/Atoms/List/CheckboxList',
   component: CheckboxList,

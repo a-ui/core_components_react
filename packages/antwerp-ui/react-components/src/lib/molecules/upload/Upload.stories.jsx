@@ -2,6 +2,8 @@ import Upload from './Upload';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import { useState } from 'react';
 
+Upload.displayName = 'Upload';
+
 export default {
   title: 'React/Molecules/Upload',
   component: Upload,

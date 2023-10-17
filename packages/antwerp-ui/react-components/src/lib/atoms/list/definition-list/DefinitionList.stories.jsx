@@ -1,6 +1,8 @@
 import DefinitionList from './DefinitionList';
 import { QA_PROP_STORY } from '../../../../constants/stories.settings';
 
+DefinitionList.displayName = 'DefinitionList';
+
 export default {
   title: 'React/Atoms/List/DefinitionList',
   component: DefinitionList,

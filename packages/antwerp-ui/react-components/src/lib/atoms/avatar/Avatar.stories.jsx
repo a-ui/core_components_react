@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Avatar from './Avatar';
 
+Avatar.displayName = 'Avatar';
+
 export default {
   title: 'React/Atoms/Avatar',
   component: Avatar,

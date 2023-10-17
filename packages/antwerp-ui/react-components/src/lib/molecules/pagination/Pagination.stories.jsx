@@ -2,6 +2,8 @@ import { Pagination } from './Pagination';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import { useState } from 'react';
 
+Pagination.displayName = 'Pagination';
+
 export default {
   title: 'React/Molecules/Pagination',
   component: Pagination,

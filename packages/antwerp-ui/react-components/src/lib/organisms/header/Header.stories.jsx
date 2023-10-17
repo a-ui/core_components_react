@@ -1,6 +1,8 @@
 import { Header } from './Header';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Header.displayName = 'Header';
+
 export default {
   title: 'React/Organisms/Header',
   component: Header,

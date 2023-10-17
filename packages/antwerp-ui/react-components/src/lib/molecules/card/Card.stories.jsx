@@ -1,6 +1,8 @@
 import Card from './Card';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Card.displayName = 'Card';
+
 export default {
   title: 'React/Molecules/Card',
   component: Card,

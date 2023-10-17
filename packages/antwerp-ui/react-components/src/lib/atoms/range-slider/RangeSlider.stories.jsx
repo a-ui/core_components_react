@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import RangeSlider from './RangeSlider';
 
+RangeSlider.displayName = 'RangeSlider';
+
 //   tickMarks,
 export default {
   title: 'React/Atoms/RangeSlider',

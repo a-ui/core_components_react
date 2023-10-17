@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import NavigationList from './NavigationList';
 
+NavigationList.displayName = 'NavigationList';
+
 export default {
   title: 'React/Molecules/NavigationList',
   component: NavigationList,

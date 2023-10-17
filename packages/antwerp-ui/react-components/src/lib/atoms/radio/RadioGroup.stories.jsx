@@ -3,6 +3,9 @@ import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import { Radio } from './Radio';
 import { RadioGroup } from './RadioGroup';
 
+Radio.displayName = 'Radio';
+RadioGroup.displayName = 'RadioGroup';
+
 export default {
   title: 'React/Atoms/Radios/Group',
   component: RadioGroup,

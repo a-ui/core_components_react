@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Switch from './Switch';
 
+Switch.displayName = 'Switch';
+
 export default {
   title: 'React/Atoms/Switch',
   component: Switch,

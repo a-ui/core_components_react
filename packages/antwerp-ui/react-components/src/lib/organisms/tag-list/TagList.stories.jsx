@@ -2,6 +2,8 @@ import Tag from '../../molecules/tag/Tag';
 import TagList from './TagList';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+TagList.displayName = 'TagList';
+
 export default {
   title: 'React/Organisms/TagList',
   component: TagList,

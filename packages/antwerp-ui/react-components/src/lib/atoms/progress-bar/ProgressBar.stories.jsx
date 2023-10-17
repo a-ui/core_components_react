@@ -1,6 +1,8 @@
 import ProgressBar from './ProgressBar';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+ProgressBar.displayName = 'ProgressBar';
+
 export default {
   title: 'React/Atoms/ProgressBar',
   component: ProgressBar,

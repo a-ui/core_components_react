@@ -1,6 +1,8 @@
 import Label from './Label';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Label.displayName = 'Label';
+
 export default {
   title: 'React/Atoms/Label',
   component: Label,

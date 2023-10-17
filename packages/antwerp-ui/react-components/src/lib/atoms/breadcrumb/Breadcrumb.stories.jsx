@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Breadcrumb from './Breadcrumb';
 
+Breadcrumb.displayName = 'Breadcrumb';
+
 export default {
   title: 'React/Atoms/Breadcrumb',
   component: Breadcrumb,

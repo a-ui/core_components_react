@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import { Radio } from './Radio';
 
+Radio.displayName = 'Radio';
+
 export default {
   title: 'React/Atoms/Radios/Radio',
   component: Radio,

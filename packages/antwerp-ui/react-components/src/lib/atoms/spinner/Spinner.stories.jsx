@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Spinner from './Spinner';
 
+Spinner.displayName = 'Spinner';
+
 export default {
   title: 'React/Atoms/Spinner',
   component: Spinner,

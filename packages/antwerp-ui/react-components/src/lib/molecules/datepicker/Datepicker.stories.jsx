@@ -1,6 +1,8 @@
 import Datepicker from './Datepicker';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Datepicker.displayName = 'Datepicker';
+
 export default {
   title: 'React/Molecules/Datepicker',
   component: Datepicker,

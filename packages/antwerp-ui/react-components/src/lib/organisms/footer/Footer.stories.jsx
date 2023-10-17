@@ -1,6 +1,8 @@
 import { Footer } from './Footer';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Footer.displayName = 'Footer';
+
 export default {
   title: 'React/Organisms/Footer',
   component: Footer,

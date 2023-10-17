@@ -1,6 +1,8 @@
 import Copyright from './Copyright';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Copyright.displayName = 'Copyright';
+
 export default {
   title: 'React/Molecules/Image/Copyright',
   component: Copyright,

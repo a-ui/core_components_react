@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../../constants/stories.settings';
 import TextArea from './TextArea';
 
+TextArea.displayName = 'TextArea';
+
 export default {
   title: 'React/Atoms/Input/TextArea',
   component: TextArea,

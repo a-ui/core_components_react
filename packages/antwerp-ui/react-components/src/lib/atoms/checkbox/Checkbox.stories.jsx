@@ -2,6 +2,8 @@ import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Checkbox from './Checkbox';
 import { useArgs } from '@storybook/client-api';
 
+Checkbox.displayName = 'Checkbox';
+
 export default {
   title: 'React/Atoms/Checkbox',
   component: Checkbox,

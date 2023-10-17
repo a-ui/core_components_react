@@ -1,6 +1,8 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Button from './Button';
 
+Button.displayName = 'Button';
+
 export default {
   title: 'React/Atoms/Button',
   component: Button,

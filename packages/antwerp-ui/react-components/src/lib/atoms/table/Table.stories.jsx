@@ -1,6 +1,8 @@
 import Table from './Table';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+Table.displayName = 'Table';
+
 const COLUMNS_EXAMPLE = [
   {
     label: 'Snack',

@@ -2,6 +2,9 @@ import { Accordion } from './Accordion';
 import AccordionTab from './AccordionTab';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+AccordionTab.displayName = 'AccordionTab';
+Accordion.displayName = 'Accordion';
+
 export default {
   title: 'React/Molecules/Accordion',
   component: Accordion,

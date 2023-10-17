@@ -2,6 +2,8 @@ import Modal from './Modal';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import { Button } from '../../atoms/button';
 
+Modal.displayName = 'Modal';
+
 export default {
   title: 'React/Molecules/Modal',
   component: Modal,

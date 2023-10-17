@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Toggle from './Toggle';
 
+Toggle.displayName = 'Toggle';
+
 export default {
   title: 'React/Atoms/Toggle',
   component: Toggle,

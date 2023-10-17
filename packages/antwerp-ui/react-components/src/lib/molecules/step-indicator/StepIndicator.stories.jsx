@@ -1,6 +1,8 @@
 import StepIndicator from './StepIndicator';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 
+StepIndicator.displayName = 'StepIndicator';
+
 export default {
   title: 'React/Molecules/StepIndicator',
   component: StepIndicator,

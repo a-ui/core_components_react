@@ -2,6 +2,8 @@ import { Copyright } from '../../atoms/copyright';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Image from './Image';
 
+Image.displayName = 'Image';
+
 export default {
   title: 'React/Molecules/Image',
   component: Image,

@@ -2,6 +2,8 @@ import Tag from './Tag';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import { useArgs } from '@storybook/client-api';
 
+Tag.displayName = 'Tag';
+
 export default {
   title: 'React/Molecules/Tag',
   component: Tag,
