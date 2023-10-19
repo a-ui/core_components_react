@@ -69,7 +69,7 @@ export default {
         defaultValue: { summary: '[]' }
       },
       description:
-        'Array of top right header menu items, use objects of button properties with extra property `label` and `flyout`. Use the `FlyoutProps` in the `flyout` property to add a menu item with a flyout.'
+        'Array of top right header menu items, use objects of button properties with extra property `label` and `flyout`. Every item should have a unique `id`. Use the `FlyoutProps` in the `flyout` property to add a menu item with a flyout.'
     },
     qa: QA_PROP_STORY
   }
