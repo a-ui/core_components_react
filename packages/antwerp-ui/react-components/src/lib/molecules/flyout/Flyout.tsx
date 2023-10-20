@@ -28,8 +28,10 @@ export const Flyout = forwardRef(function Flyout(
   const _handleOutsideClick = React.useCallback(
     (e: MouseEvent) => {
       const area = ReactDOM.findDOMNode(flyoutRef.current);
-      e.preventDefault();
-      if (area && !area.contains(e.target as HTMLElement)) {
+      if (e.target === area?.lastChild) {
+        e.preventDefault();
+      }
+      if (area && !area.contains(e.target as HTMLInputElement)) {
         setIsOpen(false);
         onStateChange && onStateChange(false);
       }
