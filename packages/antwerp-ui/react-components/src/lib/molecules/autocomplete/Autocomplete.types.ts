@@ -4,6 +4,7 @@ export interface AutocompleteProps {
   items?: { value: string; label: string }[];
   name?: string;
   multiple?: boolean;
+  required?: boolean;
   inputValue?: string;
   value?: string | string[];
   noResultsText?: string;

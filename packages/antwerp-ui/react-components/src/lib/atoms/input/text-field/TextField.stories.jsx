@@ -109,7 +109,7 @@ export default {
         defaultValue: { summary: false }
       },
       description:
-        'The `required` prop adds a red asterix to the `TextField` label and adds the required attribute to the HTML input field.'
+        'The `required` prop adds a red asterisk to the `TextField` label and adds the required attribute to the HTML input field.'
     },
     charCounter: {
       control: { type: 'boolean' },

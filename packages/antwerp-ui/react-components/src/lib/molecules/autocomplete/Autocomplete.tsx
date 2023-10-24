@@ -12,6 +12,7 @@ export function Autocomplete({
   items,
   name,
   multiple,
+  required,
   inputValue,
   value,
   onInputChange,
@@ -156,6 +157,7 @@ export function Autocomplete({
           aria-expanded={isOpen}
           onKeyDown={handleKeyDown}
           description={description}
+          required={required}
           state={state}
           addOn={addOn ? { ...addOn, content: addOn.content } : undefined}
         />
