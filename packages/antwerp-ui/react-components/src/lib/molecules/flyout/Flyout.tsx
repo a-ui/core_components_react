@@ -28,6 +28,9 @@ export const Flyout = forwardRef(function Flyout(
   const _handleOutsideClick = React.useCallback(
     (e: MouseEvent) => {
       const area = ReactDOM.findDOMNode(flyoutRef.current);
+      if (e.target === area?.lastChild) {
+        e.preventDefault();
+      }
       if (area && !area.contains(e.target as HTMLInputElement)) {
         setIsOpen(false);
         onStateChange && onStateChange(false);
@@ -38,9 +41,9 @@ export const Flyout = forwardRef(function Flyout(
 
   const initEventHandlers = React.useCallback(() => {
     if (showFlyout) {
-      document.addEventListener('click', _handleOutsideClick, false);
+      document.addEventListener('mousedown', _handleOutsideClick, false);
     } else {
-      document.removeEventListener('click', _handleOutsideClick, false);
+      document.removeEventListener('mousedown', _handleOutsideClick, false);
     }
   }, [_handleOutsideClick, showFlyout]);
 

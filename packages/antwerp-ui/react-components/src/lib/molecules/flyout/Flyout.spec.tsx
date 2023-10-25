@@ -31,7 +31,7 @@ describe('UI Components - Molecules - Flyout', () => {
     const { container, baseElement } = render(
       <Flyout trigger={<Button>Open Flyout</Button>} open={true} onStateChange={onStateChange} />
     );
-    fireEvent.click(container);
+    fireEvent.mouseDown(container);
     expect(onStateChange).toHaveBeenCalledWith(false);
     expect(baseElement.getElementsByClassName('m-flyout')[0].className.includes('is-open')).toBeTruthy();
   });
@@ -60,5 +60,12 @@ describe('UI Components - Molecules - Flyout', () => {
     expect(onStateChange).toHaveBeenCalledWith(true);
     fireEvent.click(getByText('Open Flyout'));
     expect(onStateChange).toHaveBeenCalledWith(false);
+  });
+
+  it('should not close the flyout if an element that is part of the flyoutRef (not an option) is clicked.', () => {
+    const { baseElement } = render(<Flyout trigger={<Button>Open Flyout</Button>} open={true} />);
+    const scrollbar = baseElement.getElementsByClassName('m-flyout__content')[0];
+    fireEvent.mouseDown(scrollbar);
+    expect(baseElement.getElementsByClassName('m-flyout')[0].className.includes('is-open')).toBeTruthy();
   });
 });
