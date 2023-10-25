@@ -24,7 +24,7 @@ describe('UI Components - Atoms - Input - TextField', () => {
     expect(baseElement.querySelector('label')?.textContent === 'input label').toBeTruthy();
   });
 
-  it('should render red asterisk afeter label for required input', () => {
+  it('should render red asterisk after label for required input', () => {
     const { baseElement } = render(<TextField id="input-id" label="input label" required />);
     expect(baseElement.getElementsByClassName('u-text-danger')[0].textContent === '*').toBeTruthy();
   });
