@@ -84,7 +84,7 @@ export default {
         defaultValue: { summary: false }
       },
       description:
-        'The `required` prop adds a red asterix to the `TextArea` label and adds the required attribute to the HTML textarea field.'
+        'The `required` prop adds a red asterisk to the `TextArea` label and adds the required attribute to the HTML textarea field.'
     },
     charCounter: {
       control: { type: 'boolean' },

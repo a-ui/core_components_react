@@ -25,6 +25,7 @@ export default {
     label: 'National Parks',
     noResultsText: 'Sorry, niet gevonden',
     multiple: false,
+    required: false,
     addOn: {
       type: 'icon',
       placement: 'left',
@@ -73,6 +74,15 @@ export default {
       },
       description:
         'The `multiple` (if set to `true`) prop will allow the user to select multiple values. The representation of those values is free to chose (e.g. use `Tag` components)'
+    },
+    required: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      description:
+        'The `required` prop adds a red asterisk to the `Autocomplete` label and adds the required attribute to the HTML input field.'
     },
     inputValue: {
       table: {
