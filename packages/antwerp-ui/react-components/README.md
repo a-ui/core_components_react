@@ -4,7 +4,7 @@ A-UI React Components using Core Branding 6.5.0.
 
 ## Getting Started
 
-- Minimal React version `16`
+- Minimal supported React version is `v16`, but from a security perspective we recommend using the latest React version (currently `v18`)
 
 - `npm install @a-ui/react`
 
