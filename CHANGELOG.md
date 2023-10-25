@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - An `Alert` component without a title label will no longer add a margin pushing the description down.
+- A `Flyout` will not close anymore when clicking on a scrollbar inside of it.
 
 =======
 
