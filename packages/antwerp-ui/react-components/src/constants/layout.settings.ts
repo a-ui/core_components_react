@@ -40,8 +40,8 @@ export enum Theme {
 
 export const THEME_ICON_MAP: { [Theme: string]: string } = {
   [Theme.SUCCESS]: 'check-1',
-  [Theme.DANGER]: 'alert-circle',
-  [Theme.WARNING]: 'alert-triangle'
+  [Theme.WARNING]: 'alert-circle',
+  [Theme.DANGER]: 'alert-triangle'
 };
 
 // States

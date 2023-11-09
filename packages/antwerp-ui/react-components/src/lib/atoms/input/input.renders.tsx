@@ -25,7 +25,7 @@ export const renderDescription = ({ id, description, state }: DescriptionProps) 
   return description ? (
     <small id={`${id}--description`} className={descriptionClasses}>
       {state === State.SUCCESS && <Icon name={THEME_ICON_MAP[Theme.SUCCESS]} />}
-      {state === State.ERROR && <Icon name={THEME_ICON_MAP[Theme.WARNING]} />}
+      {state === State.ERROR && <Icon name={THEME_ICON_MAP[Theme.DANGER]} />}
       {description}
     </small>
   ) : null;
