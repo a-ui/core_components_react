@@ -1,3 +1,5 @@
+import { nlBE } from 'date-fns/locale';
+
 // BASE
 export const ICONS_URL = 'https://cdn.antwerpen.be/core_branding_scss/6.5.0/assets/images/ai.svg';
 
@@ -15,4 +17,4 @@ export const SORT_DESCENDING = 'descending';
 export const DEFAULT_DATE_FORMAT = 'dd/MM/yyyy';
 
 // LOCALES
-export const DEFAULT_LOCALE = 'nl';
+export const DEFAULT_LOCALE = nlBE;

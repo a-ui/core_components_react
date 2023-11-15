@@ -2,6 +2,7 @@ import jest from 'jest-mock';
 import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Calendar } from './Calendar';
+import { enUS } from 'date-fns/locale';
 
 describe('UI Components - Molecules - Calendar', () => {
   it('should render successfully', () => {
@@ -58,7 +59,7 @@ describe('UI Components - Molecules - Calendar', () => {
 
   it('should change to previous page when clicking on previous button', () => {
     const date = new Date('2023-02-22').toISOString();
-    const { baseElement, queryByText } = render(<Calendar value={date} locale="enUS" />);
+    const { baseElement, queryByText } = render(<Calendar value={date} locale={enUS} />);
 
     const rotateViewButton = baseElement.querySelector('.m-datepicker__nav-title') as HTMLButtonElement;
     const prevButton = baseElement.getElementsByClassName('m-datepicker__nav-pagination')[0]
@@ -89,7 +90,7 @@ describe('UI Components - Molecules - Calendar', () => {
 
   it('should change to next page when clicking on next button', () => {
     const date = new Date('2023-02-22').toISOString();
-    const { baseElement, queryByText } = render(<Calendar value={date} locale="enUS" />);
+    const { baseElement, queryByText } = render(<Calendar value={date} locale={enUS} />);
 
     const rotateViewButton = baseElement.querySelector('.m-datepicker__nav-title') as HTMLButtonElement;
     const nextButton = baseElement.getElementsByClassName('m-datepicker__nav-pagination')[0]
@@ -120,7 +121,7 @@ describe('UI Components - Molecules - Calendar', () => {
 
   it('should rotate views correctly when selecting a value in a specific view', () => {
     const date = new Date('2023-02-22').toISOString();
-    const { baseElement, queryByText } = render(<Calendar value={date} locale="enUS" />);
+    const { baseElement, queryByText } = render(<Calendar value={date} locale={enUS} />);
 
     const rotateViewButton = baseElement.querySelector('.m-datepicker__nav-title') as HTMLButtonElement;
     // Go to YearsView
@@ -143,7 +144,7 @@ describe('UI Components - Molecules - Calendar', () => {
 
   it('should move to previous year if clicking previous on MonthsView in January', () => {
     const date = new Date('2023-01-22').toISOString();
-    const { baseElement, queryByText } = render(<Calendar value={date} locale="enUS" />);
+    const { baseElement, queryByText } = render(<Calendar value={date} locale={enUS} />);
     const prevButton = baseElement.getElementsByClassName('m-datepicker__nav-pagination')[0]
       .childNodes[0] as HTMLButtonElement;
 
@@ -155,7 +156,7 @@ describe('UI Components - Molecules - Calendar', () => {
 
   it('should move to next year if clicking next on MonthsView in December', () => {
     const date = new Date('2023-12-22').toISOString();
-    const { baseElement, queryByText } = render(<Calendar value={date} locale="enUS" />);
+    const { baseElement, queryByText } = render(<Calendar value={date} locale={enUS} />);
     const nextButton = baseElement.getElementsByClassName('m-datepicker__nav-pagination')[0]
       .childNodes[1] as HTMLButtonElement;
 
@@ -163,16 +164,5 @@ describe('UI Components - Molecules - Calendar', () => {
     fireEvent.click(nextButton);
     expect(queryByText('December 2023')).toBeFalsy();
     expect(queryByText('January 2024')).toBeTruthy();
-  });
-
-  it('should use the default locale (nl) when providing an unknown/erroneous one', () => {
-    const date = new Date('2023-02-22').toISOString();
-    const { baseElement, queryByText } = render(<Calendar value={date} locale="unknown" />);
-    const prevButton = baseElement.getElementsByClassName('m-datepicker__nav-pagination')[0]
-      .childNodes[0] as HTMLButtonElement;
-    expect(queryByText('Februari 2023')).toBeTruthy();
-    fireEvent.click(prevButton);
-    expect(queryByText('Februari 2023')).toBeFalsy();
-    expect(queryByText('Januari 2023')).toBeTruthy();
   });
 });

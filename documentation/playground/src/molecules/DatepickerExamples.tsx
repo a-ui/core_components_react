@@ -1,4 +1,5 @@
 import { Calendar, Datepicker } from '@a-ui/react';
+import { mn } from 'date-fns/locale';
 
 import { useState } from 'react';
 
@@ -10,7 +11,7 @@ export function DatepickerExamples() {
       <h2>Calendar</h2>
       <div className="u-margin">
         <p className="u-margin-top">Uncontrolled</p>
-        <Calendar />
+        <Calendar locale={mn} />
         <p className="u-margin-top">Controlled</p>
         <Calendar
           value={date}
@@ -38,6 +39,9 @@ export function DatepickerExamples() {
           inputProps={{ id: 'aui-datepicker-2' }}
           format="dd-MM-yyyy"
           value={new Date(Date.now()).toISOString()}
+          calendarProps={{
+            locale: mn
+          }}
         />
         <Datepicker
           label="With value (format dd-mm-yyyy)"

@@ -1,5 +1,6 @@
 import { FocusEvent } from 'react';
 import { TextFieldProps } from '../../atoms/input';
+import { Locale } from 'date-fns';
 
 export interface DatepickerProps {
   qa?: string;
@@ -20,7 +21,7 @@ export interface DatepickerProps {
 
 export interface CalendarProps {
   ariaLabel?: string;
-  locale?: string;
+  locale?: Locale;
   ariaLabelCurrentDay?: string;
   ariaLabelNextMonth?: string;
   ariaLabelNextYear?: string;
@@ -60,7 +61,7 @@ export interface MonthsViewProps {
   value?: Date;
   onChange: (value: Date) => void;
   activeYear: number;
-  locale?: string;
+  locale?: Locale;
 }
 
 export interface YearsViewProps {

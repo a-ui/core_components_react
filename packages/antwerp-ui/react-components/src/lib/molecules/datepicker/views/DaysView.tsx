@@ -11,7 +11,6 @@ import {
 } from 'date-fns';
 import { DaysViewProps } from '../Datepicker.types';
 import { DayButton } from './DayButton';
-import { useLocale } from '../../../../utils/time.utils';
 import { titleize } from '../../../../utils/string.utils';
 
 export function DaysView({
@@ -25,12 +24,10 @@ export function DaysView({
   unavailableTo,
   unavailable
 }: DaysViewProps) {
-  const dateFnsLocale = useLocale(locale);
-
   const renderWeek = (weekDay: Date) => {
     const days: React.ReactElement[] = [];
-    let index = startOfWeek(weekDay, dateFnsLocale);
-    const endWeek = endOfWeek(weekDay, dateFnsLocale);
+    let index = startOfWeek(weekDay, { locale });
+    const endWeek = endOfWeek(weekDay, { locale });
     while (!isAfter(index, endWeek)) {
       const activeMonthYear = new Date(activeYear, activeMonth);
       days.push(
@@ -54,7 +51,7 @@ export function DaysView({
   const renderBody = () => {
     const weeks = [];
     const current = new Date(activeYear, activeMonth);
-    let index = startOfWeek(startOfMonth(current), dateFnsLocale);
+    let index = startOfWeek(startOfMonth(current), { locale });
     const end = endOfMonth(current);
     while (!isAfter(index, end)) {
       weeks.push(renderWeek(index));
@@ -64,8 +61,8 @@ export function DaysView({
   };
 
   const daysOfWeek = eachDayOfInterval({
-    start: startOfWeek(new Date(), dateFnsLocale),
-    end: endOfWeek(new Date(), dateFnsLocale)
+    start: startOfWeek(new Date(), { locale }),
+    end: endOfWeek(new Date(), { locale })
   });
 
   return (
@@ -75,8 +72,8 @@ export function DaysView({
           <tr className="m-datepicker__grid-head">
             {daysOfWeek.map((day) => (
               <th key={`aui-calendar-weekday-${day}`} scope="col">
-                <span title={titleize(format(day, 'EEEE', dateFnsLocale))}>
-                  {titleize(format(day, 'EEEEEE', dateFnsLocale))}
+                <span title={titleize(format(day, 'EEEE', { locale }))}>
+                  {titleize(format(day, 'EEEEEE', { locale }))}
                 </span>
               </th>
             ))}
