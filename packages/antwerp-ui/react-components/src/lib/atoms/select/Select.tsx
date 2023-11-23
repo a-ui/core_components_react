@@ -53,8 +53,8 @@ export function Select({
             typeof placeholder === 'string' ? (
               <option disabled>{placeholder}</option>
             ) : (
-              <option disabled={placeholder.disabled} value={placeholder?.value}>
-                {placeholder.label}
+              <option disabled={placeholder?.disabled} value={placeholder?.value}>
+                {placeholder?.label || 'Maak een keuze'}
               </option>
             )
           ) : null}
