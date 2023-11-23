@@ -1,13 +1,21 @@
 const MB = 1048576;
 
 export function hasValidFormat(file: File, acceptedFormat?: string): boolean {
-  return (
-    !acceptedFormat ||
-    acceptedFormat === '*' ||
-    acceptedFormat === file.type ||
-    (acceptedFormat?.includes('*') &&
-      !!acceptedFormat?.split('/')?.[0] &&
-      file.type.startsWith(acceptedFormat?.split('/')?.[0]))
+  if (!acceptedFormat) {
+    return false;
+  }
+
+  const acceptedFormats = acceptedFormat
+    .split(',')
+    .map((format) => format.trim())
+    .flatMap((format) => format.split('.'));
+
+  return acceptedFormats.some(
+    (format) =>
+      !format ||
+      format === '*' ||
+      format === file.type ||
+      (format.includes('*') && !!format.split('/')?.[0] && file.type.startsWith(format.split('/')?.[0]))
   );
 }
 
