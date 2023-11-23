@@ -36,4 +36,13 @@ describe('UI Components - Atoms - Select', () => {
     expect(selectedOption.getAttribute('selected')).toBe('');
     expect(selectedOption.innerHTML).toBe(placeholder);
   });
+  it('should display a custom placeholder option', () => {
+    const placeholderObj: SelectProps['placeholder'] = {
+      label: 'Not disabled placeholder'
+    };
+    const { baseElement } = render(<Select {...defaultProps} inline placeholder={placeholderObj} />);
+    const selectedOption = baseElement.getElementsByTagName('option')[0] as HTMLOptionElement;
+    expect(selectedOption.getAttribute('selected')).toBe('');
+    expect(selectedOption.innerHTML).toBe(placeholderObj.label);
+  });
 });

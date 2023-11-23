@@ -21,7 +21,11 @@ export default {
     name: 'select-story',
     disabled: false,
     required: false,
-    placeholder: 'Make your choice',
+    placeholder: {
+      label: 'Make your choice',
+      disabled: false,
+      value: ''
+    },
     options: [
       { value: 'first', label: 'First option' },
       { value: 'second', label: 'Second option' },
@@ -60,12 +64,19 @@ export default {
       description: 'The `name` prop sets the `name` attribute on the `select` HTML element.'
     },
     placeholder: {
-      control: { type: 'text' },
+      control: { type: 'object' },
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Maak een keuze' }
+        type: { summary: 'string | { label: string, disabled?: boolean, value?: string }' },
+        defaultValue: {
+          summary: {
+            label: 'Maak een keuze',
+            disabled: false,
+            value: ''
+          }
+        }
       },
-      description: 'Sets a placeholder value for the `Select` component.'
+      description:
+        'Sets a placeholder value for the `Select` component. You can also pass an object containing a label. (disabled & value are optional)'
     },
     disabled: {
       control: { type: 'boolean' },
