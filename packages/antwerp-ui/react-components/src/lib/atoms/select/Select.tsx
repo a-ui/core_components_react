@@ -46,10 +46,18 @@ export function Select({
           name={name}
           id={id}
           value={value}
-          defaultValue={(!value && placeholder) || undefined}
+          defaultValue={(!value && (typeof placeholder === 'string' ? placeholder : '')) || undefined}
           onChange={handleChange}
         >
-          <option disabled>{placeholder}</option>
+          {placeholder ? (
+            typeof placeholder === 'string' ? (
+              <option disabled>{placeholder}</option>
+            ) : (
+              <option disabled={placeholder.disabled} value={placeholder?.value}>
+                {placeholder.label}
+              </option>
+            )
+          ) : null}
           {(options || []).map((o, index) => {
             return (
               <option key={`${o.value}-${index}`} value={o.value} disabled={o.disabled}>

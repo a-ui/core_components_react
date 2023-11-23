@@ -1,4 +1,5 @@
 import React from 'react';
+import { Optional } from '../../../utils/typescript.utils';
 
 export interface SelectProps {
   description?: string;
@@ -8,7 +9,7 @@ export interface SelectProps {
   label?: string;
   name?: string;
   options?: SelectOption[];
-  placeholder?: string;
+  placeholder?: string | Optional<SelectOption, 'value'>;
   required?: boolean;
   size?: 'small' | 'medium' | 'large';
   state?: 'success' | 'error';
