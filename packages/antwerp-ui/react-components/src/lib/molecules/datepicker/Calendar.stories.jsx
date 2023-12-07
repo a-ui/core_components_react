@@ -1,5 +1,6 @@
 import Calendar from './Calendar';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
+import * as locales from 'date-fns/locale';
 
 Calendar.displayName = 'Calendar';
 
@@ -90,11 +91,11 @@ export default {
     locale: {
       control: { type: 'text' },
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'nl' }
+        type: { summary: 'Locale' },
+        defaultValue: { summary: 'nlBE' }
       },
       description:
-        'Use this prop to localize the calendar. List of available locales: https://github.com/date-fns/date-fns/tree/main/src/locale.'
+        'Use this prop to localize the calendar, the locale argument expect a `date-fns locale`. List of available locales: https://github.com/date-fns/date-fns/tree/main/src/locale.'
     },
     ariaLabel: {
       control: { type: 'text' },
@@ -171,5 +172,5 @@ export default {
   }
 };
 
-const Template = (args) => <Calendar {...args} />;
+const Template = (args) => <Calendar {...args} locale={locales[args.locale]} />;
 export const calendar = Template.bind({});

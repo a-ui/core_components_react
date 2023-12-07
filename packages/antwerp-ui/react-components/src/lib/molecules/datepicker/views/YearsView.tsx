@@ -27,11 +27,9 @@ export function YearsView({ yearsRowsStart, value, activeMonth, onChange }: Year
     while (index < 16) {
       yearsRows.push(
         <tr key={`aui-calendar-years-${index}`}>
-          <>
-            {renderYear(yearsRowsStart + index)}
-            {renderYear(yearsRowsStart + index + 1)}
-            {renderYear(yearsRowsStart + index + 2)}
-          </>
+          {renderYear(yearsRowsStart + index)}
+          {renderYear(yearsRowsStart + index + 1)}
+          {renderYear(yearsRowsStart + index + 2)}
         </tr>
       );
       index += 3;

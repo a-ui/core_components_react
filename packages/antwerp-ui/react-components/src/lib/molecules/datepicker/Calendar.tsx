@@ -4,11 +4,10 @@ import { classNames } from '../../../utils/dom.utils';
 import { DaysView } from './views/DaysView';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
 import { getMonth, getYear, addMonths, subMonths, format, addYears, subYears, formatISO } from 'date-fns';
+import { DEFAULT_LOCALE } from '../../../constants/settings';
 import { Icon } from '../../base/icon';
 import { MonthsView } from './views/MonthsView';
 import { YearsView } from './views/YearsView';
-import { useLocale } from '../../../utils/time.utils';
-import { DEFAULT_LOCALE } from '../../../constants/settings';
 import { titleize } from '../../../utils/string.utils';
 
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
@@ -24,7 +23,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       ariaLabelPreviousYears,
       className,
       isOpen,
-      locale,
+      locale = DEFAULT_LOCALE,
       onBlur,
       onChange,
       qa,
@@ -35,7 +34,6 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     },
     ref
   ) => {
-    const dateFnsLocale = useLocale(locale);
     const [activeDate, setActiveDate] = useState(value ? new Date(value) : undefined);
     const [activeYear, setActiveYear] = useState(getYear(new Date(value || new Date())));
     const [activeMonth, setActiveMonth] = useState(getMonth(new Date(value || new Date())));
@@ -50,14 +48,14 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       const dateToShow = new Date(activeYear, activeMonth);
       return {
         [CalendarView.DAYS]: {
-          main: titleize(format(dateToShow, 'MMMM yyyy', dateFnsLocale)),
-          next: `${ariaLabelNextMonth}, ${format(addMonths(dateToShow, 1), 'MMMM yyyy', dateFnsLocale)}`,
-          prev: `${ariaLabelPreviousMonth}, ${format(subMonths(dateToShow, 1), 'MMMM yyyy', dateFnsLocale)}`
+          main: titleize(format(dateToShow, 'MMMM yyyy', { locale })),
+          next: `${ariaLabelNextMonth}, ${format(addMonths(dateToShow, 1), 'MMMM yyyy', { locale })}`,
+          prev: `${ariaLabelPreviousMonth}, ${format(subMonths(dateToShow, 1), 'MMMM yyyy', { locale })}`
         },
         [CalendarView.MONTHS]: {
-          main: format(dateToShow, 'yyyy', dateFnsLocale),
-          next: `${ariaLabelNextYear}, ${format(addYears(dateToShow, 1), 'yyyy', dateFnsLocale)}`,
-          prev: `${ariaLabelPreviousYear}, ${format(subYears(dateToShow, 1), 'yyyy', dateFnsLocale)}`
+          main: format(dateToShow, 'yyyy', { locale }),
+          next: `${ariaLabelNextYear}, ${format(addYears(dateToShow, 1), 'yyyy', { locale })}`,
+          prev: `${ariaLabelPreviousYear}, ${format(subYears(dateToShow, 1), 'yyyy', { locale })}`
         },
         [CalendarView.YEARS]: {
           main: `${yearsRowsStart} - ${yearsRowsStart + 17}`,
@@ -76,7 +74,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       ariaLabelPreviousMonth,
       ariaLabelPreviousYear,
       ariaLabelPreviousYears,
-      dateFnsLocale
+      locale
     ]);
 
     const handlePreviousDatesClick = () => {
