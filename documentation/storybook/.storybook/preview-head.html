@@ -54,7 +54,6 @@
       if (params.get('branding') && params.get('file')) {
         const versions = fetchBrandingVersions();
         const version = params.get('version') || versions[params.get('branding')];
-        console.log(`https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get('file')}.min.css`);
         document.write(
           `<link rel="stylesheet" href="https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get(
             'file'
