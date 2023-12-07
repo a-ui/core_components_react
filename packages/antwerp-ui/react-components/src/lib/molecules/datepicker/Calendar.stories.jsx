@@ -95,7 +95,7 @@ export default {
         defaultValue: { summary: 'nlBE' }
       },
       description:
-        'Use this prop to localize the calendar. List of available locales: https://github.com/date-fns/date-fns/tree/main/src/locale.'
+        'Use this prop to localize the calendar, the locale argument expect a `date-fns locale`. List of available locales: https://github.com/date-fns/date-fns/tree/main/src/locale.'
     },
     ariaLabel: {
       control: { type: 'text' },
