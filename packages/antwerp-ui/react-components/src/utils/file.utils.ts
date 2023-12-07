@@ -1,10 +1,6 @@
 const MB = 1048576;
 
-export function hasValidFormat(file: File, acceptedFormat?: string): boolean {
-  if (!acceptedFormat) {
-    return false;
-  }
-
+export function hasValidFormat(file: File, acceptedFormat = ''): boolean {
   const acceptedFormats = acceptedFormat
     .split(',')
     .map((format) => format.trim())

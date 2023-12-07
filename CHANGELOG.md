@@ -7,11 +7,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Fixed
+
+- Upload component: the `hasValidFormat` will now check for multiple type notations (MIME type, . notation). Users will no longer see wrong error states when they select valid file formats as stated in the `accept` prop of the html `input` field.
+
 ## 7.0.5
 
 ### Fixed
 
-- The `hasValidFormat` will now check for multiple type notations (MIME type, . notation). Users will no longer see wrong error states when they select valid file formats as stated in the `accept` prop of the html `input` field.
 - An `Alert` component without a title label will no longer add a margin pushing the description down.
 - A `Flyout` will not close anymore when clicking on a scrollbar inside of it.
 - Can use the `required` property for the `Autocomplete` component.

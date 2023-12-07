@@ -12,7 +12,7 @@ export const Icon = forwardRef(function Icon(
   iconRef: ForwardedRef<HTMLSpanElement>
 ) {
   const fetchIcons = async function () {
-    if (!fetch) return null;
+    if (typeof fetch !== 'function') return null;
     const response = await fetch(ICONS_URL);
     const svgText = await response.text();
     const svgWrapper = document.createElement('svg');

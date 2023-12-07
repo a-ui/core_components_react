@@ -82,9 +82,30 @@ describe('UI Components - Molecules - Upload', () => {
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(0);
   });
 
+  it('should check if uploaded files have several valid formats', () => {
+    const onChangeMock = jest.fn();
+    const { baseElement } = render(
+      <Upload
+        id="test-upload"
+        acceptedFormat="image/png,.csv"
+        onChange={onChangeMock}
+        files={[mockFile, mockFileCSV]}
+      />
+    );
+    expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(0);
+  });
+
+  it('should flag all files if acceptedFormat is empty', () => {
+    const onChangeMock = jest.fn();
+    const { baseElement } = render(
+      <Upload id="test-upload" acceptedFormat="''" onChange={onChangeMock} files={[mockFile, mockFileCSV]} />
+    );
+    expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(2);
+  });
+
   it('should check if uploaded files have valid size', () => {
     const onChangeMock = jest.fn();
-    const { rerender, baseElement, getByText } = render(
+    const { rerender, baseElement } = render(
       <Upload id="test-upload" onChange={onChangeMock} files={[mockFile, mockFileCSV]} />
     );
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(0);
