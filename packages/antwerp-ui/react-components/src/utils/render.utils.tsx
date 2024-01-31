@@ -40,7 +40,14 @@ export function renderHTMLLink(
   };
 
   return (
-    <a onClick={handleClick} onKeyDown={handleKeyDown} role="button" tabIndex={0} {...props}>
+    <a
+      style={{ cursor: 'pointer' }}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      {...props}
+    >
       {link.label || ''}
       {icon ? <Icon name={icon} /> : null}
     </a>
