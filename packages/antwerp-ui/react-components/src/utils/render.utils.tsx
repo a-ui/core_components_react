@@ -1,4 +1,4 @@
-import { cloneElement, ReactElement, ReactNode } from 'react';
+import { cloneElement, KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 import { Link } from '../constants/application.types';
 import { Size } from '../constants/layout.settings';
 import { Avatar } from '../lib/atoms/avatar';
@@ -15,11 +15,39 @@ export function renderHTMLLink(
   icon?: string,
   props?: { className?: string; 'aria-labelledby'?: string }
 ): ReactNode {
-  if (!link?.href) {
+  if (!link?.href && !link?.onClick) {
     return link?.label || '';
   }
+  if (link?.href) {
+    return (
+      <a href={link.href} target={link.target || '_self'} {...props}>
+        {link.label || ''}
+        {icon ? <Icon name={icon} /> : null}
+      </a>
+    );
+  }
+
+  const handleClick = (event: MouseEvent) => {
+    event.preventDefault();
+    return link.onClick && link.onClick(event);
+  };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      return link.onClick && link.onClick(event);
+    }
+  };
+
   return (
-    <a href={link.href} target={link.target || '_self'} {...props}>
+    <a
+      style={{ cursor: 'pointer' }}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      {...props}
+    >
       {link.label || ''}
       {icon ? <Icon name={icon} /> : null}
     </a>

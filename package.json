@@ -10,6 +10,7 @@
     "playground": "yarn nx run documentation-playground:serve:development",
     "postinstall": "cd documentation/storybook && yarn install && cd ../..",
     "prettier:read": "prettier packages/antwerp-ui/react-components/src/**/*.{tsx,jsx,ts} --check",
+    "prettier:write": "prettier packages/antwerp-ui/react-components/src/**/*.{tsx,jsx,ts} --write",
     "storybook:build": "yarn nx run @a-ui/storybook:build",
     "storybook": "yarn nx run @a-ui/storybook:start",
     "test": "yarn nx test",

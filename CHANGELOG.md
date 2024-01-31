@@ -11,8 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Datepicker/Calendar component: fixed an issue where the Month view of a Calendar would show incorrect months if a date was selected where that date's `day` value was not present in some months (February does not contain a 30th or 31st day, for example)
-- Select component: Make the Select component clearable if the component's `value` is undefined
+- Datepicker/Calendar component: fixed an issue where the Month view of a Calendar would show incorrect months if a date was selected where that date's `day` value was not present in some months (February does not contain a 30th or 31st day, for example).
+- Select component: Make the Select component clearable if the component's `value` is undefined.
+
+### Added
+
+- The `Footer` component now allows for its `Link` items to have an `onClick`.
 
 ## 7.0.6
 

@@ -69,6 +69,30 @@ describe('Utils - Render utils', () => {
         name: 'arrow-left'
       });
     });
+
+    it('should render with onClick', () => {
+      const mockOnClick = jest.fn();
+      const link = renderHTMLLink({ label: 'Hello', onClick: mockOnClick }, 'arrow-left');
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      expect((link || {}).props.onClick).toEqual(expect.any(Function));
+    });
+
+    it('should render with onClick, icon and empty label', () => {
+      const mockOnClick = jest.fn();
+      const link = renderHTMLLink({ label: '', onClick: mockOnClick }, 'arrow-left');
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      expect((link || {}).props.onClick).toEqual(expect.any(Function));
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      expect((link || {}).props.children[0]).toEqual('');
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      expect((link || {}).props.children[1].props).toEqual({
+        name: 'arrow-left'
+      });
+    });
   });
 });
 

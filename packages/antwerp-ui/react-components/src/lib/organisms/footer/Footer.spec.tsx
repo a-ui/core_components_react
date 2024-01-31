@@ -69,4 +69,25 @@ describe('UI Components - Organisms - Footer', () => {
     fireEvent.click(button);
     expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
   });
+
+  it('should handleClick when clicking on a link with onClick', () => {
+    const mockOnClick = jest.fn();
+    const { baseElement } = render(<Footer {...defaultProps} items={[
+      {label: 'Hello', onClick: mockOnClick}
+    ]} />);
+    const link = baseElement.querySelector('a') as HTMLAnchorElement;
+    fireEvent.click(link);
+    expect(mockOnClick).toHaveBeenCalled();
+  });
+
+  it('should handleKeyDown when pressint enter on a link with onClick', () => {
+    const mockOnClick = jest.fn();
+    const { baseElement } = render(<Footer {...defaultProps} items={[
+      {label: 'Hello', onClick: mockOnClick}
+    ]} />);
+    const link = baseElement.querySelector('a') as HTMLAnchorElement;
+    link.focus();
+    fireEvent.keyDown(link, { key: 'Enter', code: 'Enter' });
+    expect(mockOnClick).toHaveBeenCalled();
+  });
 });
