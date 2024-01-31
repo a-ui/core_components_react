@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Fixed
+
+- Datepicker/Calendar component: fixed an issue where the Month view of a Calendar would show incorrect months if a date was selected where that date's `day` value was not present in somee months (February does not contain a 30th or 31st day,for example)
+
 ## 7.0.6
 
 ### Fixed

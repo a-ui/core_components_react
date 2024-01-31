@@ -1,4 +1,4 @@
-import { format, getDate, getMonth, getYear } from 'date-fns';
+import { format, getMonth, getYear } from 'date-fns';
 import { classNames } from '../../../../utils/dom.utils';
 import { MonthsViewProps } from '../Datepicker.types';
 import { titleize } from '../../../../utils/string.utils';
@@ -10,7 +10,7 @@ export function MonthsView({ onChange, value, activeYear, locale = DEFAULT_LOCAL
       'is-current': month === getMonth(new Date()) && activeYear === getYear(new Date()),
       'is-selected': !!(value && month === getMonth(value) && activeYear === getYear(value))
     });
-    const monthValue = new Date(activeYear, month, value ? getDate(value) : 1);
+    const monthValue = new Date(activeYear, month);
     return (
       <td>
         <button type="button" className={classes} onClick={() => onChange(monthValue)}>
