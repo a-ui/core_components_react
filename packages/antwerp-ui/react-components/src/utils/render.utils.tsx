@@ -1,4 +1,4 @@
-import { cloneElement, MouseEvent, ReactElement, ReactNode } from 'react';
+import { cloneElement, KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 import { Link } from '../constants/application.types';
 import { Size } from '../constants/layout.settings';
 import { Avatar } from '../lib/atoms/avatar';
@@ -32,8 +32,15 @@ export function renderHTMLLink(
     return link.onClick && link.onClick(event);
   };
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLAnchorElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      return link.onClick && link.onClick(event);
+    }
+  };
+
   return (
-    <a onClick={handleClick} {...props}>
+    <a onClick={handleClick} onKeyDown={handleKeyDown} role="button" tabIndex={0} {...props}>
       {link.label || ''}
       {icon ? <Icon name={icon} /> : null}
     </a>
