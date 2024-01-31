@@ -4,7 +4,7 @@ import { MouseEvent } from 'react';
 
 export function FooterExamples() {
   const items: Link[] = [
-    { label: '© stad Antwerpen', onClick: (event: MouseEvent<HTMLAnchorElement>) => console.log(event) },
+    { label: '© stad Antwerpen', onClick: (event: MouseEvent) => console.log(event) },
     { label: 'Privacy' },
     { label: 'Toegankelijkheid', href: '#' },
     { label: 'Cookie instellingen', onClick: () => console.log('clicked') }

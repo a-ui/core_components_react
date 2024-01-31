@@ -27,12 +27,12 @@ export function renderHTMLLink(
     );
   }
 
-  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (event: MouseEvent) => {
     event.preventDefault();
     return link.onClick && link.onClick(event);
   };
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLAnchorElement>) => {
+  const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
       event.preventDefault();
       return link.onClick && link.onClick(event);
