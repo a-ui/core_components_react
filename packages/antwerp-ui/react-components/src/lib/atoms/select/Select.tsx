@@ -45,7 +45,7 @@ export function Select({
           disabled={disabled}
           name={name}
           id={id}
-          value={value}
+          value={value ? value : placeholder}
           defaultValue={(!value && placeholder) || undefined}
           onChange={handleChange}
         >
