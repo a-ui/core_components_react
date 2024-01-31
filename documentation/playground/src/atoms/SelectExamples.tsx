@@ -12,7 +12,7 @@ const options: SelectOption[] = [
 const placeholder = 'Make your choice';
 
 export function SelectExamples() {
-  const [value, setValue] = React.useState<string | undefined>(placeholder);
+  const [value, setValue] = React.useState<string | undefined>(undefined);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setValue(e.target.value);
   };
