@@ -42,10 +42,11 @@ export function Select({
       {renderDescription({ id, description, state })}
       <div className={inputWrapperClasses}>
         <select
+          key={value}
           disabled={disabled}
           name={name}
           id={id}
-          value={value ? value : placeholder}
+          value={value}
           defaultValue={(!value && placeholder) || undefined}
           onChange={handleChange}
         >

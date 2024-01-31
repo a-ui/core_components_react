@@ -19,7 +19,7 @@ export function SelectExamples() {
 
   const clearValue = () => {
     setValue(undefined);
-  }
+  };
   return (
     <div className="u-margin">
       <h2>Select</h2>
