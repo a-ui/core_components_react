@@ -1,4 +1,4 @@
-import { Select } from '@a-ui/react';
+import { Button, Select } from '@a-ui/react';
 import { SelectOption } from 'packages/antwerp-ui/react-components/src/lib/atoms/select/Select.types';
 import React from 'react';
 
@@ -12,9 +12,13 @@ const options: SelectOption[] = [
 const placeholder = 'Make your choice';
 
 export function SelectExamples() {
-  const [value, setValue] = React.useState(placeholder);
+  const [value, setValue] = React.useState<string | undefined>(undefined);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setValue(e.target.value);
+  };
+
+  const clearValue = () => {
+    setValue(undefined);
   };
   return (
     <div className="u-margin">
@@ -32,6 +36,8 @@ export function SelectExamples() {
           value={value}
           onChange={handleChange}
         />
+        <p>Selected value: {value}</p>
+        <Button onClick={clearValue}>Clear</Button>
       </div>
       <div className="u-margin">
         <Select
