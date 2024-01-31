@@ -20,8 +20,8 @@ export default {
     items: [
       { label: '© stad Antwerpen' },
       { label: 'Privacy', href: '#' },
-      { label: 'Toegankelijkheid', href: '#' },
-      { label: 'Cookie instellingen', href: '#' }
+      { label: 'Toegankelijkheid', onClick: (event) => console.log(event) },
+      { label: 'Cookie instellingen', onClick: () => console.log('Cookie instellingen clicked.') }
     ]
   },
   argTypes: {
@@ -50,7 +50,7 @@ export default {
         defaultValue: { summary: '' }
       },
       description:
-        'The `items` prop contains the content that should be placed in the footer. This prop expects an array of items in the following format `{ label: "", href: "", target: "" }` and `target` can be empty.'
+        'The `items` prop contains the content that should be placed in the footer. This prop expects an array of items in the following format `{ label: "", href: "", target: "", onClick: (event) => {} }`, where target can be empty, and href and onClick are interchangeable, though if there is an href present, it will take priority over onClick.'
     },
     qa: QA_PROP_STORY
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { renderHTMLLink } from '../../../utils/render.utils';
 import { Button } from '../../atoms/button';
 import { FooterProps } from './Footer.types';
+import './Footer.css';
 
 export function Footer({ backToTop, backToTopAriaLabel, items, qa }: FooterProps) {
   const scrollToTop = () => {

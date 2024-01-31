@@ -1,8 +1,11 @@
+import { MouseEvent } from 'react';
+
 export interface Link {
   id?: string;
   label: string;
   href?: string;
   target?: string;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export interface Title {
