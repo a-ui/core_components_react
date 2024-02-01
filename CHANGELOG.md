@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 7.0.7
 
 ### Fixed
 
@@ -18,12 +18,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The `Footer` component now allows for its `Link` items to have an `onClick`.
 
+=======
+
 ## 7.0.6
 
 ### Fixed
 
 - Upload component: the `hasValidFormat` will now check for multiple type notations (MIME type, . notation). Users will no longer see wrong error states when they select valid file formats as stated in the `accept` prop of the html `input` field.
 - Removed locales import for Calendar, reducing package size.
+
+=======
 
 ## 7.0.5
 
