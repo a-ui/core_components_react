@@ -1,6 +1,6 @@
 {
   "name": "@a-ui/react",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "license": "MIT",
   "main": "./index.js",
   "types": "./index.d.ts",
