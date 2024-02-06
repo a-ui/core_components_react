@@ -10,10 +10,11 @@ export function UploadFile({
   onDelete,
   formatErrorLabel,
   deleteAriaLabel,
-  sizeErrorLabel
+  sizeErrorLabel,
 }: UploadFileProps) {
   const isValidFormat = hasValidFormat(file, acceptedFormat);
   const isValidSize = hasValidSize(file, maxSize);
+  const error = !isValidFormat || !isValidSize;
   return (
     <li key={file.name}>
       <Icon name={isValidFormat && isValidSize ? 'common-file-empty' : 'alert-triangle'} />
@@ -26,7 +27,7 @@ export function UploadFile({
             ariaLabel={deleteAriaLabel}
             addOn={{ type: 'icon', iconProps: { name: 'remove' } }}
             emphasis="low"
-            theme="danger"
+            theme={error ? 'danger' : 'neutral'}
             size="small"
             onClick={() => onDelete(file)}
           />

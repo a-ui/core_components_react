@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import jest from 'jest-mock';
 
@@ -65,20 +66,22 @@ describe('UI Components - Molecules - Upload', () => {
   it('should check if uploaded files have valid format', () => {
     const onChangeMock = jest.fn();
     const { rerender, baseElement, getByText } = render(
-      <Upload id="test-upload" onChange={onChangeMock} files={[mockFile, mockFileCSV]} />
+      <Upload id="test-upload" onChange={onChangeMock} onDelete={() => {}} files={[mockFile, mockFileCSV]} />
     );
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(0);
+    expect(baseElement.getElementsByClassName('a-button--danger').length).toBe(0);
     rerender(
-      <Upload id="test-upload" onChange={onChangeMock} acceptedFormat="image/png" files={[mockFile, mockFileCSV]} />
+      <Upload id="test-upload" onChange={onChangeMock} onDelete={() => {}} acceptedFormat="image/png" files={[mockFile, mockFileCSV]} />
     );
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(1);
     expect(getByText('Dit bestandsformaat is niet toegestaan.')).toBeTruthy();
     rerender(
-      <Upload id="test-upload" onChange={onChangeMock} acceptedFormat="image/*" files={[mockFile, mockFileCSV]} />
+      <Upload id="test-upload" onChange={onChangeMock} onDelete={() => {}} acceptedFormat="image/*" files={[mockFile, mockFileCSV]} />
     );
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(1);
+    expect(baseElement.getElementsByClassName('a-button--danger').length).toBe(1);
     expect(getByText('Dit bestandsformaat is niet toegestaan.')).toBeTruthy();
-    rerender(<Upload id="test-upload" onChange={onChangeMock} acceptedFormat="image/*" files={[mockFile]} />);
+    rerender(<Upload id="test-upload" onChange={onChangeMock} onDelete={() => {}} acceptedFormat="image/*" files={[mockFile]} />);
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(0);
   });
 
