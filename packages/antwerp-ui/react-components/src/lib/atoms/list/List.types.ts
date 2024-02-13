@@ -3,7 +3,7 @@ import { AvatarProps } from '../avatar';
 import { CheckboxProps } from '../checkbox';
 
 export interface DefinitionListProps {
-  items: { id: string; term: string; description: string }[];
+  items: { id: string; term: string; description: string; qa?: string }[];
   qa?: string;
 }
 

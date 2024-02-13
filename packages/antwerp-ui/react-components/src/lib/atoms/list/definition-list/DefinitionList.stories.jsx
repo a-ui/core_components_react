@@ -17,7 +17,7 @@ export default {
   args: {
     items: [
       { id: '1', term: 'Hello', description: 'World' },
-      { id: '2', term: 'Term', description: 'Term description' }
+      { id: '2', term: 'Term', description: 'Term description', qa: 'data-qa value' }
     ]
   },
   argTypes: {
@@ -28,7 +28,7 @@ export default {
         defaultValue: { summary: [] }
       },
       description:
-        'Items of the definition list. Array of objects `{id: "string", term: "string", description: "string"}`.'
+        'Items of the definition list. Array of objects `{id: "string", term: "string", description: "string", "qa": "string"}`.'
     },
     qa: QA_PROP_STORY
   }

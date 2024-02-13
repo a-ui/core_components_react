@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upload component: A successfully uploaded no longer has a `danger` themed delete button.
 
+### Added
+
+- Definition list items can have a `qa` attribute.
+
 ## 7.0.7
 
 ### Fixed
