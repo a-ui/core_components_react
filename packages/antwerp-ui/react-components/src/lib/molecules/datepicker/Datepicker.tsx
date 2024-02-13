@@ -15,9 +15,9 @@ export function Datepicker({
   value,
   onChange,
   format = DEFAULT_DATE_FORMAT,
-  inputProps,
-  invalidDateText,
-  iconButtonLabel,
+  inputProps = {},
+  invalidDateText = 'Ongeldige datum',
+  iconButtonLabel = 'Open kalender',
   calendarProps,
   label,
   required
@@ -116,11 +116,5 @@ export function Datepicker({
     </div>
   );
 }
-Datepicker.defaultProps = {
-  inputProps: {},
-  format: DEFAULT_DATE_FORMAT,
-  invalidDateText: 'Ongeldige datum',
-  iconButtonLabel: 'Open kalender'
-};
 
 export default Datepicker;

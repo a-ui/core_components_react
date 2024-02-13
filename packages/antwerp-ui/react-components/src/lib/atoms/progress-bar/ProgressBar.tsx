@@ -3,12 +3,12 @@ import { ProgressBarProps } from './ProgressBar.types';
 
 export function ProgressBar({
   label,
-  labelId,
-  showLabel,
-  percentage,
+  labelId = 'aui-progress-label',
+  showLabel = true,
+  percentage = 0,
   ariaValueNow,
-  minValue,
-  maxValue,
+  minValue = 0,
+  maxValue = 100,
   large,
   qa
 }: ProgressBarProps) {
@@ -40,14 +40,5 @@ export function ProgressBar({
     </div>
   );
 }
-
-ProgressBar.defaultProps = {
-  percentage: 0,
-  minValue: 0,
-  maxValue: 100,
-  showLabel: true,
-  labelId: 'aui-progress-label',
-  size: ''
-};
 
 export default ProgressBar;

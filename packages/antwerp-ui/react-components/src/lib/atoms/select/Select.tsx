@@ -14,7 +14,7 @@ export function Select({
   label,
   name,
   options,
-  placeholder,
+  placeholder = 'Maak een keuze',
   required,
   size,
   state,
@@ -64,9 +64,5 @@ export function Select({
     </div>
   );
 }
-
-Select.defaultProps = {
-  placeholder: 'Maak een keuze'
-};
 
 export default Select;

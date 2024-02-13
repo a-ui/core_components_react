@@ -5,7 +5,17 @@ import { THEME_ICON_MAP } from '../../../constants/layout.settings';
 import { Button } from '../../atoms/button';
 
 const renderModalAlert = (className: string, props: AlertProps) => {
-  const { ariaLabelClose, cancelButton, children, confirmButton, onClose, qa, theme, title, titleId } = props;
+  const {
+    ariaLabelClose = 'Sluiten',
+    cancelButton,
+    children,
+    confirmButton,
+    onClose,
+    qa,
+    theme,
+    title = { label: '' },
+    titleId
+  } = props;
   const HeaderTag = props.title?.tag || 'h5';
   const textClass = classNames({
     'u-margin-bottom': !!(confirmButton || cancelButton)
@@ -68,10 +78,5 @@ export function Alert(props: AlertProps) {
 
   return props.inline ? renderInlineAlert(alertClasses, props) : renderModalAlert(alertClasses, props);
 }
-
-Alert.defaultProps = {
-  title: { label: '' },
-  ariaLabelClose: 'Sluiten'
-};
 
 export default Alert;

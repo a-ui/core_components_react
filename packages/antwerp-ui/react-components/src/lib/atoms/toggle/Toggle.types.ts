@@ -1,4 +1,4 @@
-type ToggleButtonThemes = 'primary' | 'success' | 'warning' | 'danger';
+type ToggleButtonThemes = 'primary' | 'success' | 'warning' | 'danger' | '';
 
 export interface ToggleProps {
   checked?: boolean;

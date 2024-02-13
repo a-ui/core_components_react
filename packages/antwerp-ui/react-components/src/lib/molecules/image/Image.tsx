@@ -2,7 +2,7 @@ import { classNames } from '../../../utils/dom.utils';
 import { logWarning } from '../../../utils/log.utils';
 import { ImageProps } from './Image.types';
 
-export function Image({ alt, children, src, noClass, qa }: ImageProps) {
+export function Image({ alt = '', children, src, noClass, qa }: ImageProps) {
   const classes = classNames({
     'm-image': !noClass
   });
@@ -26,7 +26,5 @@ export function Image({ alt, children, src, noClass, qa }: ImageProps) {
     </figure>
   );
 }
-
-Image.defaultProps = { alt: '' };
 
 export default Image;

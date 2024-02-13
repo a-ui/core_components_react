@@ -4,18 +4,18 @@ import { Icon } from '../../base/icon';
 import { ToggleProps } from './Toggle.types';
 
 export function Toggle({
-  checked,
-  checkedTheme,
+  checked = false,
+  checkedTheme = '',
   checkedIcon,
-  checkedLabel,
+  checkedLabel = '',
   id,
   onClick,
   qa,
-  showLabels,
+  showLabels = false,
   size,
-  uncheckedTheme,
+  uncheckedTheme = 'danger',
   uncheckedIcon,
-  uncheckedLabel
+  uncheckedLabel = ''
 }: ToggleProps) {
   const handleClick = () => {
     onClick && onClick(!checked);
@@ -56,15 +56,5 @@ export function Toggle({
     </div>
   );
 }
-
-Toggle.defaultProps = {
-  id: '',
-  checked: false,
-  checkedLabel: '',
-  checkedTheme: '',
-  showLabels: false,
-  uncheckedLabel: '',
-  uncheckedTheme: 'danger'
-};
 
 export default Toggle;

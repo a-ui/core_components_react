@@ -1,7 +1,7 @@
 import { renderHTMLLink } from '../../../utils/render.utils';
 import { BreadcrumbProps } from './Breadcrumb.types';
 
-export function Breadcrumb({ title, items, renderLinkFunction, qa }: BreadcrumbProps) {
+export function Breadcrumb({ title, items = [], renderLinkFunction, qa }: BreadcrumbProps) {
   const renderItems = () =>
     Array.isArray(items)
       ? items.map((item) => {
@@ -26,9 +26,5 @@ export function Breadcrumb({ title, items, renderLinkFunction, qa }: BreadcrumbP
     </>
   );
 }
-
-Breadcrumb.defaultProps = {
-  items: []
-};
 
 export default Breadcrumb;

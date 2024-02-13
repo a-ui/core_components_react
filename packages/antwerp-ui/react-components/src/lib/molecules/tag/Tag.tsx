@@ -3,7 +3,17 @@ import { classNames } from '../../../utils/dom.utils';
 import { Icon } from '../../base/icon';
 import { TagProps } from './Tag.types';
 
-export function Tag({ label, isToggle, active, iconLeft, removable, name, qa, onClick, ariaLabelDelete }: TagProps) {
+export function Tag({
+  label,
+  isToggle,
+  active,
+  iconLeft,
+  removable,
+  name,
+  qa,
+  onClick,
+  ariaLabelDelete = 'Verwijderen'
+}: TagProps) {
   const [pressed, setPressed] = React.useState(active);
   const isRemovable = removable && !isToggle;
   const isPressed = active === true || active === false ? active : pressed;
@@ -51,9 +61,5 @@ export function Tag({ label, isToggle, active, iconLeft, removable, name, qa, on
     </>
   );
 }
-
-Tag.defaultProps = {
-  ariaLabelDelete: 'Verwijderen'
-};
 
 export default Tag;

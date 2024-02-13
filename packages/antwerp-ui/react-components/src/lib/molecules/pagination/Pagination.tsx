@@ -49,13 +49,13 @@ export function Pagination({
   itemsPerPage,
   totalItems,
   onChange,
-  display,
+  display = 'numbers',
   size,
-  ariaLabel,
-  ariaLabelNextPage,
-  ariaLabelPreviousPage,
-  ariaLabelPage,
-  text,
+  ariaLabel = 'Paginering',
+  ariaLabelNextPage = 'Volgende pagina',
+  ariaLabelPreviousPage = 'Vorige pagina',
+  ariaLabelPage = 'Pagina',
+  text = '%currentPage% van de %totalPages%',
   qa
 }: PaginationProps) {
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -112,15 +112,5 @@ export function Pagination({
     </nav>
   );
 }
-
-Pagination.defaultProps = {
-  currentPage: 1,
-  ariaLabel: 'Paginering',
-  ariaLabelNextPage: 'Volgende pagina',
-  ariaLabelPreviousPage: 'Vorige pagina',
-  ariaLabelPage: 'Pagina',
-  text: '%currentPage% van de %totalPages%',
-  display: 'numbers'
-};
 
 export default Pagination;

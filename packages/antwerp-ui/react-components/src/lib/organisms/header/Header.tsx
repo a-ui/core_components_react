@@ -2,7 +2,14 @@ import { Button } from '../../atoms/button';
 import { Flyout } from '../../molecules/flyout';
 import { HeaderProps } from './Header.types';
 
-export function Header({ logoHref, logoAlt, menuItems, logoSrc, skipToMainLabel, qa }: HeaderProps) {
+export function Header({
+  logoHref = '/',
+  logoAlt = 'Naar de startpagina',
+  menuItems = [],
+  logoSrc = 'https://cdn.antwerpen.be/core_branding_scss/6.5.0/assets/images/a-logo.svg',
+  skipToMainLabel = 'Ga naar inhoud',
+  qa
+}: HeaderProps) {
   return (
     <header className="o-header" data-qa={qa}>
       <div className="o-header__content-wrapper">
@@ -37,13 +44,5 @@ export function Header({ logoHref, logoAlt, menuItems, logoSrc, skipToMainLabel,
     </header>
   );
 }
-
-Header.defaultProps = {
-  logoHref: '/',
-  logoAlt: 'Naar de startpagina',
-  logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.5.0/assets/images/a-logo.svg',
-  skipToMainLabel: 'Ga naar inhoud',
-  menuItems: []
-};
 
 export default Header;

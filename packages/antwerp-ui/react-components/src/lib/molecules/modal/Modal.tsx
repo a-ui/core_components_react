@@ -7,18 +7,18 @@ import { ModalProps } from './Modal.types';
 
 export function Modal({
   appRootId,
-  ariaCloseLabel,
+  ariaCloseLabel = 'Sluiten',
   cancelButton,
   children,
-  closeButton,
+  closeButton = true,
   confirmButton,
   onAfterOpen,
   onClose,
   open,
   qa,
-  shouldCloseOnOverlayClick,
-  size,
-  title,
+  shouldCloseOnOverlayClick = true,
+  size = '',
+  title = { label: '' },
   trigger
 }: ModalProps) {
   const [modalOpen, setModalOpen] = React.useState(!!open);
@@ -58,7 +58,7 @@ export function Modal({
         shouldCloseOnOverlayClick={cancelButton || confirmButton || closeButton ? shouldCloseOnOverlayClick : true}
       >
         <div className="m-modal__content">
-          {(title || closeButton) && (
+          {((title && title?.label) || closeButton) && (
             <div className="m-modal__header u-margin-bottom-xs">
               {title && title?.label && (
                 <HeaderTag className={title.className} id={title.id}>
@@ -93,15 +93,5 @@ export function Modal({
     </>
   );
 }
-
-Modal.defaultProps = {
-  ariaCloseLabel: 'Sluiten',
-  closeButton: true,
-  shouldCloseOnOverlayClick: true,
-  showCancel: true,
-  showConfirm: true,
-  size: '',
-  title: ''
-};
 
 export default Modal;

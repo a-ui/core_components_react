@@ -3,7 +3,14 @@ import { classNames } from '../../../utils/dom.utils';
 import { MouseEvent } from 'react';
 import { useHorizontalScroll } from '../../../utils/custom.hooks';
 
-export function NavigationList({ items, border, ariaLabel, onItemClick, direction, qa }: NavigationListProps) {
+export function NavigationList({
+  items = [],
+  border,
+  ariaLabel = 'Navigatie',
+  onItemClick,
+  direction = 'horizontal',
+  qa
+}: NavigationListProps) {
   const [scrollDivRef, handleScroll, isScrollStart, isScrollEnd] = useHorizontalScroll();
 
   const navClass = classNames({
@@ -49,11 +56,5 @@ export function NavigationList({ items, border, ariaLabel, onItemClick, directio
     </nav>
   );
 }
-
-NavigationList.defaultProps = {
-  items: [],
-  direction: 'horizontal',
-  ariaLabel: 'Navigatie'
-};
 
 export default NavigationList;

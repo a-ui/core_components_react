@@ -12,10 +12,10 @@ export const TextField = forwardRef(function TextField(
     addOn,
     autoComplete,
     charCounter,
-    charCountText,
+    charCountText = '%count% / %max%',
     description,
     disabled,
-    id,
+    id = 'aui-text-field',
     role,
     inline,
     label,
@@ -108,11 +108,5 @@ export const TextField = forwardRef(function TextField(
     </div>
   );
 });
-
-TextField.defaultProps = {
-  type: 'text',
-  id: 'aui-text-field',
-  charCountText: '%count% / %max%'
-};
 
 export default TextField;

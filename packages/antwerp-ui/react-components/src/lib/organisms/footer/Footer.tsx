@@ -3,7 +3,7 @@ import { renderHTMLLink } from '../../../utils/render.utils';
 import { Button } from '../../atoms/button';
 import { FooterProps } from './Footer.types';
 
-export function Footer({ backToTop, backToTopAriaLabel, items, qa }: FooterProps) {
+export function Footer({ backToTop, backToTopAriaLabel = 'Terug naar omhoog', items = [], qa }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -37,10 +37,5 @@ export function Footer({ backToTop, backToTopAriaLabel, items, qa }: FooterProps
     </footer>
   );
 }
-
-Footer.defaultProps = {
-  items: [],
-  backToTopAriaLabel: 'Terug naar omhoog'
-};
 
 export default Footer;

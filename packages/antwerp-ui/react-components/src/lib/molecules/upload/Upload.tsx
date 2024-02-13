@@ -5,19 +5,19 @@ import { UploadProps } from './Upload.types';
 import { UploadFile } from './UploadFile';
 
 export function Upload({
-  acceptedFormat,
-  deleteAriaLabel,
-  disabled,
-  files,
-  formatErrorLabel,
+  acceptedFormat = '*',
+  deleteAriaLabel = 'Verwijder bestand',
+  disabled = false,
+  files = [],
+  formatErrorLabel = 'Dit bestandsformaat is niet toegestaan.',
   id,
-  label,
-  maxSize,
-  maxSizeLabel,
-  multiple,
+  label = 'Sleep een bestand hier of klik om te bladeren',
+  maxSize = 10,
+  maxSizeLabel = 'Maximale bestandsgrootte:',
+  multiple = true,
   onChange,
   onDelete,
-  sizeErrorLabel,
+  sizeErrorLabel = 'Maximale bestandsgrootte overschreden.',
   qa
 }: UploadProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -87,18 +87,5 @@ export function Upload({
     </div>
   );
 }
-
-Upload.defaultProps = {
-  label: 'Sleep een bestand hier of klik om te bladeren',
-  maxSize: 10,
-  multiple: true,
-  disabled: false,
-  acceptedFormat: '*',
-  files: [],
-  maxSizeLabel: 'Maximale bestandsgrootte:',
-  formatErrorLabel: 'Dit bestandsformaat is niet toegestaan.',
-  sizeErrorLabel: 'Maximale bestandsgrootte overschreden.',
-  deleteAriaLabel: 'Verwijder bestand'
-};
 
 export default Upload;

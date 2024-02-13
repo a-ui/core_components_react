@@ -5,16 +5,16 @@ import { labelWrapper } from '../../../utils/render.utils';
 export function Switch({
   ariaLabel,
   checked: checkedProp,
-  disabled,
+  disabled = false,
   id,
-  internalIOLabels,
+  internalIOLabels = false,
   label,
-  labelId,
+  labelId = 'aui-switch-label',
   onClick,
   qa,
-  statusLabelOff,
-  statusLabelOn,
-  statusLabelSide
+  statusLabelOff = 'Uit',
+  statusLabelOn = 'Aan',
+  statusLabelSide = ''
 }: SwitchProps) {
   const [checked, setChecked] = useState(!!checkedProp);
   const isChecked = checkedProp === true || checkedProp === false ? !!checkedProp : checked;
@@ -69,14 +69,5 @@ export function Switch({
     labelId
   );
 }
-
-Switch.defaultProps = {
-  disabled: false,
-  internalIOLabels: false,
-  labelId: 'aui-switch-label',
-  statusLabelOff: 'Uit',
-  statusLabelOn: 'Aan',
-  statusLabelSide: ''
-};
 
 export default Switch;

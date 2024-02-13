@@ -7,7 +7,7 @@ import { AutocompleteProps } from './Autocomplete.types';
 import './Autocomplete.css';
 
 export function Autocomplete({
-  id,
+  id = 'aui-autocomplete',
   label,
   items,
   name,
@@ -17,7 +17,7 @@ export function Autocomplete({
   value,
   onInputChange,
   onChange,
-  noResultsText,
+  noResultsText = 'Geen resultaten',
   qa,
   description,
   state,
@@ -198,10 +198,5 @@ export function Autocomplete({
     </Flyout>
   );
 }
-
-Autocomplete.defaultProps = {
-  id: 'aui-autocomplete',
-  noResultsText: 'Geen resultaten'
-};
 
 export default Autocomplete;

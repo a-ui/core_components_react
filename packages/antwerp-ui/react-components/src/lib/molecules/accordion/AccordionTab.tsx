@@ -2,7 +2,7 @@ import React from 'react';
 import { classNames } from '../../../utils/dom.utils';
 import { AccordionTabProps } from './Accordion.types';
 
-export function AccordionTab({ id, header, children, open, onToggle, qa }: AccordionTabProps) {
+export function AccordionTab({ id = '', header = '', children, open, onToggle, qa }: AccordionTabProps) {
   const [isOpen, setIsOpen] = React.useState(!!open);
   const openState = open === true || open === false ? open : isOpen;
 
@@ -26,10 +26,5 @@ export function AccordionTab({ id, header, children, open, onToggle, qa }: Accor
     </div>
   );
 }
-
-AccordionTab.defaultProps = {
-  id: '',
-  header: ''
-};
 
 export default AccordionTab;

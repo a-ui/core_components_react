@@ -5,11 +5,11 @@ import { TableBody } from './TableBody';
 import { useHorizontalScroll } from '../../../utils/custom.hooks';
 
 export function Table({
-  id,
+  id = 'aui-table',
   sort,
   sortDirection,
-  rows,
-  columns,
+  rows = [],
+  columns = [],
   qa,
   striped,
   small,
@@ -20,7 +20,7 @@ export function Table({
   onSelectAll,
   onSortClick,
   actions,
-  responsive,
+  responsive = true,
   fixedColumnRight,
   fixedColumnLeft
 }: TableProps) {
@@ -78,12 +78,5 @@ export function Table({
     table
   );
 }
-
-Table.defaultProps = {
-  id: 'aui-table',
-  columns: [],
-  rows: [],
-  responsive: true
-};
 
 export default Table;

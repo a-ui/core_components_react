@@ -8,12 +8,12 @@ export const Flyout = forwardRef(function Flyout(
   {
     trigger,
     open,
-    hasPadding,
+    hasPadding = true,
     className = '',
-    orientation,
+    orientation = 'bottom-left',
     size,
     children,
-    scrollable,
+    scrollable = false,
     onStateChange,
     qa
   }: FlyoutProps,
@@ -81,11 +81,5 @@ export const Flyout = forwardRef(function Flyout(
     </div>
   ) : null;
 });
-
-Flyout.defaultProps = {
-  hasPadding: true,
-  scrollable: false,
-  orientation: 'bottom-left'
-};
 
 export default Flyout;

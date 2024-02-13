@@ -4,10 +4,10 @@ import { wrapWithIf } from '../../../utils/render.utils';
 import { MouseEvent } from 'react';
 
 export function StepIndicator({
-  steps,
+  steps = [],
   onStepClick,
-  screenReaderStepLabel,
-  screenReaderCompleteLabel,
+  screenReaderStepLabel = 'Stap ',
+  screenReaderCompleteLabel = ' (voltooid)',
   qa
 }: StepIndicatorProps) {
   const handleStepClick = (event: MouseEvent<HTMLAnchorElement>, index: number, stepId: string) => {
@@ -50,11 +50,5 @@ export function StepIndicator({
     </ol>
   );
 }
-
-StepIndicator.defaultProps = {
-  steps: [],
-  screenReaderStepLabel: 'Stap ',
-  screenReaderCompleteLabel: ' (voltooid)'
-};
 
 export default StepIndicator;

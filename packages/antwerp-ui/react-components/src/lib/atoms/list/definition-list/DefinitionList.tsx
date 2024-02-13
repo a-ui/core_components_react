@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { DefinitionListProps } from '../List.types';
 
-export function DefinitionList({ items, qa }: DefinitionListProps) {
+export function DefinitionList({ items = [], qa }: DefinitionListProps) {
   return (
     <dl className="a-definition-list" data-qa={qa}>
       {items.map((i) => (
@@ -13,9 +13,5 @@ export function DefinitionList({ items, qa }: DefinitionListProps) {
     </dl>
   );
 }
-
-DefinitionList.defaultProps = {
-  items: []
-};
 
 export default DefinitionList;

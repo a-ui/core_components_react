@@ -27,8 +27,4 @@ export function FunctionalList({ onItemClick, type, ordered, flushed, lined, chi
   );
 }
 
-FunctionalList.defaultProps = {
-  items: []
-};
-
 export default FunctionalList;

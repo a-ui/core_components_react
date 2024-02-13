@@ -11,9 +11,9 @@ export function Button({
   children,
   className,
   disabled,
-  emphasis,
+  emphasis = DEFAULT_EMPHASIS,
   fullWidth,
-  htmlType,
+  htmlType = 'button',
   id,
   onClick,
   qa,
@@ -64,10 +64,5 @@ export function Button({
     </button>
   );
 }
-
-Button.defaultProps = {
-  htmlType: 'button',
-  emphasis: DEFAULT_EMPHASIS
-};
 
 export default Button;

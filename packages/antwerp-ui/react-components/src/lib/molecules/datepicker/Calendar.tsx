@@ -13,21 +13,21 @@ import { titleize } from '../../../utils/string.utils';
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
   (
     {
-      ariaLabel,
-      ariaLabelCurrentDay,
-      ariaLabelNextMonth,
-      ariaLabelNextYear,
-      ariaLabelNextYears,
-      ariaLabelPreviousMonth,
-      ariaLabelPreviousYear,
-      ariaLabelPreviousYears,
+      ariaLabel = 'Kalender',
+      ariaLabelCurrentDay = 'Huidige dag',
+      ariaLabelNextMonth = 'Ga naar de volgende maand',
+      ariaLabelNextYear = 'Ga naar het volgend jaar',
+      ariaLabelNextYears = 'Ga naar de volgende jaren',
+      ariaLabelPreviousMonth = 'Ga naar de vorige maand',
+      ariaLabelPreviousYear = 'Ga naar het vorig jaar',
+      ariaLabelPreviousYears = 'Ga naar de voorgaande jaren',
       className,
-      isOpen,
+      isOpen = true,
       locale = DEFAULT_LOCALE,
       onBlur,
       onChange,
       qa,
-      unavailable,
+      unavailable = [],
       unavailableFrom,
       unavailableTo,
       value
@@ -188,19 +188,5 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     );
   }
 );
-
-Calendar.defaultProps = {
-  isOpen: true,
-  locale: DEFAULT_LOCALE,
-  ariaLabel: 'Kalender',
-  ariaLabelCurrentDay: 'Huidige dag',
-  ariaLabelPreviousMonth: 'Ga naar de vorige maand',
-  ariaLabelPreviousYear: 'Ga naar het vorig jaar',
-  ariaLabelPreviousYears: 'Ga naar de voorgaande jaren',
-  ariaLabelNextMonth: 'Ga naar de volgende maand',
-  ariaLabelNextYear: 'Ga naar het volgend jaar',
-  ariaLabelNextYears: 'Ga naar de volgende jaren',
-  unavailable: []
-};
 
 export default Calendar;

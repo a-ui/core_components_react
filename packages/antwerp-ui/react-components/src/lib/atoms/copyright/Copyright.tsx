@@ -1,7 +1,7 @@
 import { classNames } from '../../../utils/dom.utils';
 import { CopyrightProps } from './Copyright.types';
 
-export function Copyright({ sign, label, link, forImage, qa }: CopyrightProps) {
+export function Copyright({ sign = '©', label, link, forImage = true, qa }: CopyrightProps) {
   const classes = classNames({
     'a-copyright': true,
     'm-image__copyright': !!forImage
@@ -15,10 +15,5 @@ export function Copyright({ sign, label, link, forImage, qa }: CopyrightProps) {
     </ElementTag>
   );
 }
-
-Copyright.defaultProps = {
-  forImage: true,
-  sign: '©'
-};
 
 export default Copyright;

@@ -5,7 +5,7 @@ import { TooltipProps } from './Tooltip.types';
 
 import './Tooltip.css';
 
-export function Tooltip({ anchor, anchorId, location, text, qa }: TooltipProps) {
+export function Tooltip({ anchor, anchorId = 'aui-tooltip', location = 'bottom', text = '', qa }: TooltipProps) {
   return (
     <>
       {cloneElement(anchor, { id: anchorId, 'aria-describedby': `${anchorId}-tooltip`, tabIndex: 0 })}
@@ -24,11 +24,5 @@ export function Tooltip({ anchor, anchorId, location, text, qa }: TooltipProps) 
     </>
   );
 }
-
-Tooltip.defaultProps = {
-  text: '',
-  location: 'bottom',
-  anchorId: 'aui-tooltip'
-};
 
 export default Tooltip;

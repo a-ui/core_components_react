@@ -10,7 +10,7 @@ export interface SwitchProps {
   labelId?: string;
   statusLabelOff?: string;
   statusLabelOn?: string;
-  statusLabelSide?: 'left' | 'right';
+  statusLabelSide?: 'left' | 'right' | '';
   onClick?: MouseEventHandler<HTMLButtonElement>;
   qa?: string;
 }

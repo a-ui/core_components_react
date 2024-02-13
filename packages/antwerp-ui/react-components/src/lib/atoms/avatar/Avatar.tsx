@@ -12,7 +12,17 @@ const iconAvatar = (icon: string, ariaLabel: string) => (
   </span>
 );
 
-export function Avatar({ className, letter, rounded, size, ariaLabel, image, imageAlt, icon, qa }: AvatarProps) {
+export function Avatar({
+  className,
+  letter,
+  rounded,
+  size,
+  ariaLabel = 'Gebruiker',
+  image,
+  imageAlt = 'Avatar',
+  icon,
+  qa
+}: AvatarProps) {
   const renderContent = () => {
     if (image) {
       return imageAvatar(image, imageAlt || '');
@@ -37,10 +47,5 @@ export function Avatar({ className, letter, rounded, size, ariaLabel, image, ima
     </div>
   );
 }
-
-Avatar.defaultProps = {
-  ariaLabel: 'Gebruiker',
-  imageAlt: 'Avatar'
-};
 
 export default Avatar;

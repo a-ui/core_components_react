@@ -5,7 +5,7 @@ import { CheckboxProps } from './Checkbox.types';
 
 export function Checkbox({
   label,
-  showLabel,
+  showLabel = true,
   checked,
   id,
   qa,
@@ -45,9 +45,5 @@ export function Checkbox({
     </div>
   );
 }
-
-Checkbox.defaultProps = {
-  showLabel: true
-};
 
 export default Checkbox;
