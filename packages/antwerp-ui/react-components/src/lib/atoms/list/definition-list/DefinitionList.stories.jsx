@@ -17,7 +17,13 @@ export default {
   args: {
     items: [
       { id: '1', term: 'Hello', description: 'World' },
-      { id: '2', term: 'Term', description: 'Term description' }
+      {
+        id: '2',
+        term: 'Term',
+        description: 'Term description',
+        qaTerm: 'data-qa value on term',
+        qaDescription: 'data-qa value on description'
+      }
     ]
   },
   argTypes: {
@@ -28,7 +34,7 @@ export default {
         defaultValue: { summary: [] }
       },
       description:
-        'Items of the definition list. Array of objects `{id: "string", term: "string", description: "string"}`.'
+        'Items of the definition list. Array of objects `{id: "string", term: "string", description: "string", "qaTerm": "string", "qaDescription": "string"}` To add a data-qa attribute to the term or description, add a `qaTerm` or `qaDescription` property to the object.'
     },
     qa: QA_PROP_STORY
   }

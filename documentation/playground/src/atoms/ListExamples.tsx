@@ -17,7 +17,7 @@ export function ListExamples() {
       <h2>Lists</h2>
       <div className="u-margin">
         <h3>Definition</h3>
-        <DefinitionList items={[{ id: '1', term: 'This is', description: 'A definition list' }]} />
+        <DefinitionList items={[{ id: '1', term: 'This is', description: 'A definition list', qaTerm: 'a qa value on term', qaDescription: 'a qa value on description' }]} />
         <h3 className="u-margin-top">Functional</h3>
         <p>Clicked on {nameClicked}</p>
         <FunctionalList onItemClick={setNameClicked} lined>
