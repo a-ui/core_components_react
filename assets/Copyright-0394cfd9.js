@@ -1,0 +1,2 @@
+import{a as n,j as e}from"./stories.settings-7040e2b8.js";import{c as o}from"./dom.utils-26b7419a.js";function g({sign:r="©",label:a,link:s,forImage:t=!0,qa:c}){const i=o({"a-copyright":!0,"m-image__copyright":!!t});return n(`${s?"a":"div"}`,{href:s,className:i,"data-qa":c,children:[e("span",{className:"a-copyright__sign",children:r}),a?e("span",{className:"a-copyright__label",children:a}):null]})}export{g as C};
+//# sourceMappingURL=Copyright-0394cfd9.js.map
