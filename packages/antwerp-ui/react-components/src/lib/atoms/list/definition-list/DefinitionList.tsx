@@ -5,9 +5,9 @@ export function DefinitionList({ items, qa }: DefinitionListProps) {
   return (
     <dl className="a-definition-list" data-qa={qa}>
       {items.map((i) => (
-        <Fragment key={i.id} data-qa={i.qa}>
-          <dt>{i.term}</dt>
-          <dd>{i.description}</dd>
+        <Fragment key={i.id}>
+          <dt data-qa={i.qaTerm}>{i.term}</dt>
+          <dd data-qa={i.qaDescription}>{i.description}</dd>
         </Fragment>
       ))}
     </dl>

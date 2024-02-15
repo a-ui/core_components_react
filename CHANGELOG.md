@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Definition list items can have a `qa` attribute.
+- Definition list items can have a `qaTerm` and `qaDescription` properties for use as data-qa attributes on the respective terms and descriptions.
 
 ## 7.0.7
 
