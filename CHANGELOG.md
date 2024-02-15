@@ -9,13 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-### Changed
-
-- Replaced defaultProps with default arguments.
-
 ### Fixed
 
 - Upload component: A successfully uploaded no longer has a `danger` themed delete button.
+- Replaced defaultProps with default arguments (defaultProps are deprecated in React 18).
 
 ## 7.0.7
 
