@@ -8,7 +8,7 @@ export interface DatepickerProps {
   mask?: string;
   inputProps?: Pick<
     TextFieldProps,
-    'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size' | 'state'
+    'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size' | 'state' | 'onChange'
   >;
   value?: string;
   label?: string;

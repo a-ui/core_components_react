@@ -158,4 +158,12 @@ describe('UI Components - Molecules - Datepicker', () => {
     const { baseElement } = render(<Datepicker inputProps={{ disabled: true }} />);
     expect(baseElement.querySelector('is-clickable')).not.toBeTruthy();
   });
+
+  it('should allow to define an onChange listener on input props', () => {
+    const mockOnChange = jest.fn();
+    const { baseElement } = render(<Datepicker inputProps={{ onChange: mockOnChange }} />);
+    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: 'invalid' } });
+    expect(mockOnChange).toHaveBeenCalledTimes(1);
+  });
 });

@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 export function DatepickerExamples() {
   const [date, setDate] = useState(new Date('2023-02-22').toISOString());
+  const [customError, setCustomError] = useState('' as string);
 
   return (
     <div className="u-margin" style={{ width: '420px' }}>
@@ -45,7 +46,22 @@ export function DatepickerExamples() {
         />
         <Datepicker
           label="With value (format dd-mm-yyyy)"
-          inputProps={{ state: 'error', description: 'Forced error' }}
+          inputProps={{
+            state: 'error',
+            description: 'Forced error'
+          }}
+          format="dd-MM-yyyy"
+          value={new Date(Date.now()).toISOString()}
+        />
+        <Datepicker
+          invalidDateText={customError}
+          label="With onChange listener (format dd-mm-yyyy)"
+          inputProps={{
+            onChange: (e) => {
+              return setCustomError(`The wrong date has "${e.target.value.length}" characters`);
+            }
+          }}
+          calendarProps={{ unavailableFrom: new Date('2024-02-24').toISOString() }}
           format="dd-MM-yyyy"
           value={new Date(Date.now()).toISOString()}
         />

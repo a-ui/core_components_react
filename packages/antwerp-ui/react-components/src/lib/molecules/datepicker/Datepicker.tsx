@@ -1,13 +1,13 @@
 import { DatepickerProps } from './Datepicker.types';
 import { DEFAULT_DATE_FORMAT } from '../../../constants/settings';
-import { formatISO } from 'date-fns';
+import { formatISO, set } from 'date-fns';
 import { Icon } from '../../base/icon';
 import { isValid as fnsIsValid, format as fnsFormat, parse as fnsParse } from 'date-fns';
 import { renderDescription, renderLabel } from '../../atoms/input/input.renders';
 import { TextField } from '../../atoms/input';
 import { useOutsideClick } from '../../../utils/custom.hooks';
 import Calendar from './Calendar';
-import React, { FocusEvent, KeyboardEvent, useRef, useState } from 'react';
+import React, { FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { isInRange } from '../../../utils/time.utils';
 
 export function Datepicker({
@@ -28,6 +28,11 @@ export function Datepicker({
   const [dateInvalidError, setDateInvalidError] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    setErrorMessage(formattedValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [invalidDateText]);
+
   const handleOutsideClick = (target: EventTarget | null) => {
     if (!iconRef.current?.contains(target as Node)) {
       setIsOpen(false);
@@ -46,20 +51,30 @@ export function Datepicker({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     const parsedDate = new Date(fnsParse(newValue, format, new Date()));
-    const isValidString = !newValue || (newValue.length === format.length && fnsIsValid(parsedDate));
     setFormattedValue(newValue);
-    if (!!newValue && !isValidString) {
-      setDateInvalidError(invalidDateText ?? '');
-    } else if (
-      isInRange(parsedDate, calendarProps?.unavailableFrom, calendarProps?.unavailableTo, calendarProps?.unavailable)
-    ) {
-      setDateInvalidError(invalidDateText ?? '');
-    } else {
+    inputProps.onChange && inputProps.onChange(e);
+    if (!setErrorMessage(newValue)) {
       const result = newValue ? formatISO(parsedDate) : '';
       setDateInvalidError('');
       setCurrentValue(result);
       onChange && onChange(result);
     }
+  };
+
+  const setErrorMessage = (value: string) => {
+    const newValue = value;
+    const parsedDate = new Date(fnsParse(newValue, format, new Date()));
+    const isValidString = !newValue || (newValue.length === format.length && fnsIsValid(parsedDate));
+    if (!!newValue && !isValidString) {
+      setDateInvalidError(invalidDateText ?? '');
+      return true;
+    } else if (
+      isInRange(parsedDate, calendarProps?.unavailableFrom, calendarProps?.unavailableTo, calendarProps?.unavailable)
+    ) {
+      setDateInvalidError(invalidDateText ?? '');
+      return true;
+    }
+    return false;
   };
 
   const handleCalendarDateChange = (value: string) => {
