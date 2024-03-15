@@ -76,7 +76,7 @@ export default {
         type: { summary: 'object' }
       },
       description:
-        'The `inputProps` is an object that can apply props of the `TextField` component on the `Datepicker` input field by passing an object with the following properties: `id`, `label`, `description`, `disabled`, `name`, `required`, and `size`.'
+        'The `inputProps` is an object that can apply props of the `TextField` component on the `Datepicker` input field by passing an object with the following properties: `id`, `label`, `description`, `disabled`, `name`, `required`, `size`, `onChange` and `value`.'
     },
     calendarProps: {
       control: { type: 'object' },
@@ -93,7 +93,7 @@ export default {
       },
       action: 'onChange',
       description:
-        'Function triggered when the value of the `Datepicker` has change. Returns the new value as ISOString.'
+        'Function triggered when the value of the `Datepicker` has change. Returns the new value as ISOString. The second parameter is the current value of the input field.'
     },
     qa: QA_PROP_STORY
   }

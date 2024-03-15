@@ -89,7 +89,15 @@ describe('UI Components - Molecules - Datepicker', () => {
     expect(getByText('Ongeldige datum')).toBeInTheDocument();
   });
 
-  it('Does not display error message if invalidDateText is wrong', () => {
+  it('should be able to override the error text with a custom function', () => {
+    const { baseElement, getByText } = render(<Datepicker errorMsgFunction={() => 'THIS IS AN ERROR'} />);
+    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: 'invalid' } });
+    expect(getByText('THIS IS AN ERROR')).toBeInTheDocument();
+    render(<Datepicker errorMsgFunction={() => null} />);
+  });
+
+  it('does not display error message if invalidDateText is wrong', () => {
     /* eslint-disable-next-line */
     /* @ts-ignore */
     const { baseElement, queryByText } = render(<Datepicker invalidDateText={null} />);
@@ -97,6 +105,14 @@ describe('UI Components - Molecules - Datepicker', () => {
     fireEvent.change(input, { target: { value: 'invalid' } });
     const errorMessage = queryByText('Ongeldige datum');
     expect(errorMessage).toBeFalsy();
+  });
+
+  it('should be able to force an error text with a controlled Datepicker', () => {
+    const { getByText, baseElement } = render(<Datepicker invalidDateText={'I AM ALWAYS VISIBLE'} value="" />);
+    expect(getByText('I AM ALWAYS VISIBLE')).toBeInTheDocument();
+    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '' } });
+    expect(getByText('I AM ALWAYS VISIBLE')).toBeInTheDocument();
   });
 
   it('sets the dateInvalidError state when a date outside the allowed range is entered', () => {

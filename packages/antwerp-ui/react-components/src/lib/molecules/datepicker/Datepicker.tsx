@@ -8,7 +8,7 @@ import { TextField } from '../../atoms/input';
 import { useOutsideClick } from '../../../utils/custom.hooks';
 import Calendar from './Calendar';
 import React, { FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
-import { isInRange } from '../../../utils/time.utils';
+import { formatIfValid, isInRange } from '../../../utils/time.utils';
 
 export function Datepicker({
   qa,
@@ -16,14 +16,15 @@ export function Datepicker({
   onChange,
   format = DEFAULT_DATE_FORMAT,
   inputProps = {},
-  invalidDateText = 'Ongeldige datum',
+  invalidDateText,
   iconButtonLabel = 'Open kalender',
   calendarProps,
   label,
-  required
+  required,
+  errorMsgFunction
 }: DatepickerProps) {
   const iconRef = useRef<HTMLSpanElement>(null);
-  const [formattedValue, setFormattedValue] = useState(value ? fnsFormat(new Date(value), format) : '');
+  const [formattedValue, setFormattedValue] = useState(value ? formatIfValid(value, format) : '');
   const [currentValue, setCurrentValue] = useState(value || '');
   const [dateInvalidError, setDateInvalidError] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -53,25 +54,35 @@ export function Datepicker({
     const parsedDate = new Date(fnsParse(newValue, format, new Date()));
     setFormattedValue(newValue);
     inputProps.onChange && inputProps.onChange(e);
-    if (!setErrorMessage(newValue)) {
-      const result = newValue ? formatISO(parsedDate) : '';
+    if (!setErrorMessage(newValue) && fnsIsValid(parsedDate)) {
+      const result = formatISO(parsedDate);
       setDateInvalidError('');
       setCurrentValue(result);
-      onChange && onChange(result);
+      onChange && onChange(result, currentValue);
+    } else {
+      onChange && onChange('', currentValue);
     }
   };
 
-  const setErrorMessage = (value: string) => {
-    const newValue = value;
+  const setErrorMessage = (value: string | undefined) => {
+    if (errorMsgFunction) {
+      const message = errorMsgFunction(value);
+      setDateInvalidError(message ? message : '');
+      return !!message;
+    }
+    const newValue = value || '';
     const parsedDate = new Date(fnsParse(newValue, format, new Date()));
     const isValidString = !newValue || (newValue.length === format.length && fnsIsValid(parsedDate));
     if (!!newValue && !isValidString) {
-      setDateInvalidError(invalidDateText ?? '');
+      setDateInvalidError(invalidDateText === null ? '' : invalidDateText ?? 'Ongeldige datum');
       return true;
     } else if (
       isInRange(parsedDate, calendarProps?.unavailableFrom, calendarProps?.unavailableTo, calendarProps?.unavailable)
     ) {
-      setDateInvalidError(invalidDateText ?? '');
+      setDateInvalidError(invalidDateText === null ? '' : invalidDateText ?? 'Ongeldige datum');
+      return true;
+    } else if (invalidDateText) {
+      setDateInvalidError(invalidDateText);
       return true;
     }
     return false;
@@ -104,7 +115,7 @@ export function Datepicker({
           label={undefined}
           description={undefined}
           type="text"
-          value={formattedValue}
+          value={inputProps.value || formattedValue}
           onChange={handleChange}
           state={dateInvalidError ? 'error' : inputProps?.state}
         />

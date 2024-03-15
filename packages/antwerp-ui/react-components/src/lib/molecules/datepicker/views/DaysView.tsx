@@ -7,7 +7,8 @@ import {
   format,
   isAfter,
   startOfMonth,
-  startOfWeek
+  startOfWeek,
+  isValid
 } from 'date-fns';
 import { DaysViewProps } from '../Datepicker.types';
 import { DayButton } from './DayButton';
@@ -28,11 +29,11 @@ export function DaysView({
     const days: React.ReactElement[] = [];
     let index = startOfWeek(weekDay, { locale });
     const endWeek = endOfWeek(weekDay, { locale });
-    while (!isAfter(index, endWeek)) {
+    while (isValid(index) && !isAfter(index, endWeek)) {
       const activeMonthYear = new Date(activeYear, activeMonth);
       days.push(
         <DayButton
-          key={`day_${index.toISOString()}`}
+          key={`day_${isValid(index) ? index.toISOString() : 'invalid'}`}
           ariaLabelCurrentDay={ariaLabelCurrentDay}
           unavailableFrom={unavailableFrom}
           unavailableTo={unavailableTo}
@@ -53,7 +54,7 @@ export function DaysView({
     const current = new Date(activeYear, activeMonth);
     let index = startOfWeek(startOfMonth(current), { locale });
     const end = endOfMonth(current);
-    while (!isAfter(index, end)) {
+    while (isValid(index) && !isAfter(index, end)) {
       weeks.push(renderWeek(index));
       index = addWeeks(index, 1);
     }

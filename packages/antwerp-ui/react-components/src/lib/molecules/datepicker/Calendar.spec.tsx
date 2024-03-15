@@ -165,4 +165,11 @@ describe('UI Components - Molecules - Calendar', () => {
     expect(queryByText('December 2023')).toBeFalsy();
     expect(queryByText('January 2024')).toBeTruthy();
   });
+
+  it('should render with wrong input', () => {
+    const date = 'wrong input';
+    render(<Calendar value={date} />);
+    const { baseElement } = render(<Calendar value={date} locale={enUS} />);
+    expect(baseElement.innerHTML).toContain(new Date().getFullYear().toString());
+  });
 });

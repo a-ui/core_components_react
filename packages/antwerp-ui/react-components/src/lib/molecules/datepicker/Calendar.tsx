@@ -3,12 +3,13 @@ import { Button } from '../../atoms/button';
 import { classNames } from '../../../utils/dom.utils';
 import { DaysView } from './views/DaysView';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
-import { getMonth, getYear, addMonths, subMonths, format, addYears, subYears, formatISO } from 'date-fns';
+import { getMonth, getYear, addMonths, subMonths, addYears, subYears, formatISO } from 'date-fns';
 import { DEFAULT_LOCALE } from '../../../constants/settings';
 import { Icon } from '../../base/icon';
 import { MonthsView } from './views/MonthsView';
 import { YearsView } from './views/YearsView';
 import { titleize } from '../../../utils/string.utils';
+import { formatWithFallback } from '../../../utils/time.utils';
 
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
   (
@@ -41,21 +42,28 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     const [yearsRowsStart, setYearsRowsStart] = useState(activeYear - 7);
 
     useEffect(() => {
-      setActiveDate(value ? new Date(value) : undefined);
+      const parsedDate = value ? new Date(value) : undefined;
+      if (isNaN(parsedDate?.getTime() as number)) {
+        setActiveMonth(getMonth(new Date()));
+        setActiveYear(getYear(new Date()));
+        setYearsRowsStart(getYear(new Date()) - 7);
+        return;
+      }
+      return setActiveDate(parsedDate);
     }, [value]);
 
     const activeTimeframeLabels = useMemo(() => {
       const dateToShow = new Date(activeYear, activeMonth);
       return {
         [CalendarView.DAYS]: {
-          main: titleize(format(dateToShow, 'MMMM yyyy', { locale })),
-          next: `${ariaLabelNextMonth}, ${format(addMonths(dateToShow, 1), 'MMMM yyyy', { locale })}`,
-          prev: `${ariaLabelPreviousMonth}, ${format(subMonths(dateToShow, 1), 'MMMM yyyy', { locale })}`
+          main: titleize(formatWithFallback(dateToShow, 'MMMM yyyy', locale)),
+          next: `${ariaLabelNextMonth}, ${formatWithFallback(addMonths(dateToShow, 1), 'MMMM yyyy', locale)}`,
+          prev: `${ariaLabelPreviousMonth}, ${formatWithFallback(subMonths(dateToShow, 1), 'MMMM yyyy', locale)}`
         },
         [CalendarView.MONTHS]: {
-          main: format(dateToShow, 'yyyy', { locale }),
-          next: `${ariaLabelNextYear}, ${format(addYears(dateToShow, 1), 'yyyy', { locale })}`,
-          prev: `${ariaLabelPreviousYear}, ${format(subYears(dateToShow, 1), 'yyyy', { locale })}`
+          main: formatWithFallback(dateToShow, 'yyyy', locale),
+          next: `${ariaLabelNextYear}, ${formatWithFallback(addYears(dateToShow, 1), 'yyyy', locale)}`,
+          prev: `${ariaLabelPreviousYear}, ${formatWithFallback(subYears(dateToShow, 1), 'yyyy', locale)}`
         },
         [CalendarView.YEARS]: {
           main: `${yearsRowsStart} - ${yearsRowsStart + 17}`,
