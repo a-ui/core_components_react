@@ -44,6 +44,7 @@ export const TextField = forwardRef(function TextField(
   const iconLeft = addOn?.type === 'icon' && addOn.placement === 'left' ? addOn.content : null;
   const iconRight = addOn?.type === 'icon' && addOn.placement === 'right' ? addOn.content : null;
 
+  const toggleCharCounter = charCounter !== undefined ? charCounter : maxLength ? true : false;
   const charCounterText = charCountText ? charCountText : maxLength ? '%count% / %max%' : '%count%';
 
   const classes = classNames({
@@ -95,7 +96,7 @@ export const TextField = forwardRef(function TextField(
           onKeyDown={onKeyDown}
           onKeyUp={onKeyUp}
           role={role}
-          {...(charCounter && maxLength ? { 'aria-describedby': `${id}--counter` } : {})}
+          {...(toggleCharCounter ? { 'aria-describedby': `${id}--counter` } : {})}
           {...(description ? { 'aria-describedby': `${id}--description` } : {})}
         ></input>
         {!!iconRight && !iconLeft && <Icon name={iconRight} />}
@@ -104,7 +105,7 @@ export const TextField = forwardRef(function TextField(
       {renderCharacterCounter({
         id,
         charCountText: charCounterText,
-        charCounter,
+        charCounter: toggleCharCounter,
         characterCount: value ? value.length : characterCount,
         maxLength
       })}

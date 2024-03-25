@@ -80,9 +80,9 @@ describe('UI Components - Atoms - Input - TextField', () => {
     expect(baseElement.getElementsByClassName('has-addon-right').length).toBe(1);
   });
 
-  it('should add no character counter when only maxLength is set', () => {
+  it('should add a character counter when only maxLength is set', () => {
     const { baseElement } = render(<TextField maxLength={20} />);
-    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeFalsy();
+    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeTruthy();
   });
 
   it('should add a character counter when charCounter is true', () => {
@@ -97,6 +97,11 @@ describe('UI Components - Atoms - Input - TextField', () => {
     expect(
       baseElement.getElementsByClassName('a-input__description u-text-right')[0].textContent === `3 / 20`
     ).toBeTruthy();
+  });
+
+  it('should add no character counter when maxLength is set, but charCounter is false', () => {
+    const { baseElement } = render(<TextField maxLength={20} charCounter={false} />);
+    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeFalsy();
   });
 
   it('should trigger the onChange prop when the input is changed', () => {

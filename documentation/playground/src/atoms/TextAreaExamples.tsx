@@ -27,7 +27,15 @@ export function TextAreaExamples() {
         />
         <TextArea label="Controlled - no onChange" id="textarea-2" value="hello" charCounter maxLength={100} />
         <TextArea label="Error" id="textarea-3" description="There is an error" charCounter state="error" />
-        <TextArea label="Small success" id="textarea-4" description="Ok!" state="success" size="small" />
+        <TextArea
+          label="Small success"
+          id="textarea-4"
+          description="Ok!"
+          charCounter={false}
+          maxLength={20}
+          state="success"
+          size="small"
+        />
       </div>
     </div>
   );

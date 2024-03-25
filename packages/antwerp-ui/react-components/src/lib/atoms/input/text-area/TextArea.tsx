@@ -30,6 +30,7 @@ export function TextArea({
 }: TextAreaProps) {
   const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
 
+  const toggleCharCounter = charCounter !== undefined ? charCounter : maxLength ? true : false;
   const charCounterText = charCountText ? charCountText : maxLength ? '%count% / %max%' : '%count%';
 
   const inputClasses = classNames({
@@ -61,7 +62,7 @@ export function TextArea({
           disabled={disabled}
           readOnly={readOnly}
           required={required}
-          {...(charCounter && maxLength ? { 'aria-describedby': `${id}--counter` } : {})}
+          {...(toggleCharCounter ? { 'aria-describedby': `${id}--counter` } : {})}
           {...(description ? { 'aria-describedby': `${id}--description` } : {})}
           maxLength={maxLength && maxLengthBlocksInput ? maxLength : undefined}
           onChange={_handleChange}
@@ -75,7 +76,7 @@ export function TextArea({
       {renderCharacterCounter({
         id,
         charCountText: charCounterText,
-        charCounter,
+        charCounter: toggleCharCounter,
         characterCount: value ? value.length : characterCount,
         maxLength
       })}

@@ -21,7 +21,6 @@ export default {
     readOnly: false,
     inline: false,
     required: false,
-    charCounter: false,
     charCountText: '%count% / %max%',
     maxLengthBlocksInput: false,
     id: 'textfield-story'
@@ -90,18 +89,17 @@ export default {
     charCounter: {
       control: { type: 'boolean' },
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        type: { summary: 'boolean' }
       },
-      description:
-        'When the `maxLength` prop is set, the `charCounter` prop adds a character counter under the `TextArea`.'
+      description: 'If `true`, the `charCounter` prop adds a character counter under the `TextArea`.'
     },
     maxLength: {
       control: { type: 'number' },
       table: {
         type: { summary: 'integer' }
       },
-      description: 'The `maxLength` attribute sets a character limitation for the value of the `TextArea`.'
+      description:
+        'The `maxLength` attribute sets a character limitation for the value of the `TextArea`. If the `charCounter` prop is not explicitly set to `false`, this will also add a character counter text under the `TextArea`.'
     },
     maxLengthBlocksInput: {
       control: { type: 'boolean' },
