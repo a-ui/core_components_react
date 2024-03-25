@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { DatepickerProps } from './Datepicker.types';
 import { DEFAULT_DATE_FORMAT } from '../../../constants/settings';
 import { formatISO, set } from 'date-fns';
@@ -31,8 +32,12 @@ export function Datepicker({
 
   useEffect(() => {
     setErrorMessage(formattedValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invalidDateText]);
+
+  useEffect(() => {
+    setFormattedValue(value ? formatIfValid(value, format) : '');
+    setCurrentValue(value || '');
+  }, [value]);
 
   const handleOutsideClick = (target: EventTarget | null) => {
     if (!iconRef.current?.contains(target as Node)) {
