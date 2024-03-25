@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Core branding update 6.6.1
 - Datepicker `onChange` function is now triggered for invalid dates (return empty string)
 - Datepicker `onChange` function returns the input string value as second parameter
 
