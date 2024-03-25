@@ -1,4 +1,4 @@
-import { Calendar, Datepicker } from '@a-ui/react';
+import { Button, Calendar, Datepicker } from '@a-ui/react';
 import { mn } from 'date-fns/locale';
 
 import { useState } from 'react';
@@ -44,6 +44,7 @@ export function DatepickerExamples() {
           locale: mn
         }}
       />
+      <Button onClick={() => setDate('')}>Clear Datepicker</Button>
       <div className="u-margin"></div>
       <Datepicker
         label="Custom input field"
