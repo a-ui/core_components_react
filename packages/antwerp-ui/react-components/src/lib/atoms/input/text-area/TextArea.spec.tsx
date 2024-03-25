@@ -52,14 +52,15 @@ describe('UI Components - Atoms - Input - TextArea', () => {
     expect(baseElement.getElementsByClassName('ai-alert-triangle').length).toBe(1);
   });
 
-  it('should add no character counter when only charCounter is set', () => {
-    const { baseElement } = render(<TextArea charCounter={true} />);
-    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeFalsy();
-  });
-
   it('should add no character counter when only maxLength is set', () => {
     const { baseElement } = render(<TextArea maxLength={20} />);
     expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeFalsy();
+  });
+
+  it('should add a character counter when charCounter is true', () => {
+    const { baseElement } = render(<TextArea charCounter value="yes" />);
+    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeTruthy();
+    expect(baseElement.getElementsByClassName('a-input__description u-text-right')[0].textContent === `3`).toBeTruthy();
   });
 
   it('should add a character counter when maxLength is set and charCounter is true', () => {
@@ -76,5 +77,29 @@ describe('UI Components - Atoms - Input - TextArea', () => {
     const input = container.querySelector('#mock-example') as Element;
     fireEvent.change(input, { target: { value: 'test' } });
     expect(mockOnChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('should overwrite the default charCountText', () => {
+    const { baseElement } = render(<TextArea charCounter charCountText="test" />);
+    expect(
+      baseElement.getElementsByClassName('a-input__description u-text-right')[0].textContent === 'test'
+    ).toBeTruthy();
+  });
+
+  it('should apply the `danger` style to the character counter text if the character count has reached the maxLength', () => {
+    const { baseElement } = render(<TextArea maxLength={5} charCounter value="12345" />);
+    expect(baseElement.getElementsByClassName('u-text-danger').length).toBeTruthy();
+  });
+
+  it('should block input when maxLengthBlocksInput is true and maxLength is reached', () => {
+    const maxLength = 5;
+    const { baseElement } = render(<TextArea maxLength={maxLength} maxLengthBlocksInput value="12345" />);
+    expect(baseElement.querySelector('textarea')?.getAttribute('maxlength') === '5').toBeTruthy();
+
+    const textArea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+
+    fireEvent.change(textArea, { target: { value: 'a'.repeat(maxLength + 1) } });
+
+    expect(textArea.value).toHaveLength(maxLength);
   });
 });

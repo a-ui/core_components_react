@@ -23,6 +23,7 @@ export default {
     required: false,
     charCounter: false,
     charCountText: '%count% / %max%',
+    maxLengthBlocksInput: false,
     id: 'textfield-story'
   },
   argTypes: {
@@ -101,6 +102,14 @@ export default {
         type: { summary: 'integer' }
       },
       description: 'The `maxLength` attribute sets a character limitation for the value of the `TextArea`.'
+    },
+    maxLengthBlocksInput: {
+      control: { type: 'boolean' },
+      table: {
+        type: { sunnary: 'boolean' }
+      },
+      description:
+        "When the `maxLength` prop is set, the `maxLengthBlocksInput` prop blocks the user from typing more characters than the `maxLength` prop's value."
     },
     charCountText: {
       control: { type: 'text' },

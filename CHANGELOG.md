@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Datepicker recalculate it's label and value when the controlled value changes
 
+### Changed
+
+- TextField and TextArea components can have a charCounter when `maxLength` is not set (The default counter's text changes accordingly).
+- The TextField and TextArea components' charCounter text get a danger style applied when the `maxLength` has been reached.
+- It is now possible to keep typing in the TextField and TextArea components, even if the `maxLength` has been reached. This can still be blocked by setting the `maxLengthBlocksInput` prop to `true`.
+
 ## 7.2.0 - 2024-03-25
 
 ### Fixed

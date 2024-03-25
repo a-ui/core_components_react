@@ -38,12 +38,21 @@ export const renderCharacterCounter = ({
   characterCount,
   maxLength
 }: CharacterCounterProps) => {
-  return charCounter && maxLength ? (
-    <small aria-live="polite" id={`${id}--counter`} className="a-input__description u-text-right">
-      {charCountText
+  const charLeft = maxLength ? maxLength - characterCount : 0;
+  const hasCharOverflow = maxLength && charLeft <= 0;
+  const countDisplayText = maxLength
+    ? charCountText
         ?.replace('%max%', maxLength.toString())
         .replace('%count%', characterCount.toString())
-        .replace('%left%', (maxLength - characterCount).toString())}
+        .replace('%left%', charLeft.toString())
+    : charCountText?.replace('%count%', characterCount.toString());
+  return charCounter ? (
+    <small
+      aria-live="polite"
+      id={`${id}--counter`}
+      className={`a-input__description u-text-right${hasCharOverflow ? ' u-text-danger' : ''}`}
+    >
+      {countDisplayText}
     </small>
   ) : null;
 };

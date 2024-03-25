@@ -80,14 +80,15 @@ describe('UI Components - Atoms - Input - TextField', () => {
     expect(baseElement.getElementsByClassName('has-addon-right').length).toBe(1);
   });
 
-  it('should add no character counter when only charCounter is set', () => {
-    const { baseElement } = render(<TextField charCounter={true} />);
-    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeFalsy();
-  });
-
   it('should add no character counter when only maxLength is set', () => {
     const { baseElement } = render(<TextField maxLength={20} />);
     expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeFalsy();
+  });
+
+  it('should add a character counter when charCounter is true', () => {
+    const { baseElement } = render(<TextField charCounter value="yes" />);
+    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeTruthy();
+    expect(baseElement.getElementsByClassName('a-input__description u-text-right')[0].textContent === `3`).toBeTruthy();
   });
 
   it('should add a character counter when maxLength is set and charCounter is true', () => {
@@ -128,5 +129,29 @@ describe('UI Components - Atoms - Input - TextField', () => {
     expect(baseElement.getElementsByClassName('has-spinner-left').length).toBeTruthy();
     expect(baseElement.getElementsByClassName('has-spinner-right').length).toBeTruthy();
     expect(baseElement.getElementsByClassName('has-icon-left').length).toBeTruthy();
+  });
+
+  it('should overwrite the default charCountText', () => {
+    const { baseElement } = render(<TextField charCounter charCountText="test" />);
+    expect(
+      baseElement.getElementsByClassName('a-input__description u-text-right')[0].textContent === 'test'
+    ).toBeTruthy();
+  });
+
+  it('should apply the `danger` style to the character counter text if the character count has reached the maxLength', () => {
+    const { baseElement } = render(<TextField maxLength={5} charCounter value="12345" />);
+    expect(baseElement.getElementsByClassName('u-text-danger').length).toBeTruthy();
+  });
+
+  it('should block input when maxLengthBlocksInput is true and maxLength is reached', () => {
+    const maxLength = 5;
+    const { baseElement } = render(<TextField maxLength={maxLength} maxLengthBlocksInput value="12345" />);
+    expect(baseElement.querySelector('input')?.getAttribute('maxlength') === '5').toBeTruthy();
+
+    const input = baseElement.querySelector('input') as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: 'a'.repeat(maxLength + 1) } });
+
+    expect(input.value).toHaveLength(maxLength);
   });
 });

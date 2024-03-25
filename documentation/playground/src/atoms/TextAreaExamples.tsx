@@ -14,6 +14,7 @@ export function TextAreaExamples() {
           value={firstTextArea}
           charCounter
           maxLength={100}
+          maxLengthBlocksInput
         />
         <TextArea
           label="Uncontrolled"
@@ -25,7 +26,7 @@ export function TextAreaExamples() {
           maxLength={200}
         />
         <TextArea label="Controlled - no onChange" id="textarea-2" value="hello" charCounter maxLength={100} />
-        <TextArea label="Error" id="textarea-3" description="There is an error" state="error" />
+        <TextArea label="Error" id="textarea-3" description="There is an error" charCounter state="error" />
         <TextArea label="Small success" id="textarea-4" description="Ok!" state="success" size="small" />
       </div>
     </div>

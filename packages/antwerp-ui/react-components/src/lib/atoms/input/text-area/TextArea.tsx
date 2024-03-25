@@ -6,13 +6,14 @@ import { TextAreaProps } from '../Input.types';
 
 export function TextArea({
   charCounter,
-  charCountText = '%count% / %max%',
+  charCountText,
   description,
   disabled,
   id = 'aui-text-area',
   inline,
   label,
   maxLength,
+  maxLengthBlocksInput,
   name,
   onChange,
   qa,
@@ -28,6 +29,9 @@ export function TextArea({
   onKeyUp
 }: TextAreaProps) {
   const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
+
+  const charCounterText = charCountText ? charCountText : maxLength ? '%count% / %max%' : '%count%';
+
   const inputClasses = classNames({
     'a-input': true,
     'a-input--inline': !!inline,
@@ -59,7 +63,7 @@ export function TextArea({
           required={required}
           {...(charCounter && maxLength ? { 'aria-describedby': `${id}--counter` } : {})}
           {...(description ? { 'aria-describedby': `${id}--description` } : {})}
-          maxLength={maxLength}
+          maxLength={maxLength && maxLengthBlocksInput ? maxLength : undefined}
           onChange={_handleChange}
           onBlur={onBlur}
           onClick={onClick}
@@ -70,7 +74,7 @@ export function TextArea({
       </div>
       {renderCharacterCounter({
         id,
-        charCountText,
+        charCountText: charCounterText,
         charCounter,
         characterCount: value ? value.length : characterCount,
         maxLength

@@ -11,6 +11,7 @@ interface InputProps {
   inline?: boolean;
   label?: string;
   maxLength?: number;
+  maxLengthBlocksInput?: boolean;
   name?: string;
   qa?: string;
   readOnly?: boolean;

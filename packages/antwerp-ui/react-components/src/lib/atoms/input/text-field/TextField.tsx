@@ -12,7 +12,7 @@ export const TextField = forwardRef(function TextField(
     addOn,
     autoComplete,
     charCounter,
-    charCountText = '%count% / %max%',
+    charCountText,
     description,
     disabled,
     id = 'aui-text-field',
@@ -20,6 +20,7 @@ export const TextField = forwardRef(function TextField(
     inline,
     label,
     maxLength,
+    maxLengthBlocksInput,
     name,
     onChange,
     qa,
@@ -42,6 +43,8 @@ export const TextField = forwardRef(function TextField(
   const addOnRight = addOn?.type === 'text' && addOn.placement === 'right' ? addOn.content : null;
   const iconLeft = addOn?.type === 'icon' && addOn.placement === 'left' ? addOn.content : null;
   const iconRight = addOn?.type === 'icon' && addOn.placement === 'right' ? addOn.content : null;
+
+  const charCounterText = charCountText ? charCountText : maxLength ? '%count% / %max%' : '%count%';
 
   const classes = classNames({
     'a-input': true,
@@ -84,7 +87,7 @@ export const TextField = forwardRef(function TextField(
           disabled={disabled}
           readOnly={readOnly}
           required={required}
-          maxLength={maxLength}
+          maxLength={maxLength && maxLengthBlocksInput ? maxLength : undefined}
           onChange={_handleChange}
           onBlur={onBlur}
           onClick={onClick}
@@ -100,7 +103,7 @@ export const TextField = forwardRef(function TextField(
       </div>
       {renderCharacterCounter({
         id,
-        charCountText,
+        charCountText: charCounterText,
         charCounter,
         characterCount: value ? value.length : characterCount,
         maxLength
