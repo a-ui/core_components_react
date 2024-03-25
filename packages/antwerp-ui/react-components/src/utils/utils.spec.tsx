@@ -3,6 +3,7 @@ import { renderHTMLLink } from './render.utils';
 import { getPosition, getSteps, getValueFromPosition, pagesArray } from './math.utils';
 import { invalidIcon } from './file.utils';
 import jest from 'jest-mock';
+import { formatIfValid } from './time.utils';
 
 describe('Utils - DOM Utils', () => {
   describe('- classNames', () => {
@@ -170,6 +171,15 @@ describe('Utils - File Utils', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const icon = new (MockSVGGraphicsElement as any)();
       expect(invalidIcon(icon)).toEqual(true);
+    });
+  });
+});
+
+describe('Utils - Time Utils', () => {
+  describe('- formatIfValid', () => {
+    it('formats a date string or return raw string', () => {
+      expect(formatIfValid('2023-02-22', 'dd/MM/yyyy')).toEqual('22/02/2023');
+      expect(formatIfValid('MEH', 'yyyy/MM/dd')).toEqual('MEH');
     });
   });
 });

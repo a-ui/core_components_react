@@ -12,9 +12,6 @@ export function FlyoutExamples() {
           World!
         </Flyout>
         <Flyout trigger={<h1>Hello</h1>}>World!</Flyout>
-        <Flyout open trigger={<h1>I am open and uncontrolled</h1>}>
-          By default...
-        </Flyout>
         <Flyout
           open
           scrollable

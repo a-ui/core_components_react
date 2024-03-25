@@ -8,7 +8,7 @@ export interface DatepickerProps {
   mask?: string;
   inputProps?: Pick<
     TextFieldProps,
-    'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size' | 'state' | 'onChange'
+    'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size' | 'state' | 'onChange' | 'value'
   >;
   value?: string;
   label?: string;
@@ -16,7 +16,8 @@ export interface DatepickerProps {
   invalidDateText?: string;
   iconButtonLabel?: string;
   calendarProps?: DatepickerCalendarProps;
-  onChange?: (value: string) => void;
+  errorMsgFunction?: (value: string | undefined) => string | undefined | null;
+  onChange?: (value: string, inputValue?: string) => void;
 }
 
 export interface CalendarProps {

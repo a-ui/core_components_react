@@ -9,9 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+
+- Datepicker doesn't crash when providing it an invalid date as value
+- Controlled Calendar doesn't crash when providing it an invalid date as value
+
 ### Changed
 
 - Core branding update 6.6.1
+- Datepicker `onChange` function is now triggered for invalid dates (return empty string)
+- Datepicker `onChange` function returns the input string value as second parameter
+
+### Added
+
+- Datepicker `errorMsgFunction` to fully customize the error based on the input
 
 ## 7.1.1 - 2024-03-07
 
