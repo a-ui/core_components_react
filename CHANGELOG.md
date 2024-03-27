@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - TextField and TextArea components can have a charCounter when `maxLength` is not set (The default counter's text changes accordingly).
 - The TextField and TextArea components' charCounter text get a danger style applied when the `maxLength` has been reached.
-- It is now possible to keep typing in the TextField and TextArea components, even if the `maxLength` has been reached. This can be done by setting the `maxLengthBlocksInput` prop to `false`.
+- It is now possible to keep typing in the TextField and TextArea components, even if the `maxLength` has been reached. This can still be blocked by setting the `maxLengthBlocksInput` prop to `true`. This prop is `false` by default to be WCAG compliant.
 
 ## 7.2.0 - 2024-03-25
 

@@ -13,7 +13,7 @@ export function TextArea({
   inline,
   label,
   maxLength,
-  maxLengthBlocksInput = true,
+  maxLengthBlocksInput,
   name,
   onChange,
   qa,
