@@ -14,7 +14,7 @@ export function TextAreaExamples() {
           value={firstTextArea}
           charCounter
           maxLength={100}
-          maxLengthBlocksInput
+          maxLengthBlocksInput={false}
         />
         <TextArea
           label="Uncontrolled"

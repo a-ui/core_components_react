@@ -129,7 +129,8 @@ export default {
     maxLengthBlocksInput: {
       control: { type: 'boolean' },
       table: {
-        type: { sunnary: 'boolean' }
+        type: { sunnary: 'boolean' },
+        defaultValue: { summary: true }
       },
       description:
         "When the `maxLength` prop is set, the `maxLengthBlocksInput` prop blocks the user from typing more characters than the `maxLength` prop's value."

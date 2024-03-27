@@ -1,5 +1,5 @@
 export interface SpinnerProps {
-  label: string;
+  label?: string;
   qa?: string;
   ariaHidden?: boolean;
   showText?: boolean;

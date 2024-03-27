@@ -40,7 +40,7 @@ export function Playground() {
   return (
     <>
       <h1>Atoms</h1>
-      {/* <IconExamples />
+      <IconExamples />
       <AvatarExamples />
       <BadgeExamples />
       <BreadcrumbExamples />
@@ -55,10 +55,10 @@ export function Playground() {
       <SelectExamples />
       <SpinnerExamples />
       <SwitchExamples />
-      <TableExamples /> */}
+      <TableExamples />
       <TextAreaExamples />
       <TextFieldExamples />
-      {/* <ToggleExamples />
+      <ToggleExamples />
       <TooltipExamples />
       <h1>Molecules</h1>
       <AutocompleteExamples />
@@ -78,7 +78,7 @@ export function Playground() {
       <h1>Organisms</h1>
       <TagListExamples />
       <FooterExamples />
-      <HeaderExamples /> */}
+      <HeaderExamples />
     </>
   );
 }
