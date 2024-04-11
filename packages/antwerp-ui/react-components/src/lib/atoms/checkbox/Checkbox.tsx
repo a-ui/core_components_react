@@ -21,6 +21,8 @@ export function Checkbox({
   const setIndeterminate = (inputRef: HTMLInputElement) => {
     if (inputRef && indeterminate) {
       inputRef.indeterminate = true;
+    } else if (inputRef && !indeterminate) {
+      inputRef.indeterminate = false;
     }
   };
 
