@@ -9,6 +9,7 @@ export interface TableProps {
       onActionClick?: (event: MouseEvent<HTMLButtonElement>, rowId: string) => void;
     })[];
   };
+  caption: string;
   columns: TableColumnSchema[];
   fixedColumnLeft?: boolean;
   fixedColumnRight?: boolean;

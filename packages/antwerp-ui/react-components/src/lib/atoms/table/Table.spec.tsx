@@ -162,4 +162,10 @@ describe('UI Components - Atoms - Table', () => {
     fireEvent.click(screen.getAllByRole('button')[0]);
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
+
+  it('should render the caption if provided', () => {
+    const { container } = render(<Table columns={COLUMNS_EXAMPLE} caption="Food supplies" />);
+    const caption = container.getElementsByTagName('caption');
+    expect(caption.length).toEqual(1);
+  });
 });
