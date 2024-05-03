@@ -6,6 +6,7 @@ import { useHorizontalScroll } from '../../../utils/custom.hooks';
 
 export function Table({
   id = 'aui-table',
+  caption,
   sort,
   sortDirection,
   rows = [],
@@ -42,6 +43,7 @@ export function Table({
 
   const table = (
     <table id={id} className={tableClasses} data-qa={qa}>
+      {!!caption && <caption>{caption}</caption>}
       <TableHeader
         tableId={id}
         small={small}
