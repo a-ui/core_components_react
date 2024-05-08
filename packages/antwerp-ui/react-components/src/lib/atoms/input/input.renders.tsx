@@ -50,7 +50,7 @@ export const renderCharacterCounter = ({
     <small
       aria-live="polite"
       id={`${id}--counter`}
-      className={`a-input__description u-text-right${hasCharOverflow ? ' u-text-danger' : ''}`}
+      className={`a-input__description u-text-left${hasCharOverflow ? ' u-text-danger' : ''}`}
     >
       {countDisplayText}
     </small>

@@ -54,26 +54,26 @@ describe('UI Components - Atoms - Input - TextArea', () => {
 
   it('should add a character counter when only maxLength is set', () => {
     const { baseElement } = render(<TextArea maxLength={20} />);
-    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeTruthy();
+    expect(baseElement.getElementsByClassName('a-input__description u-text-left').length).toBeTruthy();
   });
 
   it('should add a character counter when charCounter is true', () => {
     const { baseElement } = render(<TextArea charCounter value="yes" />);
-    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeTruthy();
-    expect(baseElement.getElementsByClassName('a-input__description u-text-right')[0].textContent === `3`).toBeTruthy();
+    expect(baseElement.getElementsByClassName('a-input__description u-text-left').length).toBeTruthy();
+    expect(baseElement.getElementsByClassName('a-input__description u-text-left')[0].textContent === `3`).toBeTruthy();
   });
 
   it('should add a character counter when maxLength is set and charCounter is true', () => {
     const { baseElement } = render(<TextArea maxLength={20} charCounter value="yes" />);
-    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeTruthy();
+    expect(baseElement.getElementsByClassName('a-input__description u-text-left').length).toBeTruthy();
     expect(
-      baseElement.getElementsByClassName('a-input__description u-text-right')[0].textContent === `3 / 20`
+      baseElement.getElementsByClassName('a-input__description u-text-left')[0].textContent === `3 / 20`
     ).toBeTruthy();
   });
 
   it('should add no character counter when maxLength is set, but charCounter is false', () => {
     const { baseElement } = render(<TextArea maxLength={20} charCounter={false} />);
-    expect(baseElement.getElementsByClassName('a-input__description u-text-right').length).toBeFalsy();
+    expect(baseElement.getElementsByClassName('a-input__description u-text-left').length).toBeFalsy();
   });
 
   it('should trigger the onChange prop when the content is changed', () => {
@@ -87,7 +87,7 @@ describe('UI Components - Atoms - Input - TextArea', () => {
   it('should overwrite the default charCountText', () => {
     const { baseElement } = render(<TextArea charCounter charCountText="test" />);
     expect(
-      baseElement.getElementsByClassName('a-input__description u-text-right')[0].textContent === 'test'
+      baseElement.getElementsByClassName('a-input__description u-text-left')[0].textContent === 'test'
     ).toBeTruthy();
   });
 
