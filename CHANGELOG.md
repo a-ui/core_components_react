@@ -1,4 +1,4 @@
-Version 7.3.1
+Version 7.4.0
 
 # Changelog
 
@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 7.4.1 - 2024-05-13
 
 ### Fixed
+
 - Fixed caption being required by default
 
 ## 7.4.0 - 2024-05-08
@@ -19,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added caption to Table
 
 ### Changed
+
 - Improved accessibility of the input's character counter
 
 ### Changed
