@@ -15,6 +15,7 @@ export interface UploadProps {
   onDelete?: (files: File[]) => void;
   qa?: string;
   sizeErrorLabel?: string;
+  hideMaxSizeLabel?: boolean;
 }
 
 export interface UploadFileProps {

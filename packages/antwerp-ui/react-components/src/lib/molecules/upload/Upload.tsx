@@ -14,6 +14,7 @@ export function Upload({
   label = 'Sleep een bestand hier of klik om te bladeren',
   maxSize = 10,
   maxSizeLabel = 'Maximale bestandsgrootte:',
+  hideMaxSizeLabel = false,
   multiple = true,
   onChange,
   onDelete,
@@ -65,7 +66,7 @@ export function Upload({
           </div>
         </div>
       </div>
-      {maxSize && (
+      {!hideMaxSizeLabel && maxSize && (
         <small id={`${id}-description`} className="m-upload__description">
           {maxSizeLabel} {maxSize}MB
         </small>

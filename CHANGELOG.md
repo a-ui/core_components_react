@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Possibility to override the `key` of autocomplete items
+- Can hide the max size label in `Upload` component with the prop `hideMaxSizeLabel`
 
 ## 7.4.1 - 2024-06-08
 
