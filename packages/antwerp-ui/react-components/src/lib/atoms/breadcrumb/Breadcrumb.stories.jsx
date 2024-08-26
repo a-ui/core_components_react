@@ -41,7 +41,7 @@ export default {
         'Optional page title, an object with following fields: `label`, `tag`, `className`. When the page title is placed directly below the breadcrumb, the last chevron and non-interactive label must be omitted from the path.'
     },
     renderLinkFunction: {
-      control: { type: 'funnction' },
+      control: { type: 'function' },
       table: {
         type: { summary: 'function' }
       },

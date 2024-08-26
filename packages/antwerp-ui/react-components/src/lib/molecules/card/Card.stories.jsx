@@ -75,6 +75,14 @@ export default {
       },
       description: 'React Node(s) inside the card, can be used to have complete custom card content.'
     },
+    renderLinkFunction: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      description:
+        'Optional (custom) link renderer; allows to override the way links are rendered. This is useful when using a routing framework (like React Router). The first parameter of this function is a `Link` object, with fields `label`, `href`. Example: `renderLinkFunction={(link) => <Link to={link.href}>{link.label}</Link>}`'
+    },
     qa: QA_PROP_STORY
   }
 };
