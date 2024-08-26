@@ -70,20 +70,22 @@ export function Upload({
           {maxSizeLabel} {maxSize}MB
         </small>
       )}
-      <ul className="m-upload__files">
-        {files?.map((f) => (
-          <UploadFile
-            file={f}
-            deleteAriaLabel={deleteAriaLabel}
-            formatErrorLabel={formatErrorLabel}
-            sizeErrorLabel={sizeErrorLabel}
-            key={f?.name}
-            onDelete={onDelete && handleDelete}
-            maxSize={maxSize}
-            acceptedFormat={acceptedFormat}
-          />
-        ))}
-      </ul>
+      {files?.length ? (
+        <ul className="m-upload__files">
+          {files?.map((f) => (
+            <UploadFile
+              file={f}
+              deleteAriaLabel={deleteAriaLabel}
+              formatErrorLabel={formatErrorLabel}
+              sizeErrorLabel={sizeErrorLabel}
+              key={f?.name}
+              onDelete={onDelete && handleDelete}
+              maxSize={maxSize}
+              acceptedFormat={acceptedFormat}
+            />
+          ))}
+        </ul>
+      ) : null}
     </div>
   );
 }
