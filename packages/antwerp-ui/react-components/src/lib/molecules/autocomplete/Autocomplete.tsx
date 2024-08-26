@@ -175,14 +175,14 @@ export function Autocomplete({
         >
           {results.map((r, i) => (
             <ListItem
-              id={r.value}
+              id={r.key || r.value}
               tabIndex={-1}
               highlighted={i === cursor}
               onMouseDown={(e) => e.preventDefault()}
               active={isValueActive(r.value)}
               name={r.value}
               link={{ href: '' }}
-              key={r.value}
+              key={r.key || r.value}
             >
               {r.label}
             </ListItem>

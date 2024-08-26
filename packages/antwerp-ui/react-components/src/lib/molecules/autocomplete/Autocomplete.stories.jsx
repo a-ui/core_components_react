@@ -48,7 +48,7 @@ export default {
         defaultValue: { summary: '[]' }
       },
       description:
-        'The `items` prop control the results from the dropdown in the `Autocomplete` component. These `items` are objects in the format of `{ label: "", value: "" }`.'
+        'The `items` prop control the results from the dropdown in the `Autocomplete` component. These `items` are objects in the format of `{ label: "", value: "", key?: "" }`.'
     },
     label: {
       control: { type: 'text' },

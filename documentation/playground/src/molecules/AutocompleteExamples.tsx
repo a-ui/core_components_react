@@ -25,8 +25,8 @@ export function AutocompleteExamples() {
   const handleChangeMulti = (value: string | string[], name?: string) => {
     setValueMulti(value as string[]);
   };
-  const handleRemove = (name: string) => {
-    const valueToRemove = name.replace('-delete', '');
+  const handleRemove = (name?: string) => {
+    const valueToRemove = (name || '').replace('-delete', '');
     setValueMulti(valueMulti.filter((v) => v !== valueToRemove));
   };
 
@@ -58,7 +58,7 @@ export function AutocompleteExamples() {
                 label={items.find((i) => i.value === v)?.label || ''}
                 name={v ?? undefined}
                 removable
-                // onClick={handleRemove}
+                onClick={handleRemove}
               />
             );
           })}

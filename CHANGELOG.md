@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The upload component doesn't render an `ul` element anymore if no files I've been uploaded yet
 
+### Added
+
+- Possibility to override the `key` of autocomplete items
+
 ## 7.4.1 - 2024-06-08
 
 ### Fixed
