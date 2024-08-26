@@ -70,6 +70,21 @@ describe('UI Components - Molecules - Card', () => {
     expect(screen.getByText('link label')).toBeTruthy();
   });
 
+  it('should allow to override the link render function', () => {
+    const { baseElement } = render(
+      <Card
+        image={{ src: 'https://placedog.net/400/300?r', alt: 'A random dog' }}
+        title={{ label: 'Card Title' }}
+        subTitle="Card Subtitle"
+        link={{ label: 'link label', target: 'https://www.google.be' }}
+        renderLinkFunction={(link) => 'OTHER LINK'}
+      />
+    );
+    expect(baseElement.getElementsByClassName('m-card__body')).toBeTruthy();
+    expect(baseElement.getElementsByClassName('ai-arrow-right-1')).toBeTruthy();
+    expect(screen.getByText('OTHER LINK')).toBeTruthy();
+  });
+
   it('should render an anchor link', () => {
     const { baseElement } = render(
       <Card

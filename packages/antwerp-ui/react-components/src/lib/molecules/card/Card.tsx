@@ -2,7 +2,7 @@ import { CardProps } from './Card.types';
 import { Image } from '../image';
 import { renderHTMLLink } from '../../../utils/render.utils';
 
-export function Card({ title, subTitle, description, children, image, link, qa }: CardProps) {
+export function Card({ title, subTitle, description, children, image, link, renderLinkFunction, qa }: CardProps) {
   const HeaderTag = title?.tag || 'h4';
   return (
     <div className="m-card" data-qa={qa}>
@@ -21,10 +21,12 @@ export function Card({ title, subTitle, description, children, image, link, qa }
         {!!description && <p className="u-margin-bottom">{description}</p>}
         {!!link && (
           <p className="u-text-right">
-            {renderHTMLLink({ ...link, href: link.href ?? '#' }, 'arrow-right-1', {
-              className: 'has-icon-right',
-              'aria-labelledby': title?.id
-            })}
+            {renderLinkFunction
+              ? renderLinkFunction(link)
+              : renderHTMLLink({ ...link, href: link.href ?? '#' }, 'arrow-right-1', {
+                  className: 'has-icon-right',
+                  'aria-labelledby': title?.id
+                })}
           </p>
         )}
         {children}

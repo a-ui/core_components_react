@@ -10,4 +10,5 @@ export interface CardProps {
   children?: ReactNode;
   link?: Link;
   qa?: string;
+  renderLinkFunction?: (link: Link) => ReactNode;
 }
