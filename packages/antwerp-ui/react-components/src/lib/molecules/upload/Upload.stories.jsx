@@ -85,6 +85,14 @@ export default {
         defaultValue: { summary: 10 }
       }
     },
+    hideMaxSizeLabel: {
+      control: { type: 'boolean' },
+      description: 'Hide the max size label.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      }
+    },
     onChange: {
       control: { type: 'function' },
       table: {
