@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - The upload component doesn't render an `ul` element anymore if no files are uploaded
+- The table now renders hyperlinks correctly
 
 ### Added
 
