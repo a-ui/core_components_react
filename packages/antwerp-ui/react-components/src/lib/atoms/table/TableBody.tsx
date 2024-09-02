@@ -21,7 +21,11 @@ export function TableBody({
 
   const selectRow = (event: SyntheticEvent, row: TableRowSchema) => {
     const target = event.target as Element;
-    if (target?.classList.contains('a-button') || target.parentElement?.parentElement?.classList.contains('a-button')) {
+    if (
+      (target?.classList.contains('a-button') || target.parentElement?.parentElement?.classList.contains('a-button')) ||
+      ((target?.tagName === 'A' && target?.getAttribute('href')) ||
+      (target.parentElement?.parentElement?.tagName === 'A' && target.parentElement?.parentElement?.getAttribute('href')))
+    ) {
       return false;
     }
     event.preventDefault();
