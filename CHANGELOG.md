@@ -1,4 +1,4 @@
-Version 7.4.1
+Version 7.5.0
 
 # Changelog
 
@@ -7,18 +7,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased - yyyy-mm-dd
-
-### Fixed
-
-- The upload component doesn't render an `ul` element anymore if no files are uploaded
-- The table now renders hyperlinks correctly
+## 7.5.0 - 2024-02-09
 
 ### Added
 
 - Possibility to override the `key` of autocomplete items
 - Can hide the max size label in `Upload` component with the prop `hideMaxSizeLabel`
 - Allow to provide a custom link render function to the `Card` component
+
+### Fixed
+
+- The upload component doesn't render an `ul` element anymore if no files are uploaded
+- The table now renders hyperlinks correctly
 
 ## 7.4.1 - 2024-06-08
 
