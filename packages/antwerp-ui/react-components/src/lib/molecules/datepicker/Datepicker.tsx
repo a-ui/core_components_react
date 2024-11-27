@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { DatepickerProps } from './Datepicker.types';
 import { DEFAULT_DATE_FORMAT } from '../../../constants/settings';
-import { formatISO, set } from 'date-fns';
+import { formatISO } from 'date-fns';
 import { Icon } from '../../base/icon';
 import { isValid as fnsIsValid, format as fnsFormat, parse as fnsParse } from 'date-fns';
 import { renderDescription, renderLabel } from '../../atoms/input/input.renders';
@@ -21,14 +21,16 @@ export function Datepicker({
   iconButtonLabel = 'Open kalender',
   calendarProps,
   label,
+  openLeft = false,
   required,
+  open,
   errorMsgFunction
 }: DatepickerProps) {
   const iconRef = useRef<HTMLSpanElement>(null);
   const [formattedValue, setFormattedValue] = useState(value ? formatIfValid(value, format) : '');
   const [currentValue, setCurrentValue] = useState(value || '');
   const [dateInvalidError, setDateInvalidError] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(open || false);
 
   useEffect(() => {
     setErrorMessage(formattedValue);
@@ -38,6 +40,10 @@ export function Datepicker({
     setFormattedValue(value ? formatIfValid(value, format) : '');
     setCurrentValue(value || '');
   }, [value]);
+
+  useEffect(() => {
+    setIsOpen(open || false);
+  }, [open]);
 
   const handleOutsideClick = (target: EventTarget | null) => {
     if (!iconRef.current?.contains(target as Node)) {
@@ -63,9 +69,9 @@ export function Datepicker({
       const result = formatISO(parsedDate);
       setDateInvalidError('');
       setCurrentValue(result);
-      onChange && onChange(result, currentValue);
+      onChange && onChange(result, newValue);
     } else {
-      onChange && onChange('', currentValue);
+      onChange && onChange('', newValue);
     }
   };
 
@@ -136,7 +142,7 @@ export function Datepicker({
         />
         <Calendar
           ref={datepickerRef}
-          className="m-datepicker--fixed"
+          className={`m-datepicker--fixed ${openLeft ? 'm-datepicker--left' : ''}`}
           isOpen={isOpen}
           onChange={handleCalendarDateChange}
           onBlur={handleBlur}

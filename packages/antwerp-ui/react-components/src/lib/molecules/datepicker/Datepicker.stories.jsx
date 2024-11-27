@@ -19,7 +19,9 @@ export default {
     invalidDateText: 'Ongeldige datum',
     iconButtonLabel: 'Open kalender',
     label: 'Datepicker component',
-    required: false
+    required: false,
+    openLeft: false,
+    open: false
   },
   argTypes: {
     value: {
@@ -53,6 +55,20 @@ export default {
       },
       description: 'Adds a red asterisk after the label',
       if: { arg: 'label' }
+    },
+    openLeft: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' }
+      },
+      description: 'To open your datepicker on the left side of your input field'
+    },
+    open: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' }
+      },
+      description: 'To make the open state of the datepicker controlled'
     },
     invalidDateText: {
       control: { type: 'text' },

@@ -6,18 +6,31 @@ export interface DatepickerProps {
   qa?: string;
   format?: string;
   mask?: string;
-  inputProps?: Pick<
-    TextFieldProps,
-    'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size' | 'state' | 'onChange' | 'value'
-  >;
+  inputProps?: DatepickerInputProps;
   value?: string;
   label?: string;
+  open?: boolean;
   required?: boolean;
   invalidDateText?: string;
   iconButtonLabel?: string;
+  openLeft?: boolean;
   calendarProps?: DatepickerCalendarProps;
   errorMsgFunction?: (value: string | undefined) => string | undefined | null;
   onChange?: (value: string, inputValue?: string) => void;
+}
+
+export interface DateRangePickerProps {
+  id?: string;
+  fromLabel?: string;
+  toLabel?: string;
+  value?: [string, string];
+  qa?: string;
+  format?: string;
+  fromInputProps?: DatepickerInputProps;
+  toInputProps?: DatepickerInputProps;
+  fromCalendarProps?: DatepickerCalendarProps;
+  toCalendarProps?: DatepickerCalendarProps;
+  onChange?: (value: [string, string]) => void;
 }
 
 export interface CalendarProps {
@@ -32,6 +45,7 @@ export interface CalendarProps {
   ariaLabelPreviousYears?: string;
   className?: string;
   isOpen?: boolean;
+  highlightDates?: [string, string];
   onBlur?: (e: FocusEvent) => void;
   onChange?: (value: string) => void;
   qa?: string;
@@ -41,6 +55,10 @@ export interface CalendarProps {
   value?: string;
 }
 
+type DatepickerInputProps = Pick<
+  TextFieldProps,
+  'id' | 'label' | 'description' | 'disabled' | 'name' | 'required' | 'size' | 'state' | 'onChange' | 'value'
+>;
 type DatepickerCalendarProps = Pick<
   CalendarProps,
   | 'ariaLabel'
@@ -56,6 +74,7 @@ type DatepickerCalendarProps = Pick<
   | 'unavailable'
   | 'unavailableFrom'
   | 'unavailableTo'
+  | 'highlightDates'
 >;
 
 export interface MonthsViewProps {
@@ -80,11 +99,12 @@ export type DaysViewProps = Pick<
   onChange: (value: Date) => void;
   activeMonth: number;
   activeYear: number;
+  highlight?: [string, string];
 };
 
 export type DayButtonProps = Pick<
   DaysViewProps,
-  'ariaLabelCurrentDay' | 'unavailableFrom' | 'unavailableTo' | 'unavailable' | 'onChange' | 'value'
+  'ariaLabelCurrentDay' | 'unavailableFrom' | 'unavailableTo' | 'unavailable' | 'onChange' | 'value' | 'highlight'
 > & {
   date: Date;
   monthYear: Date;

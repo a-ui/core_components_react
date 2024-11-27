@@ -23,6 +23,7 @@ export function DaysView({
   locale,
   unavailableFrom,
   unavailableTo,
+  highlight,
   unavailable
 }: DaysViewProps) {
   const renderWeek = (weekDay: Date) => {
@@ -39,6 +40,7 @@ export function DaysView({
           unavailableTo={unavailableTo}
           unavailable={unavailable}
           date={index}
+          highlight={highlight}
           value={value}
           monthYear={activeMonthYear}
           onChange={onChange}

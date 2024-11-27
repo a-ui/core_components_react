@@ -23,6 +23,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       ariaLabelPreviousYear = 'Ga naar het vorig jaar',
       ariaLabelPreviousYears = 'Ga naar de voorgaande jaren',
       className,
+      highlightDates,
       isOpen = true,
       locale = DEFAULT_LOCALE,
       onBlur,
@@ -130,6 +131,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         case CalendarView.DAYS:
           return (
             <DaysView
+              highlight={highlightDates}
               locale={locale}
               ariaLabelCurrentDay={ariaLabelCurrentDay}
               activeMonth={activeMonth}

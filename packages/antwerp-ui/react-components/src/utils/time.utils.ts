@@ -8,6 +8,10 @@ export function isInRange(date: Date, from?: string, to?: string, list?: string[
   );
 }
 
+export function isBetween(date: Date, from: string, to: string): boolean {
+  return isAfter(date, new Date(from)) && isBefore(date, new Date(to));
+}
+
 export function formatIfValid(date: string, dateFormat: string) {
   try {
     return format(new Date(date), dateFormat);

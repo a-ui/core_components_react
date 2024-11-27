@@ -3,10 +3,11 @@ import { classNames } from '../../../utils/dom.utils';
 import { Icon } from '../../base/icon';
 import { DescriptionProps, LabelProps, CharacterCounterProps } from './Input.types';
 
-export const renderLabel = ({ label, id, required, inline }: LabelProps) => {
+export const renderLabel = ({ label, id, required, inline, className = '', noMargin = false }: LabelProps) => {
   const labelClasses = classNames({
-    'a-input__label': true,
-    'a-input__label--inline': !!inline
+    'a-input__label': !noMargin,
+    'a-input__label--inline': !!inline,
+    [className as string]: !!className
   });
   return label ? (
     <label className={labelClasses} htmlFor={id}>
