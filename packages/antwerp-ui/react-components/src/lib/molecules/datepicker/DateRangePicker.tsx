@@ -89,3 +89,5 @@ export function DateRangePicker({
     </div>
   );
 }
+
+export default DateRangePicker;
