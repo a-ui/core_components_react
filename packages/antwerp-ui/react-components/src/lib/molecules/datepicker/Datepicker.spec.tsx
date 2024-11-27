@@ -164,6 +164,14 @@ describe('UI Components - Molecules - Datepicker', () => {
     expect(baseElement.querySelector('.is-open')).toBeFalsy();
   });
 
+  it('should allow to open the calendar on the left', async () => {
+    const { container } = render(
+      <Datepicker openLeft value={new Date(Date.parse('18 May 2020 00:12:00 GMT')).toISOString()} />
+    );
+    const calendar = container.getElementsByClassName('m-datepicker--left')[0];
+    expect(calendar).toBeTruthy();
+  });
+
   it("should render a label above the datepicker component's input field when passed as a prop", () => {
     const label = 'Datepicker component';
     const { getByText } = render(<Datepicker label={label} />);
