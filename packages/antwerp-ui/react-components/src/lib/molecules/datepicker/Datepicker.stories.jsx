@@ -21,7 +21,7 @@ export default {
     label: 'Datepicker component',
     required: false,
     openLeft: false,
-    open: false
+    onIconClick: null
   },
   argTypes: {
     value: {
@@ -69,6 +69,24 @@ export default {
         type: { summary: 'boolean' }
       },
       description: 'To make the open state of the datepicker controlled'
+    },
+    onCalendarToggle: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      action: 'onToggle',
+      description:
+        'Function triggered when the open state of the `Datepicker` changes. Use this to make the open state controlled together with the `open` and `onIconClick` property.'
+    },
+    onIconClick: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      action: 'onClick',
+      description:
+        'Function triggered when the icon of the `Datepicker` is clicked. Use this to make the open state controlled together with the `open` and `onCalendarToggle` property.'
     },
     invalidDateText: {
       control: { type: 'text' },

@@ -13,7 +13,10 @@ export function DayButton({
   value,
   onChange,
   highlight,
-  ariaLabelCurrentDay
+  ariaLabelCurrentDay,
+  onMouseEnter,
+  onMouseLeave,
+  hoverStyle
 }: DayButtonProps) {
   const isUnavailable = useMemo(
     () => isInRange(date, unavailableFrom, unavailableTo, unavailable),
@@ -36,7 +39,8 @@ export function DayButton({
     'is-current': isCurrent,
     'is-faded': isBefore(date, startOfMonth(monthYear)) || isAfter(date, endOfMonth(monthYear)),
     'is-unavailable': isUnavailable,
-    'is-selected': isSelected || !!isHighlighted
+    'is-selected': isSelected || !!isHighlighted,
+    'is-hovered': !!hoverStyle
   });
   return (
     <td>
@@ -49,6 +53,12 @@ export function DayButton({
         aria-label={`${format(date, 'EEEE d MMMM yyyy')}${isCurrent ? `, ${ariaLabelCurrentDay}` : ''}`}
         onClick={() => {
           onChange(date);
+        }}
+        onMouseEnter={() => {
+          onMouseEnter && onMouseEnter(date);
+        }}
+        onMouseLeave={() => {
+          onMouseLeave && onMouseLeave(date);
         }}
       >
         <span>{format(date, 'd')}</span>

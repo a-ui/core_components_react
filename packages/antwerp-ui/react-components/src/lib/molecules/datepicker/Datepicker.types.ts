@@ -10,12 +10,15 @@ export interface DatepickerProps {
   value?: string;
   label?: string;
   open?: boolean;
+  noCalendar?: boolean;
   required?: boolean;
   invalidDateText?: string;
   iconButtonLabel?: string;
   openLeft?: boolean;
   calendarProps?: DatepickerCalendarProps;
   errorMsgFunction?: (value: string | undefined) => string | undefined | null;
+  onIconClick?: (open: boolean) => void;
+  onCalendarToggle?: (open: boolean, selection?: string) => void;
   onChange?: (value: string, inputValue?: string) => void;
 }
 
@@ -28,8 +31,7 @@ export interface DateRangePickerProps {
   format?: string;
   fromInputProps?: DatepickerInputProps;
   toInputProps?: DatepickerInputProps;
-  fromCalendarProps?: DatepickerCalendarProps;
-  toCalendarProps?: DatepickerCalendarProps;
+  calendarProps?: DatepickerCalendarProps;
   onChange?: (value: [string, string]) => void;
 }
 
@@ -46,6 +48,7 @@ export interface CalendarProps {
   className?: string;
   isOpen?: boolean;
   highlightDates?: [string, string];
+  hoverStart?: string;
   onBlur?: (e: FocusEvent) => void;
   onChange?: (value: string) => void;
   qa?: string;
@@ -75,6 +78,7 @@ type DatepickerCalendarProps = Pick<
   | 'unavailableFrom'
   | 'unavailableTo'
   | 'highlightDates'
+  | 'hoverStart'
 >;
 
 export interface MonthsViewProps {
@@ -93,7 +97,7 @@ export interface YearsViewProps {
 
 export type DaysViewProps = Pick<
   CalendarProps,
-  'ariaLabelCurrentDay' | 'locale' | 'unavailableFrom' | 'unavailableTo' | 'unavailable'
+  'ariaLabelCurrentDay' | 'locale' | 'unavailableFrom' | 'unavailableTo' | 'unavailable' | 'hoverStart'
 > & {
   value?: Date;
   onChange: (value: Date) => void;
@@ -108,6 +112,9 @@ export type DayButtonProps = Pick<
 > & {
   date: Date;
   monthYear: Date;
+  hoverStyle?: boolean;
+  onMouseEnter?: (date: Date) => void;
+  onMouseLeave?: (date: Date) => void;
 };
 
 export enum CalendarView {

@@ -69,22 +69,13 @@ export default {
       description:
         'The `inputProps` is an object that can apply props of the `TextField` component on the `DateRangePicker` "to" input field by passing an object with the following properties: `id`, `label`, `description`, `disabled`, `name`, `required`, `size`, `onChange` and `value`.'
     },
-
-    fromCalendarProps: {
+    calendarProps: {
       control: { type: 'object' },
       table: {
         type: { summary: 'object' }
       },
       description:
-        'The `calendarProps` is an object that applies props of the `Calendar` component on the `Calendar` used in the "from" part of the `DateRangePicker`.'
-    },
-    toCalendarProps: {
-      control: { type: 'object' },
-      table: {
-        type: { summary: 'object' }
-      },
-      description:
-        'The `calendarProps` is an object that applies props of the `Calendar` component on the `Calendar` used in the "to" part of the `DateRangePicker`.'
+        'The `calendarProps` is an object that applies props of the `Calendar` component on the `Calendar` in the `DateRangePicker`.'
     },
     onChange: {
       control: { type: 'function' },

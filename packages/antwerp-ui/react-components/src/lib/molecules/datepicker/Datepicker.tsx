@@ -24,6 +24,9 @@ export function Datepicker({
   openLeft = false,
   required,
   open,
+  noCalendar,
+  onIconClick,
+  onCalendarToggle,
   errorMsgFunction
 }: DatepickerProps) {
   const iconRef = useRef<HTMLSpanElement>(null);
@@ -41,22 +44,23 @@ export function Datepicker({
     setCurrentValue(value || '');
   }, [value]);
 
-  useEffect(() => {
-    setIsOpen(open || false);
-  }, [open]);
+  const calendarToggle = (open: boolean, value?: string) => {
+    setIsOpen(open);
+    onCalendarToggle && onCalendarToggle(open, value);
+  };
 
   const handleOutsideClick = (target: EventTarget | null) => {
     if (!iconRef.current?.contains(target as Node)) {
-      setIsOpen(false);
+      calendarToggle(false);
     }
   };
+
   const { elementRef: datepickerRef } = useOutsideClick(handleOutsideClick);
 
-  const toggleOpen = () => setIsOpen(!isOpen);
-
+  const toggleOpen = () => calendarToggle(!isOpen);
   const handleBlur = (e: FocusEvent) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
-      setIsOpen(false);
+      calendarToggle(false);
     }
   };
 
@@ -99,16 +103,30 @@ export function Datepicker({
     return false;
   };
 
-  const handleCalendarDateChange = (value: string) => {
-    setCurrentValue(value);
-    onChange && onChange(value);
-    setFormattedValue(fnsFormat(new Date(value), format));
+  const handleCalendarDateChange = (theValue: string) => {
+    let formatted = fnsFormat(new Date(theValue), format);
+    try {
+      formatted = fnsFormat(new Date(value || theValue), format);
+    } catch (error) {
+      // Do nothing, controlled value is not a valid date
+    }
+    setCurrentValue(theValue);
+    onChange && onChange(theValue);
+    setFormattedValue(formatted);
     setDateInvalidError('');
-    setIsOpen(false);
+    calendarToggle(false, theValue);
   };
 
   const handleIconKeyDown = (e: KeyboardEvent<HTMLSpanElement>) => {
     if (e.code === 'Enter') {
+      toggleOpen();
+    }
+  };
+
+  const clickIcon = () => {
+    if (onIconClick) {
+      onIconClick(!isOpen);
+    } else {
       toggleOpen();
     }
   };
@@ -135,20 +153,22 @@ export function Datepicker({
           screenReaderText={iconButtonLabel}
           name="calendar"
           role="button"
-          onClick={toggleOpen}
+          onClick={clickIcon}
           className={!inputProps?.disabled ? 'is-clickable' : ''}
           onKeyDown={handleIconKeyDown}
           ref={iconRef}
         />
-        <Calendar
-          ref={datepickerRef}
-          className={`m-datepicker--fixed ${openLeft ? 'm-datepicker--left' : ''}`}
-          isOpen={isOpen}
-          onChange={handleCalendarDateChange}
-          onBlur={handleBlur}
-          value={currentValue}
-          {...calendarProps}
-        />
+        {noCalendar ? null : (
+          <Calendar
+            ref={datepickerRef}
+            className={`m-datepicker--fixed ${openLeft ? 'm-datepicker--left' : ''}`}
+            isOpen={open !== undefined ? open : isOpen}
+            onChange={handleCalendarDateChange}
+            onBlur={handleBlur}
+            value={currentValue}
+            {...calendarProps}
+          />
+        )}
       </div>
     </div>
   );

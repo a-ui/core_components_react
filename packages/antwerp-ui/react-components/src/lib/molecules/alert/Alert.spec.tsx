@@ -24,7 +24,7 @@ describe.only('UI Components - Molecules - Alert', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it.only('should render a default modal alert with buttons', () => {
+  it('should render a default modal alert with buttons', () => {
     const { baseElement } = render(
       <Alert
         title={title}

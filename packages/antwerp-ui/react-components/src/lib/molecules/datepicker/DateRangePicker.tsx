@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { renderDescription, renderLabel } from '../../atoms/input/input.renders';
 import Datepicker from './Datepicker';
 import { DateRangePickerProps } from './Datepicker.types';
 import './DateRangePicker.css';
-import { addDays, parseISO, subDays } from 'date-fns';
+import { parseISO, subDays } from 'date-fns';
 import { DEFAULT_DATE_FORMAT } from '../../../constants/settings';
 
 export function DateRangePicker({
@@ -15,34 +15,66 @@ export function DateRangePicker({
   format = DEFAULT_DATE_FORMAT,
   fromInputProps = {},
   toInputProps = {},
-  fromCalendarProps = {},
-  toCalendarProps = {},
+  calendarProps = {},
   qa
 }: DateRangePickerProps) {
-  const [openTo, setOpenTo] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState({ from: false, to: false });
+  const [toToggled, setToToggled] = useState(false);
+  const [fromSelected, setFromSelected] = useState(false);
+  const [nextIsTo, setNextIsTo] = useState(false);
+
   const [errors, setErrors] = useState({ from: false, to: false });
   const [currentValue, setCurrentValue] = useState(value || ['', '']);
 
+  useEffect(() => {
+    if (fromSelected) {
+      setCalendarOpen({ from: true, to: false });
+      setFromSelected(false);
+    }
+  }, [fromSelected]);
+
   const fromChange = (value: string, inputValue?: string) => {
-    setCurrentValue([value, currentValue[1]]);
+    if (nextIsTo) {
+      setNextIsTo(false);
+      return toChange(value, inputValue);
+    }
+    if (value && !inputValue) {
+      setFromSelected(true);
+      setNextIsTo(true);
+    }
+    const newFrom = [value, ''] as [string, string];
+    setCurrentValue(newFrom);
     setErrors({ ...errors, from: !value && !!inputValue });
-    setOpenTo(!!value && !inputValue);
-    onChange && onChange([value, currentValue[1]]);
+    onChange && onChange(newFrom);
   };
+
   const toChange = (value: string, inputValue?: string) => {
     setCurrentValue([currentValue[0], value]);
     setErrors({ ...errors, to: !value && !!inputValue });
-    setOpenTo(!!value && !inputValue ? false : openTo);
     onChange && onChange([currentValue[0], value]);
   };
 
-  const unavailableFrom = currentValue[1] ? addDays(new Date(parseISO(currentValue[1])), 1).toISOString() : '';
+  // const unavailableFrom = currentValue[1] ? addDays(new Date(parseISO(currentValue[1])), 1).toISOString() : '';
   const unavailableTo = currentValue[0] ? subDays(new Date(parseISO(currentValue[0])), 1).toISOString() : '';
   const hasError = errors.from || errors.to;
   const errorTexts = [
     ...(errors.from ? [`Ongeldige "${fromLabel}" datum.`] : []),
     ...(errors.to ? [`Ongeldige "${toLabel}" datum.`] : [])
   ];
+
+  const setCalendarOpenFrom = (open: boolean) => {
+    if (toToggled) {
+      setToToggled(false);
+      return;
+    }
+    setCalendarOpen({ from: open, to: false });
+  };
+
+  const setCalendarOpenTo = () => {
+    setCalendarOpen({ from: false, to: !calendarOpen.to });
+    setToToggled(true);
+    setNextIsTo(true);
+  };
 
   return (
     <div className="m-daterangepicker" data-qa={qa}>
@@ -68,21 +100,33 @@ export function DateRangePicker({
             format={format}
             value={value[0]}
             inputProps={{ ...fromInputProps, id: `${id}-from` }}
-            calendarProps={{ ...fromCalendarProps, unavailableFrom, highlightDates: value }}
+            calendarProps={{
+              ...calendarProps,
+              ...(nextIsTo ? { unavailableTo } : {}),
+              highlightDates: value,
+              hoverStart: value[0]
+            }}
             onChange={fromChange}
             invalidDateText=""
             openLeft
+            open={calendarOpen.from || calendarOpen.to}
+            onCalendarToggle={setCalendarOpenFrom}
           />
         </div>
         <div className="m-daterangepicker__full">
           <Datepicker
+            open={false}
             format={format}
             inputProps={{ ...toInputProps, id: `${id}-to` }}
             value={value[1]}
-            open={openTo}
-            calendarProps={{ ...toCalendarProps, unavailableTo, highlightDates: value }}
+            calendarProps={{
+              ...calendarProps,
+              unavailableTo
+            }}
+            noCalendar
             onChange={toChange}
             invalidDateText=""
+            onIconClick={setCalendarOpenTo}
           />
         </div>
       </div>

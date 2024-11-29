@@ -32,7 +32,8 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       unavailable = [],
       unavailableFrom,
       unavailableTo,
-      value
+      value,
+      hoverStart
     },
     ref
   ) => {
@@ -141,6 +142,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               unavailableFrom={unavailableFrom}
               unavailableTo={unavailableTo}
               unavailable={unavailable}
+              hoverStart={hoverStart}
             />
           );
         case CalendarView.MONTHS:
