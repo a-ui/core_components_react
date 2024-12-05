@@ -43,10 +43,13 @@ describe('UI Components - Molecules - Datepicker', () => {
     const button = baseElement.getElementsByClassName('ai-calendar')[0] as HTMLSpanElement;
     button.focus();
     expect(button).toHaveFocus();
-
     fireEvent.keyDown(button, { code: 'Enter' });
     expect(baseElement.querySelector('.is-open')).toBeTruthy();
     fireEvent.keyDown(button, { code: 'Enter' });
+    expect(baseElement.querySelector('.is-open')).toBeFalsy();
+    fireEvent.keyDown(button, { code: 'Enter' });
+    expect(baseElement.querySelector('.is-open')).toBeTruthy();
+    fireEvent.keyDown(button, { code: 'Escape' });
     expect(baseElement.querySelector('.is-open')).toBeFalsy();
   });
 

@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export function DatepickerExamples() {
   const [date, setDate] = useState(new Date('2023-02-22').toISOString());
-  const [dateRange, setDateRange] = useState(['2020-05-18', '']);
+  const [dateRange, setDateRange] = useState(['', '']);
 
   const [customError, setCustomError] = useState('' as string);
 

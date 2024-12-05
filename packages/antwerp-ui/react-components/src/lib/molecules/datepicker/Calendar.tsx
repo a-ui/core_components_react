@@ -49,6 +49,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         setActiveMonth(getMonth(new Date()));
         setActiveYear(getYear(new Date()));
         setYearsRowsStart(getYear(new Date()) - 7);
+        setActiveDate(undefined);
         return;
       }
       return setActiveDate(parsedDate);
@@ -160,6 +161,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     };
 
     const classes = classNames({ 'm-datepicker': true, 'is-open': !!isOpen, [`${className}`]: !!className });
+
     return (
       <div
         ref={ref}

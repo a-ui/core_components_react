@@ -2,6 +2,7 @@ import jest from 'jest-mock';
 import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { DateRangePicker } from './DateRangePicker';
+import { addDays, format } from 'date-fns';
 
 describe('UI Components - Molecules - DateRangePicker', () => {
   it('should render successfully', () => {
@@ -51,18 +52,43 @@ describe('UI Components - Molecules - DateRangePicker', () => {
     expect(mockOnChange).toHaveBeenCalledTimes(2);
   });
 
-  // it('should highlight all the dates between "from" and "to"', () => {
-  //   const { getAllByRole, baseElement } = render(
-  //     <DateRangePicker
-  //       value={[
-  //         new Date(Date.parse('22 Februari 2022 00:00:00 GMT')).toISOString(),
-  //         new Date(Date.parse('24 Februari 2022 00:00:00 GMT')).toISOString()
-  //       ]}
-  //     />
-  //   );
-  //   fireEvent.click(getAllByRole('button')[0]);
-  //   expect(baseElement.querySelectorAll('.is-selected').length).toBe(2 * 3);
-  // });
+  it('should set the "from" value to same day if "to" before today is selected first', () => {
+    const mockOnChange = jest.fn();
+    const { baseElement, getAllByRole, getByLabelText } = render(
+      <DateRangePicker value={['', '']} onChange={mockOnChange} />
+    );
+    const today = new Date();
+    const todayFull = format(today, 'EEEE d MMMM yyyy');
+    const input = baseElement.querySelector('#aui-date-range-picker-from') as HTMLInputElement;
+    expect(input.value).toBe('');
+    fireEvent.click(getAllByRole('button')[1]);
+    const newDate = getByLabelText(`${todayFull}, Huidige dag`);
+    fireEvent.click(newDate);
+    const args = mockOnChange.mock.calls[0][0] as [string, string];
+    expect(args[0].slice(0, 10)).toBe(today.toISOString().slice(0, 10));
+    expect(args[1].slice(0, 10)).toBe(today.toISOString().slice(0, 10));
+    expect(baseElement.querySelector('.is-open')).toBeFalsy();
+  });
+
+  it('should set the "from" value to today if "to" after today is selected first', () => {
+    const mockOnChange = jest.fn();
+    const { baseElement, getAllByRole, getByLabelText } = render(
+      <DateRangePicker value={['', '']} onChange={mockOnChange} />
+    );
+    const today = new Date();
+    const tomorrow = addDays(new Date(), 1);
+    const tomorrowFull = format(tomorrow, 'EEEE d MMMM yyyy');
+    const input = baseElement.querySelector('#aui-date-range-picker-from') as HTMLInputElement;
+    expect(input.value).toBe('');
+    fireEvent.click(getAllByRole('button')[1]);
+    const newDate = getByLabelText(`${tomorrowFull}`);
+    fireEvent.click(newDate);
+    const args = mockOnChange.mock.calls[0][0] as [string, string];
+    expect(args[0].slice(0, 10)).toBe(today.toISOString().slice(0, 10));
+    expect(args[1].slice(0, 10)).toBe(tomorrow.toISOString().slice(0, 10));
+
+    expect(baseElement.querySelector('.is-open')).toBeFalsy();
+  });
 
   it('should be able to handle wrong props', () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

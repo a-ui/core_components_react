@@ -1,5 +1,6 @@
 import Datepicker from './Datepicker';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
+import { useState } from 'react';
 
 Datepicker.displayName = 'Datepicker';
 
@@ -14,7 +15,6 @@ export default {
     }
   },
   args: {
-    value: new Date(Date.now()),
     format: 'dd/MM/yyyy',
     invalidDateText: 'Ongeldige datum',
     iconButtonLabel: 'Open kalender',
@@ -133,5 +133,18 @@ export default {
   }
 };
 
-const Template = (args) => <Datepicker {...args} />;
+const Template = (args) => {
+  const [value, setValue] = useState(new Date(Date.now()));
+  return (
+    <Datepicker
+      {...args}
+      value={value}
+      onChange={(p) => {
+        args.onChange(p);
+        setValue(p);
+      }}
+    />
+  );
+};
+
 export const datepicker = Template.bind({});

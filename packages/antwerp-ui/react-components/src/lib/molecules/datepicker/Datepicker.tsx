@@ -40,7 +40,7 @@ export function Datepicker({
   }, [invalidDateText]);
 
   useEffect(() => {
-    setFormattedValue(value ? formatIfValid(value, format) : '');
+    setFormattedValue(value ? formatIfValid(value, format) : formattedValue);
     setCurrentValue(value || '');
   }, [value]);
 
@@ -75,6 +75,7 @@ export function Datepicker({
       setCurrentValue(result);
       onChange && onChange(result, newValue);
     } else {
+      !newValue && setCurrentValue('');
       onChange && onChange('', newValue);
     }
   };
@@ -119,7 +120,9 @@ export function Datepicker({
 
   const handleIconKeyDown = (e: KeyboardEvent<HTMLSpanElement>) => {
     if (e.code === 'Enter') {
-      toggleOpen();
+      onIconClick ? onIconClick(true) : toggleOpen();
+    } else if (e.code === 'Escape') {
+      onIconClick ? onIconClick(false) : calendarToggle(false);
     }
   };
 

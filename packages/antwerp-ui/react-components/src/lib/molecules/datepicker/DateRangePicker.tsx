@@ -49,12 +49,17 @@ export function DateRangePicker({
   };
 
   const toChange = (value: string, inputValue?: string) => {
-    setCurrentValue([currentValue[0], value]);
+    let fromChange = currentValue[0];
+    if (!fromChange && value) {
+      const selectedDate = new Date(parseISO(value));
+      const today = new Date();
+      fromChange = selectedDate > today ? today.toISOString() : value;
+    }
+    setCurrentValue([fromChange, value]);
     setErrors({ ...errors, to: !value && !!inputValue });
-    onChange && onChange([currentValue[0], value]);
+    onChange && onChange([fromChange, value]);
   };
 
-  // const unavailableFrom = currentValue[1] ? addDays(new Date(parseISO(currentValue[1])), 1).toISOString() : '';
   const unavailableTo = currentValue[0] ? subDays(new Date(parseISO(currentValue[0])), 1).toISOString() : '';
   const hasError = errors.from || errors.to;
   const errorTexts = [
