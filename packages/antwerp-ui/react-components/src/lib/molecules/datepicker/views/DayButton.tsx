@@ -23,7 +23,10 @@ export function DayButton({
     [unavailable, unavailableFrom, unavailableTo, date]
   );
 
-  const isSelected = useMemo(() => !!value && isSameDay(value, date), [value, date]);
+  const isSelected = useMemo(
+    () => !!value && isSameDay(value, date) && !(highlight && (highlight[0] || highlight[1])),
+    [value, date, highlight]
+  );
   const isHighlighted = useMemo(
     () =>
       !!highlight &&

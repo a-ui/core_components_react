@@ -42,7 +42,7 @@ export function DateRangePicker({
       setFromSelected(true);
       setNextIsTo(true);
     }
-    const newFrom = [value, ''] as [string, string];
+    const newFrom = [value, calendarOpen.from || calendarOpen.to ? '' : currentValue[1]] as [string, string];
     setCurrentValue(newFrom);
     setErrors({ ...errors, from: !value && !!inputValue });
     onChange && onChange(newFrom);
