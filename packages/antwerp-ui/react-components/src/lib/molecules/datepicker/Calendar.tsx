@@ -23,6 +23,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       ariaLabelPreviousYear = 'Ga naar het vorig jaar',
       ariaLabelPreviousYears = 'Ga naar de voorgaande jaren',
       className,
+      highlightDates,
       isOpen = true,
       locale = DEFAULT_LOCALE,
       onBlur,
@@ -31,7 +32,8 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       unavailable = [],
       unavailableFrom,
       unavailableTo,
-      value
+      value,
+      hoverStart
     },
     ref
   ) => {
@@ -47,6 +49,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         setActiveMonth(getMonth(new Date()));
         setActiveYear(getYear(new Date()));
         setYearsRowsStart(getYear(new Date()) - 7);
+        setActiveDate(undefined);
         return;
       }
       return setActiveDate(parsedDate);
@@ -130,6 +133,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         case CalendarView.DAYS:
           return (
             <DaysView
+              highlight={highlightDates}
               locale={locale}
               ariaLabelCurrentDay={ariaLabelCurrentDay}
               activeMonth={activeMonth}
@@ -139,6 +143,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               unavailableFrom={unavailableFrom}
               unavailableTo={unavailableTo}
               unavailable={unavailable}
+              hoverStart={hoverStart}
             />
           );
         case CalendarView.MONTHS:
@@ -156,6 +161,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     };
 
     const classes = classNames({ 'm-datepicker': true, 'is-open': !!isOpen, [`${className}`]: !!className });
+
     return (
       <div
         ref={ref}

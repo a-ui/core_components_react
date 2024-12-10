@@ -48,7 +48,11 @@ export interface TextAreaProps extends InputProps {
   onKeyUp?: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
-export type LabelProps = Pick<TextFieldProps, 'label' | 'required' | 'inline' | 'id'>;
+export type LabelProps = Pick<TextFieldProps, 'label' | 'required' | 'inline' | 'id'> & {
+  className?: string;
+  noMargin?: boolean;
+};
+
 export type DescriptionProps = Pick<TextFieldProps, 'id' | 'description' | 'state'>;
 export type CharacterCounterProps = {
   id?: string;

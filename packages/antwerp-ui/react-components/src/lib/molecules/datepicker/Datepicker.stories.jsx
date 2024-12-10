@@ -1,5 +1,6 @@
 import Datepicker from './Datepicker';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
+import { useState } from 'react';
 
 Datepicker.displayName = 'Datepicker';
 
@@ -14,12 +15,13 @@ export default {
     }
   },
   args: {
-    value: new Date(Date.now()),
     format: 'dd/MM/yyyy',
     invalidDateText: 'Ongeldige datum',
     iconButtonLabel: 'Open kalender',
     label: 'Datepicker component',
-    required: false
+    required: false,
+    openLeft: false,
+    onIconClick: null
   },
   argTypes: {
     value: {
@@ -53,6 +55,38 @@ export default {
       },
       description: 'Adds a red asterisk after the label',
       if: { arg: 'label' }
+    },
+    openLeft: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' }
+      },
+      description: 'To open your datepicker on the left side of your input field'
+    },
+    open: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' }
+      },
+      description: 'To make the open state of the datepicker controlled'
+    },
+    onCalendarToggle: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      action: 'onToggle',
+      description:
+        'Function triggered when the open state of the `Datepicker` changes. Use this to make the open state controlled together with the `open` and `onIconClick` property.'
+    },
+    onIconClick: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      action: 'onClick',
+      description:
+        'Function triggered when the icon of the `Datepicker` is clicked. Use this to make the open state controlled together with the `open` and `onCalendarToggle` property.'
     },
     invalidDateText: {
       control: { type: 'text' },
@@ -99,5 +133,18 @@ export default {
   }
 };
 
-const Template = (args) => <Datepicker {...args} />;
+const Template = (args) => {
+  const [value, setValue] = useState(new Date(Date.now()));
+  return (
+    <Datepicker
+      {...args}
+      value={value}
+      onChange={(p) => {
+        args.onChange(p);
+        setValue(p);
+      }}
+    />
+  );
+};
+
 export const datepicker = Template.bind({});

@@ -6,9 +6,11 @@ import { DEFAULT_LOCALE } from '../../../../constants/settings';
 
 export function MonthsView({ onChange, value, activeYear, locale = DEFAULT_LOCALE }: MonthsViewProps) {
   const renderMonth = (month: number) => {
+    const selected = !!(value && month === getMonth(value) && activeYear === getYear(value));
+
     const classes = classNames({
       'is-current': month === getMonth(new Date()) && activeYear === getYear(new Date()),
-      'is-selected': !!(value && month === getMonth(value) && activeYear === getYear(value))
+      'is-selected': selected
     });
     const monthValue = new Date(activeYear, month);
     return (

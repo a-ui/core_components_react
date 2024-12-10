@@ -19,6 +19,7 @@ export default {
     unavailable: [new Date(Date.now() - 86400000)],
     unavailableTo: new Date(Date.now() - 691200000),
     unavailableFrom: new Date(Date.now() + 691200000),
+    highlightDates: [],
     value: new Date(Date.now() + 86400000),
     ariaLabel: 'Kalender',
     ariaLabelCurrentDay: 'Huidige dag',
@@ -47,6 +48,15 @@ export default {
       },
       description:
         'The `unavailable` prop contains an array of dates that are unavailable. The dates in the `unavaiable` array are in ISO format.'
+    },
+    highlightDates: {
+      control: { type: 'array' },
+      table: {
+        type: { summary: 'array' },
+        defaultValue: { summary: '[]' }
+      },
+      description:
+        'The `highlightDates` prop contains an array of dates should be higlighted. The dates in the `highlightDates` array are in ISO format.'
     },
     unavailableTo: {
       control: { type: 'date' },

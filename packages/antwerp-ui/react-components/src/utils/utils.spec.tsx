@@ -3,7 +3,7 @@ import { renderHTMLLink } from './render.utils';
 import { getPosition, getSteps, getValueFromPosition, pagesArray } from './math.utils';
 import { invalidIcon } from './file.utils';
 import jest from 'jest-mock';
-import { formatIfValid } from './time.utils';
+import { formatIfValid, isBetween } from './time.utils';
 
 describe('Utils - DOM Utils', () => {
   describe('- classNames', () => {
@@ -180,6 +180,13 @@ describe('Utils - Time Utils', () => {
     it('formats a date string or return raw string', () => {
       expect(formatIfValid('2023-02-22', 'dd/MM/yyyy')).toEqual('22/02/2023');
       expect(formatIfValid('MEH', 'yyyy/MM/dd')).toEqual('MEH');
+    });
+  });
+
+  describe('- isBetween', () => {
+    it('calculates if dates is between other dates', () => {
+      expect(isBetween(new Date('2023-02-22'), '2023-02-21', '2023-02-23')).toEqual(true);
+      expect(isBetween(new Date('2023-02-20'), '2023-02-21', '2023-02-23')).toEqual(false);
     });
   });
 });

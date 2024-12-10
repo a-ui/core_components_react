@@ -13,6 +13,8 @@ import {
 import { DaysViewProps } from '../Datepicker.types';
 import { DayButton } from './DayButton';
 import { titleize } from '../../../../utils/string.utils';
+import { useState } from 'react';
+import { isBetween } from '../../../../utils/time.utils';
 
 export function DaysView({
   value,
@@ -23,14 +25,22 @@ export function DaysView({
   locale,
   unavailableFrom,
   unavailableTo,
-  unavailable
+  highlight,
+  unavailable,
+  hoverStart
 }: DaysViewProps) {
+  const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
+
   const renderWeek = (weekDay: Date) => {
     const days: React.ReactElement[] = [];
     let index = startOfWeek(weekDay, { locale });
     const endWeek = endOfWeek(weekDay, { locale });
     while (isValid(index) && !isAfter(index, endWeek)) {
+      let hoverStyle = false;
       const activeMonthYear = new Date(activeYear, activeMonth);
+      if (hoverStart && hoveredDate) {
+        hoverStyle = isBetween(index, hoverStart, hoveredDate.toISOString());
+      }
       days.push(
         <DayButton
           key={`day_${isValid(index) ? index.toISOString() : 'invalid'}`}
@@ -39,9 +49,13 @@ export function DaysView({
           unavailableTo={unavailableTo}
           unavailable={unavailable}
           date={index}
+          hoverStyle={hoverStyle}
+          highlight={highlight}
           value={value}
           monthYear={activeMonthYear}
           onChange={onChange}
+          onMouseEnter={setHoveredDate}
+          onMouseLeave={() => setHoveredDate(null)}
         />
       );
       index = addDays(index, 1);
