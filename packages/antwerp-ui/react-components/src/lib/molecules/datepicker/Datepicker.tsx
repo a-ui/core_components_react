@@ -35,11 +35,17 @@ export function Datepicker({
   const [currentValue, setCurrentValue] = useState(value || '');
   const [dateInvalidError, setDateInvalidError] = useState('');
   const [isOpen, setIsOpen] = useState(open || false);
-  const [countClick, setCountClick] = useState(0);
+  const [clickedOnIcon, setClickedOnIcon] = useState(false);
 
   useEffect(() => {
     setErrorMessage(formattedValue);
   }, [invalidDateText]);
+
+  useEffect(() => {
+    if (!open && !isOpen) {
+      setClickedOnIcon(false);
+    }
+  }, [open, isOpen]);
 
   useEffect(() => {
     setFormattedValue(value ? formatIfValid(value, format) : formattedValue);
@@ -71,7 +77,7 @@ export function Datepicker({
   };
 
   const handleOutsideClick = () => {
-    setCountClick(0);
+    setClickedOnIcon(false);
     calendarToggle(false);
   };
 
@@ -152,11 +158,11 @@ export function Datepicker({
   };
 
   const clickIcon = (e: React.MouseEvent<HTMLSpanElement>) => {
-    if (countClick === 1) {
-      setCountClick(0);
+    if (clickedOnIcon) {
+      setClickedOnIcon(false);
       return;
     }
-    setCountClick(1);
+    setClickedOnIcon(true);
     e.preventDefault();
     e.stopPropagation();
     if (onIconClick) {
