@@ -10,8 +10,6 @@ import { MonthsView } from './views/MonthsView';
 import { YearsView } from './views/YearsView';
 import { titleize } from '../../../utils/string.utils';
 import { formatWithFallback } from '../../../utils/time.utils';
-import { m } from 'vitest/dist/index-5aad25c1';
-import { fi } from 'date-fns/locale';
 
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
   (
