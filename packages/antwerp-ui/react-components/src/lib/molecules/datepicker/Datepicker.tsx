@@ -27,13 +27,15 @@ export function Datepicker({
   noCalendar,
   onIconClick,
   onCalendarToggle,
-  errorMsgFunction
+  errorMsgFunction,
+  onEscKey
 }: DatepickerProps) {
   const iconRef = useRef<HTMLSpanElement>(null);
   const [formattedValue, setFormattedValue] = useState(value ? formatIfValid(value, format) : '');
   const [currentValue, setCurrentValue] = useState(value || '');
   const [dateInvalidError, setDateInvalidError] = useState('');
   const [isOpen, setIsOpen] = useState(open || false);
+  const [countClick, setCountClick] = useState(0);
 
   useEffect(() => {
     setErrorMessage(formattedValue);
@@ -49,15 +51,40 @@ export function Datepicker({
     onCalendarToggle && onCalendarToggle(open, value);
   };
 
-  const handleOutsideClick = (target: EventTarget | null) => {
-    if (!iconRef.current?.contains(target as Node)) {
+  const focusInside = () => {
+    setTimeout(() => {
+      const buttonToFocus =
+        datepickerRef.current?.querySelector('.is-selected') ||
+        datepickerRef.current?.querySelector('.is-current:not(.is-unavailable)') ||
+        datepickerRef.current?.querySelector('.m-datepicker__nav-title');
+      if (buttonToFocus && !buttonToFocus.classList.contains('is-unavailable')) {
+        buttonToFocus.focus();
+      }
+    }, 50);
+  };
+
+  const onEsc = (e: KeyboardEvent) => {
+    if (e.code === 'Escape') {
       calendarToggle(false);
+      onEscKey && onEscKey();
     }
+  };
+
+  const handleOutsideClick = () => {
+    setCountClick(0);
+    calendarToggle(false);
   };
 
   const { elementRef: datepickerRef } = useOutsideClick(handleOutsideClick);
 
-  const toggleOpen = () => calendarToggle(!isOpen);
+  useEffect(() => {
+    if (open || isOpen) {
+      datepickerRef.current?.addEventListener('keydown', onEsc);
+      focusInside();
+    }
+    return () => datepickerRef.current?.removeEventListener('keydown', onEsc);
+  }, [open, isOpen, onIconClick]);
+
   const handleBlur = (e: FocusEvent) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       calendarToggle(false);
@@ -120,17 +147,22 @@ export function Datepicker({
 
   const handleIconKeyDown = (e: KeyboardEvent<HTMLSpanElement>) => {
     if (e.code === 'Enter') {
-      onIconClick ? onIconClick(true) : toggleOpen();
-    } else if (e.code === 'Escape') {
-      onIconClick ? onIconClick(false) : calendarToggle(false);
+      onIconClick ? onIconClick(true) : calendarToggle(true);
     }
   };
 
-  const clickIcon = () => {
+  const clickIcon = (e: React.MouseEvent<HTMLSpanElement>) => {
+    if (countClick === 1) {
+      setCountClick(0);
+      return;
+    }
+    setCountClick(1);
+    e.preventDefault();
+    e.stopPropagation();
     if (onIconClick) {
-      onIconClick(!isOpen);
+      onIconClick(!open);
     } else {
-      toggleOpen();
+      calendarToggle(!isOpen);
     }
   };
 
@@ -169,6 +201,7 @@ export function Datepicker({
             onChange={handleCalendarDateChange}
             onBlur={handleBlur}
             value={currentValue}
+            isModal
             {...calendarProps}
           />
         )}

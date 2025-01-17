@@ -10,6 +10,8 @@ import { MonthsView } from './views/MonthsView';
 import { YearsView } from './views/YearsView';
 import { titleize } from '../../../utils/string.utils';
 import { formatWithFallback } from '../../../utils/time.utils';
+import { m } from 'vitest/dist/index-5aad25c1';
+import { fi } from 'date-fns/locale';
 
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
   (
@@ -33,7 +35,8 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       unavailableFrom,
       unavailableTo,
       value,
-      hoverStart
+      hoverStart,
+      isModal = false
     },
     ref
   ) => {
@@ -54,6 +57,31 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       }
       return setActiveDate(parsedDate);
     }, [value]);
+
+    useEffect(() => {
+      if (isModal && ref && 'current' in ref && ref.current) {
+        const currentRef = ref.current;
+        const buttons = Array.from(currentRef.querySelectorAll('button')).filter((button) => !button.disabled);
+        const firstFocusable = buttons[0] as HTMLButtonElement;
+        const lastFocusable = buttons[buttons.length - 1] as HTMLButtonElement;
+        if (!currentRef.contains(document.activeElement as Node)) {
+          firstFocusable.focus();
+        }
+        const handleTab = (event: KeyboardEvent) => {
+          if (event.key === 'Tab' && event.shiftKey && document.activeElement === firstFocusable) {
+            lastFocusable.focus();
+            event.preventDefault();
+          } else if (event.key === 'Tab' && !event.shiftKey && document.activeElement === lastFocusable) {
+            firstFocusable.focus();
+            event.preventDefault();
+          }
+        };
+        currentRef.addEventListener('keydown', handleTab);
+        return function cleanup() {
+          currentRef?.removeEventListener('keydown', handleTab);
+        };
+      }
+    }, [ref, isModal, activeView, activeMonth, activeYear]);
 
     const activeTimeframeLabels = useMemo(() => {
       const dateToShow = new Date(activeYear, activeMonth);
@@ -161,7 +189,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     };
 
     const classes = classNames({ 'm-datepicker': true, 'is-open': !!isOpen, [`${className}`]: !!className });
-
+    const modalProps = isModal ? { role: 'dialog', 'aria-modal': true } : {};
     return (
       <div
         ref={ref}
@@ -171,6 +199,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         data-qa={qa}
         onBlur={onBlur}
         onClick={(e) => e.stopPropagation()}
+        {...modalProps}
       >
         <div className="m-datepicker__nav">
           <button

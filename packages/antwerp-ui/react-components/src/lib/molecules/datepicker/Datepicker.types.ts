@@ -20,6 +20,7 @@ export interface DatepickerProps {
   onIconClick?: (open: boolean) => void;
   onCalendarToggle?: (open: boolean, selection?: string) => void;
   onChange?: (value: string, inputValue?: string) => void;
+  onEscKey?: () => void;
 }
 
 export interface DateRangePickerProps {
@@ -56,6 +57,7 @@ export interface CalendarProps {
   unavailableFrom?: string;
   unavailableTo?: string;
   value?: string;
+  isModal?: boolean;
 }
 
 type DatepickerInputProps = Pick<

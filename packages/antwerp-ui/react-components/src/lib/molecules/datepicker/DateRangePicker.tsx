@@ -58,6 +58,7 @@ export function DateRangePicker({
     setCurrentValue([fromChange, value]);
     setErrors({ ...errors, to: !value && !!inputValue });
     onChange && onChange([fromChange, value]);
+    setCalendarOpen({ from: false, to: false });
   };
 
   const unavailableTo = currentValue[0] ? subDays(new Date(parseISO(currentValue[0])), 1).toISOString() : '';
@@ -116,6 +117,7 @@ export function DateRangePicker({
             openLeft
             open={calendarOpen.from || calendarOpen.to}
             onCalendarToggle={setCalendarOpenFrom}
+            onEscKey={() => setCalendarOpen({ from: false, to: false })}
           />
         </div>
         <div className="m-daterangepicker__full">
