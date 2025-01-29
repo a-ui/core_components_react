@@ -23,10 +23,10 @@
     "@types/react-modal": "^3.13.1",
     "date-fns": "^2.29.3",
     "husky": "^8.0.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-modal": "^3.16.1",
-    "react-tooltip": "^5.5.2"
+    "react-tooltip": "^5.28.0"
   },
   "devDependencies": {
     "@nrwl/eslint-plugin-nx": "15.8.7",

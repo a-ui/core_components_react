@@ -11,11 +11,12 @@ export function Tooltip({ anchor, anchorId = 'aui-tooltip', location = 'bottom',
       {cloneElement(anchor, { id: anchorId, 'aria-describedby': `${anchorId}-tooltip`, tabIndex: 0 })}
       <ReactTooltip
         id={`${anchorId}-tooltip`}
-        anchorId={anchorId}
+        anchorSelect={anchorId ? `#${anchorId}` : undefined}
         className="a-tooltip__base"
         noArrow
         positionStrategy="fixed"
         place={location}
+        style={{ padding: '0' }}
       >
         <div className="a-tooltip" data-qa={qa}>
           {text}
