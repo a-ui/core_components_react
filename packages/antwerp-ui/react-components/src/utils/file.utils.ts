@@ -1,3 +1,5 @@
+import { ICONS_SVG_HTML_ID } from '../constants/settings';
+
 const MB = 1048576;
 
 export function hasValidFormat(file: File, acceptedFormat = ''): boolean {
@@ -30,4 +32,11 @@ export function areFilesValid(
 export function invalidIcon(icon: SVGGraphicsElement): boolean {
   const { width, height } = icon.getBBox();
   return width === 0 && height === 0;
+}
+
+export function iconExists(iconName: string): boolean {
+  const svgContainer = document.getElementById(ICONS_SVG_HTML_ID);
+  if (!svgContainer) return false;
+
+  return !!svgContainer.querySelector(`symbol#ai-${iconName}`);
 }

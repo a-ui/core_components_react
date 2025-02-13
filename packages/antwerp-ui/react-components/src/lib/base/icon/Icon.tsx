@@ -1,48 +1,80 @@
-import { useState } from 'react';
+import { useState, useEffect, ForwardedRef, forwardRef } from 'react';
 import { IconProps } from './Icon.types';
-import { ICONS_URL, SCREEN_READER_CLASS } from '../../../constants/settings';
+import { ICONS_SVG_HTML_ID, ICONS_URL, SCREEN_READER_CLASS } from '../../../constants/settings';
 import { classNames } from '../../../utils/dom.utils';
-import { invalidIcon } from '../../../utils/file.utils';
-import { logWarning } from '../../../utils/log.utils';
-import { ForwardedRef, forwardRef } from 'react';
+import { iconExists } from '../../../utils/file.utils';
+import { logError, logWarning } from '../../../utils/log.utils';
 
-const ICONS_SVG_HTML_ID = 'ai-svg';
+let svgFetchPromise: Promise<void> | null = null;
+
+export const ensureSvgLoaded = (): Promise<void> => {
+  if (document.getElementById(ICONS_SVG_HTML_ID)) {
+    return Promise.resolve();
+  }
+
+  if (!svgFetchPromise) {
+    svgFetchPromise = fetch(ICONS_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Failed to fetch SVG: ${res.statusText}`);
+        return res.text();
+      })
+      .then((svgText) => {
+        const svgWrapper = document.createElement('div');
+        svgWrapper.id = ICONS_SVG_HTML_ID;
+        svgWrapper.style.display = 'none';
+        svgWrapper.innerHTML = svgText;
+        document.body.appendChild(svgWrapper);
+      })
+      .catch((err) => {
+        logError(
+          `Error loading SVG sprite:
+          ${err}`
+        );
+        svgFetchPromise = null;
+      });
+  }
+
+  return svgFetchPromise;
+};
 
 export const Icon = forwardRef(function Icon(
   { name, tabIndex, onKeyDown, className, role, onClick, screenReaderText, thin, qa }: IconProps,
   iconRef: ForwardedRef<HTMLSpanElement>
 ) {
-  const [isInvalidIcon, setIsInvalidIcon] = useState(false);
+  const [svgLoaded, setSvgLoaded] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [iconValid, setIconValid] = useState<boolean>(true);
 
-  const fetchIcons = async function () {
-    if (typeof fetch !== 'function') return null;
-    const response = await fetch(ICONS_URL);
-    const svgText = await response.text();
-    const svgWrapper = document.createElement('svg');
-    svgWrapper.id = ICONS_SVG_HTML_ID;
-    svgWrapper.innerHTML = svgText;
-    if (!document.getElementById(ICONS_SVG_HTML_ID)) {
-      document.body.appendChild(svgWrapper);
-    }
-    queryIcons()?.forEach((icon) => {
-      if (invalidIcon(icon)) {
+  useEffect(() => {
+    ensureSvgLoaded()
+      .then(() => {
+        if (!document.getElementById(ICONS_SVG_HTML_ID)) {
+          setHasError(true);
+          return;
+        }
+        setSvgLoaded(true);
+      })
+      .catch(() => setHasError(true));
+  }, []);
+
+  useEffect(() => {
+    if (svgLoaded && name) {
+      const exists = iconExists(name.replace('ai-', ''));
+      if (!exists) {
         logWarning(
           `The provided icon with name "${name}" does not seem to exist. Please make sure the 'name' is correct`
         );
-        setIsInvalidIcon(true);
+        setIconValid(false);
       }
-    });
-  };
+    }
+  }, [svgLoaded, name]);
 
-  const queryIcons = () => {
-    return Array.from(document.querySelectorAll(`.ai-${name.replace('ai-', '')} use`)) as SVGGraphicsElement[];
-  };
-
-  if (typeof document !== 'undefined' && !document.getElementById(ICONS_SVG_HTML_ID)) {
-    fetchIcons();
+  if (hasError) {
+    logError(`Failed to load icon "${name}".`);
+    return null;
   }
 
-  if (isInvalidIcon) return null;
+  if (!svgLoaded || !iconValid) return null;
 
   const classes = classNames({
     ai: true,
