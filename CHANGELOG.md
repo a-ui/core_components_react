@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Updated `react-tooltip` package to make the library work with React v.19
+- Fixed multiple svg fetch requests for the `Icon` component
 
 ## 7.7.0 - 2025-01-23
 
