@@ -48,7 +48,7 @@ export function Datepicker({
   }, [open, isOpen]);
 
   useEffect(() => {
-    setFormattedValue(value ? formatIfValid(value, format) : formattedValue);
+    setFormattedValue(value ? formatIfValid(value, format) : '');
     setCurrentValue(value || '');
   }, [value]);
 

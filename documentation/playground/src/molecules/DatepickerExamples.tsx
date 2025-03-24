@@ -91,6 +91,7 @@ export function DatepickerExamples() {
         <h2>DateRangePicker</h2>
         <div className="u-margin"></div>
         <DateRangePicker value={dateRange as [string, string]} onChange={setDateRange} />
+        <Button onClick={() => setDateRange(['', ''])}>Clear DateRangePicker</Button>
       </div>
       <div style={{ marginBottom: '480px' }}></div>
     </>
