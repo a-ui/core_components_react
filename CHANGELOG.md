@@ -1,4 +1,4 @@
-Version 7.8.0
+Version 7.8.1
 
 # Changelog
 
