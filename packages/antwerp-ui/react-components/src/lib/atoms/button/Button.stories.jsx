@@ -99,7 +99,7 @@ export default {
         type: { summary: 'object' }
       },
       description:
-        'Transforms the button into a link (<a>). The `link` prop is an object with following fields _{href: string, target?: string }. Href is required. When the button is a link, the `onClick` & the `disabled` props are not used.'
+        'Transforms the button into a link (<a>). The `link` prop is an object with following fields _{href: string, target?: string }_. `href` is required. When rendered as a link, the `onClick` and `disabled` props are ignored.'
     },
     children: {
       control: { type: 'text' },
