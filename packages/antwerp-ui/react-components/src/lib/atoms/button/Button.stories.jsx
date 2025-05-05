@@ -93,6 +93,14 @@ export default {
       action: 'clicked',
       description: 'Function that is triggered when the button is clicked.'
     },
+    link: {
+      control: { type: 'object' },
+      table: {
+        type: { summary: 'object' }
+      },
+      description:
+        'Transforms the button into a link (<a>). The `link` prop is an object with following fields _{href: string, target?: string }. Href is required. When the button is a link, the `onClick` & the `disabled` props are not used.'
+    },
     children: {
       control: { type: 'text' },
       table: {

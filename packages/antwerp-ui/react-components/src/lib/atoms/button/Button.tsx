@@ -20,6 +20,7 @@ export function Button({
   size,
   theme,
   title,
+  link,
   ...extraProps
 }: ButtonProps) {
   const classObject = {
@@ -44,23 +45,31 @@ export function Button({
       logWarning('Using an Icon Button without an aria-label');
   }, [addOn, ariaLabel]);
 
-  return (
-    <button
-      id={id}
-      className={classes}
-      title={title}
-      onClick={onClick}
-      type={htmlType}
-      aria-label={ariaLabel}
-      data-qa={qa}
-      disabled={disabled}
-      {...(extraProps['aria-haspopup'] ? { 'aria-haspopup': true } : {})}
-      {...(extraProps['aria-expanded'] === true || extraProps['aria-expanded'] === false
-        ? { 'aria-expanded': extraProps['aria-expanded'] }
-        : {})}
-    >
+  const sharedProps = {
+    id,
+    className: classes,
+    title,
+    type: htmlType,
+    'aria-label': ariaLabel,
+    'data-qa': qa,
+    ...(extraProps['aria-haspopup'] ? { 'aria-haspopup': true } : {}),
+    ...(extraProps['aria-expanded'] === true || extraProps['aria-expanded'] === false
+      ? { 'aria-expanded': extraProps['aria-expanded'] }
+      : {})
+  };
+  const content = (
+    <>
       {renderAddOn(addOn, size)}
       {classObject['has-icon'] ? null : children}
+    </>
+  );
+  return link && link.href ? (
+    <a {...sharedProps} href={link.href} target={link.target}>
+      {content}
+    </a>
+  ) : (
+    <button {...sharedProps} onClick={onClick} disabled={disabled}>
+      {content}
     </button>
   );
 }
