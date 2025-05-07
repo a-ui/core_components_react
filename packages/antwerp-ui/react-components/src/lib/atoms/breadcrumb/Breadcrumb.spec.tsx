@@ -4,7 +4,7 @@ import { Breadcrumb } from './Breadcrumb';
 
 describe('UI Components - Atoms - Breadcrumb', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Breadcrumb />);
+    const { baseElement } = render(<Breadcrumb items={[]} />);
     expect(baseElement).toBeTruthy();
   });
 
@@ -16,7 +16,7 @@ describe('UI Components - Atoms - Breadcrumb', () => {
   });
 
   it('should render the correct class', () => {
-    const { baseElement } = render(<Breadcrumb />);
+    const { baseElement } = render(<Breadcrumb items={[]} />);
     expect(baseElement.getElementsByClassName('a-breadcrumb').length).toBe(1);
   });
 
