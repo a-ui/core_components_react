@@ -12,6 +12,10 @@ export interface ButtonProps {
   id?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   qa?: string;
+  link?: {
+    href?: string;
+    target?: string;
+  };
   size?: 'small' | 'medium' | 'large';
   addOn?: ButtonAddOnProps;
   theme?: 'success' | 'warning' | 'danger' | 'neutral';

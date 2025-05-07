@@ -25,6 +25,12 @@ export function ButtonExamples() {
           Warning outline
         </Button>
         <Button disabled>Disabled button</Button>
+        <Button
+          addOn={{ type: 'icon', align: 'right', iconProps: { name: 'professional-tool-google-drive' } }}
+          link={{ href: 'https://www.google.be', target: '_blank' }}
+        >
+          Link button to Google
+        </Button>
       </div>
     </div>
   );
