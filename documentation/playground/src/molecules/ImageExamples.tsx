@@ -15,6 +15,11 @@ export function ImageExamples() {
         <Image src="https://placedog.net/400/300?r" alt="A random dog">
           <div>This div should log a warning</div>
         </Image>
+        <Image
+          src="https://placedog.net/400/300?r"
+          alt="A random dog"
+          renderImgFunction={(src, alt) => <img src="https://placedog.net/200/160?r" alt={alt + ' edited'} />}
+        ></Image>
       </div>
     </div>
   );

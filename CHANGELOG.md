@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Can use the button component as a link with the `link` prop.
+- `renderImgFunction` in Image to allow custom image rendering.
 
 ## 7.8.1 - 2025-03-24
 

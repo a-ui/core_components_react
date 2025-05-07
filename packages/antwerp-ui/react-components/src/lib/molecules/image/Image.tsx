@@ -2,7 +2,7 @@ import { classNames } from '../../../utils/dom.utils';
 import { logWarning } from '../../../utils/log.utils';
 import { ImageProps } from './Image.types';
 
-export function Image({ alt = '', children, src, noClass, qa }: ImageProps) {
+export function Image({ alt = '', children, src, noClass, renderImgFunction, qa }: ImageProps) {
   const classes = classNames({
     'm-image': !noClass
   });
@@ -21,7 +21,7 @@ export function Image({ alt = '', children, src, noClass, qa }: ImageProps) {
 
   return (
     <figure className={classes} data-qa={qa}>
-      <img src={src} alt={alt} />
+      {renderImgFunction ? renderImgFunction(src, alt) : <img src={src} alt={alt} />}
       {children}
     </figure>
   );
