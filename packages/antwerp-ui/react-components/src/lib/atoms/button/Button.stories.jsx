@@ -124,6 +124,14 @@ export default {
       control: { type: 'text' },
       description: 'The `ariaLabel` describes an accessible name for the avatar component. Required for icon buttons.'
     },
+    renderLinkFunction: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      description:
+        'Optional (custom) link renderer; allows to override the way links are rendered (if an `href` is provided). This is useful when using a routing framework (like React Router). The first parameter of this function is a `Link` object, with fields `label`, `href` and target. The second parameter is all the other props (class, ...). Example: `renderLinkFunction={(link, props) => <Link to={link.href} target={link.target} {...props}>{link.label}</Link>}`.'
+    },
     qa: QA_PROP_STORY
   }
 };

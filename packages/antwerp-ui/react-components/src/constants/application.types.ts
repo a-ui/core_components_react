@@ -1,8 +1,8 @@
-import { MouseEvent, KeyboardEvent } from 'react';
+import { MouseEvent, KeyboardEvent, ReactNode } from 'react';
 
 export interface Link {
   id?: string;
-  label: string;
+  label: string | ReactNode;
   href?: string;
   target?: string;
   onClick?: (event: MouseEvent | KeyboardEvent) => void;

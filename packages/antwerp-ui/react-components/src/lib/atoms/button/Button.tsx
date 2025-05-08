@@ -2,7 +2,7 @@ import { ButtonProps } from './Button.types';
 import { classNames } from '../../../utils/dom.utils';
 import { DEFAULT_EMPHASIS, DEFAULT_SIZE, Emphasis, SIZE_MAP, Theme } from '../../../constants/layout.settings';
 import { renderAddOn } from '../../../utils/render.utils';
-import { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { logWarning } from '../../../utils/log.utils';
 
 export function Button({
@@ -21,6 +21,7 @@ export function Button({
   theme,
   title,
   link,
+  renderLinkFunction,
   ...extraProps
 }: ButtonProps) {
   const classObject = {
@@ -63,10 +64,19 @@ export function Button({
       {classObject['has-icon'] ? null : children}
     </>
   );
+
+  const renderLink = () => {
+    if (renderLinkFunction) {
+      return renderLinkFunction({ ...link, label: content }, sharedProps);
+    }
+    return (
+      <a {...sharedProps} href={link?.href} target={link?.target}>
+        {content}
+      </a>
+    );
+  };
   return link && link.href ? (
-    <a {...sharedProps} href={link.href} target={link.target}>
-      {content}
-    </a>
+    renderLink()
   ) : (
     <button {...sharedProps} onClick={onClick} disabled={disabled}>
       {content}

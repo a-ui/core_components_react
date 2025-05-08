@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { Link, Title } from '../../../constants/application.types';
 import { ImageProps } from '../image';
 
@@ -10,5 +10,5 @@ export interface CardProps {
   children?: ReactNode;
   link?: Link;
   qa?: string;
-  renderLinkFunction?: (link: Link) => ReactNode;
+  renderLinkFunction?: (link: Link) => ReactElement;
 }

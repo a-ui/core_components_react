@@ -54,6 +54,14 @@ export default {
       },
       description: ''
     },
+    renderImgFunction: {
+      control: { type: 'function' },
+      table: {
+        type: { summary: 'function' }
+      },
+      description:
+        'Optional (custom) image renderer; allows to override the way images are rendered. This is useful when using a framework like NextJS. The first parameter of this function is the `src`, the second the `alt`. Example: `renderImgFunction={(src, alt) => <Image src={src} alt={alt} />}`.'
+    },
     qa: QA_PROP_STORY
   }
 };

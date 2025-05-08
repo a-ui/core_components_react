@@ -1,6 +1,7 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import { IconProps } from '../../base/icon';
 import { AvatarProps } from '../avatar';
+import { Link } from '../../../constants/application.types';
 
 export interface ButtonProps {
   ariaLabel?: string;
@@ -23,6 +24,7 @@ export interface ButtonProps {
   emphasis?: 'high' | 'medium' | 'low';
   ['aria-expanded']?: boolean;
   ['aria-haspopup']?: boolean;
+  renderLinkFunction?: (link: Link, props: Record<string, string | boolean | undefined>) => ReactElement;
 }
 
 export type ButtonAddOnProps = {

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 export interface ImageProps {
   alt?: string;
@@ -6,4 +6,5 @@ export interface ImageProps {
   children?: ReactElement;
   src: string;
   qa?: string;
+  renderImgFunction?: (src: string, alt: string) => ReactNode;
 }
