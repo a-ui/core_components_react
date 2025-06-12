@@ -1,0 +1,13 @@
+.u-flex {
+  display: flex;
+  gap: var(--SPACER-XS);
+}
+
+.u-form {
+  max-width: 32rem;
+}
+
+.u-pagination {
+  display: flex;
+  justify-content: flex-end;
+}
