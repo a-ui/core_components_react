@@ -10,10 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Use Node 18.x
+      - name: Use Node 22.x
         uses: actions/setup-node@v4
         with:
-          node-version: '18.16.0'
+          node-version: 22
       - name: Install Yarn
         run: npm i -g yarn
       - name: Install package.json dependencies
