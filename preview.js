@@ -6,5 +6,5 @@ export const parameters = {
       date: /Date$/
     }
   },
-  viewMode: 'docs'
+  viewMode: 'docs',
 };
