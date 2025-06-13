@@ -1,5 +1,6 @@
 .u-flex {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--SPACER-XS);
 }
 
