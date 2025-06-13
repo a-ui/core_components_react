@@ -7,7 +7,7 @@ Npm repo: https://www.npmjs.com/package/@a-ui/react.
 
 ## Local setup
 
-- Node version 18, v. `18.14.2` at time of writing.
+- Node version 22.x at time of writing.
 - `npm i -g yarn`
 - `yarn install` (installs node_modules for global project and for storybook)
 - Run example app: `yarn run playground` (and go to `localhost:4200`) vs
