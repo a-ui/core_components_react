@@ -22,10 +22,13 @@ export function NavigationList({
   });
 
   const onClick = (event: MouseEvent<HTMLElement>, item: NavigationListItemProps, position: number) => {
-    if (onItemClick && !item.disabled) {
+    if (onItemClick) {
       event.preventDefault();
       event.stopPropagation();
       onItemClick(item.id, position);
+      if (!item.disabled) {
+        onItemClick(item.id, position);
+      }
     }
   };
 
@@ -37,7 +40,7 @@ export function NavigationList({
     return (
       <li key={item.id} className={itemClass}>
         <a
-          href={item.href}
+          href={item.href || ''}
           onClick={(e) => onClick(e, item, index)}
           {...(item.disabled ? { 'aria-disabled': 'true' } : {})}
           {...(item.active ? { 'aria-current': 'true' } : {})}
