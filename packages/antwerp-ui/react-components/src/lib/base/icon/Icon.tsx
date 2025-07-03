@@ -94,7 +94,7 @@ export const Icon = forwardRef(function Icon(
       data-qa={qa}
     >
       {name ? (
-        <svg aria-hidden="true">
+        <svg aria-hidden="true" focusable="false">
           <use href={`#ai-${name.replace('ai-', '')}`} />
         </svg>
       ) : null}
