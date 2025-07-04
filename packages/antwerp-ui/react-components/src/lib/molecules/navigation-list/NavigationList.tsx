@@ -53,7 +53,7 @@ export function NavigationList({
 
   return (
     <nav role="navigation" className={navClass} aria-label={ariaLabel} data-qa={qa}>
-      <ul ref={scrollDivRef} onScroll={handleScroll} {...(!isScrollStart || !isScrollEnd ? { tabIndex: 0 } : {})}>
+      <ul ref={scrollDivRef} onScroll={handleScroll}>
         {items.map(renderNavigationItem)}
       </ul>
     </nav>
