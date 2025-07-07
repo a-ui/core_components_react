@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 7.9.4 - 2025-07-07
+
+### Fixed
+
+- Improved the accessibility of the pagination by defining when the previous and next button are disabled
+
 ## 7.9.3 - 2025-07-04
 
 ### Fixed

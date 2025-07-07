@@ -97,14 +97,28 @@ export function Pagination({
     <nav role="navigation" aria-label={ariaLabel} data-qa={qa}>
       <ul className={paginationClass}>
         <li className="m-pagination__prev" key={'pagination__prev'}>
-          <a href={'#'} className={paginationPreviousClass} aria-label={ariaLabelPreviousPage} onClick={onPrev}>
+          <a
+            href={'#'}
+            className={paginationPreviousClass}
+            aria-label={ariaLabelPreviousPage}
+            aria-disabled={currentPage <= 1 ? 'true' : undefined}
+            tabIndex={currentPage <= 1 ? -1 : 0}
+            onClick={onPrev}
+          >
             <Icon name="arrow-left-1" />
           </a>
         </li>
         {display === 'text' && renderTextPagination(currentPage, totalPages, text, ariaLabelPage)}
         {display === 'numbers' && renderNumbersPagination(currentPage, totalPages, ariaLabelPage, pageChange)}
         <li className="m-pagination__next" key="pagination__next">
-          <a href={'#'} className={paginationNextClass} aria-label={ariaLabelNextPage} onClick={onNext}>
+          <a
+            href={'#'}
+            className={paginationNextClass}
+            aria-label={ariaLabelNextPage}
+            aria-disabled={currentPage >= totalPages ? 'true' : undefined}
+            tabIndex={currentPage >= totalPages ? -1 : 0}
+            onClick={onNext}
+          >
             <Icon name="arrow-right-1" />
           </a>
         </li>
