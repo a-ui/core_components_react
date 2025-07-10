@@ -1,7 +1,7 @@
 export interface AutocompleteProps {
   id?: string;
   label?: string;
-  items?: { value: string; label: string; key?: string }[];
+  items?: { value: string; label: string; subLabel?: string; key?: string }[];
   name?: string;
   multiple?: boolean;
   required?: boolean;

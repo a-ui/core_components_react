@@ -185,6 +185,7 @@ export function Autocomplete({
               key={r.key || r.value}
             >
               {r.label}
+              {r.subLabel ? <p className="small">{r.subLabel}</p> : null}
             </ListItem>
           ))}
         </FunctionalList>

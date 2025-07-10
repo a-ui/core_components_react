@@ -9,7 +9,7 @@ const items = [
   { label: 'Big Bend', value: '5' },
   { label: 'Biscayne', value: '6' },
   { label: 'Black Canyon of the Gunnison', value: '7' },
-  { label: 'Bryce Canyon', value: '8' },
+  { label: 'Bryce Canyon', subLabel: 'A landscape of jagged red rock formations.', value: '8' },
   { label: 'Canyonlands', value: '9' },
   { label: 'Capitol Reef', value: '10' }
 ];

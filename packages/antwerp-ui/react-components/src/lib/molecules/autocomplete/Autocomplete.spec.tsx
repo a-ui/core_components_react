@@ -11,7 +11,7 @@ describe('Autocomplete', () => {
   const items = [
     { label: 'Acadia', value: '1' },
     { label: 'American Samoa', value: '2' },
-    { label: 'Bryce Canyon', value: '3' },
+    { label: 'Bryce Canyon', subLabel: 'A landscape of jagged red rock formations.', value: '3' },
     { label: 'Canyonlands', value: '4' }
   ];
 
