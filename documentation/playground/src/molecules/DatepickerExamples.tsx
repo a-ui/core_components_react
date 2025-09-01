@@ -34,6 +34,7 @@ export function DatepickerExamples() {
           label="Without value (format dd/mm/yyyy)"
           required
           inputProps={{ id: 'aui-datepicker-1' }}
+          onChange={v => console.log(v)}
           calendarProps={{
             unavailable: [new Date(Date.now()).toISOString()],
             unavailableTo: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
@@ -80,7 +81,7 @@ export function DatepickerExamples() {
             return 'IT DOES NOT CONTAIN 00/00';
           }}
           value={'THIS IS NOT A DATE!'}
-          inputProps={{ id: 'aui-datepicker-1', state: 'success' }}
+          inputProps={{ id: 'aui-datepicker-2', state: 'success' }}
           calendarProps={{
             unavailable: [new Date(Date.now()).toISOString()],
             unavailableTo: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),

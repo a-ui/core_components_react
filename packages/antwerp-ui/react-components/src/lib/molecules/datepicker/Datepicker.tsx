@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { DatepickerProps } from './Datepicker.types';
 import { DEFAULT_DATE_FORMAT } from '../../../constants/settings';
-import { formatISO } from 'date-fns';
 import { Icon } from '../../base/icon';
-import { isValid as fnsIsValid, format as fnsFormat, parse as fnsParse } from 'date-fns';
+import { isValid as fnsIsValid, format as fnsFormat, parse as fnsParse, formatISO } from 'date-fns';
 import { renderDescription, renderLabel } from '../../atoms/input/input.renders';
 import { TextField } from '../../atoms/input';
 import { useOutsideClick } from '../../../utils/custom.hooks';

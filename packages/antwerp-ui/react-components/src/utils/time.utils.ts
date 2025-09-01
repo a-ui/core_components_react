@@ -1,4 +1,6 @@
 import { isAfter, isBefore, isSameDay, format, Locale } from 'date-fns';
+import { tz } from '@date-fns/tz';
+import { TIMEZONE } from '../constants/settings';
 
 export function isInRange(date: Date, from?: string, to?: string, list?: string[]): boolean {
   return (
@@ -26,4 +28,10 @@ export function formatWithFallback(date: Date, dateFormat: string, locale?: Loca
   } catch (_e) {
     return fallback;
   }
+}
+
+export function toUtcMidnightInBrussels(year: number, month: number, day: number): string {
+  const brusselsDate = tz(TIMEZONE)(new Date(Date.UTC(year, month, day, 0, 0, 0)));
+  const brusselsISODate = brusselsDate.toISOString();
+  return brusselsISODate;
 }
