@@ -1,1 +1,0 @@
-import{j as a}from"./jsx-runtime-c9381026.js";import{r as e}from"./index-8b3efc3f.js";import{c as i}from"./dom.utils-26b7419a.js";import{w as m}from"./render.utils-92ccfda9.js";function f({children:r=[],qa:s}){const t=i({"o-tag-list":!0});return a("ul",{className:t,"data-qa":s,children:e.Children.map(r,o=>m(o,a("li",{className:"o-tag-list__item"}),!0))})}export{f as T};
