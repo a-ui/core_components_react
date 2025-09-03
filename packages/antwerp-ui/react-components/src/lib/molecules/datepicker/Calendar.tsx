@@ -3,7 +3,7 @@ import { Button } from '../../atoms/button';
 import { classNames } from '../../../utils/dom.utils';
 import { DaysView } from './views/DaysView';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
-import { getMonth, getYear, addMonths, subMonths, addYears, subYears, formatISO } from 'date-fns';
+import { getMonth, getYear, addMonths, subMonths, addYears, subYears } from 'date-fns';
 import { DEFAULT_LOCALE } from '../../../constants/settings';
 import { Icon } from '../../base/icon';
 import { MonthsView } from './views/MonthsView';
@@ -199,6 +199,11 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         aria-hidden={!isOpen}
         data-qa={qa}
         onBlur={onBlur}
+        onMouseDownCapture={(e) => {
+          const el = e.currentTarget as HTMLElement;
+          el.setAttribute('data-mousedown-inside', 'true');
+          setTimeout(() => el.removeAttribute('data-mousedown-inside'), 0);
+        }}
         onClick={(e) => e.stopPropagation()}
         {...modalProps}
       >

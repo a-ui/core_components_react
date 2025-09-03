@@ -7,7 +7,7 @@ import { renderDescription, renderLabel } from '../../atoms/input/input.renders'
 import { TextField } from '../../atoms/input';
 import { useOutsideClick } from '../../../utils/custom.hooks';
 import Calendar from './Calendar';
-import React, { FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import React, { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { formatIfValid, isInRange } from '../../../utils/time.utils';
 
 export function Datepicker({
@@ -89,12 +89,6 @@ export function Datepicker({
     }
     return () => datepickerRef.current?.removeEventListener('keydown', onEsc);
   }, [open, isOpen, onIconClick]);
-
-  const handleBlur = (e: FocusEvent) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) {
-      calendarToggle(false);
-    }
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -204,7 +198,6 @@ export function Datepicker({
             className={`m-datepicker--fixed ${openLeft ? 'm-datepicker--left' : ''}`}
             isOpen={open !== undefined ? open : isOpen}
             onChange={handleCalendarDateChange}
-            onBlur={handleBlur}
             value={currentValue}
             isModal
             {...calendarProps}
