@@ -9,7 +9,7 @@ import { Icon } from '../../base/icon';
 import { MonthsView } from './views/MonthsView';
 import { YearsView } from './views/YearsView';
 import { titleize } from '../../../utils/string.utils';
-import { formatWithFallback } from '../../../utils/time.utils';
+import { formatWithFallback, toUtcMidnightInBrussels } from '../../../utils/time.utils';
 
 export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
   (
@@ -144,7 +144,10 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     const handleChange = (value: Date) => {
       if (activeView === CalendarView.DAYS) {
         setActiveDate(value);
-        return onChange && onChange(formatISO(value));
+        const year = value.getFullYear();
+        const month = value.getMonth();
+        const day = value.getDate();
+        return onChange && onChange(toUtcMidnightInBrussels(year, month, day));
       } else if (activeView === CalendarView.MONTHS) {
         setActiveMonth(getMonth(value));
         return setActiveView(CalendarView.DAYS);
