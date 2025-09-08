@@ -1,5 +1,4 @@
-import React, { cloneElement, ForwardedRef, forwardRef, useImperativeHandle } from 'react';
-import ReactDOM from 'react-dom';
+import { cloneElement, ForwardedRef, forwardRef, useImperativeHandle, useRef, useState, useEffect, useCallback } from 'react';
 import { DEFAULT_SIZE, SIZE_MAP } from '../../../constants/layout.settings';
 import { classNames } from '../../../utils/dom.utils';
 import { FlyoutProps } from './Flyout.types';
@@ -17,45 +16,45 @@ export const Flyout = forwardRef(function Flyout(
     onStateChange,
     qa
   }: FlyoutProps,
-  forwardRef: ForwardedRef<null>
+  forwardRef: ForwardedRef<HTMLDivElement | null>
 ) {
-  const [isOpen, setIsOpen] = React.useState(!!open);
+  const [isOpen, setIsOpen] = useState(!!open);
   const showFlyout = open === false || open === true ? open : isOpen;
 
-  const flyoutRef = React.useRef(null);
+  const flyoutRef = useRef<HTMLDivElement | null>(null);
   useImperativeHandle(forwardRef, () => flyoutRef.current);
 
-  const _handleOutsideClick = React.useCallback(
+  const _handleOutsideClick = useCallback(
     (e: MouseEvent) => {
-      const area = ReactDOM.findDOMNode(flyoutRef.current);
-      if (e.target === area?.lastChild) {
+      const area = flyoutRef.current;
+      if (!area) return;
+
+      if (e.target === area.lastChild) {
         e.preventDefault();
       }
-      if (area && !area.contains(e.target as HTMLInputElement)) {
+
+      if (!area.contains(e.target as Node)) {
         setIsOpen(false);
-        onStateChange && onStateChange(false);
+        onStateChange?.(false);
       }
     },
     [onStateChange]
   );
 
-  const initEventHandlers = React.useCallback(() => {
+  useEffect(() => {
     if (showFlyout) {
       document.addEventListener('mousedown', _handleOutsideClick, false);
-    } else {
-      document.removeEventListener('mousedown', _handleOutsideClick, false);
+      return () => {
+        document.removeEventListener('mousedown', _handleOutsideClick, false);
+      };
     }
-  }, [_handleOutsideClick, showFlyout]);
+  }, [showFlyout, _handleOutsideClick]);
 
   const _toggleIsOpen = () => {
-    setIsOpen(!showFlyout);
-    initEventHandlers();
-    onStateChange && onStateChange(!showFlyout);
+    const newState = !showFlyout;
+    setIsOpen(newState);
+    onStateChange?.(newState);
   };
-
-  React.useEffect(() => {
-    initEventHandlers();
-  }, [initEventHandlers]);
 
   const flyoutClasses = classNames({
     'm-flyout': true,
