@@ -31,7 +31,7 @@ export function Button({
     'a-button--outlined': emphasis === Emphasis.MEDIUM,
     'a-button--text': emphasis === Emphasis.LOW,
     'a-button--full': !!fullWidth,
-    'has-icon': addOn?.type === 'icon' && !['left', 'right'].includes(addOn?.align || ''),
+    'has-icon': ['icon', 'spinner'].includes(addOn?.type || '') && !['left', 'right'].includes(addOn?.align || ''),
     'has-icon-left': addOn?.type !== 'avatar' && addOn?.align === 'left',
     'has-icon-right':
       (addOn?.type !== 'avatar' && addOn?.align === 'right') || (addOn?.type === 'spinner' && addOn?.align !== 'left'),
