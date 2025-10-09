@@ -37,12 +37,12 @@
     const file = params.get('file');
     if (branding && file) {
       const version = params.get('version') || '1.0.0';
-      const overrideLink = document.createElement('link');
-      overrideLink.rel = 'stylesheet';
-      overrideLink.href = `https://cdn.antwerpen.be/${branding}/${version}/${file}.min.css`;
-      document.head.appendChild(overrideLink);
+      const variantLink = document.createElement('link');
+      variantLink.rel = 'stylesheet';
+      variantLink.href = `https://cdn.antwerpen.be/${branding}/${version}/${file}.min.css`;
+      document.head.appendChild(variantLink);
 
-      console.log(`Loaded override branding: ${overrideLink.href}`);
+      console.log(`Loaded variant branding: ${variantLink.href}`);
     }
 
     console.log(`Loaded core branding: ${coreLink.href}`);
