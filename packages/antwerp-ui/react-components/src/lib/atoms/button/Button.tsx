@@ -2,7 +2,7 @@ import { ButtonProps } from './Button.types';
 import { classNames } from '../../../utils/dom.utils';
 import { DEFAULT_EMPHASIS, DEFAULT_SIZE, Emphasis, SIZE_MAP, Theme } from '../../../constants/layout.settings';
 import { renderAddOn } from '../../../utils/render.utils';
-import React, { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { logWarning } from '../../../utils/log.utils';
 
 export function Button({

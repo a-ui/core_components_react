@@ -37,7 +37,7 @@ const renderModalAlert = (className: string, props: AlertProps) => {
         </span>
       )}
       {title?.label && (
-        <HeaderTag id={titleId} className="u-margin-bottom-xs">
+        <HeaderTag id={titleId} className="m-alert__title u-margin-bottom-xs">
           {title.label}
         </HeaderTag>
       )}

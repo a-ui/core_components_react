@@ -27,7 +27,9 @@ export default {
       label: 'link label',
       href: 'https://www.google.be',
       target: '_blank'
-    }
+    },
+    highlighted: false,
+    border: 'normal'
   },
   argTypes: {
     image: {
@@ -67,6 +69,23 @@ export default {
       },
       control: { type: 'object' },
       description: 'The `link` prop sets the footer action for the card component.'
+    },
+    highlighted: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      description: 'Set the state of the button to disabled.'
+    },
+    border: {
+      control: { type: 'select' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'normal' }
+      },
+      options: ['normal', 'light', 'none'],
+      description: 'Set the border type to normal (default type), light or none.'
     },
     children: {
       control: { type: false },

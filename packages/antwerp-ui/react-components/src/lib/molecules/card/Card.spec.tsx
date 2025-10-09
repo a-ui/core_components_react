@@ -56,6 +56,50 @@ describe('UI Components - Molecules - Card', () => {
     expect(screen.getByText('Card description')).toBeTruthy();
   });
 
+  it('should add the highlight class', () => {
+    const { baseElement } = render(
+      <Card
+        title={{ label: 'Card Title' }}
+        subTitle="Card Subtitle"
+        highlighted
+      />
+    );
+    expect(baseElement.getElementsByClassName('m-card--highlighted')).toBeTruthy();
+  });
+
+  it('should be able to define a light border', () => {
+    const { baseElement } = render(
+      <Card
+        title={{ label: 'Card Title' }}
+        subTitle="Card Subtitle"
+        border="light"
+      />
+    );
+    expect(baseElement.getElementsByClassName('m-card--light-border')).toBeTruthy();
+  });
+
+  it('should be able to remove border', () => {
+    const { baseElement } = render(
+      <Card
+        title={{ label: 'Card Title' }}
+        subTitle="Card Subtitle"
+        border="none"
+      />
+    );
+    expect(baseElement.getElementsByClassName('m-card--no-border')).toBeTruthy();
+  });
+
+  it('should be able to define a custom class', () => {
+    const { baseElement } = render(
+      <Card
+        title={{ label: 'Card Title' }}
+        subTitle="Card Subtitle"
+        className="m-card--custom"
+      />
+    );
+    expect(baseElement.getElementsByClassName('m-card--custom')).toBeTruthy();
+  });
+
   it('should render a link', () => {
     const { baseElement } = render(
       <Card
