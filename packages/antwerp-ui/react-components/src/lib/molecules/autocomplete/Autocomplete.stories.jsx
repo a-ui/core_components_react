@@ -154,5 +154,9 @@ export default {
   }
 };
 
-const Template = (args) => <Autocomplete {...args} />;
+const Template = (args) => (
+  <div style={{ minHeight: '18rem' }}>
+    <Autocomplete {...args} />
+  </div>
+);
 export const autocomplete = Template.bind({});

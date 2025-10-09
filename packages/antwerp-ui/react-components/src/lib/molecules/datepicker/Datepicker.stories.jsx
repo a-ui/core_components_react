@@ -136,14 +136,16 @@ export default {
 const Template = (args) => {
   const [value, setValue] = useState(new Date(Date.now()));
   return (
-    <Datepicker
-      {...args}
-      value={value}
-      onChange={(p) => {
-        args.onChange(p);
-        setValue(p);
-      }}
-    />
+    <div style={{ minHeight: '27rem' }}>
+      <Datepicker
+        {...args}
+        value={value}
+        onChange={(p) => {
+          args.onChange(p);
+          setValue(p);
+        }}
+      />
+    </div>
   );
 };
 

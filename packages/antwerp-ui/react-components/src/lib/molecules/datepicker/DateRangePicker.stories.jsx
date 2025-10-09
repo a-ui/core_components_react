@@ -93,14 +93,16 @@ export default {
 const Template = (args) => {
   const [value, setValue] = useState(['', '']);
   return (
-    <DateRangePicker
-      {...args}
-      value={value}
-      onChange={(p) => {
-        args.onChange(p);
-        setValue(p);
-      }}
-    />
+    <div style={{ minHeight: '27rem' }}>
+      <DateRangePicker
+        {...args}
+        value={value}
+        onChange={(p) => {
+          args.onChange(p);
+          setValue(p);
+        }}
+      />
+    </div>
   );
 };
 
