@@ -91,5 +91,9 @@ export default {
   }
 };
 
-const Template = (args) => <Flyout {...args} />;
+const Template = (args) => (
+  <div style={{ minHeight: '6rem' }}>
+    <Flyout {...args} />
+  </div>
+);
 export const flyout = Template.bind({});

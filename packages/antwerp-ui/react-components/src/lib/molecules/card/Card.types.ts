@@ -9,6 +9,9 @@ export interface CardProps {
   description?: string;
   children?: ReactNode;
   link?: Link;
+  className?: string;
+  border?: 'normal' | 'light' | 'none';
+  highlighted?: boolean;
   qa?: string;
   renderLinkFunction?: (link: Link) => ReactElement;
 }

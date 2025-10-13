@@ -13,6 +13,8 @@ export function CardExamples() {
               <Copyright forImage sign="©" label="With link" link="https://www.google.be" qa="image copyright" />
             )
           }}
+          highlighted
+          border="none"
           title={{ label: 'Card Title', tag: 'h2' }}
           subTitle="May 4th 2021, 12:34"
           description="Arma virumque cano, Troiae qui primus ab oris Italiam, fato profugus, Laviniaque venit litora, multum ille et terris iactatus et alto vi superum saevae memorem Iunonis ob iram. Multa quoque et bello passus, dum conderet urbem, inferretque deos Latio, genus unde Latinum, Albanique patres, atque altae moenia Romae."

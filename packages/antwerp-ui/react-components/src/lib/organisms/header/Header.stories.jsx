@@ -15,7 +15,7 @@ export default {
   },
   args: {
     logoHref: '/',
-    logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/6.6.6/assets/images/a-logo.svg',
+    logoSrc: 'https://cdn.antwerpen.be/core_branding_scss/7.1.1/assets/images/a-logo.svg',
     logoAlt: 'Naar de startpagina',
     skipToMainLabel: 'Ga naar inhoud',
     menuItems: [
@@ -43,7 +43,7 @@ export default {
       control: { type: 'text' },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'https://cdn.antwerpen.be/core_branding_scss/6.6.6/assets/images/a-logo.svg' }
+        defaultValue: { summary: 'https://cdn.antwerpen.be/core_branding_scss/7.1.1/assets/images/a-logo.svg' }
       },
       description: 'The url for the src logo image in the header component.'
     },
@@ -75,5 +75,9 @@ export default {
   }
 };
 
-const Template = (args) => <Header {...args} />;
+const Template = (args) => (
+  <div style={{ minHeight: '7rem' }}>
+    <Header {...args} />
+  </div>
+);
 export const header = Template.bind({});
