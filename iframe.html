@@ -384,51 +384,34 @@
     white-space: normal !important;
   }
 </style>
-<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.6.6/main.min.css" />
 <script type="application/javascript">
-  function fetchBrandingVersions() {
-    try {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', './branding-versions.json', false); // false for synchronous
-      xhr.send();
-      if (xhr.status === 200) {
-        const data = JSON.parse(xhr.responseText);
-        return data;
-      } else {
-        console.error(
-          `preview-head.html | fetchBrandingVersions - Error fetching branding data, status = "${xhr.status}"`
-        );
-        return null;
-      }
-    } catch (error) {
-      console.error(
-        `preview-head.html | fetchBrandingVersions - Error fetching branding data, message = "${error.message}"`
-      );
-      return null;
-    }
-  }
+  async function main() {
+    const params = new URLSearchParams(window.location.search);
+    const coreVersion = params.get('coreVersion') || '7.1.1';
+    const coreLink = document.createElement('link');
+    coreLink.rel = 'stylesheet';
+    coreLink.href = `https://cdn.antwerpen.be/core_branding_scss/${coreVersion}/main.min.css`;
+    document.head.appendChild(coreLink);
 
-  function main() {
-    try {
-      const params = new URL(document.location).searchParams;
-      if (params.get('branding') && params.get('file')) {
-        const versions = fetchBrandingVersions();
-        const version = params.get('version') || versions[params.get('branding')];
-        document.write(
-          `<link rel="stylesheet" href="https://cdn.antwerpen.be/${params.get('branding')}/${version}/${params.get(
-            'file'
-          )}.min.css" />`
-        );
-      }
-    } catch (error) {
-      console.error(`preview-head.html | main - Error settings branding styling, message = "${error.message}"`);
+    const branding = params.get('branding');
+    const file = params.get('file');
+    if (branding && file) {
+      const version = params.get('version') || '1.0.0';
+      const variantLink = document.createElement('link');
+      variantLink.rel = 'stylesheet';
+      variantLink.href = `https://cdn.antwerpen.be/${branding}/${version}/${file}.min.css`;
+      document.head.appendChild(variantLink);
+
+      console.log(`Loaded variant branding: ${variantLink.href}`);
     }
+
+    console.log(`Loaded core branding: ${coreLink.href}`);
   }
 
   main();
 </script>
 
-  <script type="module" crossorigin src="./assets/iframe-185d4599.js"></script>
+  <script type="module" crossorigin src="./assets/iframe-1e674da5.js"></script>
 </head>
 
 <body>

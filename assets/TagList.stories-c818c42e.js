@@ -1,0 +1,7 @@
+import{a as n,j as e}from"./jsx-runtime-c9381026.js";import{T as o}from"./Tag-dfb71065.js";import{T as a}from"./TagList-7a7c73c2.js";import{Q as m}from"./stories.settings-7ac24d87.js";import"./index-8b3efc3f.js";import"./_commonjsHelpers-de833af9.js";import"./dom.utils-26b7419a.js";import"./Icon-7c7c2667.js";import"./settings-d981ed66.js";import"./log.utils-4457c06c.js";import"./render.utils-45a27ac5.js";import"./layout.settings-ece9b612.js";import"./Avatar-356daf9d.js";import"./Spinner-581bc327.js";a.displayName="TagList";const R={title:"React/Organisms/TagList",component:a,parameters:{docs:{description:{component:"The tag list component shows a collection of one or multiple tags, that are in one way or another related to each other or to the context they are placed next to."}}},argTypes:{children:{table:{type:{summary:"ReactNode[]"},description:"The children of a `TagList` component are `Tag` components."}},qa:m}},c=({...l})=>n(a,{...l,children:[e(o,{label:"Hello 1",iconLeft:"tags"}),e(o,{label:"Hello 2",toggle:!0,iconLeft:"tags"}),e(o,{label:"Hello 3",iconLeft:"tags"})]}),t=c.bind({});var r,s,i;t.parameters={...t.parameters,docs:{...(r=t.parameters)==null?void 0:r.docs,source:{originalSource:`({
+  ...args
+}) => <TagList {...args}>
+    <Tag label="Hello 1" iconLeft="tags" />
+    <Tag label="Hello 2" toggle iconLeft="tags" />
+    <Tag label="Hello 3" iconLeft="tags" />
+  </TagList>`,...(i=(s=t.parameters)==null?void 0:s.docs)==null?void 0:i.source}}};const j=["tagList"];export{j as __namedExportsOrder,R as default,t as tagList};
