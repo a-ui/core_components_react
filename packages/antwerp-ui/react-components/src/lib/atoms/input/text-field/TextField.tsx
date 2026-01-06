@@ -34,7 +34,8 @@ export const TextField = forwardRef(function TextField(
     onClick,
     onFocus,
     onKeyDown,
-    onKeyUp
+    onKeyUp,
+    ...restProps,
   }: TextFieldProps,
   inputRef: ForwardedRef<HTMLInputElement>
 ) {
@@ -46,6 +47,11 @@ export const TextField = forwardRef(function TextField(
 
   const toggleCharCounter = charCounter !== undefined ? charCounter : maxLength ? true : false;
   const charCounterText = charCountText ? charCountText : maxLength ? '%count% / %max%' : '%count%';
+
+  const describedBy = [
+    toggleCharCounter ? `${id}--counter` : null,
+    description ? `${id}--description` : null
+  ].filter(Boolean).join(' ') || undefined;
 
   const classes = classNames({
     'a-input': true,
@@ -96,8 +102,8 @@ export const TextField = forwardRef(function TextField(
           onKeyDown={onKeyDown}
           onKeyUp={onKeyUp}
           role={role}
-          {...(toggleCharCounter ? { 'aria-describedby': `${id}--counter` } : {})}
-          {...(description ? { 'aria-describedby': `${id}--description` } : {})}
+          aria-describedby={describedBy}
+          {...restProps}
         ></input>
         {!!iconRight && !iconLeft && <Icon name={iconRight} />}
         {!!addOnRight && <div className="a-input__addon">{addOnRight}</div>}
