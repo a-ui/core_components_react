@@ -35,7 +35,7 @@ export const TextField = forwardRef(function TextField(
     onFocus,
     onKeyDown,
     onKeyUp,
-    ...restProps,
+    ...restProps
   }: TextFieldProps,
   inputRef: ForwardedRef<HTMLInputElement>
 ) {
