@@ -16,6 +16,7 @@ export function Upload({
   maxSizeLabel = 'Maximale bestandsgrootte:',
   hideMaxSizeLabel = false,
   multiple = true,
+  required = false,
   onChange,
   onDelete,
   sizeErrorLabel = 'Maximale bestandsgrootte overschreden.',
@@ -53,6 +54,7 @@ export function Upload({
             id={id}
             type="file"
             multiple={multiple}
+            required={required}
             onChange={handleChange}
             accept={acceptedFormat}
             className="m-upload__input"
@@ -61,7 +63,7 @@ export function Upload({
           />
           <div className="m-upload__content">
             <label htmlFor={id} className="m-upload__message u-margin-bottom">
-              {label}
+              {label} {required && <span className="u-text-danger">*</span>}
             </label>
           </div>
         </div>

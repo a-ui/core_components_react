@@ -60,6 +60,14 @@ export default {
         defaultValue: { summary: true }
       }
     },
+    required: {
+      control: { type: 'boolean' },
+      description: 'Sets `required` attribute on `input`.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      }
+    },
     disabled: {
       control: { type: 'boolean' },
       description: 'Disables the input.',
