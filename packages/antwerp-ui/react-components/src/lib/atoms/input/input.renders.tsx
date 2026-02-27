@@ -1,5 +1,6 @@
 import { State, Theme, THEME_ICON_MAP } from '../../../constants/layout.settings';
 import { classNames } from '../../../utils/dom.utils';
+import { renderRequiredAsterisk } from '../../../utils/render.utils';
 import { Icon } from '../../base/icon';
 import { DescriptionProps, LabelProps, CharacterCounterProps } from './Input.types';
 
@@ -12,7 +13,7 @@ export const renderLabel = ({ label, id, required, inline, className = '', noMar
   return label ? (
     <label className={labelClasses} htmlFor={id}>
       {label}
-      {required && <span className="u-text-danger">*</span>}
+      {required && renderRequiredAsterisk()}
     </label>
   ) : null;
 };
@@ -43,9 +44,9 @@ export const renderCharacterCounter = ({
   const hasCharOverflow = maxLength && charLeft <= 0;
   const countDisplayText = maxLength
     ? charCountText
-        ?.replace('%max%', maxLength.toString())
-        .replace('%count%', characterCount.toString())
-        .replace('%left%', charLeft.toString())
+      ?.replace('%max%', maxLength.toString())
+      .replace('%count%', characterCount.toString())
+      .replace('%left%', charLeft.toString())
     : charCountText?.replace('%count%', characterCount.toString());
   return charCounter ? (
     <small

@@ -2,6 +2,7 @@ import { RadioGroupProps } from './Radio.types';
 import { ChangeEvent, cloneElement, Children, ReactElement } from 'react';
 import { classNames } from '../../../utils/dom.utils';
 import { renderDescription } from '../input/input.renders';
+import { renderRequiredAsterisk } from '../../../utils/render.utils';
 
 export function RadioGroup({ label, name, children = [], value, qa, onChange, description, state, required = false }: RadioGroupProps) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -14,7 +15,7 @@ export function RadioGroup({ label, name, children = [], value, qa, onChange, de
 
   return (
     <fieldset className={classes} data-qa={qa}>
-      <legend className="a-input__label">{label}{required && <span className="u-text-danger">*</span>}</legend>
+      <legend className="a-input__label">{label}{required && renderRequiredAsterisk()}</legend>
       {renderDescription({ description, state })}
       {Children.map(children, (child: ReactElement) => {
         return cloneElement(child, {

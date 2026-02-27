@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed a margin bottom issue with the inline alert title
 - Fixed the `aria-describedby` attribute not being linked to `description` text in Datepicker component
+- Fixed the required asterisk not being hidden from screen readers
 
 ## 7.11.1 - 2026-01-07
 

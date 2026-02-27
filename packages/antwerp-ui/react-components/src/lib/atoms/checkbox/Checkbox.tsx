@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
 import { SCREEN_READER_CLASS } from '../../../constants/settings';
 import { classNames } from '../../../utils/dom.utils';
+import { renderRequiredAsterisk } from '../../../utils/render.utils';
 import { CheckboxProps } from './Checkbox.types';
 
 export function Checkbox({
@@ -45,7 +46,7 @@ export function Checkbox({
       />
       <label htmlFor={id}>
         <span className={showLabel ? undefined : SCREEN_READER_CLASS}>{label}</span>
-        {required && <span className="u-text-danger">*</span>}
+        {required && renderRequiredAsterisk()}
       </label>
     </div>
   );
