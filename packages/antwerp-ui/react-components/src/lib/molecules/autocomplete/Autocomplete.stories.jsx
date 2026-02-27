@@ -124,6 +124,15 @@ export default {
       description:
         'When the `Autocomplete` is associated with a success or error state, the border of the inputfield as well as the description above will match to that thematic colour together with an identifiable icon.'
     },
+    disabled: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      description:
+        'When an input field is disabled, the container takes on a light grey fill, while the enclosed form inputs and add-ons are also rendered in lighter, muted greys without any interaction.'
+    },
     addOn: {
       control: { type: 'object' },
       table: {

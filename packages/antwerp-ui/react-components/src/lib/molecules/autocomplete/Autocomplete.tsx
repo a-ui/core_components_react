@@ -21,7 +21,8 @@ export function Autocomplete({
   qa,
   description,
   state,
-  addOn
+  addOn,
+  disabled = false
 }: AutocompleteProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState(items);
@@ -160,6 +161,7 @@ export function Autocomplete({
           required={required}
           state={state}
           addOn={addOn ? { ...addOn, content: addOn.content } : undefined}
+          disabled={disabled}
         />
       }
       ref={flyoutRef}
