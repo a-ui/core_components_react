@@ -76,6 +76,15 @@ export default {
       description:
         'Function triggered when an option is selected. The first parameter of this function is the selected value as `string`.'
     },
+    required: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      description:
+        'The `required` prop adds a red asterisk to the `RadioGroup` label and adds the required attribute to the HTML radio group field.'
+    },
     qa: QA_PROP_STORY
   }
 };

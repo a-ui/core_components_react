@@ -94,4 +94,20 @@ describe('UI Components - Atoms - RadioGroup', () => {
     const descriptionEl = getByText('description');
     expect(descriptionEl).toHaveClass('is-error');
   });
+
+  it('adds a red asterisk to the label when the required prop is true', () => {
+    const { getByLabelText, container } = render(
+      <RadioGroup {...defaultProps} required>
+        <Radio value="Scorpion" label="Scorpion" id="first-option" />
+        <Radio value="Raiden" label="Raiden" id="second-option" />
+        <Radio value="Sub-Zero" label="Sub-Zero" id="third-option" />
+        <Radio value="None" label="None" id="fourth-option" />
+      </RadioGroup>
+    );
+    expect(container.querySelector('.u-text-danger')).toBeInTheDocument();
+    expect((getByLabelText(/Scorpion/) as HTMLInputElement).required).toBe(true);
+    expect((getByLabelText(/Raiden/) as HTMLInputElement).required).toBe(true);
+    expect((getByLabelText(/Sub-Zero/) as HTMLInputElement).required).toBe(true);
+    expect((getByLabelText(/None/) as HTMLInputElement).required).toBe(true);
+  });
 });
