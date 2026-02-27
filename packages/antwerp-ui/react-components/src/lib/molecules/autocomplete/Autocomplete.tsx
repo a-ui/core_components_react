@@ -114,6 +114,7 @@ export function Autocomplete({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!isOpen) return;
     const totalResults = results?.length || 0;
     switch (e.key) {
       case 'ArrowDown':
@@ -125,6 +126,7 @@ export function Autocomplete({
         setCursor(cursor === -1 ? totalResults - 1 : cursor - 1 < 0 ? totalResults - 1 : cursor - 1);
         return setIsOpen(true);
       case 'Enter':
+        e.preventDefault();
         return onEnter();
       case 'Escape':
         return closeFlyout();
