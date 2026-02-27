@@ -19,4 +19,6 @@ export interface RadioGroupProps {
   name: string;
   onChange?: (value: string) => void;
   qa?: string;
+  state?: 'success' | 'error';
+  description?: string;
 }

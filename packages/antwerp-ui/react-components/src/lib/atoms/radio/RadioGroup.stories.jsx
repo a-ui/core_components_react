@@ -19,6 +19,7 @@ export default {
   },
   args: {
     label: 'Choose your fighter',
+    description: 'Description',
     value: '',
     name: 'fighter-selection'
   },
@@ -30,6 +31,14 @@ export default {
         defaultValue: { summary: '' }
       },
       description: 'An optional label for the `RadioGroup` component.'
+    },
+    description: {
+      control: { type: 'text' },
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '' }
+      },
+      description: 'The `description` prop adds a description or hint text between the label and the `RadioGroup`.'
     },
     value: {
       control: { type: 'text' },
@@ -48,6 +57,15 @@ export default {
       },
       description:
         'The `name` prop is used to group radio buttons together. Once the radio group is created, selecting any radio button in that group automatically deselects any other selected radio button in the same group. You can have as many radio groups on a page as you want, as long as each group has its own name.'
+    },
+    state: {
+      control: { type: 'select' },
+      options: ['', 'error', 'success'],
+      table: {
+        type: { summary: 'select' }
+      },
+      description:
+        'Whenever an input field is associated with a success or error state, the border of the container will match to that thematic colour as well as display the message above the container together with an identifiable icon.'
     },
     onChange: {
       control: { type: 'function' },
