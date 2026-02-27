@@ -77,4 +77,21 @@ describe('UI Components - Atoms - RadioGroup', () => {
     fireEvent.click(getByLabelText('Raiden') as HTMLInputElement);
     expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
+
+  it('should add the correct input description', () => {
+    const { baseElement } = render(<RadioGroup {...defaultProps} description="descr" />);
+    expect(baseElement.getElementsByClassName('a-input__description')[0].textContent === 'descr').toBeTruthy();
+  });
+
+  it('should add the correct success state description', () => {
+    const { getByText } = render(<RadioGroup {...defaultProps} description="description" state="success" />);
+    const descriptionEl = getByText('description');
+    expect(descriptionEl).toHaveClass('is-success');
+  });
+
+  it('should add the correct error state description', () => {
+    const { getByText } = render(<RadioGroup {...defaultProps} description="description" state="error" />);
+    const descriptionEl = getByText('description');
+    expect(descriptionEl).toHaveClass('is-error');
+  });
 });

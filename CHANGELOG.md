@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `description` and `state` properties to the `RadioGroup` component
+- Added `required` property to the `Checkbox` component
+- Added `@testing-library/jest-dom` to the dependencies
 
 ### Fixed
 
