@@ -12,7 +12,8 @@ export function Checkbox({
   name,
   disabled,
   indeterminate,
-  onChange
+  onChange,
+  required = false
 }: CheckboxProps) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     return onChange && onChange(event);
@@ -40,9 +41,11 @@ export function Checkbox({
         ref={setIndeterminate}
         disabled={disabled}
         onChange={handleChange}
+        required={required}
       />
       <label htmlFor={id}>
         <span className={showLabel ? undefined : SCREEN_READER_CLASS}>{label}</span>
+        {required && <span className="u-text-danger">*</span>}
       </label>
     </div>
   );
