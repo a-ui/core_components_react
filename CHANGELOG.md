@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed `Select` component selecting the first option when `value` is empty string; empty string now correctly shows the placeholder.
 - Fixed a margin bottom issue with the inline alert title
 - Fixed the `aria-describedby` attribute not being linked to `description` text in Datepicker component
 - Fixed the required asterisk not being hidden from screen readers
