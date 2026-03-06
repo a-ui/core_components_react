@@ -81,9 +81,6 @@ export function renderAddOn(addOn?: ButtonAddOnProps, size?: 'small' | 'medium' 
 }
 
 export function renderRequiredAsterisk(): ReactNode {
-  return (
-    <span className="u-text-danger" aria-hidden="true">
-      *
-    </span>
-  );
+  // prettier-ignore
+  return <span className="u-text-danger" aria-hidden="true">*</span>;
 }
