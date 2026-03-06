@@ -165,27 +165,25 @@ export function Datepicker({
     }
   };
 
-  const inputId = inputProps?.id ?? 'aui-text-field';
-
   return (
     <div className="a-input has-icon-right" data-qa={qa}>
-      {(label || inputProps?.label) && renderLabel({ label: label || inputProps?.label, id: inputId, required })}
+      {(label || inputProps?.label) && renderLabel({ label: label || inputProps?.label, id: inputProps?.id, required })}
       {renderDescription({
-        id: inputId,
+        id: inputProps?.id,
         description: dateInvalidError || inputProps?.description,
         state: dateInvalidError ? 'error' : inputProps?.state
       })}
       <div className="a-input__wrapper">
         <TextField
           {...inputProps}
-          id={inputId}
+          id={inputProps?.id}
           label={undefined}
           description={undefined}
           type="text"
           value={inputProps.value || formattedValue}
           onChange={handleChange}
           state={dateInvalidError ? 'error' : inputProps?.state}
-          aria-describedby={`${inputId}--description`}
+          aria-describedby={`${inputProps?.id}--description`}
         />
         <Icon
           tabIndex={0}
