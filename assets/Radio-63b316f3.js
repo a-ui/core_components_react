@@ -1,1 +1,0 @@
-import{a as c,j as e}from"./jsx-runtime-c9381026.js";function u({autoFocus:r,value:t,label:i,id:a,qa:o,name:s,onChange:n,checked:d,disabled:l}){return c("div",{className:"a-input__radio","data-qa":o,children:[e("input",{type:"radio",id:a,checked:d,name:s,value:t,onChange:h=>{n&&n(h)},disabled:l,autoFocus:r}),e("label",{htmlFor:a,children:i})]})}export{u as R};
