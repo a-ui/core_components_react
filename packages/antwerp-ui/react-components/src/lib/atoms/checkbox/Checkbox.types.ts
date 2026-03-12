@@ -10,4 +10,5 @@ export interface CheckboxProps {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   qa?: string;
   showLabel?: boolean;
+  required?: boolean;
 }

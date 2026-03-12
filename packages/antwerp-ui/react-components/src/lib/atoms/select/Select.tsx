@@ -36,21 +36,23 @@ export function Select({
     'a-input__wrapper': true,
     'a-input__wrapper--inline': !!inline
   });
+
   return (
     <div className={classes} data-qa={qa}>
       {renderLabel({ label, id, required, inline })}
       {renderDescription({ id, description, state })}
       <div className={inputWrapperClasses}>
         <select
-          key={value}
           disabled={disabled}
           name={name}
           id={id}
           value={value}
-          defaultValue={(!value && placeholder) || undefined}
+          defaultValue={value || ''}
           onChange={handleChange}
         >
-          <option disabled>{placeholder}</option>
+          <option value="" disabled>
+            {placeholder}
+          </option>
           {(options || []).map((o, index) => {
             return (
               <option key={`${o.value}-${index}`} value={o.value} disabled={o.disabled}>

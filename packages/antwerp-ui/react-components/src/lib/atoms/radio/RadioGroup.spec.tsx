@@ -77,4 +77,37 @@ describe('UI Components - Atoms - RadioGroup', () => {
     fireEvent.click(getByLabelText('Raiden') as HTMLInputElement);
     expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
+
+  it('should add the correct input description', () => {
+    const { baseElement } = render(<RadioGroup {...defaultProps} description="descr" />);
+    expect(baseElement.getElementsByClassName('a-input__description')[0].textContent === 'descr').toBeTruthy();
+  });
+
+  it('should add the correct success state description', () => {
+    const { getByText } = render(<RadioGroup {...defaultProps} description="description" state="success" />);
+    const descriptionEl = getByText('description');
+    expect(descriptionEl).toHaveClass('is-success');
+  });
+
+  it('should add the correct error state description', () => {
+    const { getByText } = render(<RadioGroup {...defaultProps} description="description" state="error" />);
+    const descriptionEl = getByText('description');
+    expect(descriptionEl).toHaveClass('is-error');
+  });
+
+  it('adds a red asterisk to the label when the required prop is true', () => {
+    const { getByLabelText, container } = render(
+      <RadioGroup {...defaultProps} required>
+        <Radio value="Scorpion" label="Scorpion" id="first-option" />
+        <Radio value="Raiden" label="Raiden" id="second-option" />
+        <Radio value="Sub-Zero" label="Sub-Zero" id="third-option" />
+        <Radio value="None" label="None" id="fourth-option" />
+      </RadioGroup>
+    );
+    expect(container.querySelector('.u-text-danger')).toBeInTheDocument();
+    expect((getByLabelText(/Scorpion/) as HTMLInputElement).required).toBe(true);
+    expect((getByLabelText(/Raiden/) as HTMLInputElement).required).toBe(true);
+    expect((getByLabelText(/Sub-Zero/) as HTMLInputElement).required).toBe(true);
+    expect((getByLabelText(/None/) as HTMLInputElement).required).toBe(true);
+  });
 });

@@ -18,4 +18,5 @@ export interface AutocompleteProps {
   };
   onChange?: (value: string | string[], name?: string) => void;
   onInputChange?: (value: string, name?: string) => void;
+  disabled?: boolean;
 }

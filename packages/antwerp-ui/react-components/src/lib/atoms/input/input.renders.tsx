@@ -1,5 +1,6 @@
 import { State, Theme, THEME_ICON_MAP } from '../../../constants/layout.settings';
 import { classNames } from '../../../utils/dom.utils';
+import { renderRequiredAsterisk } from '../../../utils/render.utils';
 import { Icon } from '../../base/icon';
 import { DescriptionProps, LabelProps, CharacterCounterProps } from './Input.types';
 
@@ -12,7 +13,7 @@ export const renderLabel = ({ label, id, required, inline, className = '', noMar
   return label ? (
     <label className={labelClasses} htmlFor={id}>
       {label}
-      {required && <span className="u-text-danger">*</span>}
+      {required && renderRequiredAsterisk()}
     </label>
   ) : null;
 };

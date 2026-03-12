@@ -10,6 +10,7 @@ export interface RadioProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   qa?: string;
   value: string;
+  required?: boolean;
 }
 
 export interface RadioGroupProps {
@@ -19,4 +20,7 @@ export interface RadioGroupProps {
   name: string;
   onChange?: (value: string) => void;
   qa?: string;
+  state?: 'success' | 'error';
+  description?: string;
+  required?: boolean;
 }

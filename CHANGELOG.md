@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 7.xx.xx - xxxx-xx-xx
+
+### Added
+
+- Added `required` prop on Upload component
+- Added `description` and `state` properties to the `RadioGroup` component
+- Added `required` property to the `Checkbox` component
+- Added `required` prop to the `Checkbox` component
+- Added `required` prop to the `RadioGroup` component
+- Added `required` prop to the `Radio` component (not visible in the UI)
+- Added `disabled` property to the `Autocomplete` component
+
+### Fixed
+
+- Fixed `Select` component selecting the first option when `value` is empty string; empty string now correctly shows the placeholder.
+- Fixed a margin bottom issue with the inline alert title
+- Fixed the `aria-describedby` attribute not being linked to `description` text in Datepicker component
+- Fixed the required asterisk not being hidden from screen readers
+- Fixed not being able to submit the form when the `Autocomplete` component is open
+
 ## 7.11.1 - 2026-01-07
 
 ### Fixed

@@ -60,7 +60,7 @@ const renderInlineAlert = (className: string, props: AlertProps) => {
         </span>
       )}
       {!!props.title && (
-        <HeaderTag id={props.titleId} className="paragraph has-base-font">
+        <HeaderTag id={props.titleId} className="paragraph has-base-font u-margin-bottom-xs">
           {props.title?.label}
         </HeaderTag>
       )}

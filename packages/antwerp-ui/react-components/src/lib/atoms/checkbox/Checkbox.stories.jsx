@@ -22,7 +22,8 @@ export default {
     disabled: false,
     indeterminate: false,
     id: 'checkbox-example',
-    name: 'agree-checkbox'
+    name: 'agree-checkbox',
+    required: false
   },
   argTypes: {
     label: {
@@ -49,6 +50,15 @@ export default {
       },
       description:
         'Checked state. When this prop is set, the `Checkbox` becomes a controlled component; use it together with `onChange`.'
+    },
+    required: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      description:
+        'The `required` prop adds a red asterisk to the `Checkbox` label and adds the required attribute to the HTML checkbox field.'
     },
     disabled: {
       control: { type: 'boolean' },

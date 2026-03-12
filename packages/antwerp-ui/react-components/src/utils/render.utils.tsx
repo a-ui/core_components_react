@@ -79,3 +79,11 @@ export function renderAddOn(addOn?: ButtonAddOnProps, size?: 'small' | 'medium' 
   }
   return null;
 }
+
+export function renderRequiredAsterisk(): ReactNode {
+  return (
+    <span className="u-text-danger" aria-hidden="true">
+      *
+    </span>
+  );
+}

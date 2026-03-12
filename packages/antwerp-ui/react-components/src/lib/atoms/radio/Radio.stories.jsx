@@ -83,6 +83,15 @@ export default {
       description:
         'The `id` prop is required for the Radio component. It is also used to link the label with the HTML `input` tag.'
     },
+    required: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      description:
+        'The `required` prop adds a red asterisk to the `Radio` label and adds the required attribute to the HTML input field.'
+    },
     qa: QA_PROP_STORY
   }
 };

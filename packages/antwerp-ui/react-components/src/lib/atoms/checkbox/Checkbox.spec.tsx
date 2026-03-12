@@ -8,7 +8,8 @@ describe('UI Components - Atoms - Checkbox', () => {
   const defaultProps: CheckboxProps = {
     label: 'Checkbox',
     id: 'checkbox',
-    name: 'checkbox'
+    name: 'checkbox',
+    required: false
   };
 
   it('renders a checkbox with the given label', () => {
@@ -55,5 +56,12 @@ describe('UI Components - Atoms - Checkbox', () => {
     const { getByLabelText } = render(<Checkbox {...defaultProps} onChange={mockOnChange} />);
     fireEvent.click(getByLabelText('Checkbox'));
     expect(mockOnChange).toHaveBeenCalled();
+  });
+
+  it('adds a red asterisk to the label when the required prop is true', () => {
+    const { getByLabelText } = render(<Checkbox {...defaultProps} required />);
+    const checkbox = getByLabelText(/Checkbox/) as HTMLInputElement;
+    expect(checkbox).toHaveProperty('required', true);
+    expect(checkbox.parentElement?.querySelector('.u-text-danger')).toBeInTheDocument();
   });
 });
