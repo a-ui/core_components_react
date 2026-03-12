@@ -22,6 +22,7 @@ interface InputProps {
 }
 
 export interface TextFieldProps extends InputProps {
+  ariaDescribedBy?: string;
   addOn?: {
     type: 'icon' | 'text' | 'spinner';
     size?: 'small' | 'medium' | 'large';

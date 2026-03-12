@@ -44,9 +44,9 @@ export const renderCharacterCounter = ({
   const hasCharOverflow = maxLength && charLeft <= 0;
   const countDisplayText = maxLength
     ? charCountText
-      ?.replace('%max%', maxLength.toString())
-      .replace('%count%', characterCount.toString())
-      .replace('%left%', charLeft.toString())
+        ?.replace('%max%', maxLength.toString())
+        .replace('%count%', characterCount.toString())
+        .replace('%left%', charLeft.toString())
     : charCountText?.replace('%count%', characterCount.toString());
   return charCounter ? (
     <small

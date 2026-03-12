@@ -15,7 +15,7 @@ export function Datepicker({
   value,
   onChange,
   format = DEFAULT_DATE_FORMAT,
-  inputProps = {},
+  inputProps = { id: 'aui-datepicker-input' },
   invalidDateText,
   iconButtonLabel = 'Open kalender',
   calendarProps,
@@ -176,14 +176,13 @@ export function Datepicker({
       <div className="a-input__wrapper">
         <TextField
           {...inputProps}
-          id={inputProps?.id}
           label={undefined}
           description={undefined}
           type="text"
           value={inputProps.value || formattedValue}
           onChange={handleChange}
           state={dateInvalidError ? 'error' : inputProps?.state}
-          aria-describedby={`${inputProps?.id}--description`}
+          ariaDescribedBy={`${inputProps?.id}--description`}
         />
         <Icon
           tabIndex={0}

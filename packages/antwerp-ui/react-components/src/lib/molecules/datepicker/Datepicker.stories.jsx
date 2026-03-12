@@ -107,7 +107,8 @@ export default {
     inputProps: {
       control: { type: 'object' },
       table: {
-        type: { summary: 'object' }
+        type: { summary: 'object' },
+        defaultValue: { summary: '{"id": "aui-storybook-datepicker"}' }
       },
       description:
         'The `inputProps` is an object that can apply props of the `TextField` component on the `Datepicker` input field by passing an object with the following properties: `id`, `label`, `description`, `disabled`, `name`, `required`, `size`, `onChange` and `value`.'

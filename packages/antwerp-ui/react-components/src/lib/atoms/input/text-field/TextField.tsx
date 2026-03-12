@@ -11,6 +11,7 @@ export const TextField = forwardRef(function TextField(
   {
     addOn,
     autoComplete,
+    ariaDescribedBy = '',
     charCounter,
     charCountText,
     description,
@@ -48,10 +49,10 @@ export const TextField = forwardRef(function TextField(
   const toggleCharCounter = charCounter !== undefined ? charCounter : maxLength ? true : false;
   const charCounterText = charCountText ? charCountText : maxLength ? '%count% / %max%' : '%count%';
 
-  const describedBy = [
-    toggleCharCounter ? `${id}--counter` : null,
-    description ? `${id}--description` : null
-  ].filter(Boolean).join(' ') || undefined;
+  const describedBy =
+    [ariaDescribedBy, toggleCharCounter ? `${id}--counter` : null, description ? `${id}--description` : null]
+      .filter(Boolean)
+      .join(' ') || undefined;
 
   const classes = classNames({
     'a-input': true,
