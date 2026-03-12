@@ -71,17 +71,37 @@ describe('UI Components - Molecules - Upload', () => {
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(0);
     expect(baseElement.getElementsByClassName('a-button--danger').length).toBe(0);
     rerender(
-      <Upload id="test-upload" onChange={onChangeMock} onDelete={() => {}} acceptedFormat="image/png" files={[mockFile, mockFileCSV]} />
+      <Upload
+        id="test-upload"
+        onChange={onChangeMock}
+        onDelete={() => {}}
+        acceptedFormat="image/png"
+        files={[mockFile, mockFileCSV]}
+      />
     );
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(1);
     expect(getByText('Dit bestandsformaat is niet toegestaan.')).toBeTruthy();
     rerender(
-      <Upload id="test-upload" onChange={onChangeMock} onDelete={() => {}} acceptedFormat="image/*" files={[mockFile, mockFileCSV]} />
+      <Upload
+        id="test-upload"
+        onChange={onChangeMock}
+        onDelete={() => {}}
+        acceptedFormat="image/*"
+        files={[mockFile, mockFileCSV]}
+      />
     );
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(1);
     expect(baseElement.getElementsByClassName('a-button--danger').length).toBe(1);
     expect(getByText('Dit bestandsformaat is niet toegestaan.')).toBeTruthy();
-    rerender(<Upload id="test-upload" onChange={onChangeMock} onDelete={() => {}} acceptedFormat="image/*" files={[mockFile]} />);
+    rerender(
+      <Upload
+        id="test-upload"
+        onChange={onChangeMock}
+        onDelete={() => {}}
+        acceptedFormat="image/*"
+        files={[mockFile]}
+      />
+    );
     expect(baseElement.getElementsByClassName('m-upload__error').length).toBe(0);
   });
 
