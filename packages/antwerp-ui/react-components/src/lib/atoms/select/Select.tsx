@@ -37,8 +37,6 @@ export function Select({
     'a-input__wrapper--inline': !!inline
   });
 
-  const isControlled = value !== undefined;
-
   return (
     <div className={classes} data-qa={qa}>
       {renderLabel({ label, id, required, inline })}
@@ -48,11 +46,13 @@ export function Select({
           disabled={disabled}
           name={name}
           id={id}
-          value={isControlled ? value : undefined}
-          defaultValue={!isControlled ? '' : undefined}
+          value={value}
+          defaultValue={value || ''}
           onChange={handleChange}
         >
-          <option value="" disabled>{placeholder}</option>
+          <option value="" disabled>
+            {placeholder}
+          </option>
           {(options || []).map((o, index) => {
             return (
               <option key={`${o.value}-${index}`} value={o.value} disabled={o.disabled}>
