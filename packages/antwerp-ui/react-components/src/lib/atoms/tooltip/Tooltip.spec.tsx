@@ -1,14 +1,30 @@
-import { render } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Tooltip } from './Tooltip';
 import '@testing-library/jest-dom/extend-expect';
 
-import { Tooltip } from './Tooltip';
-
 describe('UI Components - Atoms - Tooltip', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<Tooltip anchorId="tooltip-1" text="Some tip" anchor={<span>Anchor</span>} />);
-    expect(baseElement).toBeTruthy();
-    expect(baseElement.getElementsByClassName('a-tooltip__base').length).toBe(1);
-    expect(baseElement.getElementsByClassName('a-tooltip__base')[0].firstChild).toHaveClass('a-tooltip');
-    expect(baseElement.getElementsByTagName('span').length).toEqual(1);
+  beforeAll(() => {
+    global.ResizeObserver = class {
+      observe() { }
+      unobserve() { }
+      disconnect() { }
+    };
+  });
+
+  it('should render successfully', async () => {
+    const { container } = render(
+      <Tooltip anchorId="tooltip-1" text="Some tip" anchor={<span>Anchor</span>} />
+    );
+
+    const anchor = container.querySelector('#tooltip-1');
+    expect(anchor).toBeInTheDocument();
+
+    fireEvent.focus(anchor as Element);
+
+    const tooltip = await screen.findByText('Some tip');
+    expect(tooltip).toBeInTheDocument();
+
+    expect(tooltip).toHaveClass('a-tooltip');
+    expect(tooltip.parentElement).toHaveClass('a-tooltip__base');
   });
 });
