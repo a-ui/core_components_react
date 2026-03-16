@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 7.12.1 - 2026-03-16
+
+### Fixed
+
+- Fixed `onItemClick` being called twice in the `NavigationList` component.
+- Fixed the `tabIndex` attribute not being set on the `ul` element in the `NavigationList` component.
+
 ## 7.12.0 - 2026-03-13
 
 ### Added

@@ -22,13 +22,10 @@ export function NavigationList({
   });
 
   const onClick = (event: MouseEvent<HTMLElement>, item: NavigationListItemProps, position: number) => {
-    if (onItemClick) {
+    if (onItemClick && !item.disabled) {
       event.preventDefault();
       event.stopPropagation();
       onItemClick(item.id, position);
-      if (!item.disabled) {
-        onItemClick(item.id, position);
-      }
     }
   };
 
@@ -53,7 +50,11 @@ export function NavigationList({
 
   return (
     <nav role="navigation" className={navClass} aria-label={ariaLabel} data-qa={qa}>
-      <ul ref={scrollDivRef} onScroll={handleScroll}>
+      <ul
+        ref={scrollDivRef}
+        onScroll={handleScroll}
+        tabIndex={!isScrollStart || !isScrollEnd ? 0 : undefined}
+      >
         {items.map(renderNavigationItem)}
       </ul>
     </nav>

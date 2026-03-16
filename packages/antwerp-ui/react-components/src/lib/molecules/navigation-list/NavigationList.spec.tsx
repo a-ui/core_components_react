@@ -5,17 +5,17 @@ import '@testing-library/jest-dom';
 
 describe('UI Components - Molecules - Navigation', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<NavigationList />);
+    const { baseElement } = render(<NavigationList items={[]} />);
     expect(baseElement).toBeTruthy();
   });
 
   it('should be a tab navigation by default', () => {
-    const { baseElement } = render(<NavigationList />);
+    const { baseElement } = render(<NavigationList items={[]} />);
     expect(baseElement.getElementsByClassName('m-nav-tabs')).toBeTruthy();
   });
 
   it('should be a list navigation when direction is vertical', () => {
-    const { baseElement } = render(<NavigationList direction="vertical" />);
+    const { baseElement } = render(<NavigationList items={[]} direction="vertical" />);
     expect(baseElement.getElementsByClassName('m-nav-list')).toBeTruthy();
   });
 
@@ -36,10 +36,10 @@ describe('UI Components - Molecules - Navigation', () => {
   it('should call onItemClick', () => {
     const mockClick = jest.fn();
     const { getByRole } = render(
-      <NavigationList onItemClick={mockClick} items={[{ id: '1', label: 'Active' }]} direction="horizontal" />
+      <NavigationList onItemClick={mockClick} items={[{ id: '1', label: 'Active', href: '/active' }]} direction="horizontal" />
     );
-    fireEvent.click(getByRole('listitem').children[0]);
-    expect(mockClick).toBeCalledTimes(1);
+    fireEvent.click(getByRole('link'));
+    expect(mockClick).toHaveBeenCalledTimes(1);
   });
 
   it('should set tab-index when scrolled', () => {
