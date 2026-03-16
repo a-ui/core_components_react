@@ -84,6 +84,7 @@ describe('Autocomplete', () => {
       <Autocomplete name="keyboard-test" items={items} onChange={mockOnChange} />
     );
     const input = getByRole('combobox');
+    fireEvent.focus(input);
     fireEvent.keyDown(input, { key: 'ArrowDown', code: 40 });
     expect(baseElement.getElementsByClassName('m-flyout')[0].className.includes('is-open')).toBeTruthy();
     expect(getByText('Acadia').parentElement?.className).toContain('is-highlighted');

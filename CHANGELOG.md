@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed `onItemClick` being called twice in the `NavigationList` component.
 - Fixed the `tabIndex` attribute not being set on the `ul` element in the `NavigationList` component.
+- Fixed the `Autocomplete` component not showing results when the input is focused.
 
 ## 7.12.0 - 2026-03-13
 
