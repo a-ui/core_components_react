@@ -7,6 +7,10 @@ import { logError, logWarning } from '../../../utils/log.utils';
 
 let svgFetchPromise: Promise<void> | null = null;
 
+export const __resetIconCache = () => {
+  svgFetchPromise = null;
+};
+
 export const ensureSvgLoaded = (): Promise<void> => {
   if (document.getElementById(ICONS_SVG_HTML_ID)) {
     return Promise.resolve();
@@ -74,7 +78,7 @@ export const Icon = forwardRef(function Icon(
     return null;
   }
 
-  if (!svgLoaded || !iconValid) return null;
+  // if (!svgLoaded || !iconValid) return null;
 
   const classes = classNames({
     ai: true,
@@ -93,7 +97,7 @@ export const Icon = forwardRef(function Icon(
       className={classes}
       data-qa={qa}
     >
-      {name ? (
+      {name && (!svgLoaded || !iconValid) ? (
         <svg aria-hidden="true" focusable="false">
           <use href={`#ai-${name.replace('ai-', '')}`} />
         </svg>
