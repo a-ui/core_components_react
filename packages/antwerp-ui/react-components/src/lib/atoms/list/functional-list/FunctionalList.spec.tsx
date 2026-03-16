@@ -12,8 +12,8 @@ describe('UI Components - Atoms - FunctionalList', () => {
   it('should render the correct child items', () => {
     const { getByText } = render(
       <FunctionalList>
-        <ListItem iconLeft="mouse">List item 1</ListItem>
-        <ListItem iconRight="mouse">List item 2</ListItem>
+        <ListItem id="item-1" iconLeft="mouse">List item 1</ListItem>
+        <ListItem id="item-2" iconRight="mouse">List item 2</ListItem>
       </FunctionalList>
     );
     expect(getByText('List item 1')).toBeInTheDocument();
@@ -40,16 +40,16 @@ describe('UI Components - Atoms - FunctionalList', () => {
     const mockClick2 = jest.fn();
     const { getAllByRole } = render(
       <FunctionalList onItemClick={mockClick}>
-        <ListItem link={{ href: '' }}>List item 1</ListItem>
-        <ListItem link={{ href: '#' }} active onClick={mockClick2}>
+        <ListItem id="item-1" link={{ href: '/item-1' }}>List item 1</ListItem>
+        <ListItem id="item-2" link={{ href: '/item-2' }} active onClick={mockClick2}>
           List item 2
         </ListItem>
       </FunctionalList>
     );
     fireEvent.click(getAllByRole('link')[0]);
     fireEvent.click(getAllByRole('link')[1]);
-    expect(mockClick).toBeCalledTimes(1);
-    expect(mockClick2).toBeCalledTimes(1);
+    expect(mockClick).toHaveBeenCalledTimes(1);
+    expect(mockClick2).toHaveBeenCalledTimes(1);
   });
 
   it('should render a checkbox list', () => {
@@ -80,13 +80,13 @@ describe('UI Components - Atoms - FunctionalList', () => {
       </FunctionalList>
     );
     fireEvent.click(baseElement.getElementsByClassName('a-input')[0]);
-    expect(mockClick).toBeCalledTimes(1);
+    expect(mockClick).toHaveBeenCalledTimes(1);
   });
 
   it('should render an avatar list', () => {
     const { container } = render(
       <FunctionalList type="avatar">
-        <ListItemAvatar iconRight="mouse"></ListItemAvatar>
+        <ListItemAvatar id="item-1" iconRight="mouse"></ListItemAvatar>
       </FunctionalList>
     );
     expect(container.querySelector('.a-avatar-list')).toBeInTheDocument();
@@ -96,7 +96,7 @@ describe('UI Components - Atoms - FunctionalList', () => {
   it('should provide syntatic sugar for an avatar list', () => {
     const { container } = render(
       <AvatarList type="avatar">
-        <ListItemAvatar iconRight="mouse"></ListItemAvatar>
+        <ListItemAvatar id="item-1" iconRight="mouse"></ListItemAvatar>
       </AvatarList>
     );
     expect(container.querySelector('.a-avatar-list')).toBeInTheDocument();
@@ -106,7 +106,7 @@ describe('UI Components - Atoms - FunctionalList', () => {
   it('should render the user fields in an Avatar list', () => {
     const { getByText } = render(
       <FunctionalList type="avatar">
-        <ListItemAvatar
+        <ListItemAvatar id="item-1"
           user={{ name: 'Albert Einstein', function: 'Genius', email: 'albert.einstein@antwerpen.be' }}
         ></ListItemAvatar>
       </FunctionalList>
@@ -119,15 +119,18 @@ describe('UI Components - Atoms - FunctionalList', () => {
   it('should trigger onItemClick and onClick on children in Avatar lists', () => {
     const mockClick = jest.fn();
     const mockClick2 = jest.fn();
+
     const { getAllByRole } = render(
       <FunctionalList type="avatar" onItemClick={mockClick}>
-        <ListItemAvatar link={{ href: '' }} />
-        <ListItemAvatar link={{ href: '#' }} active onClick={mockClick2} />
+        <ListItemAvatar id="item-1" link={{ href: '/avatar-1' }} />
+        <ListItemAvatar id="item-2" link={{ href: '/avatar-2' }} active onClick={mockClick2} />
       </FunctionalList>
     );
+
     fireEvent.click(getAllByRole('link')[0]);
     fireEvent.click(getAllByRole('link')[1]);
-    expect(mockClick).toBeCalledTimes(1);
-    expect(mockClick2).toBeCalledTimes(1);
+
+    expect(mockClick).toHaveBeenCalledTimes(1);
+    expect(mockClick2).toHaveBeenCalledTimes(1);
   });
 });
