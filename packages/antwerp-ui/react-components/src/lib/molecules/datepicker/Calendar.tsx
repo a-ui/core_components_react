@@ -211,6 +211,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
           <button
             type="button"
             className="m-datepicker__nav-title"
+            data-qa="datepicker-nav-title"
             aria-label={activeTimeframeLabels.main}
             onClick={handleChangeViewClick}
           >

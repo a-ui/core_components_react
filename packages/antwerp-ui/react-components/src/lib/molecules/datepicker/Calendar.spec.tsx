@@ -1,8 +1,15 @@
-import jest from 'jest-mock';
 import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Calendar } from './Calendar';
 import { enUS } from 'date-fns/locale';
+import { useRef } from 'react';
+import jest from 'jest-mock';
+
+
+const CalendarTestWrapper = (props: any) => {
+  const ref = useRef<HTMLDivElement>(null);
+  return <Calendar {...props} ref={ref} isModal={true} />;
+};
 
 describe('UI Components - Molecules - Calendar', () => {
   it('should render successfully', () => {
@@ -171,5 +178,57 @@ describe('UI Components - Molecules - Calendar', () => {
     render(<Calendar value={date} />);
     const { baseElement } = render(<Calendar value={date} locale={enUS} />);
     expect(baseElement.innerHTML).toContain(new Date().getFullYear().toString());
+  });
+
+  describe('Calendar Focus Trap', () => {
+    it('should focus the first button on mount when isModal is true', () => {
+      const { baseElement } = render(<CalendarTestWrapper />);
+      const titleButton = baseElement.querySelector('.m-datepicker__nav-title') as HTMLButtonElement;
+      expect(document.activeElement).toBe(titleButton);
+    });
+
+    it('should wrap focus from last button back to first on Tab', () => {
+      const { baseElement } = render(<CalendarTestWrapper />);
+
+      const buttons = baseElement.querySelectorAll('button');
+      const firstButton = buttons[0];
+      const lastButton = buttons[buttons.length - 1];
+
+      lastButton.focus();
+      expect(document.activeElement).toBe(lastButton);
+
+      fireEvent.keyDown(baseElement.querySelector('.m-datepicker') as HTMLElement, {
+        key: 'Tab',
+        shiftKey: false,
+      });
+
+      expect(document.activeElement).toBe(firstButton);
+    });
+
+    it('should wrap focus from first button to last on Shift+Tab', () => {
+      const { baseElement } = render(<CalendarTestWrapper />);
+
+      const buttons = baseElement.querySelectorAll('button');
+      const firstButton = buttons[0];
+      const lastButton = buttons[buttons.length - 1];
+
+      firstButton.focus();
+
+      fireEvent.keyDown(baseElement.querySelector('.m-datepicker') as HTMLElement, {
+        key: 'Tab',
+        shiftKey: true,
+      });
+
+      expect(document.activeElement).toBe(lastButton);
+    });
+  });
+
+  it('should set data-mousedown-inside attribute on mousedown', () => {
+    const { baseElement } = render(<Calendar />);
+    const datepicker = baseElement.querySelector('.m-datepicker') as HTMLElement;
+
+    fireEvent.mouseDown(datepicker);
+
+    expect(datepicker).toHaveAttribute('data-mousedown-inside', 'true');
   });
 });
