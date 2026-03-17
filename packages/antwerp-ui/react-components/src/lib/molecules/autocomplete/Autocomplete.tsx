@@ -130,8 +130,6 @@ export function Autocomplete({
         return onEnter();
       case 'Escape':
         return closeFlyout();
-      default:
-        break;
     }
   };
 
