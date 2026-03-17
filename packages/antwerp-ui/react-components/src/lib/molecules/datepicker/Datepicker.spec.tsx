@@ -1,7 +1,8 @@
 import jest from 'jest-mock';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Datepicker } from './Datepicker';
+import { vi } from 'vitest';
 
 describe('UI Components - Molecules - Datepicker', () => {
   it('should render successfully', () => {
@@ -205,5 +206,43 @@ describe('UI Components - Molecules - Datepicker', () => {
     const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'invalid' } });
     expect(mockOnChange).toHaveBeenCalledTimes(1);
+  });
+
+
+  it('should fallback to theValue if current value prop is not a valid date in handleCalendarDateChange', () => {
+    const mockOnChange = jest.fn();
+    const { baseElement, getByRole } = render(
+      <Datepicker value="not-a-valid-date" onChange={mockOnChange} />
+    );
+
+    fireEvent.click(getByRole('button'));
+    const dateButton = baseElement.querySelector('.m-datepicker__grid-body button') as HTMLButtonElement;
+    fireEvent.click(dateButton);
+
+    expect(mockOnChange).toHaveBeenCalled();
+  });
+
+  it('should close the calendar when clicking the icon twice', () => {
+    const { baseElement, getByRole } = render(<Datepicker />);
+    const button = getByRole('button');
+
+    fireEvent.click(button);
+    expect(baseElement.querySelector('.is-open')).toBeTruthy();
+
+    fireEvent.click(button);
+    expect(baseElement.querySelector('.is-open')).toBeFalsy();
+  });
+
+  it('focuses selected date when calendar opens', async () => {
+    vi.useFakeTimers();
+
+    render(<Datepicker value="2020-05-18" />);
+
+    fireEvent.click(screen.getByRole('button'));
+
+    vi.advanceTimersByTime(50);
+
+    const selected = document.querySelector('.is-selected');
+    expect(selected).toHaveFocus();
   });
 });
