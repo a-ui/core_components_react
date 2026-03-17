@@ -166,9 +166,19 @@ describe('UI Components - Base - Icon', () => {
   });
 
   it('should log warning and hide svg when icon name does not exist in sprite', async () => {
+    const logWarningSpy = jest.spyOn(logUtils, 'logWarning').mockImplementation(() => { });
+    const fetchMock = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        text: () =>
+          Promise.resolve('<svg><symbol id="ai-other-icon"></symbol></svg>')
+      })
+    );
+    // @ts-ignore
+    global.fetch = fetchMock;
+
     const { baseElement } = render(<Icon name="non-existent-icon" />);
 
-    const logWarningSpy = jest.spyOn(logUtils, 'logWarning').mockImplementation(() => { });
     await waitFor(() => {
       expect(logWarningSpy).toHaveBeenCalledWith(
         expect.stringContaining('"non-existent-icon"')
@@ -177,7 +187,7 @@ describe('UI Components - Base - Icon', () => {
     logWarningSpy.mockRestore();
 
     await waitFor(() => {
-      expect(baseElement.querySelector('use[href="#ai-single-neutral"]')).toBeFalsy();
+      expect(baseElement.querySelector('use[href="#ai-non-existent-icon"]')).toBeFalsy();
     });
   });
 
