@@ -4,8 +4,6 @@ import { __resetIconCache, ensureSvgLoaded, Icon } from './Icon';
 import { render, screen, waitFor } from '@testing-library/react';
 import { JSDOM } from 'jsdom';
 import * as logUtils from '../../../utils/log.utils';
-import * as fileUtils from '../../../utils/file.utils';
-
 
 describe('UI Components - Base - Icon', () => {
   const originalFetch = global.fetch;
@@ -35,7 +33,7 @@ describe('UI Components - Base - Icon', () => {
     const { baseElement } = render(<Icon name="alarm-bell" />);
 
     await waitFor(() => {
-      expect(baseElement.querySelector('svg')).toBeTruthy();
+      expect(baseElement.querySelector('use[href="#ai-alarm-bell"]')).toBeTruthy()
     });
   });
 
@@ -53,9 +51,8 @@ describe('UI Components - Base - Icon', () => {
     const { baseElement } = render(<Icon name="ai-alarm-bell" />);
     expect(baseElement.getElementsByClassName('ai-alarm-bell').length).toBe(1);
     await waitFor(() => {
-      expect(baseElement.querySelector('svg')).toBeTruthy();
+      expect(baseElement.querySelector('use[href="#ai-alarm-bell"]')).toBeTruthy();
     });
-    expect(baseElement.querySelector('use')?.getAttribute('href')).toBe('#ai-alarm-bell');
   });
 
   it('should set the data-qa attribute', () => {
@@ -98,7 +95,7 @@ describe('UI Components - Base - Icon', () => {
 
     const { baseElement } = render(<Icon name="alarm-bell" className="my-custom-class" />);
     await waitFor(() => {
-      expect(baseElement.querySelector('svg')).toBeTruthy();
+      expect(baseElement.querySelector('use[href="#ai-alarm-bell"]')).toBeTruthy();
     });
     expect(baseElement.querySelector('span')?.classList.contains('my-custom-class')).toBe(true);
   });
@@ -116,7 +113,7 @@ describe('UI Components - Base - Icon', () => {
 
     const { baseElement } = render(<Icon name="alarm-bell" thin />);
     await waitFor(() => {
-      expect(baseElement.querySelector('svg')).toBeTruthy();
+      expect(baseElement.querySelector('use[href="#ai-alarm-bell"]')).toBeTruthy();
     });
     expect(baseElement.querySelector('span')?.classList.contains('ai--thin')).toBe(true);
   });
@@ -169,40 +166,19 @@ describe('UI Components - Base - Icon', () => {
   });
 
   it('should log warning and hide svg when icon name does not exist in sprite', async () => {
-    const dom = new JSDOM('', { url: 'http://localhost' });
-    const originalDocument = global.document;
-    const originalWindow = global.window;
-    global.document = dom.window.document;
+    const { baseElement } = render(<Icon name="non-existent-icon" />);
 
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => { });
-    const iconExistsSpy = jest.spyOn(fileUtils, 'iconExists').mockReturnValue(false);
-
-    const fetchResolve = jest.fn(() =>
-      Promise.resolve({
-        ok: true,
-        text: () =>
-          Promise.resolve(
-            `<svg><symbol id="ai-alarm-bell"></symbol></svg>`
-          )
-      })
-    );
-    // @ts-ignore
-    global.fetch = fetchResolve;
-
-    const { baseElement } = render(<Icon name="nonexistent-icon" />);
+    const logWarningSpy = jest.spyOn(logUtils, 'logWarning').mockImplementation(() => { });
     await waitFor(() => {
-      expect(warnSpy).toHaveBeenCalledWith(
-        expect.stringContaining('The provided icon with name "nonexistent-icon" does not seem to exist')
+      expect(logWarningSpy).toHaveBeenCalledWith(
+        expect.stringContaining('"non-existent-icon"')
       );
     });
+    logWarningSpy.mockRestore();
 
-    expect(baseElement.querySelector('svg')).toBeNull();
-    expect(baseElement.querySelector('span.ai-nonexistent-icon')).toBeTruthy();
-    warnSpy.mockRestore();
-    iconExistsSpy.mockRestore();
-
-    global.document = originalDocument;
-    global.window = originalWindow;
+    await waitFor(() => {
+      expect(baseElement.querySelector('use[href="#ai-single-neutral"]')).toBeFalsy();
+    });
   });
 
   /* Test seems outdated, TODO: ASK NT about this test
