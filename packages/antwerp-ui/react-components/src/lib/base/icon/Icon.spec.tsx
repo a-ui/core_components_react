@@ -80,17 +80,4 @@ describe('UI Components - Base - Icon', () => {
       expect(fetchMock).toHaveBeenCalledTimes(1);
     });
   });
-
-  /* Test seems outdated, TODO: ASK NT about this test
-  it('should return the svg, even if fetch is not defined', async () => {
-    const dom = new JSDOM();
-    global.document = dom.window.document;
-    // @ts-ignore
-    global.fetch = null;
-    const { baseElement } = render(<Icon name="alarm-bell" screenReaderText="Click here" />);
-    await waitFor(() => {
-      expect(baseElement.querySelector('svg')).toBeFalsy();
-    });
-  });
-  */
 });
