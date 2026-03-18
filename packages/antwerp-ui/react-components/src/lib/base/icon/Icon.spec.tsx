@@ -4,12 +4,13 @@ import { __resetIconCache, Icon } from './Icon';
 import { render, screen, waitFor } from '@testing-library/react';
 import { JSDOM } from 'jsdom';
 
-
 describe('UI Components - Base - Icon', () => {
+  const originalFetch = global.fetch;
 
   beforeEach(() => {
     __resetIconCache();
     document.body.innerHTML = '';
+    global.fetch = originalFetch;
   });
 
   it('should render successfully', () => {
@@ -31,17 +32,26 @@ describe('UI Components - Base - Icon', () => {
     const { baseElement } = render(<Icon name="alarm-bell" />);
 
     await waitFor(() => {
-      expect(baseElement.querySelector('svg')).toBeTruthy();
+      expect(baseElement.querySelector('use[href="#ai-alarm-bell"]')).toBeTruthy()
     });
   });
 
   it('should be able to use the long name as well', async () => {
+    const fetchMock = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        text: () =>
+          Promise.resolve('<svg><symbol id="ai-alarm-bell"></symbol></svg>')
+      })
+    );
+    // @ts-ignore
+    global.fetch = fetchMock;
+
     const { baseElement } = render(<Icon name="ai-alarm-bell" />);
     expect(baseElement.getElementsByClassName('ai-alarm-bell').length).toBe(1);
     await waitFor(() => {
-      expect(baseElement.querySelector('svg')).toBeTruthy();
+      expect(baseElement.querySelector('use[href="#ai-alarm-bell"]')).toBeTruthy();
     });
-    expect(baseElement.querySelector('use')?.getAttribute('href') === '#ai-alarm-bell').toBeTruthy();
   });
 
   it('should set the data-qa attribute', () => {
