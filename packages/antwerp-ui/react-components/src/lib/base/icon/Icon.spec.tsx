@@ -15,7 +15,7 @@ describe('UI Components - Base - Icon', () => {
 
   it('should render successfully', () => {
     const { baseElement } = render(<Icon name="alarm-bell" />);
-    expect(baseElement).toBeTruthy();
+    expect(baseElement.querySelector('use[href="#ai-alarm-bell"]')).toBeTruthy();
   });
 
   it('should render without name', () => {
@@ -25,7 +25,7 @@ describe('UI Components - Base - Icon', () => {
 
   it('should apply the icon-name to the icon class', () => {
     const { baseElement } = render(<Icon name="alarm-bell" />);
-    expect(baseElement.getElementsByClassName('ai-alarm-bell').length).toBe(1);
+    expect(baseElement.querySelector('use[href="#ai-alarm-bell"]')).toBeTruthy();
   });
 
   it('should render an svg icon', async () => {
