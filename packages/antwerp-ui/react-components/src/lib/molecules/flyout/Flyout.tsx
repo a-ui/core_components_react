@@ -28,11 +28,9 @@ export const Flyout = forwardRef(function Flyout(
     (e: MouseEvent) => {
       const area = flyoutRef.current;
       if (!area) return;
-
       if (e.target === area.lastChild) {
         e.preventDefault();
       }
-
       if (!area.contains(e.target as Node)) {
         setIsOpen(false);
         onStateChange?.(false);
