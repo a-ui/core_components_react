@@ -78,8 +78,6 @@ export const Icon = forwardRef(function Icon(
     return null;
   }
 
-  // if (!svgLoaded || !iconValid) return null;
-
   const classes = classNames({
     ai: true,
     [`ai-${name?.replace('ai-', '')}`]: !!name,
