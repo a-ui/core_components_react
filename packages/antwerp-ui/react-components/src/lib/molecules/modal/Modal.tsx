@@ -36,11 +36,15 @@ export function Modal({
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => runFunctionAndClose(e, onClose);
 
+  const appElement = typeof document !== 'undefined'
+  ? document.getElementById(appRootId) ?? undefined
+  : undefined;
+
   return (
     <>
       {trigger ? cloneElement(trigger, { onClick: () => setModalOpen(true) }) : null}
       <ReactModal
-        appElement={document.getElementById(appRootId) as HTMLElement}
+        appElement={appElement}
         bodyOpenClassName={null}
         htmlOpenClassName={null}
         className={classNames({ 'm-modal': true, [`m-modal--${SIZE_MAP[size || DEFAULT_SIZE]}`]: !!size })}
@@ -53,7 +57,7 @@ export function Modal({
           'is-active': true
         })}
         data-qa={qa}
-        ariaHideApp={true}
+        ariaHideApp={!!appElement}
         onAfterOpen={onAfterOpen}
         shouldCloseOnOverlayClick={cancelButton || confirmButton || closeButton ? shouldCloseOnOverlayClick : true}
       >

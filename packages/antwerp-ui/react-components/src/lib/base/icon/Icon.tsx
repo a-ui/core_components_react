@@ -8,6 +8,8 @@ import { logError, logWarning } from '../../../utils/log.utils';
 let svgFetchPromise: Promise<void> | null = null;
 
 export const ensureSvgLoaded = (): Promise<void> => {
+  if (typeof document === 'undefined') return Promise.resolve();
+
   if (document.getElementById(ICONS_SVG_HTML_ID)) {
     return Promise.resolve();
   }
