@@ -1,4 +1,6 @@
-module.exports = {
+import path from 'path';
+
+export default {
   stories: [
     '../../../packages/antwerp-ui/react-components/src/lib/base/**/*.stories.@(js|jsx|ts|tsx)',
     '../../../packages/antwerp-ui/react-components/src/lib/atoms/**/*.stories.@(js|jsx|ts|tsx)',
@@ -15,9 +17,14 @@ module.exports = {
     storyStoreV7: true,
   },
   async viteFinal(config) {
-    if (!config?.server) {
-      config.base = '/core_components_react';
-    }
+    config.server = config.server || {};
+    config.server.fs = config.server.fs || {};
+
+    config.server.fs.allow = [
+      ...(config.server.fs.allow || []),
+      path.resolve(__dirname, '../../../')
+    ];
+
     return config;
   },
   staticDirs: ['.'],
