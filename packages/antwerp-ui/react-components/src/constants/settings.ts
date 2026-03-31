@@ -1,7 +1,7 @@
 import { nlBE } from 'date-fns/locale';
 
 // BASE
-export const ICONS_URL = 'https://cdn.antwerpen.be/core_branding_scss/7.1.1/assets/images/ai.svg';
+export const ICONS_URL = 'https://cdn.antwerpen.be/core_branding_scss/7.2.0/assets/images/ai.svg';
 export const ICONS_SVG_HTML_ID = 'ai-svg';
 
 // ATOMS
