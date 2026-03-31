@@ -8,9 +8,9 @@ import './Tooltip.css';
 export function Tooltip({ anchor, anchorId = 'aui-tooltip', location = 'bottom', text = '', qa }: TooltipProps) {
   return (
     <>
-      {cloneElement(anchor, { id: anchorId, 'aria-describedby': `${anchorId}-tooltip`, tabIndex: 0 })}
+      {cloneElement(anchor, { id: anchorId, 'aria-describedby': `tooltip-${anchorId}`, tabIndex: 0 })}
       <ReactTooltip
-        id={`${anchorId}-tooltip`}
+        id={`tooltip-${anchorId}`}
         anchorSelect={anchorId ? `#${anchorId}` : undefined}
         className="a-tooltip__base"
         noArrow
