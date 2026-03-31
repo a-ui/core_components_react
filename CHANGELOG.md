@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Upgraded the `Modal` component to use in SSR contexts.
 - Fixed an issue in the `Tooltip` component where it was possible to provide an invalid id attribute.
 
 ## 7.12.0 - 2026-03-13
