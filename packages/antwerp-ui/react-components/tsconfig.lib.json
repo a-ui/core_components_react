@@ -9,6 +9,7 @@
     "../../../node_modules/@nrwl/react/typings/image.d.ts"
   ],
   "exclude": [
+    "vite.config.mts",
     "**/*.spec.ts",
     "**/*.test.ts",
     "**/*.spec.tsx",
