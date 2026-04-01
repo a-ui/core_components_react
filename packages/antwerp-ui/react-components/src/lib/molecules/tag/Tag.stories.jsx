@@ -1,6 +1,6 @@
 import Tag from './Tag';
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from '@storybook/preview-api';
 
 Tag.displayName = 'Tag';
 

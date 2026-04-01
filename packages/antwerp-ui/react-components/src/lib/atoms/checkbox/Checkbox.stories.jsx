@@ -1,6 +1,6 @@
 import { QA_PROP_STORY } from '../../../constants/stories.settings';
 import Checkbox from './Checkbox';
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from '@storybook/preview-api';
 
 Checkbox.displayName = 'Checkbox';
 
