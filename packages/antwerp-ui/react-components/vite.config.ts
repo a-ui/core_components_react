@@ -43,7 +43,11 @@ export default defineConfig({
     },
     rollupOptions: {
       // External packages that should NOT be bundled into your library.
-      external: ['react', 'react-dom', 'react/jsx-runtime']
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      output: {
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+      }
     }
   },
   test: {

@@ -3,6 +3,7 @@
   "version": "7.12.0",
   "license": "MIT",
   "main": "./index.js",
+  "sideEffects": false,
   "types": "./index.d.ts",
   "exports": {
     ".": {
