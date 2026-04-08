@@ -10,9 +10,10 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 export default defineConfig({
   plugins: [
     dts({
-      tsConfigFilePath: join(__dirname, 'tsconfig.lib.json'),
-      // Faster builds by skipping tests. Set this to false to enable type checking.
-      skipDiagnostics: true
+      tsconfigPath: join(__dirname, 'tsconfig.lib.json'),
+      entryRoot: join(__dirname, 'src'),
+      insertTypesEntry: true,
+      logLevel: 'silent'
     }),
     react(),
     viteTsConfigPaths({
