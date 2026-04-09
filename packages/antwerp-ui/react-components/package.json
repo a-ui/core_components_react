@@ -1,17 +1,19 @@
 {
   "name": "@a-ui/react",
-  "version": "7.13.0-beta.3",
+  "version": "7.13.0-beta.4",
   "license": "MIT",
-  "main": "./index.js",
+  "main": "./cjs/index.js",
+  "module": "./es/index.mjs",
+  "types": "./index.d.ts",
   "sideEffects": [
     "*.css"
   ],
-  "types": "./index.d.ts",
   "exports": {
     ".": {
+      "types": "./index.d.ts",
       "import": "./es/index.mjs",
-      "require": "./cjs/index.js",
-      "types": "./index.d.ts"
+      "default": "./es/index.mjs",
+      "require": "./cjs/index.js"
     }
   },
   "generators": "generators.json"

@@ -55,6 +55,8 @@ export default defineConfig({
           dir: 'dist/cjs',
           preserveModules: true,
           preserveModulesRoot: 'src',
+          exports: 'named',
+          interop: 'auto',
         }
       ]
     }
