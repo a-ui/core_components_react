@@ -1,6 +1,6 @@
 {
   "name": "@a-ui/react",
-  "version": "7.13.0-beta.2",
+  "version": "7.13.0-beta.3",
   "license": "MIT",
   "main": "./index.js",
   "sideEffects": [
@@ -9,8 +9,8 @@
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/es/index.mjs",
-      "require": "./dist/cjs/index.js",
+      "import": "./es/index.mjs",
+      "require": "./cjs/index.js",
       "types": "./index.d.ts"
     }
   },

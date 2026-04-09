@@ -34,6 +34,7 @@ export default defineConfig({
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
     cssCodeSplit: false,
+    outDir: 'dist',
     lib: {
       entry: 'src/index.ts',
       name: '@a-ui/react',

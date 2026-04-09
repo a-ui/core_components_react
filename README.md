@@ -33,7 +33,7 @@ Jest and react test library
 
 - (Optional) `npm adduser`
 - `yarn build` to build the components
-- `cd dist/a-ui/react && yarn publish`
+- `cd dist && yarn publish`
 - `git tag v<VERSION>`
 - `git push origin --tags`
 
