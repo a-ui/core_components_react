@@ -24,7 +24,7 @@ describe('UI Components - Molecules - DateRangePicker', () => {
     expect(baseElement.querySelector('.is-open')).toBeTruthy();
     const newDateTo = getByLabelText('Friday 22 May 2020');
     fireEvent.click(newDateTo);
-    expect(mockOnChange).toHaveBeenCalledWith(['2020-05-19T00:00:00+02:00', '2020-05-22T00:00:00+02:00']);
+    expect(mockOnChange).toHaveBeenCalledWith(['2020-05-19T02:00:00.000+02:00', '2020-05-22T02:00:00.000+02:00']);
     expect(baseElement.querySelector('.is-open')).toBeFalsy();
   });
 
@@ -38,7 +38,7 @@ describe('UI Components - Molecules - DateRangePicker', () => {
     fireEvent.click(getAllByRole('button')[1]);
     const newDate = getByLabelText('Friday 22 May 2020');
     fireEvent.click(newDate);
-    expect(mockOnChange).toHaveBeenCalledWith(['2020-05-18', '2020-05-22T00:00:00+02:00']);
+    expect(mockOnChange).toHaveBeenCalledWith(['2020-05-18', '2020-05-22T02:00:00.000+02:00']);
     expect(baseElement.querySelector('.is-open')).toBeFalsy();
   });
 

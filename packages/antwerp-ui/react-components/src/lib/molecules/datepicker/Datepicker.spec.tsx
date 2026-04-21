@@ -1,7 +1,8 @@
 import jest from 'jest-mock';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Datepicker } from './Datepicker';
+import { vi } from 'vitest';
 
 describe('UI Components - Molecules - Datepicker', () => {
   it('should render successfully', () => {
@@ -13,7 +14,7 @@ describe('UI Components - Molecules - Datepicker', () => {
     const { baseElement } = render(
       <Datepicker value={new Date(Date.parse('18 May 2020 00:12:00 GMT')).toISOString()} format="dd/MM" />
     );
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     expect(input.value).not.toBe('18/05/2020');
     expect(input.value).toBe('18/05');
   });
@@ -29,7 +30,7 @@ describe('UI Components - Molecules - Datepicker', () => {
   it('should close the calendar when clicking outside of it', () => {
     const { baseElement, getByRole } = render(<Datepicker />);
     const button = getByRole('button');
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     expect(baseElement.querySelector('.is-open')).toBeFalsy();
     fireEvent.click(button);
     expect(baseElement.querySelector('.is-open')).toBeTruthy();
@@ -37,28 +38,41 @@ describe('UI Components - Molecules - Datepicker', () => {
     expect(baseElement.querySelector('.is-open')).toBeFalsy();
   });
 
-  it('should control the open state of calendar with keyboard', () => {
+  it('should control the open state of calendar with keyboard', async () => {
     const { baseElement } = render(<Datepicker />);
 
     const button = baseElement.getElementsByClassName('ai-calendar')[0] as HTMLSpanElement;
     button.focus();
     expect(button).toHaveFocus();
+
     fireEvent.keyDown(button, { code: 'Enter' });
-    expect(baseElement.querySelector('.is-open')).toBeTruthy();
+    await waitFor(() => {
+      expect(baseElement.querySelector('.is-open')).toBeTruthy();
+    });
+
     fireEvent.keyDown(button, { code: 'Enter' });
-    expect(baseElement.querySelector('.is-open')).toBeFalsy();
+    await waitFor(() => {
+      expect(baseElement.querySelector('.is-open')).toBeFalsy();
+    });
+
     fireEvent.keyDown(button, { code: 'Enter' });
-    expect(baseElement.querySelector('.is-open')).toBeTruthy();
-    fireEvent.keyDown(button, { code: 'Escape' });
-    expect(baseElement.querySelector('.is-open')).toBeFalsy();
+    await waitFor(() => {
+      expect(baseElement.querySelector('.is-open')).toBeTruthy();
+    });
+
+    const focusedElement = baseElement.querySelector('.m-datepicker button') as HTMLElement;
+    fireEvent.keyDown(focusedElement, { code: 'Escape' });
+    await waitFor(() => {
+      expect(baseElement.querySelector('.is-open')).toBeFalsy();
+    });
   });
 
-  it.only('should set the Datepicker value when selecting a date in the Calendar', () => {
+  it('should set the Datepicker value when selecting a date in the Calendar', () => {
     const mockOnChange = jest.fn();
     const { baseElement, getByRole, getByLabelText } = render(
       <Datepicker value={'2020-05-18'} onChange={mockOnChange} />
     );
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     expect(input.value).toBe('18/05/2020');
     fireEvent.click(getByRole('button'));
     const newDate = getByLabelText('Tuesday 5 May 2020');
@@ -69,7 +83,7 @@ describe('UI Components - Molecules - Datepicker', () => {
   it('should handleChange on changing the input field value', () => {
     const mockOnChange = jest.fn();
     const { baseElement } = render(<Datepicker onChange={mockOnChange} />);
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '20/05/2020' } });
     expect(mockOnChange).toHaveBeenCalled();
   });
@@ -77,7 +91,7 @@ describe('UI Components - Molecules - Datepicker', () => {
   it('should handleChange on empty input field value', () => {
     const mockOnChange = jest.fn();
     const { baseElement } = render(<Datepicker onChange={mockOnChange} />);
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '20/05/2020' } });
     fireEvent.change(input, { target: { value: '' } });
     expect(mockOnChange).toHaveBeenCalledTimes(2);
@@ -85,14 +99,14 @@ describe('UI Components - Molecules - Datepicker', () => {
 
   it('should show error text on setting invalid input value', () => {
     const { baseElement, getByText } = render(<Datepicker />);
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'invalid' } });
     expect(getByText('Ongeldige datum')).toBeInTheDocument();
   });
 
   it('should be able to override the error text with a custom function', () => {
     const { baseElement, getByText } = render(<Datepicker errorMsgFunction={() => 'THIS IS AN ERROR'} />);
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'invalid' } });
     expect(getByText('THIS IS AN ERROR')).toBeInTheDocument();
     render(<Datepicker errorMsgFunction={() => null} />);
@@ -102,7 +116,7 @@ describe('UI Components - Molecules - Datepicker', () => {
     /* eslint-disable-next-line */
     /* @ts-ignore */
     const { baseElement, queryByText } = render(<Datepicker invalidDateText={null} />);
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'invalid' } });
     const errorMessage = queryByText('Ongeldige datum');
     expect(errorMessage).toBeFalsy();
@@ -111,7 +125,7 @@ describe('UI Components - Molecules - Datepicker', () => {
   it('should be able to force an error text with a controlled Datepicker', () => {
     const { getByText, baseElement } = render(<Datepicker invalidDateText={'I AM ALWAYS VISIBLE'} value="" />);
     expect(getByText('I AM ALWAYS VISIBLE')).toBeInTheDocument();
-    const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
+    const input = baseElement.querySelector('#aui-datepicker-input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '' } });
     expect(getByText('I AM ALWAYS VISIBLE')).toBeInTheDocument();
   });
@@ -162,7 +176,9 @@ describe('UI Components - Molecules - Datepicker', () => {
     expect(baseElement.querySelector('.is-open')).toBeTruthy();
     const calendar = container.getElementsByClassName('m-datepicker--fixed')[0];
     fireEvent.blur(calendar);
-    expect(baseElement.querySelector('.is-open')).toBeFalsy();
+    await waitFor(() => {
+      expect(baseElement.querySelector('.is-open')).toBeFalsy();
+    });
   });
 
   it('should allow to open the calendar on the left', async () => {
@@ -190,5 +206,43 @@ describe('UI Components - Molecules - Datepicker', () => {
     const input = baseElement.querySelector('#aui-text-field') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'invalid' } });
     expect(mockOnChange).toHaveBeenCalledTimes(1);
+  });
+
+
+  it('should fallback to theValue if current value prop is not a valid date in handleCalendarDateChange', () => {
+    const mockOnChange = jest.fn();
+    const { baseElement, getByRole } = render(
+      <Datepicker value="not-a-valid-date" onChange={mockOnChange} />
+    );
+
+    fireEvent.click(getByRole('button'));
+    const dateButton = baseElement.querySelector('.m-datepicker__grid-body button') as HTMLButtonElement;
+    fireEvent.click(dateButton);
+
+    expect(mockOnChange).toHaveBeenCalled();
+  });
+
+  it('should close the calendar when clicking the icon twice', () => {
+    const { baseElement, getByRole } = render(<Datepicker />);
+    const button = getByRole('button');
+
+    fireEvent.click(button);
+    expect(baseElement.querySelector('.is-open')).toBeTruthy();
+
+    fireEvent.click(button);
+    expect(baseElement.querySelector('.is-open')).toBeFalsy();
+  });
+
+  it('focuses selected date when calendar opens', async () => {
+    vi.useFakeTimers();
+
+    render(<Datepicker value="2020-05-18" />);
+
+    fireEvent.click(screen.getByRole('button'));
+
+    vi.advanceTimersByTime(50);
+
+    const selected = document.querySelector('.is-selected');
+    expect(selected).toHaveFocus();
   });
 });

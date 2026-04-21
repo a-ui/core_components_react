@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import jest from 'jest-mock';
+import type { Link } from '../../../constants/application.types';
 import { Button } from './Button';
 
 describe('UI Components - Atoms - Button', () => {
@@ -97,5 +99,48 @@ describe('UI Components - Atoms - Button', () => {
   it('should prohibit the use of the neutral theme in high emphasis buttons', () => {
     const { baseElement } = render(<Button theme="neutral" />);
     expect(baseElement.getElementsByClassName('a-button--neutral').length).toBe(0);
+  });
+
+  it('should render as anchor when link and href are provided', () => {
+    const { baseElement } = render(
+      <Button link={{ href: '/page', target: '_blank' }}>Link text</Button>
+    );
+    const anchor = baseElement.querySelector('a');
+    expect(anchor).toBeTruthy();
+    expect(anchor?.getAttribute('href')).toBe('/page');
+    expect(anchor?.getAttribute('target')).toBe('_blank');
+    expect(anchor?.textContent).toContain('Link text');
+  });
+
+  it('should use renderLinkFunction when link and renderLinkFunction are provided', () => {
+    const renderLinkFunction = jest.fn((link: Link, props: Record<string, string | boolean | undefined>) => (
+      <span data-testid="custom-link" data-href={link.href} {...props}>
+        {link.label}
+      </span>
+    ));
+    render(
+      <Button link={{ href: '/custom' }} renderLinkFunction={renderLinkFunction}>
+        Custom
+      </Button>
+    );
+    expect(renderLinkFunction).toHaveBeenCalledWith(
+      expect.objectContaining({ href: '/custom' }),
+      expect.any(Object)
+    );
+    expect(screen.getByTestId('custom-link')).toBeTruthy();
+  });
+
+  it('should render button with disabled', () => {
+    const { baseElement } = render(<Button disabled />);
+    const button = baseElement.querySelector('button');
+    expect(button).toBeTruthy();
+    expect(button?.hasAttribute('disabled')).toBe(true);
+  });
+
+  it('should call onClick when button is clicked', () => {
+    const onClick = jest.fn();
+    const { baseElement } = render(<Button onClick={onClick} />);
+    baseElement.querySelector('button')?.click();
+    expect(onClick).toHaveBeenCalled();
   });
 });

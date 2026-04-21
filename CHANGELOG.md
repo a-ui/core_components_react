@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded the `Icon` component so it can be used in SSR contexts
 - Upgraded the `Modal` component so it can be used in SSR contexts
 - Fixed an issue in the `Tooltip` component where it was possible to provide an invalid id attribute
+- Fixed `onItemClick` being called twice in the `NavigationList` component
+- Fixed the `tabIndex` attribute not being set on the `ul` element in the `NavigationList` component
+- Fixed the `Autocomplete` component not showing results when the input is focused
+
 
 ## 7.12.0 - 2026-03-13
 

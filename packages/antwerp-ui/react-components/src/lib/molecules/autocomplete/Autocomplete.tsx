@@ -130,8 +130,6 @@ export function Autocomplete({
         return onEnter();
       case 'Escape':
         return closeFlyout();
-      default:
-        break;
     }
   };
 
@@ -151,6 +149,7 @@ export function Autocomplete({
           name={name}
           label={label}
           onBlur={setValueBack}
+          onFocus={() => setIsOpen(true)}
           value={fieldValue}
           onChange={(e) => handleInput(e.target.value)}
           role="combobox"

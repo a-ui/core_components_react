@@ -90,6 +90,13 @@ export function Datepicker({
     return () => datepickerRef.current?.removeEventListener('keydown', onEsc);
   }, [open, isOpen, onIconClick]);
 
+  const handleCalendarBlur = (e: React.FocusEvent<Element>) => {
+    if (datepickerRef.current?.contains(e.relatedTarget as Node)) {
+      return;
+    }
+    calendarToggle(false);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     const parsedDate = new Date(fnsParse(newValue, format, new Date()));
@@ -146,7 +153,7 @@ export function Datepicker({
 
   const handleIconKeyDown = (e: KeyboardEvent<HTMLSpanElement>) => {
     if (e.code === 'Enter') {
-      onIconClick ? onIconClick(true) : calendarToggle(true);
+      onIconClick ? onIconClick(!open) : calendarToggle(!isOpen);
     }
   };
 
@@ -200,6 +207,7 @@ export function Datepicker({
             className={`m-datepicker--fixed ${openLeft ? 'm-datepicker--left' : ''}`}
             isOpen={open !== undefined ? open : isOpen}
             onChange={handleCalendarDateChange}
+            onBlur={handleCalendarBlur}
             value={currentValue}
             isModal
             {...calendarProps}
