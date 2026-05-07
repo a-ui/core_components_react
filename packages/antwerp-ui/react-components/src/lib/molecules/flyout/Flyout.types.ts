@@ -11,4 +11,5 @@ export interface FlyoutProps {
   onStateChange?: (newOpenState: boolean) => void;
   children?: ReactNode;
   qa?: string;
+  ariaHaspopup?: string;
 }

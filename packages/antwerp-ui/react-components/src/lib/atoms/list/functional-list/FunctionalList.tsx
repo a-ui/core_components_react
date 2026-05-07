@@ -2,7 +2,7 @@ import { classNames } from '../../../../utils/dom.utils';
 import { Children, cloneElement, ReactElement } from 'react';
 import { FunctionalListProps } from '../List.types';
 
-export function FunctionalList({ onItemClick, type, ordered, flushed, lined, children, qa }: FunctionalListProps) {
+export function FunctionalList({ onItemClick, type, ordered, flushed, lined, children, qa, id, ariaLabel, ariaMultiselectable, role }: FunctionalListProps) {
   const classes = classNames({
     'a-list': type !== 'avatar' && type !== 'checkbox',
     'a-list--flushed': !!flushed && type !== 'avatar' && type !== 'checkbox',
@@ -16,7 +16,7 @@ export function FunctionalList({ onItemClick, type, ordered, flushed, lined, chi
   const ListTag = `${ordered ? 'ol' : 'ul'}` as keyof JSX.IntrinsicElements;
 
   return (
-    <ListTag className={classes} data-qa={qa}>
+    <ListTag className={classes} data-qa={qa} id={id || ''} role={role} aria-label={ariaLabel} aria-multiselectable={ariaMultiselectable}>
       {Children.map(children || [], (child: ReactElement) => {
         return cloneElement(child, {
           key: child.props.id,

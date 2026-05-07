@@ -36,6 +36,15 @@ export function Autocomplete({
 
   const flyoutRef = React.useRef(null);
 
+  const listboxId = `${id}-listbox`;
+  const getOptionId = (val: string) => `${id}-option-${val}`;
+  const getSubLabelId = (val: string) => `${id}-sublabel-${val}`
+  const activeDescendant =
+    isOpen && cursor >= 0 && results?.[cursor]
+      ? getOptionId(results[cursor].value)
+      : undefined;
+
+
   useEffect(() => {
     if (value && !multiple) {
       selectValue(value as string, true);
@@ -52,7 +61,7 @@ export function Autocomplete({
   }, [fieldValue, items]);
 
   useEffect(() => {
-    if (flyoutRef.current) {
+    if (flyoutRef.current && results?.length) {
       const current = flyoutRef.current as HTMLDivElement;
       const highlighted = current.querySelector(`.a-list__item:nth-child(${cursor + 1})`);
       highlighted?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
@@ -142,6 +151,7 @@ export function Autocomplete({
       scrollable
       hasPadding={false}
       qa={qa}
+      ariaHaspopup="listbox"
       className="m-autocomplete"
       trigger={
         <TextField
@@ -155,8 +165,9 @@ export function Autocomplete({
           role="combobox"
           autoComplete="off"
           aria-autocomplete="list"
-          aria-haspopup="true"
           aria-expanded={isOpen}
+          aria-controls={listboxId}
+          aria-activedescendant={activeDescendant}
           onKeyDown={handleKeyDown}
           description={description}
           required={required}
@@ -171,26 +182,41 @@ export function Autocomplete({
     >
       {results && results.length ? (
         <FunctionalList
+          id={listboxId}
+          role="listbox"
+          ariaLabel={label}
+          ariaMultiselectable={multiple ? true : undefined}
           lined
           onItemClick={(v) => {
             multiple ? selectMultiple(v) : selectValue(v);
           }}
         >
-          {results.map((r, i) => (
-            <ListItem
-              id={r.key || r.value}
-              tabIndex={-1}
-              highlighted={i === cursor}
-              onMouseDown={(e) => e.preventDefault()}
-              active={isValueActive(r.value)}
-              name={r.value}
-              link={{ href: '' }}
-              key={r.key || r.value}
-            >
-              {r.label}
-              {r.subLabel ? <p className="small">{r.subLabel}</p> : null}
-            </ListItem>
-          ))}
+          {results.map((r, i) => {
+            const subLabelId = r.subLabel ? getSubLabelId(r.key || r.value) : undefined;
+
+            return (
+              <ListItem
+                id={getOptionId(r.value)}
+                role="option"
+                tabIndex={-1}
+                highlighted={i === cursor}
+                onMouseDown={(e) => e.preventDefault()}
+                active={isValueActive(r.value)}
+                ariaSelected={isValueActive(r.value)}
+                ariaDescribedby={subLabelId}
+                name={r.value}
+                link={{ href: '' }}
+                key={r.key || r.value}
+              >
+                {r.label}
+                {r.subLabel ? (
+                  <span id={subLabelId} className="small sub-label" aria-hidden="false">
+                    {r.subLabel}
+                  </span>
+                ) : null}
+              </ListItem>
+            );
+          })}
         </FunctionalList>
       ) : (
         <FunctionalList lined>

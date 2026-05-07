@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 7.13.0-beta.1
+
+### Fixed
+
+- Fixed multiple WCAG 2.1 AA accessibility issues in the `Autocomplete` component:
+  - Added missing `aria-controls` and `aria-activedescendant` attributes to correctly implement the ARIA combobox pattern
+  - Added `role="listbox"` to the suggestion list and `role="option"` to each suggestion item
+  - Added `aria-selected` to suggestion items to communicate selection state to screen readers
+  - Added `aria-describedby` to associate `subLabel` text with its parent option
+  - Fixed invalid HTML caused by `<p>` elements nested inside `<span>` elements in suggestion items
+  - Changed `aria-haspopup` from `"true"` to `"listbox"` to correctly describe the popup type
+  - Fixed a `SyntaxError` in the `Autocomplete` component when the "no results" item was focused, caused by an invalid `querySelector`.
+
 ## 7.13.0-beta.0
 
 ### Fixed
@@ -15,7 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `onItemClick` being called twice in the `NavigationList` component
 - Fixed the `tabIndex` attribute not being set on the `ul` element in the `NavigationList` component
 - Fixed the `Autocomplete` component not showing results when the input is focused
-
 
 ## 7.12.0 - 2026-03-13
 
