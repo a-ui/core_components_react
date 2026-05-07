@@ -23,6 +23,10 @@ export interface FunctionalListProps {
   ordered?: boolean;
   onItemClick?: (name: string) => void;
   qa?: string;
+  id?: string;
+  ariaLabel?: string;
+  ariaMultiselectable?: boolean;
+  role?: string;
 }
 
 export interface ListItemProps {
@@ -38,6 +42,10 @@ export interface ListItemProps {
   onClick?: (name?: string) => void;
   onMouseDown?: (event: MouseEvent) => void;
   qa?: string;
+  role?: string;
+  ariaSelected?: boolean;
+  ariaDescribedby?: string;
+  ariaDisabled?: boolean;
 }
 
 export interface ListItemAvatarProps {

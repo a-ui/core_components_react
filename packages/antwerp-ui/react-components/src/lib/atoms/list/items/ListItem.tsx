@@ -15,7 +15,11 @@ export function ListItem({
   onClick,
   onMouseDown,
   tabIndex,
-  qa
+  qa,
+  role,
+  ariaSelected,
+  ariaDescribedby,
+  ariaDisabled
 }: ListItemProps) {
   const ItemTag = `${link && (link.href || link.href === '') ? 'a' : 'span'}` as keyof JSX.IntrinsicElements;
 
@@ -33,7 +37,7 @@ export function ListItem({
   };
 
   return (
-    <li className="a-list__item" id={id} data-qa={qa}>
+    <li className="a-list__item" id={id} data-qa={qa} role={role} aria-selected={ariaSelected} aria-describedby={ariaDescribedby} aria-disabled={ariaDisabled ? true : undefined}>
       <ItemTag
         className={listItemContentClasses}
         onClick={onLinkClick}

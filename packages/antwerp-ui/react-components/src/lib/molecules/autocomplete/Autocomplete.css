@@ -6,3 +6,7 @@
 .m-autocomplete.m-flyout {
   width: 100%;
 }
+
+.sub-label {
+  display: block;
+}

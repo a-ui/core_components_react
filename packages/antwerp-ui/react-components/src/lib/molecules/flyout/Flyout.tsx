@@ -14,7 +14,8 @@ export const Flyout = forwardRef(function Flyout(
     children,
     scrollable = false,
     onStateChange,
-    qa
+    qa,
+    ariaHaspopup,
   }: FlyoutProps,
   forwardRef: ForwardedRef<HTMLDivElement | null>
 ) {
@@ -71,7 +72,7 @@ export const Flyout = forwardRef(function Flyout(
 
   return trigger ? (
     <div className={flyoutClasses} ref={flyoutRef} data-qa={qa}>
-      {cloneElement(trigger, { onClick: _toggleIsOpen, 'aria-haspopup': true, 'aria-expanded': showFlyout })}
+      {cloneElement(trigger, { onClick: _toggleIsOpen, 'aria-haspopup': ariaHaspopup || 'true', 'aria-expanded': showFlyout })}
       <div className={flyoutContentClasses} {...(scrollable ? { tabIndex: 0 } : {})}>
         {children}
       </div>
