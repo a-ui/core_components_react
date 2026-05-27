@@ -56,7 +56,7 @@ export default defineConfig({
           preserveModules: true,
           preserveModulesRoot: 'src',
           exports: 'named',
-          interop: 'auto',
+          interop: 'compat',
         }
       ]
     }
