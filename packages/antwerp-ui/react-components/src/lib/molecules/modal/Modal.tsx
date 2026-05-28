@@ -22,6 +22,7 @@ export function Modal({
   trigger
 }: ModalProps) {
   const [modalOpen, setModalOpen] = React.useState(!!open);
+  const [appElement, setAppElement] = React.useState<HTMLElement | undefined>(undefined);
   const showModal = open === false || open === true ? open : modalOpen;
   const HeaderTag = title?.tag || 'h6';
 
@@ -36,9 +37,9 @@ export function Modal({
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => runFunctionAndClose(e, onClose);
 
-  const appElement = typeof document !== 'undefined'
-  ? document.getElementById(appRootId) ?? undefined
-  : undefined;
+  React.useEffect(() => {
+    setAppElement(document.getElementById(appRootId) ?? undefined);
+  }, [appRootId]);
 
   return (
     <>
