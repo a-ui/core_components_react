@@ -1,6 +1,6 @@
 {
   "name": "@a-ui/react",
-  "version": "7.13.0-beta.5",
+  "version": "7.13.0-beta.10",
   "license": "MIT",
   "main": "./cjs/index.js",
   "module": "./es/index.mjs",
@@ -15,6 +15,16 @@
       "default": "./es/index.mjs",
       "require": "./cjs/index.js"
     }
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "react-modal": ">=3",
+    "react-tooltip": ">=5",
+    "date-fns": ">=4",
+    "@date-fns/tz": ">=1"
   },
   "generators": "generators.json"
 }

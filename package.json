@@ -14,7 +14,11 @@
     "storybook:build": "yarn nx run @a-ui/storybook:build",
     "storybook": "yarn nx run @a-ui/storybook:start",
     "test": "yarn nx test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "version:patch": "cd packages/antwerp-ui/react-components && yarn version --patch & cd ../../..",
+    "version:minor": "cd packages/antwerp-ui/react-components && yarn version --minor & cd ../../..",
+    "version:major": "cd packages/antwerp-ui/react-components && yarn version --major & cd ../../.."
+
   },
   "dependencies": {
     "@date-fns/tz": "^1.4.1",

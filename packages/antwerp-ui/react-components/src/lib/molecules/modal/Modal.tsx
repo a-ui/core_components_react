@@ -1,5 +1,5 @@
 import React, { cloneElement, MouseEventHandler } from 'react';
-import ReactModal from 'react-modal';
+import ReactModalLib from 'react-modal';
 import { DEFAULT_SIZE, SIZE_MAP } from '../../../constants/layout.settings';
 import { classNames } from '../../../utils/dom.utils';
 import { Button } from '../../atoms/button';
@@ -23,6 +23,7 @@ export function Modal({
 }: ModalProps) {
   const [modalOpen, setModalOpen] = React.useState(!!open);
   const [appElement, setAppElement] = React.useState<HTMLElement | undefined>(undefined);
+  const ReactModal = (ReactModalLib as any).default ?? ReactModalLib;
   const showModal = open === false || open === true ? open : modalOpen;
   const HeaderTag = title?.tag || 'h6';
 

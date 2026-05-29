@@ -35,8 +35,8 @@ export function invalidIcon(icon: SVGGraphicsElement): boolean {
 }
 
 export function iconExists(iconName: string): boolean {
+  if (typeof document === 'undefined') return false;
   const svgContainer = document.getElementById(ICONS_SVG_HTML_ID);
   if (!svgContainer) return false;
-
   return !!svgContainer.querySelector(`symbol#ai-${iconName}`);
 }

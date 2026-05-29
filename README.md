@@ -32,6 +32,7 @@ Jest and react test library
 ### Components
 
 - (Optional) `npm adduser`
+- `yarn version:patch` / `yarn version:minor` / `yarn version:major`
 - `yarn build` to build the components
 - `cd dist && yarn publish`
 - `git tag v<VERSION>`
